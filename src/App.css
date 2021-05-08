@@ -1,38 +1,35 @@
-.App {
-  text-align: center;
+/* CSS Navbar */
+
+.apple-icon {
+  color: #f5f5f7;
+  font-size: 1.5rem;
+  margin-left: 1rem;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.bag-icon {
+  font-size: 1.2rem;
+  margin-left: 2rem;
+  margin-top: -2px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.bag-icon,
+nav-link,
+svg {
+  color: #f5f5f7;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.bag-icon,
+nav-link,
+svg:hover {
+  color: gray;
+}
+
+.div-container-nav {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  width: 500px;
+  margin: auto;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nav-font {
+  font-family: "Montserrat", sans-serif;
 }
