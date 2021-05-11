@@ -156,3 +156,9 @@ svg:hover {
     margin-bottom: 1rem;
   }
 }
+
+@media only screen and (max-width: 768px) {
+  .resp-link-nav {
+    width: 70px;
+  }
+}
