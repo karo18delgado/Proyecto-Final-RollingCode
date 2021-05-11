@@ -3,14 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-import {
-  Button,
-  Form,
-  FormControl,
-  Nav,
-  Navbar,
-  NavDropdown,
-} from "react-bootstrap";
+import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 const title = <FontAwesomeIcon icon="shopping-bag"></FontAwesomeIcon>;
 
