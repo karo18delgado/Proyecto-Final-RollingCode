@@ -17,7 +17,13 @@ export default function RegisterForm() {
 
   return (
     <div className="register-container">
-      <p className="title-text">Creá tu usuario Apple</p>
+      <div className="title-container">
+        <p className="title-text">Creá tu usuario Apple</p>
+      </div>
+      <p className="form-title">Formulario de registro</p>
+      <p className="form-subtitle">
+        Creá tu usuario para poder acceder a todas las funcionalidades
+      </p>
       <div className="register-form">
         <Form
           className="container-row-form"

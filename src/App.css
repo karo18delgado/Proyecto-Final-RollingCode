@@ -37,14 +37,41 @@ svg:hover {
   margin-top: 1rem;
 }
 
-.title-text {
-  display: block;
-  text-align: center;
+.title-container {
+  display: flex;
+  justify-content: center;
   margin: 0px;
   width: 100%;
   margin-top: 1rem;
-  font-size: 1.8rem;
+  margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
+  background-image: url(./assets/img/apple_id_recovery_2880x340.jpg);
+  height: 140px;
+}
+
+.title-text {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 2.2rem;
+  width: 400px;
+}
+
+.form-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+.form-subtitle {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
 }
 
 .register-form {
@@ -102,6 +129,7 @@ svg:hover {
   margin-right: auto;
   margin-left: 4rem;
   margin-top: 1rem;
+  margin-bottom: 2rem;
 }
 
 @media only screen and (max-width: 645px) {
