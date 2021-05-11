@@ -46,6 +46,7 @@ svg:hover {
   margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
   background-image: url(./assets/img/apple_id_recovery_2880x340.jpg);
+  background-position: center;
   height: 140px;
 }
 
@@ -69,6 +70,7 @@ svg:hover {
 .form-subtitle {
   display: flex;
   justify-content: center;
+  text-align: center;
   width: 100%;
   margin-top: 1rem;
   font-size: 1rem;
@@ -154,11 +156,5 @@ svg:hover {
   .button-class {
     margin-left: 0.5rem;
     margin-bottom: 1rem;
-  }
-}
-
-@media only screen and (max-width: 768px) {
-  .resp-link-nav {
-    width: 70px;
   }
 }
