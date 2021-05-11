@@ -17,15 +17,15 @@ const title = <FontAwesomeIcon icon="shopping-bag"></FontAwesomeIcon>;
 export default function NavbarR() {
   return (
     <Navbar className="px-2" bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand href="#home">
-        <FontAwesomeIcon
-          className="apple-icon"
-          icon={["fab", "apple"]}
-        ></FontAwesomeIcon>
-      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">
+        <Nav className="mx-auto">
+          <Navbar.Brand as={NavLink} to="home">
+            <FontAwesomeIcon
+              className="apple-icon"
+              icon={["fab", "apple"]}
+            ></FontAwesomeIcon>
+          </Navbar.Brand>
           <Nav.Link className="mx-3" href="#mac">
             Mac
           </Nav.Link>
