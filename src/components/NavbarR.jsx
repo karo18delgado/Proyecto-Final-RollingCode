@@ -28,11 +28,11 @@ export default function NavbarR() {
           <Nav.Link className="mx-3" href="#iphone">
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3" href="#aboutus">
+          <Nav.Link className="mx-3 w-100" href="#aboutus">
             About Us
           </Nav.Link>
           <NavDropdown
-            className="bag-icon mx-3 w-sm-25"
+            className="bag-icon mx-3 w-25"
             title={title}
             id="basic-nav-dropdown"
           >
