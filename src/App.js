@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavbarR from "./components/NavbarR";
 import RegisterForm from "./components/RegisterForm"
 import Landing from "./components/Landing"
+import Footer from "./components/Footer"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <RegisterForm />
         </Route>
       </Switch>
+      <Footer/>
     </Router>
   );
 }
