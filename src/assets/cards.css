@@ -1,0 +1,82 @@
+.cards-bg{
+    background-image: url(https://i.blogs.es/b777cd/ssss/1024_2000.jpg);
+  
+    margin: 0px;
+    width: 100%;
+    margin-top: 0rem;
+    margin-bottom: 1rem;
+    font-family: "Montserrat", sans-serif;
+    background-position: center;
+    height: 705px;
+}
+
+.titulo-principal {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.8rem;
+    color: black;
+    font-size: 44px;
+    line-height: 1.09091;
+    font-weight: 600;
+    letter-spacing: -.002em;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;                     
+  }
+  .titulo-secundario{
+    display: flex;
+    justify-content: center;
+    margin-top: 1.5rem;
+    color: black;
+    font-weight: 400;
+    font-size: 21px;
+    
+    line-height: 1.19048;
+    font-weight: 600;
+    letter-spacing: .011em;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+
+  .boton-comprar{
+    border-radius: 980px;
+    
+  }
+
+  .style-card{
+      border: none;
+      border-bottom: 1px rgb(109, 109, 109) solid;
+  }
+
+  .card-recorte {
+    width: 237px;
+    height: 256px;
+    object-fit: cover;
+  }
+
+  .text-naranja{
+      color: orange;
+      font-size: 12px;
+    line-height: 1.33337;
+    font-weight: 400;
+    letter-spacing: -.01em;
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+  .titulo-card{
+    font-weight: 600;
+    line-height: 1.47059;
+    letter-spacing: -.022em;
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+.text-precio{
+  font-size: 14px;
+    line-height: 1.42859;
+    font-weight: 400;
+    letter-spacing: -.016em;
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
+
+.text-encabezado{
+font-size: 19px;
+    line-height: 1.21053;
+    font-weight: 600;
+    letter-spacing: .012em;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+}

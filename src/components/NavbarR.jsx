@@ -19,16 +19,16 @@ export default function NavbarR() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link className="mx-3" href="#mac">
+          <Nav.Link className="mx-3">
             Mac
           </Nav.Link>
-          <Nav.Link className="mx-3" href="#ipad">
+          <Nav.Link className="mx-3">
             Ipad
           </Nav.Link>
-          <Nav.Link className="mx-3" href="#iphone">
+          <Nav.Link className="mx-3" to="cards" as={NavLink}>
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3" href="#aboutus">
+          <Nav.Link className="mx-3">
             About Us
           </Nav.Link>
           <NavDropdown
@@ -38,7 +38,7 @@ export default function NavbarR() {
           >
             <NavDropdown.Item href="#action/3.1">Carrito</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Favoritos</NavDropdown.Item>
-            <NavDropdown.Item href="#action/3.3">Cuenta</NavDropdown.Item>
+            <NavDropdown.Item to="login" as={NavLink}>Cuenta</NavDropdown.Item>
             <NavDropdown.Divider />
             <NavDropdown.Item to="register" as={NavLink}>
               Registrarse
