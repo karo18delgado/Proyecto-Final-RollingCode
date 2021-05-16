@@ -42,6 +42,7 @@ export default function NavbarR() {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
+      {/* </div> */}
     </Navbar>
   );
 }
