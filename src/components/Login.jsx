@@ -2,25 +2,22 @@ import "../assets/font.css";
 import "../assets/login.css";
 import React from "react";
 import { Button, Form, Nav } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 
 export default function Login() {
   return (
     <div className="login-container">
-    
-      <p className="login-title"><h3><b>Por favor, registrese. </b></h3></p>
-   
+      <p className="login-title">
+        <h3>
+          <b>Por favor, registrese. </b>
+        </h3>
+      </p>
+
       <div className="login-form">
         <Form className="login-row-form" noValidate>
           <Form.Row className="login-row">
-            <Form.Group
-              className="login-row"
-              controlId="validationCustom03"
-            >
-              <Form.Control
-                type="text"
-                placeholder="Apple ID"
-                required
-              />
+            <Form.Group className="login-row" controlId="validationCustom03">
+              <Form.Control type="text" placeholder="Apple ID" required />
               <Form.Control.Feedback type="invalid">
                 Ingrese un nombre de usuario válido.
               </Form.Control.Feedback>
@@ -45,19 +42,21 @@ export default function Login() {
           </Form.Group>
 
           <Button className="button-class" type="submit">
-            Iniciar sesion 
+            Iniciar sesion
           </Button>
           <Form.Text>
-        <Nav.Link className="link-row" href="">
-          <p><small>Olvidaste tu contraseña?</small></p>
-        </Nav.Link>
-        <Nav.Link className="link-row" href="">
-          <p><small>No tienes una Apple ID? Registrate.</small></p>
-        </Nav.Link>
-        </Form.Text>
+            <Nav.Link className="link-row" href="">
+              <p>
+                <small>Olvidaste tu contraseña?</small>
+              </p>
+            </Nav.Link>
+            <Nav.Link to="register" as={NavLink} className="link-row" href="">
+              <p>
+                <small>No tienes una Apple ID? Registrate.</small>
+              </p>
+            </Nav.Link>
+          </Form.Text>
         </Form>
-        
-        
       </div>
     </div>
   );

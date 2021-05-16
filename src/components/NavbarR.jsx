@@ -10,7 +10,7 @@ const title = <FontAwesomeIcon icon="shopping-bag"></FontAwesomeIcon>;
 export default function NavbarR() {
   return (
     <Navbar className="px-2" bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand as={NavLink} to="home">
+      <Navbar.Brand as={NavLink} to="/">
         <FontAwesomeIcon
           className="apple-icon"
           icon={["fab", "apple"]}
@@ -24,7 +24,7 @@ export default function NavbarR() {
           <Nav.Link className="mx-3" to="cards" as={NavLink}>
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3">About Us</Nav.Link>
+          <Nav.Link className="mx-3 w-100">About Us</Nav.Link>
           <NavDropdown
             className="bag-icon mx-3 w-25"
             title={title}
@@ -42,7 +42,6 @@ export default function NavbarR() {
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
-      {/* </div> */}
     </Navbar>
   );
 }

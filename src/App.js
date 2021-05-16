@@ -8,14 +8,15 @@ import Landing from "./components/Landing"
 import Footer from "./components/Footer"
 import CardsIphone from './components/CardsIphone';
 import Login from "./components/Login"
+import NavbarAdmin from './components/Admin/NavbarAdmin';
+import AdminUsuarios from './components/Admin/AdminUsuarios';
 
 function App() {
   return (
     <Router>
       <NavbarR />
-      
       <Switch>
-        <Route path="/home">
+        <Route path="/" exact>
           <Landing />
         </Route>
         <Route path="/cards">
@@ -27,8 +28,14 @@ function App() {
         <Route path="/login">
           <Login />
         </Route>
+        <Route path="/admin">
+          <NavbarAdmin />
+          <Route path="/admin/admin-usuarios">
+            <AdminUsuarios />
+          </Route>
+        </Route>
       </Switch>
-      <Footer/>
+      <Footer />
     </Router>
   );
 }
