@@ -178,6 +178,7 @@ export default function About() {
                         url='https://www.apple.com/105/media/us/privacy/2019/58349417-857c-47c2-89c3-6ab1a56a2f58/safari/small.mp4'
                         playing
                         controls
+                        loop
                         height='60%'
                         width='80%'
                     />
@@ -190,6 +191,7 @@ export default function About() {
                         url='https://www.apple.com/105/media/us/privacy/2019/58349417-857c-47c2-89c3-6ab1a56a2f58/maps/medium_2x.mp4'
                         playing
                         controls
+                        loop
                         height='60%'
                         width='80%'
                     />
@@ -202,6 +204,7 @@ export default function About() {
                         url='https://www.apple.com/105/media/us/privacy/2019/58349417-857c-47c2-89c3-6ab1a56a2f58/photos/medium_2x.mp4   '
                         playing
                         controls
+                        loop
                         height='60%'
                         width='80%'
                     />
@@ -214,6 +217,7 @@ export default function About() {
                         url='https://www.apple.com/105/media/us/privacy/2019/58349417-857c-47c2-89c3-6ab1a56a2f58/messages/medium_2x.mp4'
                         playing
                         controls
+                        loop
                         height='60%'
                         width='80%'
                     />
@@ -226,6 +230,7 @@ export default function About() {
                         url='https://www.apple.com/105/media/us/privacy/2019/58349417-857c-47c2-89c3-6ab1a56a2f58/health/medium_2x.mp4'
                         playing
                         controls
+                        loop
                         height='60%'
                         width='80%'
                     />
