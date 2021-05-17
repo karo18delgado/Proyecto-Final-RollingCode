@@ -1,3 +1,7 @@
+body {
+  font-family: "Montserrat", sans-serif !important;
+}
+
 /* CSS Navbar */
 
 .apple-icon {
@@ -24,14 +28,135 @@ svg:hover {
   color: gray;
 }
 
-.div-container-nav {
+/* CSS Registro */
+
+.register-container {
   display: flex;
-  width: 500px;
-  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
-.nav-font {
+.title-container {
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
+  background-image: url(./assets/img/apple_id_recovery_2880x340.jpg);
+  background-position: center;
+  height: 140px;
+}
+
+.title-text {
+  display: flex;
+  justify-content: center;
+  margin-top: 2.5rem;
+  color: white;
+  font-weight: bold;
+  font-size: 2.2rem;
+  width: 400px;
+}
+
+.form-title {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2rem;
+  font-size: 1.5rem;
+}
+.form-subtitle {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+.register-form {
+  width: 800px;
+  display: flex;
+  justify-content: center;
+}
+
+.container-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 516px;
+}
+
+.container-row-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+  width: 80%;
+}
+
+.divider-border {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 0px;
+}
+
+.divider-border-1 {
+  width: 100%;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.name-div {
+  width: 250px;
+}
+
+.lastname-div {
+  width: 250px;
+  margin-left: 1rem;
+}
+
+.group-div {
+  display: flex;
+  justify-content: start;
+  width: 100%;
+  margin-left: 4rem;
+  margin-top: 1rem;
+}
+
+.button-class {
+  margin-right: auto;
+  margin-left: 4rem;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media only screen and (max-width: 645px) {
+  .container-row {
+    width: 400px;
+  }
+  .container-row-form {
+    width: 410px;
+  }
+  .name-div {
+    width: 400px;
+  }
+  .lastname-div {
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  .group-div {
+    margin-left: 0.5rem;
+  }
+
+  .button-class {
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
+  }
 }
 .fondo-pag{
   background-color: #f5f5f7;
