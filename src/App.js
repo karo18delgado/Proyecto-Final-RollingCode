@@ -17,7 +17,7 @@ function App() {
     <Router>
       <NavbarR />
       <Switch>
-        <Route> 
+        <Route path="/about"> 
           <div className="fondo-pag">
           <div className="container"> <About /></div>
           </div>
