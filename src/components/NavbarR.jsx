@@ -27,13 +27,9 @@ export default function NavbarR() {
           <Nav.Link className="mx-3" to="cards" as={NavLink}>
             Iphone
           </Nav.Link>
-<<<<<<< Updated upstream
-          <Nav.Link className="mx-3 w-100" to="about"as={NavLink} >About Us</Nav.Link>
-=======
           <Nav.Link className="mx-3 w-100" to="about" as={NavLink}>
             About Us
           </Nav.Link>
->>>>>>> Stashed changes
           <NavDropdown
             className="bag-icon mx-3 w-25"
             title={title}
