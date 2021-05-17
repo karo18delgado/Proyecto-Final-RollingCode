@@ -1,13 +1,13 @@
 .letra-seccion {
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
-    font-size: 20px;
+    font-size: 30px;
     text-align: left;
 }
 .letra-seccion-medioAmbiente {
     font-size: 96px;
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     text-align: center;
-    padding-top: 40px;
+    padding-top: 50px;
 }
 .logo-seccion {
     width: 62px;
@@ -160,10 +160,11 @@
 }
 
 .letra1-accesibilidad {
-    font-size: 40px;
+    font-size: 60px;
     font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
     color:#fff ;
     text-align: center;
+    padding: 72px;
 }
 .volume-icon{
     padding-left: 10px;
@@ -173,6 +174,8 @@
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
     color:#1d1d1f;
     text-align: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .letra-card-privacidad1{
     font-size: 32px;
