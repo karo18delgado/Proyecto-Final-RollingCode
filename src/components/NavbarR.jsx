@@ -24,7 +24,7 @@ export default function NavbarR() {
           <Nav.Link className="mx-3" to="cards" as={NavLink}>
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3 w-100" to="about" as={NavLink}>About Us</Nav.Link>
+          <Nav.Link className="mx-3 w-100" to="about"as={NavLink} >About Us</Nav.Link>
           <NavDropdown
             className="bag-icon mx-3 w-25"
             title={title}
