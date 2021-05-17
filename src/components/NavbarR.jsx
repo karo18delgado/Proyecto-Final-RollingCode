@@ -1,13 +1,16 @@
 import "../assets/font.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
 const title = <FontAwesomeIcon icon="shopping-bag"></FontAwesomeIcon>;
 
 export default function NavbarR() {
+  const location = useLocation();
+  const { pathname } = location;
+  if (pathname.includes("/admin")) return null;
   return (
     <Navbar className="px-2" bg="dark" variant="dark" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
@@ -24,7 +27,13 @@ export default function NavbarR() {
           <Nav.Link className="mx-3" to="cards" as={NavLink}>
             Iphone
           </Nav.Link>
+<<<<<<< Updated upstream
           <Nav.Link className="mx-3 w-100" to="about"as={NavLink} >About Us</Nav.Link>
+=======
+          <Nav.Link className="mx-3 w-100" to="about" as={NavLink}>
+            About Us
+          </Nav.Link>
+>>>>>>> Stashed changes
           <NavDropdown
             className="bag-icon mx-3 w-25"
             title={title}
