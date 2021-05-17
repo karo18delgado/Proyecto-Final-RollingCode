@@ -10,6 +10,33 @@
     height: 705px;
 }
 
+.bg-gris{
+    background-color: rgb(238, 238, 238);
+}
+.bg-blanco{
+    background-color: white;
+}
+
+.bg-banner1{
+    width: 100%;
+    height: 400px;
+
+    background-image: url(https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg);
+}
+.bg-banner2{
+    width: 100%;
+    height: 500px;
+
+    background-image: url(https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg);
+}
+
+.bg-banner3{
+
+    height: 320px;
+
+    background-image: url(https://i.blogs.es/852326/bill/450_1000.jpg);
+}
+
 .titulo-principal {
     display: flex;
     justify-content: center;
@@ -33,6 +60,22 @@
     font-weight: 600;
     letter-spacing: .011em;
     font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+
+  .titulo-banner{
+    font-size: 32px;
+    line-height: 1.125;
+    font-weight: 550;
+    letter-spacing: .004em;
+    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  }
+
+  .subtitulo-banner{
+    font-size: 17px;
+    line-height: 1.47059;
+    font-weight: 400;
+    letter-spacing: -.022em;
+    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
   }
 
   .boton-comprar{
