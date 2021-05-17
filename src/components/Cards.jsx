@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import "../assets/cards.css";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -44,6 +45,7 @@ export default function Cards({art}) {
             <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
             <Card.Text className="text-encabezado">Icono</Card.Text>
             <Card.Text className="text-precio">{art.red}</Card.Text>
+            <Card.Text className="text-encabezado"><i class="fas fa-camera"></i></Card.Text>
             <Card.Text className="text-encabezado">{art.camara}</Card.Text>
             <Card.Text className="text-precio">{art.subcamara}</Card.Text>
           </Card.Body>
