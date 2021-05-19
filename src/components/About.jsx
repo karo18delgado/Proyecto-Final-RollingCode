@@ -1,11 +1,13 @@
 import './about.css';
-import { Card, CardColumns, Col, Container, Row } from "react-bootstrap";
+import { Card, CardColumns, CardDeck, Col, Container, Row } from "react-bootstrap";
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
-
-
-
+import carolina from './imagenes/carolina.png';
+import agustin from './imagenes/agustin.jpeg';
+import rodolfo from './imagenes/rodolfo.jpeg';
+import nicolas from './imagenes/nicolas.jpeg';
+import rosendo from './imagenes/rosendo.png';
 
 export default function About() {
     return (
@@ -13,7 +15,8 @@ export default function About() {
             {/* VALORES DE APPLE */}
 
             {/* MEDIO AMBIENTE */}
-            <h2 className="letra-seccion">Valores de Apple</h2>
+            <h2 className="letra-valores">Valores de Apple</h2>
+            <hr />
             <h1 className="letra-seccion-medioAmbiente"><img className="logo-seccion" src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png" alt="" /> Medio ambiente</h1>
             <h1 className="letra-titulo">Somos neutros en carbono</h1>
             <h2 className="letra-subtitulo">Y para el <span className="letra-num" style={{ color: '#00D959', }}>
@@ -124,7 +127,7 @@ export default function About() {
                     <Col md={6} style={{ paddingBottom: '30px' }} >
                         <Card className=" p-3 listado-card">
                             <Card.Title> <p style={{ fontSize: '20px', paddingTop: '20px' }}>Leer selección</p></Card.Title>
-                            <Card.Img style={{ borderRadius: '20px', maxWidth:'400px', maxHeight:'600px',paddingLeft:'50px' }} src="https://document-export.canva.com/LCyL4/DAEeo-LCyL4/15/thumbnail/0001-1404931145.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20210515%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210515T174143Z&X-Amz-Expires=73449&X-Amz-Signature=adc5c0f27c25b83a848ab5d87c89be4c6703b73452a5d9a1b92bc231d854622f&X-Amz-SignedHeaders=host&response-expires=Sun%2C%2016%20May%202021%2014%3A05%3A52%20GMT" />
+                            <Card.Img style={{ borderRadius: '20px', maxWidth: '400px', maxHeight: '600px', paddingLeft: '50px' }} src="https://document-export.canva.com/LCyL4/DAEeo-LCyL4/15/thumbnail/0001-1404931145.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAQYCGKMUHWDTJW6UD%2F20210515%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20210515T174143Z&X-Amz-Expires=73449&X-Amz-Signature=adc5c0f27c25b83a848ab5d87c89be4c6703b73452a5d9a1b92bc231d854622f&X-Amz-SignedHeaders=host&response-expires=Sun%2C%2016%20May%202021%2014%3A05%3A52%20GMT" />
                         </Card>
                     </Col>
                 </Row>
@@ -167,7 +170,7 @@ export default function About() {
                 compartirlo. Por eso, los productos Apple están diseñados
                 para proteger tu privacidad y ayudarte a mantener el control
                 de tu información.No siempre es fácil, pero es el tipo de
-            innovación en la creemos.</p>
+                innovación en la creemos.</p>
 
 
 
@@ -236,6 +239,75 @@ export default function About() {
                     />
                 </div>
             </div>
+
+            {/* SECCIÓN DIRECTIVOS */}
+
+            <h2 className="letra-directivos">Directivos de Apple</h2>
+            <hr />
+            <h1 className="letra-seccion-directivos">Perfiles de los directivos</h1>
+
+            <Container style={{ paddingBottom: '80px' }}>
+                <Row>
+                    <Col xs={12} md={4} style={{ padding: '20px' }}>
+                        <Card style={{ height: '450px' }} className='listado-card-directivos'>
+                            <Card.Img className='img-directivos' variant="top" src={rosendo} />
+                            <Card.Body>
+                                <Card.Title>Rosendo Alves </Card.Title>
+                                <Card.Text>
+                                    Programador FullStack
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4} style={{ padding: '20px' }}>
+                        <Card style={{ height: '450px' }} className='listado-card-directivos'>
+                            <Card.Img className='img-directivos' variant="top" src={carolina} />
+                            <Card.Body>
+                                <Card.Title>Delgado Ana Carolina</Card.Title>
+                                <Card.Text>
+                                    Programadora FullStack
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4} style={{ padding: '20px' }}>
+                        <Card style={{ height: '450px' }} className='listado-card-directivos'>
+                            <Card.Img className='img-directivos' variant="top" src={agustin} />
+                            <Card.Body>
+                                <Card.Title>Urrutia Gómez Agustín</Card.Title>
+                                <Card.Text>
+                                    Programador FullStack
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col xs={12} md={4} style={{ padding: '20px' }}>
+                        <Card style={{ height: '450px' }} className='listado-card'>
+                            <Card.Img className='img-directivos' variant="top" src={rodolfo} />
+                            <Card.Body>
+                                <Card.Title>Gonzalez Rodolfo Eduardo</Card.Title>
+                                <Card.Text >
+                                    Programador FullStack
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+                    <Col xs={12} md={4} style={{ padding: '20px' }}>
+                        <Card style={{ height: '450px' }} className='listado-card'>
+                            <Card.Img className='img-directivos' variant="top" src={nicolas} />
+                            <Card.Body>
+                                <Card.Title>Gómez Nicolas</Card.Title>
+                                <Card.Text>
+                                    Programador FullStack
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    </Col>
+
+                </Row>
+            </Container>
 
 
         </div>
