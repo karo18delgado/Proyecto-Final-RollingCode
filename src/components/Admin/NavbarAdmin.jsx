@@ -6,7 +6,7 @@ import { NavLink } from "react-router-dom";
 export default function NavbarAdmin() {
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
-      <Navbar.Brand href="#home">
+      <Navbar.Brand to="/" as={NavLink}>
         <FontAwesomeIcon
           className="apple-icon"
           icon={["fas", "user-cog"]}

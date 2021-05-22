@@ -11,17 +11,20 @@ import CardsIphone from './components/CardsIphone';
 import Login from "./components/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
+import { useState } from 'react';
 
 function App() {
+  const [user, setUser] = useState('');
+
   return (
     <Router>
       <NavbarR />
       <Switch>
-        <Route path="/about"> 
+        <Route path="/about">
           <div className="fondo-pag">
-          <div className="container"> <About /></div>
+            <div className="container"> <About /></div>
           </div>
-          </Route>
+        </Route>
         <Route path="/" exact>
           <Landing />
         </Route>
@@ -32,19 +35,19 @@ function App() {
           <RegisterForm />
         </Route>
         <Route path="/login">
-          <Login />
+          <Login setUser={setUser} />
         </Route>
         <Route path="/admin">
           <NavbarAdmin />
           <Route path="/admin/admin-usuarios">
-            <AdminUsuarios />
+            <AdminUsuarios currentUser={user} />
           </Route>
         </Route>
       </Switch>
       <Footer />
     </Router>
 
-    
+
   );
 }
 
