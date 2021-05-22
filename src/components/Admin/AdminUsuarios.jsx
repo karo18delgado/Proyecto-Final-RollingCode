@@ -3,10 +3,13 @@ import "../Admin/adminUsuarios.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 
 export default function AdminUsuarios() {
-  const [show, setShow] = useState(false);
+  const [showBlock, setShowBlock] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
 
-  const handleCloseBlock = () => setShow(false);
-  const handleShowBlock = () => setShow(true);
+  const handleCloseBlock = () => setShowBlock(false);
+  const handleShowBlock = () => setShowBlock(true);
+  const handleCloseInfo = () => setShowInfo(false);
+  const handleShowInfo = () => setShowInfo(true);
 
   return (
     <div>
@@ -57,7 +60,11 @@ export default function AdminUsuarios() {
               <Button size="sm" className="btn sm btn-danger mx-1">
                 Eliminar
               </Button>
-              <Button size="sm" className="btn sm btn-warning mx-1">
+              <Button
+                size="sm"
+                className="btn sm btn-warning mx-1"
+                onClick={handleShowInfo}
+              >
                 Más información
               </Button>
             </td>
@@ -67,14 +74,13 @@ export default function AdminUsuarios() {
 
       {/* Modal editar */}
 
-      <Modal show={show} onHide={handleCloseBlock}>
+      <Modal show={showBlock} onHide={handleCloseBlock}>
         <Modal.Header closeButton>
           <Modal.Title>Habilitar/Deshabilitar</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>Custom select</Form.Label>
               <Form.Control as="select" custom>
                 <option>Habilitado</option>
                 <option>Deshabilitado</option>
@@ -87,6 +93,36 @@ export default function AdminUsuarios() {
             Cerrar
           </Button>
           <Button variant="primary" onClick={handleCloseBlock}>
+            Guardar cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal más info */}
+
+      <Modal show={showInfo} onHide={handleCloseInfo}>
+        <Modal.Header closeButton>
+          <Modal.Title>Más información</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="exampleForm.SelectCustom">
+              <Form.Label>
+                <p>Nombre: Mark</p>
+                <p>Apellido: Otto</p>
+                <p>Email: @mdo</p>
+                <p>Fecha de nacimiento: 01/01/1995</p>
+                <p>Nombre de usuario: </p>
+                <p>Sexo: Masculino</p>
+              </Form.Label>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseInfo}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={handleCloseInfo}>
             Guardar cambios
           </Button>
         </Modal.Footer>
