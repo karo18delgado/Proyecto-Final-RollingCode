@@ -8,7 +8,7 @@ import RegisterForm from "./components/RegisterForm"
 import Landing from "./components/Landing"
 import Footer from "./components/Footer"
 import CardsIphone from './components/CardsIphone';
-import Login from "./components/Login"
+import Login from "./pages/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
 import { useState } from 'react';

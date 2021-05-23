@@ -4,32 +4,32 @@ import React, { useState } from "react";
 import { Button, Form, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 
-// const admin = {
-//   email: "admin@apple.com",
-//   name: "Administrador",
-//   password: "admin@123",
-// };
+const admin = {
+  email: "admin@apple.com",
+  name: "Administrador",
+  password: "admin@123",
+};
 
 export default function Login({ setUser }) {
-  // const [input, setInput] = useState({});
-  // const history = useHistory();
+  const [input, setInput] = useState({});
+  const history = useHistory();
 
-  // const handleChange = (event) => {
-  //   const { value, name } = event.target;
-  //   const newInput = { ...input, [name]: value };
-  //   setInput(newInput);
-  // };
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    const newInput = { ...input, [name]: value };
+    setInput(newInput);
+  };
 
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   if (input.email === admin.email && input.password === admin.password) {
-  //     alert("Logueo exitoso 😎 " + admin.name);
-  //     setUser(admin.name);
-  //     history.push("/admin");
-  //   } else {
-  //     alert("datos incorrectos.");
-  //   }
-  // };
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (input.email === admin.email && input.password === admin.password) {
+      alert("Logueo exitoso 😎 " + admin.name);
+      setUser(admin.name);
+      history.push("/admin");
+    } else {
+      alert("datos incorrectos.");
+    }
+  };
 
   return (
     <div className="login-container">
@@ -40,12 +40,13 @@ export default function Login({ setUser }) {
       </p>
 
       <div className="login-form">
-        <Form className="login-row-form" noValidate>
+        <Form className="login-row-form" noValidate onSubmit={handleSubmit}>
           <Form.Row className="login-row">
             <Form.Group className="login-row" controlId="validationCustom03">
               <Form.Control
+                name="email"
                 type="email"
-                // onChange={handleChange}
+                onChange={handleChange}
                 placeholder="Apple ID"
                 required
               />
@@ -56,8 +57,9 @@ export default function Login({ setUser }) {
           </Form.Row>
           <Form.Group className="login-row" controlId="validationCustom05">
             <Form.Control
+              name="password"
               type="password"
-              // onChange={handleChange}
+              onChange={handleChange}
               placeholder="Contraseña"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               required
