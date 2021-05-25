@@ -18,7 +18,9 @@ export default function NavbarAdmin() {
           <Nav.Link to="/admin/admin-usuarios" as={NavLink}>
             Usuarios
           </Nav.Link>
-          <Nav.Link href="#link">Productos</Nav.Link>
+          <Nav.Link to="/admin/admin-productos" as={NavLink}>
+            Productos
+          </Nav.Link>
           <Nav.Link href="#link">Mensajes</Nav.Link>
         </Nav>
       </Navbar.Collapse>

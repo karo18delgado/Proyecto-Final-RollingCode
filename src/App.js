@@ -11,6 +11,7 @@ import CardsIphone from './components/CardsIphone';
 import Login from "./pages/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
+import AdminProductos from './components/Admin/AdminProductos';
 import { useState } from 'react';
 
 function App() {
@@ -41,6 +42,9 @@ function App() {
           <NavbarAdmin />
           <Route path="/admin/admin-usuarios">
             <AdminUsuarios currentUser={user} />
+          </Route>
+          <Route path="/admin/admin-productos">
+            <AdminProductos currentUser={user} />
           </Route>
         </Route>
       </Switch>

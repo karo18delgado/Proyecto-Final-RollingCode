@@ -57,15 +57,15 @@ export default function AdminUsuarios() {
               >
                 Bloqueo
               </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1">
-                Eliminar
-              </Button>
               <Button
                 size="sm"
                 className="btn sm btn-warning mx-1"
                 onClick={handleShowInfo}
               >
                 Más información
+              </Button>
+              <Button size="sm" className="btn sm btn-danger mx-1">
+                Eliminar
               </Button>
             </td>
           </tr>
