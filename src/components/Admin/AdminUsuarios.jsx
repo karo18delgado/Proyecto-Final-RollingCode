@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "../Admin/adminUsuarios.css";
+import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 
 export default function AdminUsuarios() {
