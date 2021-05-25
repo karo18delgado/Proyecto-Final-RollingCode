@@ -26,7 +26,7 @@ export default function About() {
                     src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
                     alt=""
                 />{" "}
-        Medio ambiente
+                Medio ambiente
             </h1>
             <h1 className="letra-titulo">Somos neutros en carbono</h1>
             <h2 className="letra-subtitulo">
@@ -34,7 +34,7 @@ export default function About() {
                 <span className="letra-num" style={{ color: "#00D959" }}>
                     2030{" "}
                 </span>
-        todos tus productos favoritos también los serán.
+                todos tus productos favoritos también los serán.
             </h2>
 
             <Container>
@@ -69,14 +69,14 @@ export default function About() {
                                 <blockquote className="blockquote mb-0 card-body">
                                     <Card.Title className="letra2">
                                         Apple Inc. Oficialmente verde.
-                </Card.Title>
+                                    </Card.Title>
                                     <div  className="toggle-button-container">
                                         <span  className="toggle-button-indicator"></span>
                                     </div>
                                     <Card.Title className="letra2a">
                                         Desde el 2018, todas las oficinas, tiendas y centros de datos
                                         de Apple funcionan con energía 100% renovable.
-                </Card.Title>
+                                    </Card.Title>
                                 </blockquote>
                             </Card>
                         </Col>
@@ -110,7 +110,7 @@ export default function About() {
                                     <Card.Title className="letra3">
                                         Invertimos en ideas de toda naturaleza para eliminar el
                                         carbono.
-                </Card.Title>
+                                    </Card.Title>
                                 </Card.Body>
                                 <Card.Img
                                     variant="top"
@@ -127,13 +127,13 @@ export default function About() {
                                         style={{ color: "white", paddingTop: "20px" }}
                                     >
                                         Nuestros productos usan menos energía.
-                </Card.Title>
+                                    </Card.Title>
                                     <Card.Title
                                         className="letra4-verde"
                                         style={{ color: "#00D959" }}
                                     >
                                         Y cuidan más al planeta.
-                </Card.Title>
+                                    </Card.Title>
                                 </blockquote>
                             </Card>
                         </Col>
@@ -188,7 +188,7 @@ export default function About() {
                                 <blockquote className="blockquote mb-0 card-body">
                                     <p style={{ fontSize: "20px", color: "#fff" }}>
                                         Contenido Leído
-                </p>
+                                    </p>
                                     <Card.Title className="letra1-accesibilidad">
                                         Lee con los oídos.
                                         
@@ -207,10 +207,10 @@ export default function About() {
                                     style={{ fontSize: "20px", paddingTop: "20px", color: "#fff" }}
                                 >
                                     Descripciones de Audio.
-              </p>
+                                </p>
                                 <Card.Title className="letra3-accesibilidad">
                                     Luz.Cámara Audición.
-              </Card.Title>
+                                </Card.Title>
                             </Card>
                         </Col>
                     </Row>
@@ -224,9 +224,9 @@ export default function About() {
                                     >
                                         <p style={{ fontSize: "20px" }}>
                                             FaceTime y detección de lengua de señas
-                  </p>{" "}
-                  Tu conversación en primer plano.
-                </Card.Title>
+                                        </p>
+                                        Tu conversación en primer plano.
+                                    </Card.Title>
                                     <Card.Img
                                         variant="top"
                                         style={{ height: "198px" }}
@@ -240,7 +240,7 @@ export default function About() {
                                 <Card.Body>
                                     <Card.Title className="letra1-accesibilidad2">
                                         Hay un atajo para todo.
-                </Card.Title>
+                                    </Card.Title>
                                 </Card.Body>
                             </Card>
                         </Col>
@@ -256,8 +256,8 @@ export default function About() {
                     src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
                     alt=""
                 />
-        Privacidad
-      </h1>
+            Privacidad
+            </h1>
             <p className="letra-parrafo-privacidad">
                 La privacidad es un derecho humano fundamental. Y también es uno de los
                 valores fundamentales de Apple. Sabemos lo importante que son tus
@@ -274,11 +274,11 @@ export default function About() {
             >
                 <h3 className="letra-card-privacidad1 col-md-7 p-2">
                     Safari impide que los rastreadores sigan tus pasos en internet.
-          <p className="letra-parrafo-privacidad1 p-2 pt-4">
+                <p className="letra-parrafo-privacidad1 p-2 pt-4">
                         La funcionalidad de prevención de rastreo inteligente te ayuda a
                         navegar por internet sin que los anuncios te sigan de un sitio a
                         otro.
-          </p>
+                </p>
                 </h3>
                 <div className="col-md-5  video-privacidad1">
                     <ReactPlayer
@@ -297,10 +297,10 @@ export default function About() {
             >
                 <h3 className="letra-card-privacidad1 col-md-7 p-2">
                     Mapas no cuenta las historias de tu historial de ubicaciones.
-          <p className="letra-parrafo-privacidad1 p-2 pt-4">
+                <p className="letra-parrafo-privacidad1 p-2 pt-4">
                         La app Mapas no asocia tus datos a tu Apple ID, y Apple tampoco
                         mantiene un historial de los lugares donde estuviste.
-          </p>
+                </p>
                 </h3>
                 <div className="col-md-5  video-privacidad1">
                     <ReactPlayer
@@ -319,11 +319,11 @@ export default function About() {
             >
                 <h3 className="letra-card-privacidad1 col-md-7 p-2">
                     La app Fotos se enfoca en la protección de tus imágenes.
-          <p className="letra-parrafo-privacidad1 p-2 pt-4">
+                <p className="letra-parrafo-privacidad1 p-2 pt-4">
                         La app Fotos usa el aprendizaje automático para organizar las fotos
                         directamente en tu dispositivo. Así, no tendrás que compartirlas con
                         Apple ni con nadie.
-          </p>
+                </p>
                 </h3>
                 <div className="col-md-5  video-privacidad1">
                     <ReactPlayer
@@ -343,10 +343,10 @@ export default function About() {
                 <h3 className="letra-card-privacidad1 col-md-7 p-2">
                     Las personas a las que envías mensajes son las únicas que pueden
                     verlos.
-          <p className="letra-parrafo-privacidad1 p-2 pt-4">
+                <p className="letra-parrafo-privacidad1 p-2 pt-4">
                         Apple no puede leer los mensajes de iMessage que intercambias con
                         otras personas.
-          </p>
+                </p>
                 </h3>
                 <div className="col-md-5  video-privacidad1">
                     <ReactPlayer
@@ -365,9 +365,9 @@ export default function About() {
             >
                 <h3 className="letra-card-privacidad1 col-md-7 p-2">
                     La app Salud trata tu información médica con cuidado intensivo.
-          <p className="letra-parrafo-privacidad1 p-2 pt-4">
+                <p className="letra-parrafo-privacidad1 p-2 pt-4">
                         Sólo tú controlas la información que agregas a la app Salud y con
-            quién la compartes.{" "}
+                quién la compartes.{" "}
                     </p>
                 </h3>
                 <div className="col-md-5  video-privacidad1">
