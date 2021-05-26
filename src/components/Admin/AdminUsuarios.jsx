@@ -1,8 +1,16 @@
-import React from "react";
-import "../Admin/adminUsuarios.css";
-import { Button, Form, Table } from "react-bootstrap";
+import { useState } from "react";
+import "../Admin/admin.css";
+import { Button, Form, Modal, Table } from "react-bootstrap";
 
 export default function AdminUsuarios() {
+  const [showBlock, setShowBlock] = useState(false);
+  const [showInfo, setShowInfo] = useState(false);
+
+  const handleCloseBlock = () => setShowBlock(false);
+  const handleShowBlock = () => setShowBlock(true);
+  const handleCloseInfo = () => setShowInfo(false);
+  const handleShowInfo = () => setShowInfo(true);
+
   return (
     <div>
       <div>
@@ -24,7 +32,8 @@ export default function AdminUsuarios() {
       <Table striped bordered hover variant="dark" className="mt-5">
         <thead>
           <tr>
-            <th>Nombre de usuario</th>
+            <th>Nombre</th>
+            <th>Apellido</th>
             <th>Email</th>
             <th>Fecha de nacimiento</th>
             <th>Sexo</th>
@@ -37,46 +46,87 @@ export default function AdminUsuarios() {
             <td>Mark</td>
             <td>Otto</td>
             <td>@mdo</td>
+            <td>01/01/1995</td>
             <td>Masculino</td>
             <td>Habilitado</td>
             <td>
-              <Button size="sm" className="btn btn-info mx-1">
-                Editar
-              </Button>
-              <Button size="sm" className="btn sm btn-success mx-1">
+              <Button
+                size="sm"
+                className="btn sm btn-success mx-1"
+                onClick={handleShowBlock}
+              >
                 Bloqueo
+              </Button>
+              <Button
+                size="sm"
+                className="btn sm btn-warning mx-1"
+                onClick={handleShowInfo}
+              >
+                Más información
               </Button>
               <Button size="sm" className="btn sm btn-danger mx-1">
                 Eliminar
-              </Button>
-              <Button size="sm" className="btn sm btn-warning mx-1">
-                Más información
-              </Button>
-            </td>
-          </tr>
-          <tr>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-            <td>Femenino</td>
-            <td>Habilitado</td>
-            <td>
-              <Button size="sm" className="btn btn-info mx-1">
-                Editar
-              </Button>
-              <Button size="sm" className="btn sm btn-success mx-1">
-                Bloqueo
-              </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1">
-                Eliminar
-              </Button>
-              <Button size="sm" className="btn sm btn-warning mx-1">
-                Más información
               </Button>
             </td>
           </tr>
         </tbody>
       </Table>
+
+      {/* Modal editar */}
+
+      <Modal show={showBlock} onHide={handleCloseBlock}>
+        <Modal.Header closeButton>
+          <Modal.Title>Habilitar/Deshabilitar</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="exampleForm.SelectCustom">
+              <Form.Control as="select" custom>
+                <option>Habilitado</option>
+                <option>Deshabilitado</option>
+              </Form.Control>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseBlock}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={handleCloseBlock}>
+            Guardar cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
+
+      {/* Modal más info */}
+
+      <Modal show={showInfo} onHide={handleCloseInfo}>
+        <Modal.Header closeButton>
+          <Modal.Title>Más información</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
+            <Form.Group controlId="exampleForm.SelectCustom">
+              <Form.Label>
+                <p>Nombre: Mark</p>
+                <p>Apellido: Otto</p>
+                <p>Email: @mdo</p>
+                <p>Fecha de nacimiento: 01/01/1995</p>
+                <p>Nombre de usuario: </p>
+                <p>Sexo: Masculino</p>
+              </Form.Label>
+            </Form.Group>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseInfo}>
+            Cerrar
+          </Button>
+          <Button variant="primary" onClick={handleCloseInfo}>
+            Guardar cambios
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }

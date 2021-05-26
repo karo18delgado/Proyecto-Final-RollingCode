@@ -1,14 +1,11 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import "../assets/cards.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faVolumeUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-
-
-export default function Cards({art}) {
+export default function Cards({ art }) {
   const [open, setOpen] = useState(false);
-
 
   return (
     <>
@@ -20,39 +17,49 @@ export default function Cards({art}) {
           className=" m-auto style-card"
           style={{ width: "18rem" }}
         >
-          <Card.Img className="card-recorte m-auto" variant="top" src={art.image} />
-          <Card.Body>
-          <Card.Text className="text-naranja">{art.estado}</Card.Text>
+          <Card.Img
+            className="card-recorte m-auto"
+            variant="top"
+            src={art.image}
+          />
+          <Card.Body className="card-container">
+            <Card.Text className="text-naranja">{art.estado}</Card.Text>
             <Card.Title className="titulo-card">
               <h3>{art.titulo}</h3>
             </Card.Title>
             <Card.Text className="text-encabezado">{art.subtitulo}</Card.Text>
             <Card.Text className="text-precio">{art.precio}</Card.Text>
           </Card.Body>
-          <Card.Body><Button
-            // href=
-            // target="_blank"
-            className="btn boton-comprar mb-auto text-center"
-            variant="primary"
-          >
-            Comprar
-          </Button></Card.Body>
-        <Collapse in={open}>
-        <div id="example-collapse-text">
-          <hr class="hr-articulos" />
           <Card.Body>
-            <Card.Text className="text-encabezado">{art.pantalla}</Card.Text>
-            <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
-            <Card.Text className="text-encabezado">Icono</Card.Text>
-            <Card.Text className="text-precio">{art.red}</Card.Text>
-            <Card.Text className="text-encabezado"><i class="fas fa-camera"></i></Card.Text>
-            <Card.Text className="text-encabezado">{art.camara}</Card.Text>
-            <Card.Text className="text-precio">{art.subcamara}</Card.Text>
+            <Button
+              // href=
+              // target="_blank"
+              className="btn boton-comprar mb-auto text-center"
+              variant="primary"
+            >
+              Comprar
+            </Button>
           </Card.Body>
-        </div>
-      </Collapse> 
-      </Card>
-       </div>
+          <Collapse in={open}>
+            <div id="example-collapse-text">
+              <hr class="hr-articulos" />
+              <Card.Body>
+                <Card.Text className="text-encabezado">
+                  {art.pantalla}
+                </Card.Text>
+                <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
+                <Card.Text className="text-encabezado">Icono</Card.Text>
+                <Card.Text className="text-precio">{art.red}</Card.Text>
+                <Card.Text className="text-encabezado">
+                  <i class="fas fa-camera"></i>
+                </Card.Text>
+                <Card.Text className="text-encabezado">{art.camara}</Card.Text>
+                <Card.Text className="text-precio">{art.subcamara}</Card.Text>
+              </Card.Body>
+            </div>
+          </Collapse>
+        </Card>
+      </div>
     </>
   );
 }
