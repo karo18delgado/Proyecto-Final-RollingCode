@@ -1,0 +1,11 @@
+body {
+    background-color: #f5f5f7;
+}
+.logo-sección-perfil{
+    width: 35px;
+    height: 40px;
+    text-align: center;
+    display: inline-block;
+    vertical-align: initial;
+    margin-right: 5px;
+}

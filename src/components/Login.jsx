@@ -41,7 +41,7 @@ export default function Login() {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button className="button-class" type="submit">
+          <Button  to="perfilUsuario" as={NavLink}  className="button-class" type="submit">
             Iniciar sesion
           </Button>
           <Form.Text>

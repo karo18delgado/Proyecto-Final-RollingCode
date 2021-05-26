@@ -11,6 +11,7 @@ import CardsIphone from './components/CardsIphone';
 import Login from "./components/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
+import PerfilUsuario from './components/PerfilUsuario';
 
 function App() {
   return (
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/login">
           <Login />
+        </Route>
+        <Route path="/perfilUsuario">
+          <PerfilUsuario />
         </Route>
         <Route path="/admin">
           <NavbarAdmin />
