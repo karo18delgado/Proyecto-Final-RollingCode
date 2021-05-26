@@ -8,6 +8,10 @@ export default function FormFooter() {
     <Form.Label style={{color:'white'}}>Escribe tu correo</Form.Label>
     <Form.Control type="email" placeholder="nombre@correo.com" />
   </Form.Group>
+  <Form.Group controlId="exampleForm.ControlInput1" className="">
+    <Form.Label style={{color:'white'}}>Escribe un asunto</Form.Label>
+    <Form.Control type="text" placeholder="Consultas Generales" />
+  </Form.Group>
   <Form.Group controlId="exampleForm.ControlTextarea1" className="">
     <Form.Label style={{color:'white'}}>Escribe tu consulta</Form.Label>
     <Form.Control as="textarea" placeholder="Ingresa tu consulta" rows={3} />
