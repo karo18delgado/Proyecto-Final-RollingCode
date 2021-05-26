@@ -112,6 +112,15 @@ export default function RegisterForm() {
                 Ingrese una fecha de nacimiento válido.
               </Form.Control.Feedback>
             </Form.Group>
+            <Form.Group className="container-row">
+              <div className="d-flex justify-content-start w-100 mx-1">
+                <Form.Label>Sexo</Form.Label>
+              </div>
+              <Form.Control as="select" custom required>
+                <option>Femenino</option>
+                <option>Masculino</option>
+              </Form.Control>
+            </Form.Group>
           </Form.Row>
           <hr className="divider-border-1"></hr>
           <Form.Group className="group-div">

@@ -1,0 +1,39 @@
+/* CSS Admin Usuarios */
+
+.container-search {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  width: 100%;
+}
+
+.search-div {
+  width: 250px;
+  margin-top: auto;
+}
+
+.search-form {
+  width: 250px;
+  margin-left: 1rem;
+}
+
+/* CSS Admin Productos */
+
+.form-productos {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 600px;
+  margin-right: 0px;
+}
+
+.form-productos-control {
+  width: 400px;
+}
+
+.button-form-productos {
+  margin-left: 6rem;
+  margin-top: 1rem;
+}

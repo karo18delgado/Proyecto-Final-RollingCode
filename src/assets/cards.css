@@ -1,125 +1,206 @@
-.cards-bg{
-    background-image: url(https://i.blogs.es/b777cd/ssss/1024_2000.jpg);
-  
-    margin: 0px;
-    width: 100%;
-    margin-top: 0rem;
-    margin-bottom: 1rem;
-    font-family: "Montserrat", sans-serif;
-    background-position: center;
-    height: 705px;
+.cards-bg {
+  background-image: url(https://i.blogs.es/b777cd/ssss/1024_2000.jpg);
+
+  margin: 0px;
+  width: 100%;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-position: center;
+  height: 705px;
+}
+.cards-bgmac {
+  background-image: url(https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg);
+
+  margin: 0px;
+  width: 100%;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-position: center;
+  height: 616px;
+}
+.cards-bgmac {
+  background-image: url(https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg);
+
+  margin: 0px;
+  width: 100%;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-position: center;
+  height: 616px;
+}
+.cards-bgipad {
+  background-image: url(https://www.apple.com/v/ipad/home/bm/images/overview/hero/ipad_pro_hero__bh3eq6sqfjw2_medium_2x.jpg);
+  background-size: 1000px 430px;
+  margin: 0px;
+  width: 100%;
+  margin-top: 0rem;
+  margin-bottom: 1rem;
+  font-family: "Montserrat", sans-serif;
+  background-position: center;
+  height:430px;
 }
 
-.bg-gris{
-    background-color: rgb(238, 238, 238);
-}
-.bg-blanco{
-    background-color: white;
+.card-container {
+  height: 180px;
 }
 
-.bg-banner1{
-    width: 100%;
-    height: 400px;
-
-    background-image: url(https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg);
+.bg-gris {
+  background-color: rgb(238, 238, 238);
 }
-.bg-banner2{
-    width: 100%;
-    height: 500px;
-
-    background-image: url(https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg);
+.bg-blanco {
+  background-color: white;
 }
 
-.bg-banner3{
+.bg-banner1 {
+  width: 100%;
+  height: 400px;
 
-    height: 320px;
+  background-image: url(https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg);
+}
+.bg-banner2 {
+  width: 100%;
+  height: 500px;
 
-    background-image: url(https://i.blogs.es/852326/bill/450_1000.jpg);
+  background-image: url(https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg);
+}
+
+.bg-banner3 {
+  height: 320px;
+
+  background-image: url(https://i.blogs.es/852326/bill/450_1000.jpg);
+}
+
+.bg-bannermac1{
+  width: 100%;
+  height: 400px;
+
+  background-image: url(https://as.com/meristation/imagenes/2020/07/02/betech/1593684423_686673_1593684643_noticia_normal_recorte1.jpg);
+
+}
+.bg-bannermac2{
+  width: 730px;
+  height: 550px;
+
+  background-image: url(https://www.apple.com/v/mac/home/be/images/overview/bigsur/big_sur__vsy5fc1nv5e2_medium.jpg);
+
+}
+.bg-bannermac3{
+  width: 100%;
+  height: 270px;
+
+  background-image: url(https://www.apple.com/mx/mac/home/images/overview/macos/continuity__e28lzmresgeq_medium_2x.jpg);
+
+}
+.bg-bannermac4{
+  width: 100%;
+  height: 270px;
+
+  background-image: url(https://www.apple.com/v/mac/home/be/images/overview/macos/security__f0bb6423ze6a_medium_2x.jpg);
+
 }
 
 .titulo-principal {
-    display: flex;
-    justify-content: center;
-    margin-top: 0.8rem;
-    color: black;
-    font-size: 44px;
-    line-height: 1.09091;
-    font-weight: 600;
-    letter-spacing: -.002em;
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;                     
-  }
-  .titulo-secundario{
-    display: flex;
-    justify-content: center;
-    margin-top: 1.5rem;
-    color: black;
-    font-weight: 400;
-    font-size: 21px;
-    
-    line-height: 1.19048;
-    font-weight: 600;
-    letter-spacing: .011em;
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  }
+  display: flex;
+  justify-content: center;
+  margin-top: 0.8rem;
+  color: black;
+  font-size: 44px;
+  line-height: 1.09091;
+  font-weight: 600;
+  letter-spacing: -0.002em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+.titulo-secundario {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  color: black;
+  font-weight: 400;
+  font-size: 21px;
 
-  .titulo-banner{
-    font-size: 32px;
-    line-height: 1.125;
-    font-weight: 550;
-    letter-spacing: .004em;
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  }
-
-  .subtitulo-banner{
-    font-size: 17px;
-    line-height: 1.47059;
-    font-weight: 400;
-    letter-spacing: -.022em;
-    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  }
-
-  .boton-comprar{
-    border-radius: 980px;
-    
-  }
-
-  .style-card{
-      border: none;
-      border-bottom: 1px rgb(109, 109, 109) solid;
-  }
-
-  .card-recorte {
-    width: 237px;
-    height: 256px;
-    object-fit: cover;
-  }
-
-  .text-naranja{
-      color: orange;
-      font-size: 12px;
-    line-height: 1.33337;
-    font-weight: 400;
-    letter-spacing: -.01em;
-    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  }
-  .titulo-card{
-    font-weight: 600;
-    line-height: 1.47059;
-    letter-spacing: -.022em;
-    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
-  }
-.text-precio{
-  font-size: 14px;
-    line-height: 1.42859;
-    font-weight: 400;
-    letter-spacing: -.016em;
-    font-family: "SF Pro Text","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+  line-height: 1.19048;
+  font-weight: 600;
+  letter-spacing: 0.011em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
 }
 
-.text-encabezado{
-font-size: 19px;
-    line-height: 1.21053;
-    font-weight: 600;
-    letter-spacing: .012em;
-    font-family: "SF Pro Display","SF Pro Icons","Helvetica Neue","Helvetica","Arial",sans-serif;
+.titulo-banner {
+  font-size: 32px;
+  line-height: 1.125;
+  font-weight: 550;
+  letter-spacing: 0.004em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.subtitulo-banner {
+  font-size: 17px;
+  line-height: 1.47059;
+  font-weight: 400;
+  letter-spacing: -0.022em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+.text-white{
+    color: white;
+}
+.titulo-bannermac {
+  font-weight: 550;
+  letter-spacing: 0.004em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.boton-comprar {
+  border-radius: 980px;
+}
+
+.style-card {
+  border: none;
+  border-bottom: 1px rgb(109, 109, 109) solid;
+}
+
+.card-recorte {
+  width: 237px;
+  height: 256px;
+  object-fit: cover;
+}
+
+.text-naranja {
+  color: orange;
+  font-size: 12px;
+  line-height: 1.33337;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+.titulo-card {
+  font-weight: 600;
+  line-height: 1.47059;
+  letter-spacing: -0.022em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+.text-precio {
+  font-size: 14px;
+  line-height: 1.42859;
+  font-weight: 400;
+  letter-spacing: -0.016em;
+  font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
+}
+
+.text-encabezado {
+  font-size: 19px;
+  line-height: 1.21053;
+  font-weight: 600;
+  letter-spacing: 0.012em;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
 }
