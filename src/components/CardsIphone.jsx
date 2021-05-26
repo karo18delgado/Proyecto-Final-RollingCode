@@ -140,19 +140,19 @@ export default function CardsIphone() {
         </div>
 
         {/* Envios y pagos */}
-        <div className="container d-flex flex-wrap px-5">
+        <div className="container d-flex flex-wrap px-5 mt-5">
           <div className="my-3 px-3 col-12 col-md-4 text-center">
-            <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_delivery__bcb7fau42ik2_large_2x.png" alt="" />
+            <img style={{ width: "36px" , height: "56px" }} src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_delivery__bcb7fau42ik2_large_2x.png" alt="" />
             <h3>Envio sin costo en todos los pedidos</h3>
             <p>Y devoluciones sin costo</p>
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center ">
-          <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_financing__c8yfxcj1fpqq_large_2x.png" alt="" />
+          <img style={{ width: "36px" , height: "56px" }} src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_financing__c8yfxcj1fpqq_large_2x.png" alt="" />
             <h3>Financiamiento</h3>
             <p>Paga a seis meses sin intereses.</p>
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center">
-          <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_personal_session__pcs30obpmp6m_large_2x.png" alt="" />
+          <img style={{ width: "36px" , height: "56px" }} src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_personal_session__pcs30obpmp6m_large_2x.png" alt="" />
             <h3>Atencion personalizada</h3>
             <p>Información básica y consejos útiles para aprovechar al máximo tu nuevo iPhone.</p>
           </div>
