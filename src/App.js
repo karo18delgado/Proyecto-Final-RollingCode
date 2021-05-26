@@ -8,6 +8,8 @@ import RegisterForm from "./components/RegisterForm"
 import Landing from "./components/Landing"
 import Footer from "./components/Footer"
 import CardsIphone from './components/CardsIphone';
+import CardsMac from './components/CardsMac';
+import CardsIpad from './components/CardsIpad';
 import Login from "./pages/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
@@ -29,8 +31,14 @@ function App() {
         <Route path="/" exact>
           <Landing />
         </Route>
-        <Route path="/cards">
+        <Route path="/iPhone">
           <CardsIphone />
+        </Route>
+        <Route path="/Mac">
+          <CardsMac />
+        </Route>
+        <Route path="/iPad">
+          <CardsIpad />
         </Route>
         <Route path="/register">
           <RegisterForm />

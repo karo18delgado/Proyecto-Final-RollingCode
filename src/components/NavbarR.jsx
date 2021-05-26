@@ -22,9 +22,9 @@ export default function NavbarR() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link className="mx-3">Mac</Nav.Link>
-          <Nav.Link className="mx-3">Ipad</Nav.Link>
-          <Nav.Link className="mx-3" to="cards" as={NavLink}>
+          <Nav.Link className="mx-3" to="Mac" as={NavLink}>Mac</Nav.Link>
+          <Nav.Link className="mx-3"  to="iPad" as={NavLink}>Ipad</Nav.Link>
+          <Nav.Link className="mx-3" to="iPhone" as={NavLink}>
             Iphone
           </Nav.Link>
           <Nav.Link className="mx-3 w-100" to="about" as={NavLink}>

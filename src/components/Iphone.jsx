@@ -48,11 +48,19 @@ export default function Cards({ art }) {
                   {art.pantalla}
                 </Card.Text>
                 <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
-                <Card.Text className="text-encabezado">Icono</Card.Text>
-                <Card.Text className="text-precio">{art.red}</Card.Text>
-                <Card.Text className="text-encabezado">
-                  <i class="fas fa-camera"></i>
-                </Card.Text>
+                <Card.Img
+                  className="pt-3 m-auto"
+                  variant="top"
+                  style={{ width: "70px", height: "56px" }}
+                  src={art.red}
+                />
+                <Card.Text className="text-encabezado">{art.subred}</Card.Text>
+                <Card.Img
+                  className="pt-3 m-auto"
+                  variant="top"
+                  style={{ width: "54px", height: "58px" }}
+                  src={art.iconocamara}
+                />
                 <Card.Text className="text-encabezado">{art.camara}</Card.Text>
                 <Card.Text className="text-precio">{art.subcamara}</Card.Text>
               </Card.Body>
