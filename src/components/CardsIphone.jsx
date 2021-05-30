@@ -143,9 +143,10 @@ export default function CardsIphone() {
         </div>
 
         {/* Envios y pagos */}
-        <div className="container d-flex flex-wrap px-5">
+        <div className="container d-flex flex-wrap px-5 mt-5">
           <div className="my-3 px-3 col-12 col-md-4 text-center">
             <img
+              style={{ width: "36px", height: "56px" }}
               src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_delivery__bcb7fau42ik2_large_2x.png"
               alt=""
             />
@@ -154,6 +155,7 @@ export default function CardsIphone() {
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center ">
             <img
+              style={{ width: "36px", height: "56px" }}
               src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_financing__c8yfxcj1fpqq_large_2x.png"
               alt=""
             />
@@ -162,6 +164,7 @@ export default function CardsIphone() {
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center">
             <img
+              style={{ width: "36px", height: "56px" }}
               src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_personal_session__pcs30obpmp6m_large_2x.png"
               alt=""
             />

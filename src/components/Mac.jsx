@@ -17,7 +17,12 @@ export default function Cards({ art }) {
           className=" m-auto style-card"
           style={{ width: "18rem" }}
         >
-          <Card.Img className=" m-auto" variant="top" src={art.image} />
+          <Card.Img
+            className=" m-auto"
+            variant="top"
+            style={{ width: "150px", height: "210px" }}
+            src={art.image}
+          />
           <Card.Body className="card-container">
             <Card.Text className="text-naranja">{art.estado}</Card.Text>
             <Card.Title className="titulo-card">
@@ -39,33 +44,34 @@ export default function Cards({ art }) {
           <Collapse in={open}>
             <div id="example-collapse-text">
               <hr class="hr-articulos" />
-              <Card.Body>
+              <Card.Body className="text-center">
                 <Card.Text className="text-encabezado">
                   {art.pantalla}
                 </Card.Text>
                 <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
                 <Card.Img
-                  className=" m-auto"
+                  className=" mt-3 m-auto"
                   variant="top"
-                  style={{ width: "86px", height: "79px" }}
+                  style={{ width: "45px", height: "40px" }}
                   src={art.procesador}
                 />
                 <Card.Text className="text-precio">
                   {art.subprocesador}
                 </Card.Text>
                 <Card.Img
-                  className=" m-auto"
+                  className="mt-3 m-auto"
                   variant="top"
-                  style={{ width: "75px", height: "70px" }}
-                  src={art.bateria}
-                />{" "}
-                <Card.Text className="text-precio">{art.subbateria}</Card.Text>
-                <Card.Text className="text-encabezado">
-                  {art.almacenamiento}
-                </Card.Text>
-                <Card.Text className="text-precio">
-                  {art.subalmacenamiento}
-                </Card.Text>
+                  style={{ width: "40px", height: "36px" }}
+                  src={art.red}
+                />
+                <Card.Text className="text-precio">{art.subred}</Card.Text>
+                <Card.Img
+                  className="mt-3 m-auto"
+                  variant="top"
+                  style={{ width: "50px", height: "25px" }}
+                  src={art.conector}
+                />
+                <Card.Text className="text-precio">{art.subconector}</Card.Text>
               </Card.Body>
             </div>
           </Collapse>
