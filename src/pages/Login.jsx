@@ -1,16 +1,17 @@
+import axios from "axios";
 import "../assets/font.css";
 import "../assets/login.css";
 import React, { useState } from "react";
 import { Button, Form, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 
-const admin = {
-  email: "admin@apple.com",
-  name: "Administrador",
-  password: "admin@123",
-};
+// const admin = {
+//   email: "admin@apple.com",
+//   name: "Administrador",
+//   password: "admin@123",
+// };
 
-export default function Login({ setUser }) {
+export default function Login({ setUser, setToken }) {
   const [input, setInput] = useState({});
   const history = useHistory();
 
@@ -20,14 +21,17 @@ export default function Login({ setUser }) {
     setInput(newInput);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (input.email === admin.email && input.password === admin.password) {
-      alert("Logueo exitoso 😎 " + admin.name);
-      setUser(admin.name);
-      history.push("/admin");
-    } else {
-      alert("datos incorrectos.");
+    try {
+      const { data } = await axios.post("/auth/login", input);
+      localStorage.setItem("token", JSON.stringify(data));
+      setToken(data.token);
+      alert("Logueo exitoso 😎 ");
+      history.push("/");
+    } catch (error) {
+      console.log(error);
+      alert("Datos incorrectos");
     }
   };
 
@@ -75,16 +79,16 @@ export default function Login({ setUser }) {
             </Form.Control.Feedback>
           </Form.Group>
 
-          <Button  to="perfilUsuario" as={NavLink}  className="button-class" type="submit">
+          <Button className="button-class" type="submit">
             Iniciar sesion
           </Button>
           <Form.Text>
-            <Nav.Link className="link-row" href="">
+            <Nav.Link className="link-row">
               <p>
                 <small>Olvidaste tu contraseña?</small>
               </p>
             </Nav.Link>
-            <Nav.Link to="register" as={NavLink} className="link-row" href="">
+            <Nav.Link to="register" as={NavLink} className="link-row">
               <p>
                 <small>No tienes una Apple ID? Registrate.</small>
               </p>

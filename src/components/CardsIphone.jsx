@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Iphone from "./Iphone";
 import { useState } from "react";
@@ -14,9 +14,10 @@ const articulos = [
     precio: "$270.999",
     pantalla: "6.1 o 6.7 pulgadas",
     subpantalla: "Pantalla Super Retina XDR",
-    red:"https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
+    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
     subred: "Compatible con 5G",
-    iconocamara: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_triple_camera__e6vgz42wpwom_large_2x.png",
+    iconocamara:
+      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_triple_camera__e6vgz42wpwom_large_2x.png",
     camara: "Sistema de cámaras Pro",
     subcamara: "(ultra gran angular, gran angular y teleobjetivo)",
   },
@@ -29,9 +30,10 @@ const articulos = [
     precio: "$220.999",
     pantalla: "5.4 o 6.1 pulgadas",
     subpantalla: "Pantalla Super Retina XDR",
-    red:"https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
+    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
     subred: "Compatible con 5G",
-    iconocamara: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_dual_camera__gdty7h2x33yq_large_2x.png",
+    iconocamara:
+      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_dual_camera__gdty7h2x33yq_large_2x.png",
     camara: "Sistema avanzado de dos cámaras",
     subcamara: "(ultra gran angular y gran angular)",
   },
@@ -44,9 +46,10 @@ const articulos = [
     precio: "$120.999",
     pantalla: "4.7 pulgadas",
     subpantalla: "Pantalla Retina HD",
-    red:"https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
+    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
     subred: "Compatible con 4G",
-    iconocamara: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_single_camera__c8fs0xdplqy6_large_2x.png",
+    iconocamara:
+      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_single_camera__c8fs0xdplqy6_large_2x.png",
     camara: "Sistema de cámara única",
     subcamara: "(gran angular)",
   },
@@ -140,21 +143,36 @@ export default function CardsIphone() {
         </div>
 
         {/* Envios y pagos */}
-        <div className="container d-flex flex-wrap px-5">
+        <div className="container d-flex flex-wrap px-5 mt-5">
           <div className="my-3 px-3 col-12 col-md-4 text-center">
-            <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_delivery__bcb7fau42ik2_large_2x.png" alt="" />
+            <img
+              style={{ width: "36px", height: "56px" }}
+              src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_delivery__bcb7fau42ik2_large_2x.png"
+              alt=""
+            />
             <h3>Envio sin costo en todos los pedidos</h3>
             <p>Y devoluciones sin costo</p>
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center ">
-          <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_financing__c8yfxcj1fpqq_large_2x.png" alt="" />
+            <img
+              style={{ width: "36px", height: "56px" }}
+              src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_financing__c8yfxcj1fpqq_large_2x.png"
+              alt=""
+            />
             <h3>Financiamiento</h3>
             <p>Paga a seis meses sin intereses.</p>
           </div>
           <div className="my-3 px-3 col-12 col-md-4 text-center">
-          <img src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_personal_session__pcs30obpmp6m_large_2x.png" alt="" />
+            <img
+              style={{ width: "36px", height: "56px" }}
+              src="https://www.apple.com/v/iphone/home/ax/images/overview/buystrip/icon_personal_session__pcs30obpmp6m_large_2x.png"
+              alt=""
+            />
             <h3>Atencion personalizada</h3>
-            <p>Información básica y consejos útiles para aprovechar al máximo tu nuevo iPhone.</p>
+            <p>
+              Información básica y consejos útiles para aprovechar al máximo tu
+              nuevo iPhone.
+            </p>
           </div>
         </div>
       </div>
