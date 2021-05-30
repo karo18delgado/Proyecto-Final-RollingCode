@@ -19,7 +19,8 @@ export default function RegisterForm({ setToken }) {
       const { data } = await axios.post("/auth/register", input);
       localStorage.setItem("token", JSON.stringify(data));
       setToken(data.token);
-      history.push("/");
+      alert("Usuario registrado correctamente 😉.");
+      history.push("/login");
       form.reset();
     } catch (error) {
       console.log(error.response.data);
