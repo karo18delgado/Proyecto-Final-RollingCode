@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Col, Container, Row } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Mac from "./Mac";
 import { useState } from "react";
@@ -152,18 +152,14 @@ export default function CardsIphone() {
           </div>
           <div className="my-3 px-3 col-12 col-md-6 text-center ">
             <div className="text-center bg-blanco pt-4 pb-2">
-              <p className="subtitulo-banner text-center px-5">
-                iCloud
-              </p>
+              <p className="subtitulo-banner text-center px-5">iCloud</p>
               <p className="titulo-banner px-5">
-              Almacenamiento disponible donde quieras.
+                Almacenamiento disponible donde quieras.
               </p>
-              
             </div>
             <div className="bg-bannermac4"></div>
           </div>
         </div>
-
       </div>
     </div>
   );

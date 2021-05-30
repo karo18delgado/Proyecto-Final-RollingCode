@@ -1,18 +1,35 @@
+import axios from "axios";
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
+import { useHistory } from "react-router";
 
-export default function RegisterForm() {
+export default function RegisterForm({ setToken }) {
   const [validated, setValidated] = useState(false);
+  const [input, setInput] = useState({});
+  const history = useHistory();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
-    if (form.checkValidity() === true) {
-      setValidated(false);
-      form.reset();
-    } else {
-      setValidated(true);
+    setValidated(true);
+    if (form.checkValidity() === false) {
+      return event.stopPropagation();
     }
+    try {
+      const { data } = await axios.post("/auth/register", input);
+      localStorage.setItem("token", JSON.stringify(data));
+      setToken(data.token);
+      history.push("/");
+      form.reset();
+    } catch (error) {
+      console.log(error.response.data);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const changedInput = { ...input, [name]: value };
+    setInput(changedInput);
   };
 
   return (
@@ -33,11 +50,23 @@ export default function RegisterForm() {
         >
           <Form.Row className="container-row">
             <Form.Group className="name-div" controlId="validationCustom01">
-              <Form.Control required type="text" placeholder="Nombre" />
+              <Form.Control
+                name="nombre"
+                onChange={(e) => handleChange(e)}
+                required
+                type="text"
+                placeholder="Nombre"
+              />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="lastname-div" controlId="validationCustom02">
-              <Form.Control required type="text" placeholder="Apellidos" />
+              <Form.Control
+                required
+                type="text"
+                placeholder="Apellidos"
+                name="apellido"
+                onChange={(e) => handleChange(e)}
+              />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
@@ -47,6 +76,8 @@ export default function RegisterForm() {
           >
             <InputGroup hasValidation>
               <Form.Control
+                name="email"
+                onChange={(e) => handleChange(e)}
                 type="email"
                 placeholder="Email"
                 aria-describedby="inputGroupPrepend"
@@ -64,6 +95,8 @@ export default function RegisterForm() {
               controlId="validationCustom03"
             >
               <Form.Control
+                name="nombreUsuario"
+                onChange={(e) => handleChange(e)}
                 type="text"
                 placeholder="Nombre de usuario"
                 required
@@ -77,6 +110,8 @@ export default function RegisterForm() {
               controlId="validationCustom05"
             >
               <Form.Control
+                name="password"
+                onChange={(e) => handleChange(e)}
                 type="password"
                 placeholder="Contraseña"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
@@ -87,6 +122,8 @@ export default function RegisterForm() {
                 n°.
               </Form.Control.Feedback>
               <Form.Control
+                name="confPassword"
+                onChange={(e) => handleChange(e)}
                 className="container-row"
                 type="password"
                 placeholder="Confirmar contraseña"
@@ -102,6 +139,8 @@ export default function RegisterForm() {
               controlId="validationCustom04"
             >
               <Form.Control
+                name="fechaNacimiento"
+                onChange={(e) => handleChange(e)}
                 type="date"
                 min="1900-01-01"
                 max="2100-12-31"
@@ -116,7 +155,13 @@ export default function RegisterForm() {
               <div className="d-flex justify-content-start w-100 mx-1">
                 <Form.Label>Sexo</Form.Label>
               </div>
-              <Form.Control as="select" custom required>
+              <Form.Control
+                as="select"
+                custom
+                required
+                name="sexo"
+                onChange={(e) => handleChange(e)}
+              >
                 <option>Femenino</option>
                 <option>Masculino</option>
               </Form.Control>

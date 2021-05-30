@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import "../assets/cards.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Cards({ art }) {
   const [open, setOpen] = useState(false);

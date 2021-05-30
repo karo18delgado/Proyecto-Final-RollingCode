@@ -22,6 +22,7 @@ import { useState } from 'react';
 
 function App() {
   const [user, setUser] = useState('');
+  const [token, setToken] = useState('');
 
   return (
     <Router>
@@ -45,10 +46,10 @@ function App() {
           <CardsIpad />
         </Route>
         <Route path="/register">
-          <RegisterForm />
+          <RegisterForm setToken={setToken} />
         </Route>
         <Route path="/login">
-          <Login setUser={setUser} />
+          <Login setToken={setToken} />
         </Route>
         <Route path="/perfilUsuario">
           <PerfilUsuario />
