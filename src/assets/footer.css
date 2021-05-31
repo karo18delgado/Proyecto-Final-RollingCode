@@ -1,7 +1,7 @@
 /* Footer */
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
 section {
-    padding: 50px 0;
+    padding: 40px 0;
 }
 
 section .section-title {
@@ -16,7 +16,7 @@ section .section-title {
 #footer h5{
 	padding-left: 0px;
     padding-bottom: 6px;
-    margin-bottom: 20px;
+    margin-bottom: 15px;
     color:#ffffff;
 }
 #footer a {
@@ -29,7 +29,7 @@ section .section-title {
 	padding: 3px 0;
 }
 #footer ul.social li a i {
-    margin-right: 5px;
+    margin-right: 3px;
 	font-size:25px;
 	-webkit-transition: .5s all ease;
 	-moz-transition: .5s all ease;
@@ -55,7 +55,7 @@ section .section-title {
 #footer ul.quick-links li:hover{
 	padding: 3px 0;
 	margin-left:5px;
-	font-weight:700;
+	font-weight:100;
 }
 
 @media (max-width:767px){

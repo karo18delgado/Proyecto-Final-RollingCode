@@ -3,7 +3,7 @@ import Form from 'react-bootstrap/Form'
 
 export default function FormFooter() {
   return (
-    <Form className="">
+    <Form className="m-2">
   <Form.Group controlId="exampleForm.ControlInput1" className="">
     <Form.Label style={{color:'white'}}>Escribe tu correo</Form.Label>
     <Form.Control type="email" placeholder="nombre@correo.com" />

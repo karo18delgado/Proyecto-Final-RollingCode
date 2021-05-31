@@ -11,7 +11,7 @@ export default function Footer() {
     <section id="footer">
       <div className="container ">
         <div className="row text-center text-xs-center text-sm-left text-md-left">
-          <div className="col-xs-12 col-sm-4 col-md-4">
+          <div className="col-xs-12 col-sm-4 col-md-3">
             <h5>Secciones</h5>
             <ul className="list-unstyled quick-links">
               <li>
@@ -42,7 +42,7 @@ export default function Footer() {
               </li>
             </ul>
           </div>
-          <div className="col-xs-12 col-sm-4 col-md-4">
+          <div className="col-xs-12 col-sm-4 col-md-5">
             <h5>Envianos tu consulta</h5>
             <FormFooter />
           </div>
@@ -80,7 +80,7 @@ export default function Footer() {
           <hr />
         </div>
         <div className="row">
-          <div className="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+          <div className="col-xs-12 col-sm-12 col-md-12 mt-1 mt-sm-2 text-center text-white">
             <p>
               <u>
                 <a href="https://www.nationaltransaction.com/">
@@ -94,7 +94,7 @@ export default function Footer() {
               © Todos los derechos reservados.
               <a
                 className="text-green ml-2"
-                href="https://www.sunlimetech.com"
+                href=""
                 target="_blank"
               >
                 Comisión i7 - Grupo 3
