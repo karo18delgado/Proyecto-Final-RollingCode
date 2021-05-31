@@ -13,6 +13,7 @@ import { useState } from "react";
 
 export default function About() {
   AOS.init();
+  /* Modal de sección Medio Ambiente */
   const [show1, setShow1] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
@@ -28,6 +29,21 @@ export default function About() {
   const handleShow3 = () => setShow3(true);
   const handleShow4 = () => setShow4(true);
 
+  /* Modal de sección Accesibilidad */
+  const [show5, setShow5] = useState(false);
+  const [show6, setShow6] = useState(false);
+  const [show7, setShow7] = useState(false);
+  const [show8, setShow8] = useState(false);
+
+  const handleClose5 = () => setShow5(false);
+  const handleClose6 = () => setShow6(false);
+  const handleClose7 = () => setShow7(false);
+  const handleClose8 = () => setShow8(false);
+
+  const handleShow5 = () => setShow5(true);
+  const handleShow6 = () => setShow6(true);
+  const handleShow7 = () => setShow7(true);
+  const handleShow8 = () => setShow8(true);
   return (
     <div>
       {/* VALORES DE APPLE */}
@@ -441,16 +457,60 @@ export default function About() {
                   </p>
                   <Card.Title className="letra1-accesibilidad">
                     Lee con los oídos.
-                    {/* <FontAwesomeIcon
-                                            className="volume-icon"
-                                            icon={faVolumeUp}
-                                        ></FontAwesomeIcon> */}
                     <FontAwesomeIcon
                       className="volume-icon"
                       icon={["fas", "volume-up"]}
                     ></FontAwesomeIcon>
                   </Card.Title>
                 </blockquote>
+                {/* Modal */}
+                <div>
+                  <Button
+                    className="botón-plus"
+                    variant="light"
+                    onClick={handleShow5}
+                    style={{ margin: "8px", borderRadius: "50%" }}
+                  >
+                    <FontAwesomeIcon
+                      className="plus-icon-negro"
+                      icon={["fas", "plus"]}
+                    ></FontAwesomeIcon>
+                  </Button>
+
+                  <Modal
+                    size="lg"
+                    show={show5}
+                    onHide={handleClose5}
+                    scrollable={true}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title className="letra-modalTitle">
+                        <img
+                          style={{ maxHeight: "60px" }}
+                          src="https://www.apple.com/v/accessibility/p/images/shared/spoken_content__dwuan76vzuy6_large_2x.png"
+                          alt=""
+                        />
+                        <strong style={{ padding: "8px" }}>
+                          Contenido Leído
+                        </strong>
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="letra-modalBody">
+                      <p style={{ color: "#86868b" }}>
+                        Si te resulta más fácil aprender o comprender cuando
+                        oyes lo que lees o escribes, funcionalidades como Leer
+                        Pantalla en Voz Alta, Leer Selección, Leer al Teclear y
+                        Texto Predictivo te resultarán muy útiles, ya que
+                        agregan un componente auditivo al texto.
+                      </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose5}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
               </Card>
             </Col>
             <Col md={6} style={{ paddingBottom: "30px" }}>
@@ -467,6 +527,56 @@ export default function About() {
                 <Card.Title className="letra3-accesibilidad">
                   Luz.Cámara Audición.
                 </Card.Title>
+
+                {/* Modal */}
+                <div>
+                  <Button
+                    className="botón-plus"
+                    variant="light"
+                    onClick={handleShow8}
+                    style={{ margin: "8px", borderRadius: "50%" }}
+                  >
+                    <FontAwesomeIcon
+                      className="plus-icon-negro"
+                      icon={["fas", "plus"]}
+                    ></FontAwesomeIcon>
+                  </Button>
+
+                  <Modal
+                    size="lg"
+                    show={show8}
+                    onHide={handleClose8}
+                    scrollable={true}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title className="letra-modalTitle">
+                        <img
+                          style={{ maxHeight: "60px" }}
+                          src="https://www.apple.com/v/accessibility/p/images/shared/audio_descriptions__ejb8ddn8vp26_large_2x.png"
+                          alt=""
+                        />
+                        <strong style={{ padding: "8px" }}>
+                          Descripciones de Audio
+                        </strong>
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="letra-modalBody">
+                      <p style={{ color: "#86868b" }}>
+                        Disfruta películas con descripciones de audio que
+                        detallan todo lo que sucede en la pantalla, para que no
+                        te pierdas ni los gestos de un personaje ni el ambiente
+                        de la escena. Las descripciones de audio están
+                        disponibles para todo el contenido original de Apple
+                        TV+.
+                      </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose8}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
               </Card>
             </Col>
           </Row>
@@ -489,6 +599,55 @@ export default function About() {
                     src="https://www.apple.com/v/accessibility/p/images/overview/facetime_sign_language__9o3n3z4dusii_large_2x.jpg"
                   />
                 </blockquote>
+                {/* Modal */}
+                <div>
+                  <Button
+                    className="botón-plus"
+                    variant="dark"
+                    onClick={handleShow7}
+                    style={{ margin: "8px", borderRadius: "50%" }}
+                  >
+                    <FontAwesomeIcon
+                      className="plus-icon-blanco"
+                      icon={["fas", "plus"]}
+                    ></FontAwesomeIcon>
+                  </Button>
+
+                  <Modal
+                    size="lg"
+                    show={show7}
+                    onHide={handleClose7}
+                    scrollable={true}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title className="letra-modalTitle">
+                        <img
+                          style={{ maxHeight: "60px" }}
+                          src="https://www.apple.com/v/accessibility/p/images/shared/facetime__e5bhxnu62mye_large_2x.png"
+                          alt=""
+                        />
+                        <strong style={{ padding: "8px" }}>
+                          FaceTime y detección de lengua de señas
+                        </strong>
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="letra-modalBody">
+                      <p style={{ color: "#86868b" }}>
+                        Si usas lengua de señas, FaceTime es ideal para
+                        comunicarte. Gracias a su alta calidad de video y su
+                        gran velocidad de fotogramas, podrás captar todos los
+                        gestos y expresiones faciales. Además, cuando te unas a
+                        una llamada de video grupal, FaceTime detectará si usas
+                        lengua de señas y destacará tu ventana automáticamente.
+                      </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose7}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
               </Card>
             </Col>
             <Col md={6} style={{ paddingBottom: "30px" }}>
@@ -498,6 +657,50 @@ export default function About() {
                     Hay un atajo para todo.
                   </Card.Title>
                 </Card.Body>
+                {/* Modal */}
+                <div>
+                  <Button
+                    className="botón-plus"
+                    variant="dark"
+                    onClick={handleShow6}
+                    style={{ margin: "8px", borderRadius: "50%" }}
+                  >
+                    <FontAwesomeIcon
+                      className="plus-icon-blanco"
+                      icon={["fas", "plus"]}
+                    ></FontAwesomeIcon>
+                  </Button>
+
+                  <Modal
+                    size="lg"
+                    show={show6}
+                    onHide={handleClose6}
+                    scrollable={true}
+                  >
+                    <Modal.Header closeButton>
+                      <Modal.Title className="letra-modalTitle">
+                        <img
+                          style={{ maxHeight: "60px" }}
+                          src="https://www.apple.com/la/accessibility/images/shared/siri__cuebqld1dbwy_large_2x.png"
+                          alt=""
+                        />
+                        <strong style={{ padding: "8px" }}>Atajos</strong>
+                      </Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body className="letra-modalBody">
+                      <p style={{ color: "#86868b" }}>
+                        Hacer varias tareas a la vez es más fácil que nunca.
+                        Sólo tienes que configurarlo. Elige entre una serie de
+                        atajos útiles o crea tus propios comandos.
+                      </p>
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose6}>
+                        Close
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </div>
               </Card>
             </Col>
           </Row>
@@ -706,19 +909,6 @@ export default function About() {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={4} style={{ padding: "20px" }}>
-            <Card style={{ height: "450px" }} className="listado-card">
-              <Card.Img
-                className="img-directivos"
-                variant="top"
-                src={rodolfo}
-              />
-              <Card.Body>
-                <Card.Title>Gonzalez Rodolfo Eduardo</Card.Title>
-                <Card.Text>Programador FullStack</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
           <Col xs={12} md={4} style={{ padding: "20px" }}>
             <Card style={{ height: "450px" }} className="listado-card">
               <Card.Img

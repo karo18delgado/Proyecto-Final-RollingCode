@@ -165,6 +165,7 @@
     color:#f5f5f7;
     text-align: center;
     padding: 74px;
+    padding-bottom: 164px;
 }
 .color-change-2x {
     -webkit-animation: color-change-2x 3s linear infinite alternate both;
