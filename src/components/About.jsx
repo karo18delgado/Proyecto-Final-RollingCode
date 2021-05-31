@@ -4,7 +4,6 @@ import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import carolina from "../assets/img/carolina.png";
 import agustin from "../assets/img/agustin.jpeg";
-import rodolfo from "../assets/img/rodolfo.jpeg";
 import nicolas from "../assets/img/nicolas.jpeg";
 import rosendo from "../assets/img/rosendo.png";
 import AOS from "aos";
