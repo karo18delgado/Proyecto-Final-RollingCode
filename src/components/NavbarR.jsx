@@ -1,4 +1,5 @@
 import "../assets/font.css";
+import "../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
@@ -22,12 +23,12 @@ export default function NavbarR() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link className="mx-3" to="Mac" as={NavLink}>Mac</Nav.Link>
-          <Nav.Link className="mx-3"  to="iPad" as={NavLink}>Ipad</Nav.Link>
-          <Nav.Link className="mx-3" to="iPhone" as={NavLink}>
+          <Nav.Link className="mx-3 navstyle" to="Mac" as={NavLink}>Mac</Nav.Link>
+          <Nav.Link className="mx-3 navstyle"  to="iPad" as={NavLink}>Ipad</Nav.Link>
+          <Nav.Link className="mx-3 navstyle" to="iPhone" as={NavLink}>
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3 w-100" to="about" as={NavLink}>
+          <Nav.Link className="mx-3 w-100 navstyle" to="about" as={NavLink}>
             About Us
           </Nav.Link>
           <NavDropdown
