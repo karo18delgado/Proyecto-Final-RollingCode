@@ -102,6 +102,28 @@
 
 }
 
+.bg-banneripad1{
+  width: 100%;
+  height: 400px;
+
+  background-image: url(https://www.apple.com/v/ipad/home/bm/images/overview/apple_pay__u03k08osmwy2_medium_2x.jpg);
+}
+
+.bg-banneripad2{
+  width: 100%;
+  height: 330px;
+
+  background-image: url(https://i.blogs.es/3b5310/cap_029/450_1000.jpg);
+
+}
+
+.bg-banneripad3{
+  width: 100%;
+  height: 295px;
+
+  background-image: url(https://www.apple.com/mx/ipad/home/images/overview/smart_keyboard_folio__b8j0ydqvjq2q_medium_2x.jpg);
+}
+
 .titulo-principal {
   display: flex;
   justify-content: center;

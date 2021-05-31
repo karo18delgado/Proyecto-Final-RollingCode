@@ -15,16 +15,16 @@ export default function Footer() {
             <h5>Secciones</h5>
             <ul className="list-unstyled quick-links">
               <li>
-                <a href="">Home</a>
+                <a href="/">Home</a>
               </li>
               <li>
-                <a href="">About</a>
+                <a href="about">About</a>
               </li>
               <li>
-                <a href="">Carrito</a>
+                <a href="carrito">Carrito</a>
               </li>
               <li>
-                <a href="">Favoritos</a>
+                <a href="fav">Favoritos</a>
               </li>
             </ul>
           </div>
@@ -32,13 +32,13 @@ export default function Footer() {
             <h5>Nuestros Productos</h5>
             <ul className="list-unstyled quick-links">
               <li>
-                <a href="">Mac</a>
+                <a href="Mac">Mac</a>
               </li>
               <li>
-                <a href="">Ipad</a>
+                <a href="iPad">Ipad</a>
               </li>
               <li>
-                <a href="">Iphone</a>
+                <a href="iPhone">Iphone</a>
               </li>
             </ul>
           </div>
@@ -71,7 +71,7 @@ export default function Footer() {
                 </a>
               </li>
               <li className="list-inline-item">
-                <a href="https://www.fiverr.com/share/qb8D02" target="_blank">
+                <a href="https://www.fiverr.com/share/qb8D02" target="blank">
                   <i className="fa fa-envelope"></i>
                 </a>
               </li>

@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import "../assets/cards.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Cards({ art }) {
   const [open, setOpen] = useState(false);
@@ -49,14 +49,14 @@ export default function Cards({ art }) {
                 </Card.Text>
                 <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
                 <Card.Img
-                  className="pt-3 m-auto"
+                  className="mt-3 m-auto"
                   variant="top"
-                  style={{ width: "70px", height: "56px" }}
+                  style={{ width: "40px", height: "36px" }}
                   src={art.red}
                 />
                 <Card.Text className="text-encabezado">{art.subred}</Card.Text>
                 <Card.Img
-                  className="pt-3 m-auto"
+                  className="mt-3 m-auto"
                   variant="top"
                   style={{ width: "54px", height: "58px" }}
                   src={art.iconocamara}

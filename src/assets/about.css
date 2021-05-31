@@ -153,10 +153,7 @@
     text-align: center;
     padding: 74px;
 }
-.volume-icon {
-    padding-left: 10px;
-    color: #92d9b9;
-}
+
 .imagen-fondo{
     background-image: url(https://www.apple.com/v/accessibility/p/images/overview/audio_descriptions__ejb8ddn8vp26_medium_2x.jpg);
     width: 100%;
@@ -168,6 +165,7 @@
     color:#f5f5f7;
     text-align: center;
     padding: 74px;
+    padding-bottom: 164px;
 }
 .color-change-2x {
     -webkit-animation: color-change-2x 3s linear infinite alternate both;
@@ -261,4 +259,32 @@
 .listado-card-directivos {
     border-radius: 10px;
     text-align: center;
+}
+
+/* ICONOS DE FONT AWESOME */
+.volume-icon {
+    padding-left: 10px;
+    color: #92d9b9;
+}
+.plus-icon-negro{
+    font-size: 1rem;
+    color: black;
+}
+.plus-icon-blanco{
+    font-size: 1rem;
+    color:white;
+}
+
+
+/* MODALS DE LAS CARDS */
+.letra-modalBody{
+    font-size: 25px;
+    padding: 30px;
+}
+.letra-modalTitle{
+    font-size: 30px;
+    padding: 20px;
+}
+.modal-content{
+    border-radius: 20px !important;
 }

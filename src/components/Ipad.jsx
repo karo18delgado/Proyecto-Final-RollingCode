@@ -49,19 +49,19 @@ export default function Cards({ art }) {
                 </Card.Text>
                 <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
                 <Card.Img
-            className=" m-auto"
+            className="mt-3 m-auto"
             variant="top"
-            style={{ width: "86px" , height: "79px" }}
+            style={{ width: "45px", height: "40px" }}
             src={art.procesador}
           />
                 <Card.Text className="text-precio">{art.subprocesador}</Card.Text>
                 <Card.Img
-            className=" m-auto"
+            className="mt-3 m-auto"
             variant="top"
-            style={{ width: "75px" , height: "70px" }}
+            style={{ width: "50px" , height: "40px" }}
             src={art.bateria}
           />                <Card.Text className="text-precio">{art.subbateria}</Card.Text>
-                <Card.Text className="text-encabezado">{art.almacenamiento}</Card.Text>
+                <Card.Text className="mt-3 text-encabezado">{art.almacenamiento}</Card.Text>
                 <Card.Text className="text-precio">{art.subalmacenamiento}</Card.Text>
                 
               </Card.Body>
