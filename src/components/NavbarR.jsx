@@ -36,7 +36,7 @@ export default function NavbarR() {
             title={title}
             id="basic-nav-dropdown"
           >
-            <NavDropdown.Item href="#action/3.1">Carrito</NavDropdown.Item>
+            <NavDropdown.Item to="carrito" as={NavLink}>Carrito</NavDropdown.Item>
             <NavDropdown.Item href="#action/3.2">Favoritos</NavDropdown.Item>
             <NavDropdown.Item to="login" as={NavLink}>
               Cuenta
