@@ -16,6 +16,7 @@ import AdminUsuarios from './components/Admin/AdminUsuarios';
 import PerfilUsuario from './components/PerfilUsuario';
 import AdminProductos from './components/Admin/AdminProductos';
 import AdminMensajes from './components/Admin/AdminMensajes';
+import ShoppingCart from './components/ShoppingCart';
 import { useState } from 'react';
 
 
@@ -29,9 +30,7 @@ function App() {
       <NavbarR />
       <Switch>
         <Route path="/about">
-          <div className="fondo-pag">
             <div className="container"> <About /></div>
-          </div>
         </Route>
         <Route path="/" exact>
           <Landing />
@@ -44,6 +43,9 @@ function App() {
         </Route>
         <Route path="/iPad">
           <CardsIpad />
+        </Route>
+        <Route path="/carrito">
+        <ShoppingCart />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
