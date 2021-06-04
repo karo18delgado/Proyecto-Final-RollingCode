@@ -1,0 +1,37 @@
+body {
+    background-color: #f5f5f7;
+}
+
+/* ICONOS DE FONT AWESOME */
+.trash-alt{
+    font-size: 19px ;
+    color: black;
+}
+.minus{
+    color: black;
+}
+.plus{
+    color: black;
+}
+
+
+.tabla-shop{
+margin-top: 50px;
+margin-bottom: 50px;
+}
+.botón-shop{
+    background-color:#fff ;
+    border-color:transparent;
+}
+.botón-Iniciar-compra{
+    border-radius: 980px;
+    margin: 10px;
+}
+.comprar{
+    padding-top: 15px;
+    padding-left: 200px;
+    padding-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
