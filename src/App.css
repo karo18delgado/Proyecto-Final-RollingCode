@@ -33,6 +33,15 @@ svg:hover {
   width: 0px;
 }
 
+.user-button {
+  border: #7da7d1 1px solid;
+  border-radius: 20px;
+  background-color: #7da7d1;
+  font-weight: bold;
+  width: 100px;
+  text-align: center;
+}
+
 /* CSS Registro */
 
 .register-container {

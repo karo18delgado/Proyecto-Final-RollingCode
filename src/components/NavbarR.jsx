@@ -5,7 +5,7 @@ import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { Nav, Navbar, NavDropdown } from "react-bootstrap";
 
-const title = <FontAwesomeIcon icon="shopping-bag"></FontAwesomeIcon>;
+const title = <FontAwesomeIcon icon="user"></FontAwesomeIcon>;
 
 export default function NavbarR({ userName, logOut }) {
   const location = useLocation();
@@ -22,16 +22,32 @@ export default function NavbarR({ userName, logOut }) {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mx-auto">
-          <Nav.Link className="mx-3 navstyle" to="Mac" as={NavLink}>
+          <Nav.Link
+            className="mx-3 navstyle navstyle-mac"
+            to="Mac"
+            as={NavLink}
+          >
             Mac
           </Nav.Link>
-          <Nav.Link className="mx-3 navstyle" to="iPad" as={NavLink}>
+          <Nav.Link
+            className="mx-3 navstyle navstyle-ipad"
+            to="iPad"
+            as={NavLink}
+          >
             Ipad
           </Nav.Link>
-          <Nav.Link className="mx-3 navstyle" to="iPhone" as={NavLink}>
+          <Nav.Link
+            className="mx-3 navstyle navstyle-iphone"
+            to="iPhone"
+            as={NavLink}
+          >
             Iphone
           </Nav.Link>
-          <Nav.Link className="mx-3 w-100 navstyle" to="about" as={NavLink}>
+          <Nav.Link
+            className="mx-3 w-100 navstyle navstyle-about"
+            to="about"
+            as={NavLink}
+          >
             About Us
           </Nav.Link>
           {!userName && (
@@ -58,11 +74,20 @@ export default function NavbarR({ userName, logOut }) {
             </>
           )}
           {userName && (
-            <NavDropdown title={userName}>
-              <NavDropdown.Item to="perfilUsuario" as={NavLink}>
+            <NavDropdown className="user-button" title={userName}>
+              <NavDropdown.Item
+                to="perfilUsuario"
+                className="drop-profile-button"
+                as={NavLink}
+              >
                 Ver perfil
               </NavDropdown.Item>
-              <NavDropdown.Item to="/" as={NavLink} onClick={logOut}>
+              <NavDropdown.Item
+                to="/"
+                as={NavLink}
+                onClick={logOut}
+                activeClassName
+              >
                 Cerrar Sesión
               </NavDropdown.Item>
             </NavDropdown>

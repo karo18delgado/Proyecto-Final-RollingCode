@@ -1,14 +1,14 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
@@ -16,25 +16,40 @@ code {
 
 .navstyle {
   position: relative;
-  font-weight:bold;
-  color:white;
+  font-weight: bold;
+  color: white;
   margin: 0px 5px;
 }
 
-.navstyle:after{
-position: absolute;
-bottom: 7px;
-left: 0px;
-width: 100%;
-height: 2px;
-background-color: white;
-content: "";
-opacity: 0;
-transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
-transform: translateY(20px);        
+.navstyle:after {
+  position: absolute;
+  bottom: 7px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  content: "";
+  opacity: 0;
+  transition: opacity 0.3s ease 0s, transform 0.3s ease 0s;
+  transform: translateY(20px);
 }
 
-.navstyle:hover:after{
-opacity:1;
-transform: translateY(5px)
+.navstyle:hover:after {
+  opacity: 1;
+  transform: translateY(5px);
+}
+
+@media only screen and (max-width: 990px) {
+  .navstyle-mac:after {
+    width: 35px;
+  }
+  .navstyle-ipad:after {
+    width: 35px;
+  }
+  .navstyle-iphone:after {
+    width: 55px;
+  }
+  .navstyle-about:after {
+    width: 75px;
+  }
 }
