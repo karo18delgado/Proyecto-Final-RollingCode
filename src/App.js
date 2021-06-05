@@ -17,20 +17,42 @@ import PerfilUsuario from './components/PerfilUsuario';
 import AdminProductos from './components/Admin/AdminProductos';
 import AdminMensajes from './components/Admin/AdminMensajes';
 import ShoppingCart from './components/ShoppingCart';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import ScrollToTop from './components/ScrollToTop';
 
-
+const localToken = JSON.parse(localStorage.getItem('token'))?.token || "";
 
 function App() {
-  const [user, setUser] = useState('');
-  const [token, setToken] = useState('');
+  const [user, setUser] = useState({});
+  const [token, setToken] = useState(localToken);
+
+  useEffect(() => {
+    if (token) {
+      const request = async () => {
+        const headers = { 'x-auth-token': token }
+        const { data } = await axios.get('/auth', { headers });
+        setUser(data);
+      };
+      request();
+    }
+  }, [token])
+
+  const logOut = () => {
+    localStorage.removeItem('token');
+    setUser({});
+    setToken('');
+  }
 
   return (
     <Router>
-      <NavbarR />
+      <Route>
+        <ScrollToTop></ScrollToTop>
+      </Route>
+      <NavbarR userName={user.nombre} logOut={logOut} />
       <Switch>
         <Route path="/about">
-            <div className="container"> <About /></div>
+          <div className="container"> <About /></div>
         </Route>
         <Route path="/" exact>
           <Landing />
@@ -45,13 +67,13 @@ function App() {
           <CardsIpad />
         </Route>
         <Route path="/carrito">
-        <ShoppingCart />
+          <ShoppingCart />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
         </Route>
         <Route path="/login">
-          <Login setToken={setToken} />
+          <Login setUser={setUser} setToken={setToken} />
         </Route>
         <Route path="/perfilUsuario">
           <PerfilUsuario />

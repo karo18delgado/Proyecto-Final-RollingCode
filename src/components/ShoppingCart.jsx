@@ -1,5 +1,5 @@
 import "../assets/shoppingcart.css";
-import { Button, Card, Col, Container, Row, Table } from "react-bootstrap";
+import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
@@ -61,9 +61,9 @@ export default function ShoppingCart() {
                   Iniciar Compra
                 </Button>
                 <div>
-                <NavLink style={{margin:'10px'}} to="/" as={NavLink}>
-                  ver más productos
-                </NavLink>
+                  <NavLink style={{ margin: "10px" }} to="/" as={NavLink}>
+                    ver más productos
+                  </NavLink>
                 </div>
               </div>
             </div>

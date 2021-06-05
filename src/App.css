@@ -1,5 +1,6 @@
 body {
-  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
+    "Arial", sans-serif;
 }
 
 /* CSS Navbar */
@@ -26,6 +27,10 @@ svg {
 nav-link,
 svg:hover {
   color: gray;
+}
+
+.button-profile {
+  width: 0px;
 }
 
 /* CSS Registro */
