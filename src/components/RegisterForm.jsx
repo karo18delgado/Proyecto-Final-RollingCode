@@ -24,6 +24,7 @@ export default function RegisterForm({ setToken }) {
       form.reset();
     } catch (error) {
       console.log(error.response.data);
+      alert("Datos mal cargados");
     }
   };
 
