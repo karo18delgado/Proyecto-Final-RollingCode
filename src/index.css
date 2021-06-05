@@ -16,9 +16,9 @@ code {
 
 .navstyle {
   position: relative;
-  font-weight: bold;
   color: white;
   margin: 0px 5px;
+  width: 90px !important;
 }
 
 .navstyle:after {
@@ -41,15 +41,30 @@ code {
 
 @media only screen and (max-width: 990px) {
   .navstyle-mac:after {
-    width: 35px;
+    width: 60px;
   }
   .navstyle-ipad:after {
-    width: 35px;
+    width: 60px;
   }
   .navstyle-iphone:after {
-    width: 55px;
+    width: 70px;
   }
   .navstyle-about:after {
-    width: 75px;
+    width: 95px;
+  }
+  .navstyle-about {
+    width: 110px !important;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .navstyle-mac {
+    width: 80px !important;
+  }
+  .navstyle-ipad {
+    width: 80px !important;
+  }
+  .navstyle-about {
+    width: 110px !important;
   }
 }

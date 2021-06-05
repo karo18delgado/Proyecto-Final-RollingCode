@@ -42,6 +42,12 @@ svg:hover {
   text-align: center;
 }
 
+@media only screen and (max-width: 990px) {
+  .bag-icon {
+    width: 25% !important;
+  }
+}
+
 /* CSS Registro */
 
 .register-container {

@@ -27,33 +27,49 @@ export default function NavbarR({ userName, logOut }) {
             to="Mac"
             as={NavLink}
           >
-            Mac
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={["fas", "desktop"]}
+            ></FontAwesomeIcon>
+            iMac
           </Nav.Link>
           <Nav.Link
             className="mx-3 navstyle navstyle-ipad"
             to="iPad"
             as={NavLink}
           >
-            Ipad
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={["fas", "tablet-alt"]}
+            ></FontAwesomeIcon>
+            iPad
           </Nav.Link>
           <Nav.Link
             className="mx-3 navstyle navstyle-iphone"
             to="iPhone"
             as={NavLink}
           >
-            Iphone
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={["fas", "mobile-alt"]}
+            ></FontAwesomeIcon>
+            iPhone
           </Nav.Link>
           <Nav.Link
-            className="mx-3 w-100 navstyle navstyle-about"
+            className="mx-3 navstyle navstyle-about"
             to="about"
             as={NavLink}
           >
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={["fas", "users"]}
+            ></FontAwesomeIcon>
             About Us
           </Nav.Link>
           {!userName && (
             <>
               <NavDropdown
-                className="bag-icon mx-3 w-25"
+                className="bag-icon mx-3"
                 title={title}
                 id="basic-nav-dropdown"
               >
@@ -74,7 +90,7 @@ export default function NavbarR({ userName, logOut }) {
             </>
           )}
           {userName && (
-            <NavDropdown className="user-button" title={userName}>
+            <NavDropdown className="user-button ml-2" title={userName}>
               <NavDropdown.Item
                 to="perfilUsuario"
                 className="drop-profile-button"
