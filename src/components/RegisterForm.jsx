@@ -173,6 +173,24 @@ export default function RegisterForm({ setToken }) {
                 <option>Masculino</option>
               </Form.Control>
             </Form.Group>
+            <Form.Group className="container-row">
+              <div className="d-flex justify-content-start w-100 mx-1">
+                <Form.Label>Clave para recupero de datos</Form.Label>
+              </div>
+              <Form.Control
+                name="secretWord"
+                onChange={(e) => handleChange(e)}
+                className="container-row mt-0"
+                type="password"
+                placeholder="Ingrese una palabra clave"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                required
+              />
+              <Form.Control.Feedback type="invalid">
+                Debe contener 6 o más dígitos, una mayúscula, una minúscula y un
+                n°.
+              </Form.Control.Feedback>
+            </Form.Group>
           </Form.Row>
           <hr className="divider-border-1"></hr>
           <Form.Group className="group-div">
