@@ -74,7 +74,9 @@ export default function CardsIphone() {
           <Button variant="primary" className="btn boton-comprar" type="submit">
             Comprar
           </Button>
-          <div className="cards-bgipad mt-5"></div>
+          <div className="bg-blanco mt-5">
+             <img className="img-fluid" src="https://www.apple.com/v/ipad/home/bm/images/overview/hero/ipad_pro_hero__bh3eq6sqfjw2_medium_2x.jpg" alt="" />
+          </div>
         </div>
       </div>
       <div className="text-center pt-5">
@@ -101,7 +103,9 @@ export default function CardsIphone() {
                 nuevo. Es bueno para ti y para el planeta.
               </p>
             </div>
-            <div className="bg-banneripad1"></div>
+            <div className="bg-blanco">
+              <img className="img-fluid" src="https://www.apple.com/v/ipad/home/bm/images/overview/apple_pay__u03k08osmwy2_medium_2x.jpg" alt="" />
+            </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
         </div>
@@ -151,7 +155,7 @@ export default function CardsIphone() {
           </div>
           <div className="my-3 px-3 col-12 col-md-6 text-center ">
             <div className="bg-banneripad3"></div>
-            <div className="text-center bg-blanco pt-4 pb-2">
+            <div className="text-center bg-blanco pt-4 pb-2 text-sizeipad">
               <p className="titulo-banner px-5">Teclados para el iPad</p>
               <p className="subtitulo-banner text-center px-5">
                 Tan versátiles que hasta protegen tu iPad.
