@@ -128,7 +128,7 @@ export default function CardsIphone() {
           <div className="my-3 col-12 col-md-1 text-center"></div>
           <div className="my-3 col-12 col-md-10 text-center padding">
             <div className="container d-flex flex-wrap">
-              <div className=" col-12 col-md-6 text-center padding">
+              <div className=" col-12 col-xl-5 text-center padding">
                 <div
                   style={{ height: "303px" }}
                   className="text-center bg-blanco pt-4 pb-4"
@@ -141,7 +141,7 @@ export default function CardsIphone() {
                   </p>
                 </div>
               </div>
-              <div className="mb-3 col-12 col-xl-7 bg-blanco">
+              <div className="mb-3 col-12 col-xl-7 bg-blanco padding">
                  <img className="img-fluid" src="https://i.blogs.es/852326/bill/450_1000.jpg" alt="" />
               </div>
             </div>
