@@ -103,7 +103,9 @@ export default function CardsIphone() {
                 reciclaremos gratis. Es bueno para ti y para el planeta.
               </p>
             </div>
-            <div className="bg-bannermac1"></div>
+            <div className="bg-blanco">
+               <img className="img-fluid" src="https://as.com/meristation/imagenes/2020/07/02/betech/1593684423_686673_1593684643_noticia_normal_recorte1.jpg" alt="" />
+            </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
         </div>
@@ -143,7 +145,7 @@ export default function CardsIphone() {
         </h1>
         <div className="container d-flex flex-wrap px-5 pb-5">
           <div className="my-3 px-3 col-12 col-md-6 text-center">
-            <div className="text-center bg-blanco pt-4 pb-2">
+            <div className="text-center bg-blanco pt-4 pb-2 text-sizemac">
               <p className="subtitulo-banner text-center px-5">Continuidad</p>
               <p className="titulo-banner px-5">
                 Todos tus dispositivos, una misma experiencia.
