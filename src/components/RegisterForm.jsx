@@ -15,16 +15,20 @@ export default function RegisterForm({ setToken }) {
     if (form.checkValidity() === false) {
       return event.stopPropagation();
     }
-    try {
-      const { data } = await axios.post("/auth/register", input);
-      localStorage.setItem("token", JSON.stringify(data));
-      setToken(data.token);
-      alert("Usuario registrado correctamente 😉.");
-      history.push("/login");
-      form.reset();
-    } catch (error) {
-      console.log(error.response.data);
-      alert("Datos mal cargados");
+    if (input.password !== input.confPassword) {
+      alert("Las contraseñas no coinciden");
+    } else {
+      try {
+        const { data } = await axios.post("/auth/register", input);
+        localStorage.setItem("token", JSON.stringify(data));
+        setToken(data.token);
+        alert("Usuario registrado correctamente 😉.");
+        history.push("/login");
+        form.reset();
+      } catch (error) {
+        console.log(error.response.data);
+        alert("Datos mal cargados");
+      }
     }
   };
 
@@ -129,6 +133,7 @@ export default function RegisterForm({ setToken }) {
                 className="container-row"
                 type="password"
                 placeholder="Confirmar contraseña"
+                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 required
               />
               <Form.Control.Feedback type="invalid">
