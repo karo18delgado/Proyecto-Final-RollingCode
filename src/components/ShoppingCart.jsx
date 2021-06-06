@@ -14,9 +14,9 @@ export default function ShoppingCart() {
             style={{ backgroundColor: "#fff", borderRadius: "20px" }}
           >
             <div>
+              <h3 className="mt-3">Carrito de compras</h3>
               <Table responsive="md" className="tabla-shop">
                 <thead>
-                  <h3>Carrito de compras</h3>
                   <tr>
                     <th>Producto</th>
                     <th>Descripción</th>

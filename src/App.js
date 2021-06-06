@@ -52,7 +52,7 @@ function App() {
       <NavbarR userName={user.nombre} logOut={logOut} />
       <Switch>
         <Route path="/about">
-          <div className="container"> <About /></div>
+          <About />
         </Route>
         <Route path="/" exact>
           <Landing />

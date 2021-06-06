@@ -91,14 +91,7 @@ export default function Footer() {
               Fullstack de Rolling Code
             </p>
             <p className="h6">
-              © Todos los derechos reservados.
-              <a
-                className="text-green ml-2"
-                href=""
-                target="_blank"
-              >
-                Comisión i7 - Grupo 3
-              </a>
+              © Todos los derechos reservados. Comisión i7 - Grupo 3
             </p>
           </div>
           <hr />

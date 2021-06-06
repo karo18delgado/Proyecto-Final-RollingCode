@@ -48,25 +48,26 @@ export default function About() {
       {/* VALORES DE APPLE */}
 
       {/* MEDIO AMBIENTE */}
-      <h2 className="letra-valores">Valores de Apple</h2>
-      <hr />
-      <h1 className="letra-seccion-medioAmbiente">
-        <img
-          className="logo-seccion"
-          src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
-          alt=""
-        />{" "}
-        Medio ambiente
-      </h1>
-      <h1 className="letra-titulo">Somos neutros en carbono</h1>
-      <h2 className="letra-subtitulo">
-        Y para el{" "}
-        <span className="letra-num" style={{ color: "#00D959" }}>
-          2030{" "}
-        </span>
-        todos tus productos favoritos también los serán.
-      </h2>
-
+      <div className="container">
+        <h2 className="letra-valores">Valores de Apple</h2>
+        <hr />
+        <h1 className="letra-seccion-medioAmbiente">
+          <img
+            className="logo-seccion"
+            src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
+            alt=""
+          />{" "}
+          Medio ambiente
+        </h1>
+        <h1 className="letra-titulo">Somos neutros en carbono</h1>
+        <h2 className="letra-subtitulo">
+          Y para el{" "}
+          <span className="letra-num" style={{ color: "#00D959" }}>
+            2030{" "}
+          </span>
+          todos tus productos favoritos también los serán.
+        </h2>
+      </div>
       <Container>
         <Row>
           <Col md={12}>
@@ -405,19 +406,20 @@ export default function About() {
       </Container>
 
       {/* SECCIÓN ACCESIBILIDAD */}
-
-      <h1 className="letra-seccion-accesibilidad">
-        <img
-          className="logo-seccion"
-          src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
-          alt=""
-        />
-        Accesibilidad
-      </h1>
-      <h2 className="letra-subtitulo">
-        {" "}
-        Funcionalidades integradas para sacar todo tu potencial. A tu manera.
-      </h2>
+      <div className="container">
+        <h1 className="letra-seccion-accesibilidad">
+          <img
+            className="logo-seccion"
+            src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
+            alt=""
+          />
+          Accesibilidad
+        </h1>
+        <h2 className="letra-subtitulo">
+          {" "}
+          Funcionalidades integradas para sacar todo tu potencial. A tu manera.
+        </h2>
+      </div>
 
       <Container>
         <Row>
@@ -428,10 +430,10 @@ export default function About() {
               className="row fondo-card"
               style={{ backgroundColor: "#e0def4", paddingTop: "30px" }}
             >
-              <p className="letra-card-accesibilidad col-md-5">
+              <div className="letra-card-accesibilidad col-md-5">
                 <p style={{ fontSize: "20px" }}>Control por Botón</p>
                 Muévete a tu manera.
-              </p>
+              </div>
               <img
                 className="imagen-card col-md-7"
                 src="https://www.apple.com/la/accessibility/images/overview/switch_control__bn1g8tmudd7m_small_2x.png"
@@ -707,25 +709,25 @@ export default function About() {
       </Container>
 
       {/* SECCIÓN PRIVACIDAD */}
-
-      <h1 className="letra-seccion-privacidad">
-        <img
-          className="logo-seccion"
-          src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
-          alt=""
-        />
-        Privacidad
-      </h1>
-      <p className="letra-parrafo-privacidad">
-        La privacidad es un derecho humano fundamental. Y también es uno de los
-        valores fundamentales de Apple. Sabemos lo importante que son tus
-        dispositivos en tu vida y creemos que sólo tu debes decidir qué
-        compartir y con quién compartirlo. Por eso, los productos Apple están
-        diseñados para proteger tu privacidad y ayudarte a mantener el control
-        de tu información.No siempre es fácil, pero es el tipo de innovación en
-        la creemos.
-      </p>
-
+      <div className="container">
+        <h1 className="letra-seccion-privacidad">
+          <img
+            className="logo-seccion"
+            src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
+            alt=""
+          />
+          Privacidad
+        </h1>
+        <p className="letra-parrafo-privacidad">
+          La privacidad es un derecho humano fundamental. Y también es uno de
+          los valores fundamentales de Apple. Sabemos lo importante que son tus
+          dispositivos en tu vida y creemos que sólo tu debes decidir qué
+          compartir y con quién compartirlo. Por eso, los productos Apple están
+          diseñados para proteger tu privacidad y ayudarte a mantener el control
+          de tu información.No siempre es fácil, pero es el tipo de innovación
+          en la creemos.
+        </p>
+      </div>
       <div
         data-aos="fade-up"
         data-aos-duration="3000"
@@ -851,11 +853,11 @@ export default function About() {
       </div>
 
       {/* SECCIÓN DIRECTIVOS */}
-
-      <h2 className="letra-directivos">Directivos de Apple</h2>
-      <hr />
-      <h1 className="letra-seccion-directivos">Perfiles de los directivos</h1>
-
+      <div className="container">
+        <h2 className="letra-directivos">Directivos de Apple</h2>
+        <hr />
+        <h1 className="letra-seccion-directivos">Perfiles de los directivos</h1>
+      </div>
       <Container style={{ paddingBottom: "100px" }}>
         <Row>
           <Col xs={12} md={4} style={{ padding: "20px" }}>

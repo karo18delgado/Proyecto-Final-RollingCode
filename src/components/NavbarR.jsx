@@ -102,7 +102,7 @@ export default function NavbarR({ userName, logOut }) {
                 to="/"
                 as={NavLink}
                 onClick={logOut}
-                activeClassName
+                activeClassName="none"
               >
                 Cerrar Sesión
               </NavDropdown.Item>

@@ -37,11 +37,11 @@ export default function Login({ setUser, setToken }) {
 
   return (
     <div className="login-container">
-      <p className="login-title">
+      <div className="login-title">
         <h3>
           <b>Por favor, registrese. </b>
         </h3>
-      </p>
+      </div>
 
       <div className="login-form">
         <Form className="login-row-form" noValidate onSubmit={handleSubmit}>

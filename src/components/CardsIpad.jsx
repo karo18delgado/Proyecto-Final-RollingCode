@@ -78,9 +78,7 @@ export default function CardsIphone() {
         </div>
       </div>
       <div className="text-center pt-5">
-        <p>
-          <h2>Encuentra el iPad perfecto para ti.</h2>
-        </p>
+        <h2>Encuentra el iPad perfecto para ti.</h2>
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">

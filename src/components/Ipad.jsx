@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import "../assets/cards.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Cards({ art }) {
   const [open, setOpen] = useState(false);
@@ -17,11 +17,7 @@ export default function Cards({ art }) {
           className=" m-auto style-card"
           style={{ width: "18rem" }}
         >
-          <Card.Img
-            className=" m-auto"
-            variant="top"
-            src={art.image}
-          />
+          <Card.Img className=" m-auto" variant="top" src={art.image} />
           <Card.Body className="card-container">
             <Card.Text className="text-naranja">{art.estado}</Card.Text>
             <Card.Title className="titulo-card">
@@ -49,21 +45,27 @@ export default function Cards({ art }) {
                 </Card.Text>
                 <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
                 <Card.Img
-            className="mt-3 m-auto"
-            variant="top"
-            style={{ width: "45px", height: "40px" }}
-            src={art.procesador}
-          />
-                <Card.Text className="text-precio">{art.subprocesador}</Card.Text>
+                  className="mt-3 m-auto"
+                  variant="top"
+                  style={{ width: "45px", height: "40px" }}
+                  src={art.procesador}
+                />
+                <Card.Text className="text-precio">
+                  {art.subprocesador}
+                </Card.Text>
                 <Card.Img
-            className="mt-3 m-auto"
-            variant="top"
-            style={{ width: "50px" , height: "40px" }}
-            src={art.bateria}
-          />                <Card.Text className="text-precio">{art.subbateria}</Card.Text>
-                <Card.Text className="mt-3 text-encabezado">{art.almacenamiento}</Card.Text>
-                <Card.Text className="text-precio">{art.subalmacenamiento}</Card.Text>
-                
+                  className="mt-3 m-auto"
+                  variant="top"
+                  style={{ width: "50px", height: "40px" }}
+                  src={art.bateria}
+                />{" "}
+                <Card.Text className="text-precio">{art.subbateria}</Card.Text>
+                <Card.Text className="mt-3 text-encabezado">
+                  {art.almacenamiento}
+                </Card.Text>
+                <Card.Text className="text-precio">
+                  {art.subalmacenamiento}
+                </Card.Text>
               </Card.Body>
             </div>
           </Collapse>

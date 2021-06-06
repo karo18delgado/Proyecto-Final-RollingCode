@@ -42,7 +42,7 @@ export default function Cards({ art }) {
           </Card.Body>
           <Collapse in={open}>
             <div id="example-collapse-text">
-              <hr class="hr-articulos" />
+              <hr className="hr-articulos" />
               <Card.Body>
                 <Card.Text className="text-encabezado">
                   {art.pantalla}
