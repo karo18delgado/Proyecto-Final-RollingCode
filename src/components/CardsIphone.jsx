@@ -60,13 +60,16 @@ export default function CardsIphone() {
 
   return (
     <div>
-      <div className="cards-bg">
+      <div>
         <div className="text-center pt-3">
           <p className="titulo-secundario">iPhone12 y iPhone 12 mini</p>
           <p className="titulo-principal">SUPER.MEGA.RAPIDO.</p>
           <Button variant="primary" className="btn boton-comprar" type="submit">
             Comprar
           </Button>
+        </div>
+        <div className="bg-blanco text-center">
+          <img className="img-fluid" src="https://www.apple.com/mx/iphone/home/images/overview/hero/iphone_12__d51ddqcc7oqe_large_2x.jpg" alt="" />
         </div>
       </div>
       <div className="text-center pt-5">
@@ -93,7 +96,9 @@ export default function CardsIphone() {
                 bueno para ti y para el planeta.
               </p>
             </div>
-            <div className="bg-banner1"></div>
+            <div className="bg-blanco">
+               <img className="img-fluid" src="https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg" alt="" />
+            </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
         </div>
@@ -112,18 +117,20 @@ export default function CardsIphone() {
                 emojis, texto y números.
               </p>
             </div>
-            <div className="bg-banner2"></div>
+            <div className="bg-blanco">
+              <img className="img-fluid" src="https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg" alt="" />
+            </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
         </div>
         {/* Tarjeta Banner 3 */}
         <div className="container d-flex flex-wrap">
           <div className="my-3 col-12 col-md-1 text-center"></div>
-          <div className="my-3 col-12 col-md-10 text-center ">
+          <div className="my-3 col-12 col-md-10 text-center padding">
             <div className="container d-flex flex-wrap">
-              <div className=" col-12 col-md-6 text-center">
+              <div className=" col-12 col-xl-5 text-center padding">
                 <div
-                  style={{ height: "320px" }}
+                  style={{ height: "303px" }}
                   className="text-center bg-blanco pt-4 pb-4"
                 >
                   <h3 className="mt-5 titulo-banner">MagSafe</h3>
@@ -134,7 +141,9 @@ export default function CardsIphone() {
                   </p>
                 </div>
               </div>
-              <div className="mb-3 col-12 col-md-6 bg-banner3"></div>
+              <div className="mb-3 col-12 col-xl-7 bg-blanco padding">
+                 <img className="img-fluid" src="https://i.blogs.es/852326/bill/450_1000.jpg" alt="" />
+              </div>
             </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>

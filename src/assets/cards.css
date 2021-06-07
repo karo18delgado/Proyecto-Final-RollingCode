@@ -226,6 +226,19 @@
   font-family: "SF Pro Display", "SF Pro Icons", "Helvetica Neue", "Helvetica",
     "Arial", sans-serif;
 }
+ .padding{
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+ }
+
+ .text-sizeipad{
+   min-height: 158px;
+  
+ }
+ .text-sizemac{
+  min-height: 193px;
+ 
+}
 
 .card-landing-img { 
   width: 60%;
