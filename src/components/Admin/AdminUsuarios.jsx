@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
+import axios from "axios";
 
 export default function AdminUsuarios() {
   const [showBlock, setShowBlock] = useState(false);
@@ -10,6 +11,17 @@ export default function AdminUsuarios() {
   const handleShowBlock = () => setShowBlock(true);
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = () => setShowInfo(true);
+
+  const [usuarios, setUsuarios] = useState([]);
+
+  useEffect(() => {
+    const getUsuarios = async () => {
+      const response = await axios.get(`/usuarios`);
+      setUsuarios(response.data);
+    };
+
+    getUsuarios();
+  }, []);
 
   return (
     <div>
@@ -41,7 +53,39 @@ export default function AdminUsuarios() {
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
+        {usuarios.map((usuario) => (
+          <tbody>
+            <tr>
+              <td>{usuario.nombre}</td>
+              <td>{usuario.apellido}</td>
+              <td>{usuario.email}</td>
+              <td>{usuario.fechaNacimiento}</td>
+              <td>{usuario.sexo}</td>
+              <td>Habilitado</td>
+              <td>
+                <Button
+                  size="sm"
+                  className="btn sm btn-success mx-1"
+                  onClick={handleShowBlock}
+                >
+                  Bloqueo
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn sm btn-warning mx-1"
+                  onClick={handleShowInfo}
+                >
+                  Más información
+                </Button>
+                <Button size="sm" className="btn sm btn-danger mx-1">
+                  Eliminar
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        ))}
+
+        {/* <tbody>
           <tr>
             <td>Mark</td>
             <td>Otto</td>
@@ -69,10 +113,10 @@ export default function AdminUsuarios() {
               </Button>
             </td>
           </tr>
-        </tbody>
+        </tbody> */}
       </Table>
 
-      {/* Modal editar */}
+      {/* Modal Bloquear */}
 
       <Modal show={showBlock} onHide={handleCloseBlock}>
         <Modal.Header closeButton>
