@@ -13,10 +13,10 @@ import CardsIpad from './components/CardsIpad';
 import Login from "./pages/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
-import PerfilUsuario from './components/PerfilUsuario';
+import PerfilUsuario from './pages/PerfilUsuario';
 import AdminProductos from './components/Admin/AdminProductos';
 import AdminMensajes from './components/Admin/AdminMensajes';
-import ShoppingCart from './components/ShoppingCart';
+import ShoppingCart from './pages/ShoppingCart';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import ScrollToTop from './components/ScrollToTop';
@@ -67,7 +67,7 @@ function App() {
           <CardsIpad />
         </Route>
         <Route path="/carrito">
-          <ShoppingCart />
+          <ShoppingCart currentUser={user}/>
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
@@ -75,8 +75,8 @@ function App() {
         <Route path="/login">
           <Login setUser={setUser} setToken={setToken} />
         </Route>
-        <Route path="/perfilUsuario">
-          <PerfilUsuario />
+        <Route path="/perfil">
+          <PerfilUsuario user={user} />
         </Route>
         <Route path="/admin">
           <NavbarAdmin />
