@@ -1,7 +1,7 @@
 import axios from "axios";
 import "../assets/font.css";
 import "../assets/login.css";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Button, Form, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 

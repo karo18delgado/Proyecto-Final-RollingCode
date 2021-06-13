@@ -67,7 +67,7 @@ function App() {
           <CardsIpad />
         </Route>
         <Route path="/carrito">
-          <ShoppingCart currentUser={user}/>
+          <ShoppingCart setToken={token} />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
