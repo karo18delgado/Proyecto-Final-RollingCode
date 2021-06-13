@@ -16,10 +16,9 @@ export default function AdminUsuarios() {
 
   useEffect(() => {
     const getUsuarios = async () => {
-      const response = await axios.get(`/usuarios`);
+      const response = await axios.get("/usuarios");
       setUsuarios(response.data);
     };
-
     getUsuarios();
   }, []);
 
