@@ -1,8 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
+import axios from "axios";
 
-export default function AdminMensajes() {
+
+export default function AdminMensajes(mensaje) {
+  const {correo, asunto, descripcion} = mensaje;
+  const [mensajes, setMensajes] = useState([]);
+  useEffect(() => {
+    const recibirMensaje = async () => {
+        const response = await axios.get(`auth/mensaje`);
+        setMensajes(response.data);
+    };
+
+    recibirMensaje();
+}, []);
+
   const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
@@ -10,8 +23,13 @@ export default function AdminMensajes() {
   const handleShowBlock = () => setShowBlock(true);
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = () => setShowInfo(true);
+  
+  
+  
+ 
 
   return (
+    
     <div>
       <div>
         <Form>
@@ -32,7 +50,6 @@ export default function AdminMensajes() {
       <Table striped bordered hover variant="dark" className="mt-5">
         <thead>
           <tr>
-            <th>Usuario</th>
             <th>Email</th>
             <th>Asunto</th>
             <th>Leído/No Leído</th>
@@ -40,10 +57,12 @@ export default function AdminMensajes() {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>rosendo</td>
-            <td>rosendoalves05@gmail.com</td>
-            <td>Problemas técnicos</td>
+          
+          {mensajes.map((mensaje) => (
+           <tr>         
+                
+            <td>{mensaje.correo}</td>
+            <td>{mensaje.asunto}</td>
             <td>Leído</td>
             <td>
               <Button
@@ -64,7 +83,9 @@ export default function AdminMensajes() {
                 Eliminar
               </Button>
             </td>
-          </tr>
+            </tr>
+            ))}
+          
         </tbody>
       </Table>
 
@@ -104,10 +125,9 @@ export default function AdminMensajes() {
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
               <Form.Label>
-                <p>usuario: rosendo</p>
-                <p>Email: rosendoalves05@gmail.com</p>
-                <p>Asunto: Problemas técnicos</p>
-                <p>Mensaje: Problemas técnicos</p>
+                <p>Email: {mensaje.correo}</p>
+                <p>Asunto: {mensaje.asunto}</p>
+                <p>Mensaje: {mensaje.descripcion}</p>
               </Form.Label>
             </Form.Group>
           </Form>
