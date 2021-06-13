@@ -9,8 +9,41 @@ import {
   Modal,
   Row,
 } from "react-bootstrap";
+import axios from "axios";
 
-export default function PerfilUsuario() {
+export default function PerfilUsuario({ user, setToken }) {
+  const [validated, setValidated] = useState(false);
+  const [input, setInput] = useState({});
+  
+
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    const newInput = { ...input, [name]: value };
+    setInput(newInput);
+  };
+
+  const handleSubmit = async (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    setValidated(true);
+    if (form.checkValidity() === false) {
+      return event.stopPropagation();
+    }
+    if (input.password !== input.confPassword) {
+      alert("Las contraseñas no coinciden");
+    } else {
+      try {
+        const { data } = await axios.put("/usuarios", {});
+        localStorage.setItem("token", JSON.stringify(data));
+        setToken(data.token);
+      } catch (error) {
+        console.log(error.response.data);
+        alert("Datos Incorrectos!");
+      }
+    }
+  };
+
   const [show1, setShow] = useState(false);
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
@@ -34,13 +67,14 @@ export default function PerfilUsuario() {
       <Container style={{ padding: "60px" }}>
         <Row>
           <Col md={{ span: 6, offset: 3 }}>
-            <h2 style={{paddingBottom:'20px'}}>
-            <img
-                    className="logo-sección-perfil"
-                    src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
-                    alt=""
-                />{" "}
-              Perfil de Usuario</h2>
+            <h2 style={{ paddingBottom: "20px" }}>
+              <img
+                className="logo-sección-perfil"
+                src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png"
+                alt=""
+              />{" "}
+              Perfil de Usuario
+            </h2>
             <ListGroup
               style={{
                 backgroundColor: "#fff",
@@ -49,21 +83,37 @@ export default function PerfilUsuario() {
               }}
               variant="flush"
             >
-              <ListGroup.Item action onClick={handleShow1} style={{padding:'20px'}}>
-                Nombre:
+              <ListGroup.Item
+                action
+                onClick={handleShow1}
+                style={{ padding: "20px" }}
+              >
+                Nombre: {user.nombre}
               </ListGroup.Item>
               <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Nombre</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{padding:'40px'}}>
-                  <Form.Group
-                    className="name-div"
-                    controlId="validationCustom01"
+                <Modal.Body style={{ padding: "40px" }}>
+                  <Form
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
                   >
-                    <Form.Control required type="text" placeholder="Nombre"  />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
+                    <Form.Group
+                      className="name-div"
+                      controlId="validationCustom01"
+                    >
+                      <Form.Control
+                        onChange={handleChange}
+                        name="nombre"
+                        required
+                        type="text"
+                        placeholder="Nombre"
+                      />
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                  </Form>
                 </Modal.Body>
                 <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose1}>
@@ -75,12 +125,18 @@ export default function PerfilUsuario() {
                 </Modal.Footer>
               </Modal>
 
-              <ListGroup.Item action onClick={handleShow2} style={{padding:'20px'}} >Apellido:</ListGroup.Item>
+              <ListGroup.Item
+                action
+                onClick={handleShow2}
+                style={{ padding: "20px" }}
+              >
+                Apellido: {user.apellido}
+              </ListGroup.Item>
               <Modal show={show2} onHide={handleClose2}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Apellido</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{padding:'40px'}}>
+                <Modal.Body style={{ padding: "40px" }}>
                   <Form.Group
                     className="lastname-div"
                     controlId="validationCustom02"
@@ -103,14 +159,18 @@ export default function PerfilUsuario() {
                 </Modal.Footer>
               </Modal>
 
-              <ListGroup.Item  action onClick={handleShow3} style={{padding:'20px'}} >
-                Fecha de Nacimiento:
+              <ListGroup.Item
+                action
+                onClick={handleShow3}
+                style={{ padding: "20px" }}
+              >
+                Fecha de Nacimiento:{user.fechaNacimiento}
               </ListGroup.Item>
               <Modal show={show3} onHide={handleClose3}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Fecha de Nacimiento</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{padding:'40px'}}>
+                <Modal.Body style={{ padding: "40px" }}>
                   <Form.Group
                     className="container"
                     controlId="validationCustom04"
@@ -121,7 +181,7 @@ export default function PerfilUsuario() {
                       max="2100-12-31"
                       placeholder="Fecha de nacimiento"
                       required
-                      style={{width:'80%'}}
+                      style={{ width: "80%" }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese una fecha de nacimiento válido.
@@ -138,12 +198,18 @@ export default function PerfilUsuario() {
                 </Modal.Footer>
               </Modal>
 
-              <ListGroup.Item action onClick={handleShow4} style={{padding:'20px'}} >Usuario:</ListGroup.Item>
+              <ListGroup.Item
+                action
+                onClick={handleShow4}
+                style={{ padding: "20px" }}
+              >
+                Usuario: {user.nombreUsuario}
+              </ListGroup.Item>
               <Modal show={show4} onHide={handleClose4}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Usuario</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{padding:'40px'}}>
+                <Modal.Body style={{ padding: "40px" }}>
                   <Form.Group
                     className="container"
                     controlId="validationCustom03"
@@ -152,7 +218,7 @@ export default function PerfilUsuario() {
                       type="text"
                       placeholder="Nombre de usuario"
                       required
-                      style={{width:'80%'}}
+                      style={{ width: "80%" }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un nombre de usuario válido.
@@ -169,12 +235,18 @@ export default function PerfilUsuario() {
                 </Modal.Footer>
               </Modal>
 
-              <ListGroup.Item action onClick={handleShow5} style={{padding:'20px'}} >Contraseña:</ListGroup.Item>
+              <ListGroup.Item
+                action
+                onClick={handleShow5}
+                style={{ padding: "20px" }}
+              >
+                Contraseña:{user.password}
+              </ListGroup.Item>
               <Modal show={show5} onHide={handleClose5}>
                 <Modal.Header closeButton>
-                  <Modal.Title>Editar Usuario</Modal.Title>
+                  <Modal.Title>Editar Contraseña</Modal.Title>
                 </Modal.Header>
-                <Modal.Body style={{padding:'40px'}}>
+                <Modal.Body style={{ padding: "40px" }}>
                   <Form.Group
                     className="container"
                     controlId="validationCustom05"
@@ -184,7 +256,7 @@ export default function PerfilUsuario() {
                       placeholder="Contraseña"
                       pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                       required
-                      style={{width:'80%'}}
+                      style={{ width: "80%" }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Debe contener 6 o más dígitos, una mayúscula, una
@@ -195,7 +267,7 @@ export default function PerfilUsuario() {
                       type="password"
                       placeholder="Confirmar contraseña"
                       required
-                      style={{width:'80%'}}
+                      style={{ width: "80%" }}
                     />
                     <Form.Control.Feedback type="invalid">
                       Debe contener 6 o más dígitos, una mayúscula, una

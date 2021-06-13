@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "../assets/cards.css";
 // import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
@@ -32,13 +33,18 @@ export default function Cards({ art }) {
             <Card.Text className="text-precio">{art.precio}</Card.Text>
           </Card.Body>
           <Card.Body>
+          <Button
+              to="carrito" as={NavLink}
+            >
+              Agregar al carrito
+            </Button>
             <Button
               // href=
               // target="_blank"
               className="btn boton-comprar mb-auto text-center"
               variant="primary"
             >
-              Comprar
+              Ver detalle
             </Button>
           </Card.Body>
           <Collapse in={open}>

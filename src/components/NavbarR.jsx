@@ -92,7 +92,7 @@ export default function NavbarR({ userName, logOut }) {
           {userName && (
             <NavDropdown className="user-button ml-2" title={userName}>
               <NavDropdown.Item
-                to="perfilUsuario"
+                to="/perfil"
                 className="drop-profile-button"
                 as={NavLink}
               >

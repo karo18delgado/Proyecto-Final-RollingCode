@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
 
-export default function ShoppingCart() {
+export default function Carrito({ producto }) {
+  const { urlImage, nombre, descripcion, precio } = producto;
   return (
     <div>
       <Container style={{ padding: "50px" }}>
@@ -28,12 +29,13 @@ export default function ShoppingCart() {
                 <tbody>
                   <tr>
                     <td>
-                      <img
-                        src="https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_air__bxjv33pk6nte_large.png"
-                        alt=""
-                      />
+                      <img src={urlImage} alt="..." />
                     </td>
-                    <td>Table cell</td>
+                    <td>
+                      {nombre}
+                      {descripcion}
+                    </td>
+                    <td>{precio}</td>
                     <td>
                       <ContadorShop />
                     </td>
