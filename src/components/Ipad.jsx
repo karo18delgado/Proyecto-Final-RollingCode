@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import "../assets/cards.css";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
 export default function Cards({ art }) {
@@ -29,9 +29,13 @@ export default function Cards({ art }) {
           </Card.Body>
           <Card.Body>
           <Button
-              to="carrito" as={NavLink}
+              to="carrito" as={NavLink} className="btnCarrito" variant="dark"
+              style={{ margin: "8px", borderRadius: "50%" }}
             >
-              Agregar al carrito
+                    <FontAwesomeIcon
+                      className="shoppingCart"
+                      icon={["fas", "shopping-cart"]}
+                    ></FontAwesomeIcon>
             </Button>
             <Button
               // href=
