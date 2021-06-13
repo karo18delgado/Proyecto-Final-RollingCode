@@ -1,11 +1,26 @@
 import "../assets/shoppingcart.css";
-import { Button, Col, Container, Row, Table } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Row,
+  Table,
+  Form,
+  Modal,
+} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
+import { useState } from "react";
+import CreditsCard from "../pages/CreditsCard";
 
-export default function Carrito({ producto }) {
-  const { urlImage, nombre, descripcion, precio } = producto;
+export default function Carrito({ articles }) {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  // const { urlImage, nombre, descripcion, precio } = producto; 
+  console.log("Carrito ~ articles", articles)
   return (
     <div>
       <Container style={{ padding: "50px" }}>
@@ -20,24 +35,28 @@ export default function Carrito({ producto }) {
                 <thead>
                   <tr>
                     <th>Producto</th>
-                    <th>Descripción</th>
-                    <th>Cantidad</th>
+                    <th>Descripción</th> 
                     <th>Precio</th>
+                    <th>Cantidad</th>
+                   
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
+                <tbody> 
+                 
+               {articles.map(item => (
+              
+                    <tr>
                     <td>
-                      <img src={urlImage} alt="..." />
+                      <img src={item.producto.urlImage} alt="..." />
                     </td>
                     <td>
-                      {nombre}
-                      {descripcion}
+                      {item.producto.nombre}
+                      {item.producto.descripcion}
                     </td>
-                    <td>{precio}</td>
+                    <td>{item.producto.precio}</td>
                     <td>
-                      <ContadorShop />
+                      <ContadorShop cantidad={item.cantidad} id={item.producto._id}/>
                     </td>
                     <td>$</td>
                     <td>
@@ -49,10 +68,74 @@ export default function Carrito({ producto }) {
                       </button>
                     </td>
                   </tr>
+               ))}
                 </tbody>
               </Table>
 
               <hr />
+              <h5>Dirección de Envío</h5>
+              <Form>
+                <Form.Group controlId="formGridAddress1">
+                  <Form.Label>Dirección</Form.Label>
+                  <Form.Control placeholder="domicilio" />
+                </Form.Group>
+                <Form.Row>
+                  <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Label>Provincia</Form.Label>
+                    <Form.Control />
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="formGridState">
+                    <Form.Label>Localidad</Form.Label>
+                    <Form.Control as="select" defaultValue="Choose...">
+                      <option>San Miguel de Tucumán</option>
+                      <option>Yerba Buena</option>
+                      <option>Concepción</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Label>Código postal</Form.Label>
+                    <Form.Control />
+                  </Form.Group>
+                </Form.Row>
+                <Button variant="primary" type="submit">
+                  Guardar
+                </Button>
+              </Form>
+              <hr />
+              <h5>Formas de pago</h5>
+              <Form.Group as={Row}>
+                <Col sm={10}>
+                  <Form.Check
+                    type="radio"
+                    label="Efectivo"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios1"
+                  />
+                  <Form.Check
+                    type="radio"
+                    label="Tarjeta de Crédito"
+                    name="formHorizontalRadios"
+                    id="formHorizontalRadios2"
+                    onClick={handleShow}
+                  />
+                  <Modal size="lg" show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                      <Modal.Title>Modal heading</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                      <CreditsCard />
+                    </Modal.Body>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleClose}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Modal>
+                </Col>
+              </Form.Group>
               <div className="column comprar">
                 <h2>Total: $ </h2>
                 <Button

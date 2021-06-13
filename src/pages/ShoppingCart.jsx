@@ -1,16 +1,21 @@
 import "../assets/shoppingcart.css";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import CarritoProductos from "../components/CarritoProductos";
+import Carrito from "../components/Carrito";
 
-export default function Carrito() {
-    const [articles, setArticles] = useState([]);
+export default function ShoppingCart() {
+    const [productosCarrito, setproductosCarrito] = useState([]);
+    console.log("Carrito ~ productosCarrito", productosCarrito)
     useEffect(() => {
         const getProductos = async () => {
-            const response = await axios.get(`/productos/`);
-            console.log("getProductos ~ response", response)
-            
-            setArticles(response.data);
+            let productosCarrito = [] 
+            const carrito = JSON.parse(localStorage.getItem("carrito")) || [{id:"60bf6162dda4bf4130f110f9",cantidad:1}];
+            for (let i = 0; i < carrito.length; i++) {
+                const itemCarrito = carrito[i]; 
+                const response = await axios.get(`/productos/${itemCarrito.id}`);
+            productosCarrito.push({ producto: response.data, cantidad: itemCarrito.cantidad })
+            }
+            setproductosCarrito(productosCarrito);
         };
         getProductos();
     }, []);
@@ -18,7 +23,7 @@ export default function Carrito() {
 
     return (
         <div>
-            <CarritoProductos articles={articles} />
+            <Carrito articles={productosCarrito} />
         </div>
     )
 }
