@@ -14,8 +14,6 @@ import axios from "axios";
 export default function PerfilUsuario({ user, setToken }) {
   const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
-  
-
 
   const handleChange = (event) => {
     const { value, name } = event.target;
@@ -27,6 +25,7 @@ export default function PerfilUsuario({ user, setToken }) {
     const form = event.currentTarget;
     event.preventDefault();
     setValidated(true);
+
     if (form.checkValidity() === false) {
       return event.stopPropagation();
     }
@@ -34,9 +33,10 @@ export default function PerfilUsuario({ user, setToken }) {
       alert("Las contraseñas no coinciden");
     } else {
       try {
-        const { data } = await axios.put("/usuarios", {});
-        localStorage.setItem("token", JSON.stringify(data));
-        setToken(data.token);
+        console.log("handleSubmit ~ axios", axios.defaults.headers);
+        const { data } = await axios.put("/usuarios", input);
+
+        console.log("handleSubmit ~ data", data);
       } catch (error) {
         console.log(error.response.data);
         alert("Datos Incorrectos!");
@@ -48,19 +48,18 @@ export default function PerfilUsuario({ user, setToken }) {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
-  const [show5, setShow5] = useState(false);
-
+  
   const handleClose1 = () => setShow(false);
   const handleClose2 = () => setShow2(false);
   const handleClose3 = () => setShow3(false);
   const handleClose4 = () => setShow4(false);
-  const handleClose5 = () => setShow5(false);
+  
 
   const handleShow1 = () => setShow(true);
   const handleShow2 = () => setShow2(true);
   const handleShow3 = () => setShow3(true);
   const handleShow4 = () => setShow4(true);
-  const handleShow5 = () => setShow5(true);
+  
 
   return (
     <div>
@@ -87,9 +86,12 @@ export default function PerfilUsuario({ user, setToken }) {
                 action
                 onClick={handleShow1}
                 style={{ padding: "20px" }}
+                className="itemsPerfil"
               >
-                Nombre: {user.nombre}
+              <strong>Nombre:</strong>
+              <spam> {user.nombre}</spam>
               </ListGroup.Item>
+
               <Modal show={show1} onHide={handleClose1}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Nombre</Modal.Title>
@@ -113,16 +115,20 @@ export default function PerfilUsuario({ user, setToken }) {
                       />
                       <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                     </Form.Group>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose1}>
+                        Close
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={handleClose1}
+                        type="submit"
+                      >
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
                   </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose1}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose1}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
               </Modal>
 
               <ListGroup.Item
@@ -130,33 +136,41 @@ export default function PerfilUsuario({ user, setToken }) {
                 onClick={handleShow2}
                 style={{ padding: "20px" }}
               >
-                Apellido: {user.apellido}
+                <strong>Apellido:</strong>
+                <spam> {user.apellido}</spam> 
               </ListGroup.Item>
+
               <Modal show={show2} onHide={handleClose2}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Apellido</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: "40px" }}>
-                  <Form.Group
-                    className="lastname-div"
-                    controlId="validationCustom02"
+                  <Form
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
                   >
-                    <Form.Control
-                      required
-                      type="text"
-                      placeholder="Apellidos"
-                    />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
-                  </Form.Group>
+                    <Form.Group
+                      className="lastname-div"
+                      controlId="validationCustom02"
+                    >
+                      <Form.Control
+                        required
+                        type="text"
+                        placeholder="Apellidos"
+                      />
+                      <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+                    </Form.Group>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose2}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleClose2}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose2}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose2}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
               </Modal>
 
               <ListGroup.Item
@@ -164,38 +178,46 @@ export default function PerfilUsuario({ user, setToken }) {
                 onClick={handleShow3}
                 style={{ padding: "20px" }}
               >
-                Fecha de Nacimiento:{user.fechaNacimiento}
+                <strong>Fecha de Nacimiento:</strong>
+                <spam> {user.fechaNacimiento}</spam>
               </ListGroup.Item>
+
               <Modal show={show3} onHide={handleClose3}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Fecha de Nacimiento</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: "40px" }}>
-                  <Form.Group
-                    className="container"
-                    controlId="validationCustom04"
+                  <Form
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
                   >
-                    <Form.Control
-                      type="date"
-                      min="1900-01-01"
-                      max="2100-12-31"
-                      placeholder="Fecha de nacimiento"
-                      required
-                      style={{ width: "80%" }}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese una fecha de nacimiento válido.
-                    </Form.Control.Feedback>
-                  </Form.Group>
+                    <Form.Group
+                      className="container"
+                      controlId="validationCustom04"
+                    >
+                      <Form.Control
+                        type="date"
+                        min="1900-01-01"
+                        max="2100-12-31"
+                        placeholder="Fecha de nacimiento"
+                        required
+                        style={{ width: "80%" }}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Ingrese una fecha de nacimiento válido.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                    <Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose3}>
+                        Close
+                      </Button>
+                      <Button variant="primary" onClick={handleClose3}>
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
+                  </Form>
                 </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose3}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose3}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
               </Modal>
 
               <ListGroup.Item
@@ -203,29 +225,35 @@ export default function PerfilUsuario({ user, setToken }) {
                 onClick={handleShow4}
                 style={{ padding: "20px" }}
               >
-                Usuario: {user.nombreUsuario}
+                <strong> Usuario: </strong>
+                <spam>{user.nombreUsuario}</spam>
               </ListGroup.Item>
+
               <Modal show={show4} onHide={handleClose4}>
                 <Modal.Header closeButton>
                   <Modal.Title>Editar Usuario</Modal.Title>
                 </Modal.Header>
                 <Modal.Body style={{ padding: "40px" }}>
-                  <Form.Group
-                    className="container"
-                    controlId="validationCustom03"
+                  <Form
+                    noValidate
+                    validated={validated}
+                    onSubmit={handleSubmit}
                   >
-                    <Form.Control
-                      type="text"
-                      placeholder="Nombre de usuario"
-                      required
-                      style={{ width: "80%" }}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Ingrese un nombre de usuario válido.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Modal.Body>
-                <Modal.Footer>
+                    <Form.Group
+                      className="container"
+                      controlId="validationCustom03"
+                    >
+                      <Form.Control
+                        type="text"
+                        placeholder="Nombre de usuario"
+                        required
+                        style={{ width: "80%" }}
+                      />
+                      <Form.Control.Feedback type="invalid">
+                        Ingrese un nombre de usuario válido.
+                      </Form.Control.Feedback>
+                    </Form.Group>
+                    <Modal.Footer>
                   <Button variant="secondary" onClick={handleClose4}>
                     Close
                   </Button>
@@ -233,57 +261,11 @@ export default function PerfilUsuario({ user, setToken }) {
                     Save Changes
                   </Button>
                 </Modal.Footer>
+                  </Form>
+                </Modal.Body>
               </Modal>
 
-              <ListGroup.Item
-                action
-                onClick={handleShow5}
-                style={{ padding: "20px" }}
-              >
-                Contraseña:{user.password}
-              </ListGroup.Item>
-              <Modal show={show5} onHide={handleClose5}>
-                <Modal.Header closeButton>
-                  <Modal.Title>Editar Contraseña</Modal.Title>
-                </Modal.Header>
-                <Modal.Body style={{ padding: "40px" }}>
-                  <Form.Group
-                    className="container"
-                    controlId="validationCustom05"
-                  >
-                    <Form.Control
-                      type="password"
-                      placeholder="Contraseña"
-                      pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                      required
-                      style={{ width: "80%" }}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Debe contener 6 o más dígitos, una mayúscula, una
-                      minúscula y un n°.
-                    </Form.Control.Feedback>
-                    <Form.Control
-                      className="container-row"
-                      type="password"
-                      placeholder="Confirmar contraseña"
-                      required
-                      style={{ width: "80%" }}
-                    />
-                    <Form.Control.Feedback type="invalid">
-                      Debe contener 6 o más dígitos, una mayúscula, una
-                      minúscula y un n°.
-                    </Form.Control.Feedback>
-                  </Form.Group>
-                </Modal.Body>
-                <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose5}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose5}>
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
-              </Modal>
+
             </ListGroup>
           </Col>
         </Row>
