@@ -29,9 +29,11 @@ function App() {
 
   useEffect(() => {
     if (token) {
+      console.log("useEffect ~ token", token)
       const request = async () => {
-        const headers = { 'x-auth-token': token }
-        const { data } = await axios.get('/auth', { headers });
+        axios.defaults.headers["x-auth-token"] = token
+        const { data } = await axios.get('/auth')
+        
         setUser(data);
       };
       request();
