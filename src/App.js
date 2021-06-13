@@ -26,6 +26,8 @@ const localToken = JSON.parse(localStorage.getItem('token'))?.token || "";
 function App() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localToken);
+  const [usuarioID, setUsuario] = useState([]);
+
 
   useEffect(() => {
     if (token) {
@@ -37,6 +39,14 @@ function App() {
       request();
     }
   }, [token])
+
+  useEffect(() => {
+    const getUserID = async () => {
+      const response = await axios.get("/usuarios");
+      setUsuario(response.data);
+    };
+    getUserID();
+  }, []);
 
   const logOut = () => {
     localStorage.removeItem('token');
@@ -81,13 +91,13 @@ function App() {
         <Route path="/admin">
           <NavbarAdmin />
           <Route path="/admin/admin-usuarios">
-            <AdminUsuarios currentUser={user} />
+            <AdminUsuarios usuarioID={usuarioID} user={user} />
           </Route>
           <Route path="/admin/admin-productos">
-            <AdminProductos currentUser={user} />
+            <AdminProductos />
           </Route>
           <Route path="/admin/admin-mensajes">
-            <AdminMensajes currentUser={user} />
+            <AdminMensajes />
           </Route>
         </Route>
       </Switch>

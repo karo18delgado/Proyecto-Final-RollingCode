@@ -3,7 +3,7 @@ import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
 
-export default function AdminUsuarios() {
+export default function AdminUsuarios({ usuarioID }) {
   const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
 
@@ -83,36 +83,6 @@ export default function AdminUsuarios() {
             </tr>
           </tbody>
         ))}
-
-        {/* <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>01/01/1995</td>
-            <td>Masculino</td>
-            <td>Habilitado</td>
-            <td>
-              <Button
-                size="sm"
-                className="btn sm btn-success mx-1"
-                onClick={handleShowBlock}
-              >
-                Bloqueo
-              </Button>
-              <Button
-                size="sm"
-                className="btn sm btn-warning mx-1"
-                onClick={handleShowInfo}
-              >
-                Más información
-              </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1">
-                Eliminar
-              </Button>
-            </td>
-          </tr>
-        </tbody> */}
       </Table>
 
       {/* Modal Bloquear */}
@@ -151,12 +121,13 @@ export default function AdminUsuarios() {
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
               <Form.Label>
-                <p>Nombre: Mark</p>
-                <p>Apellido: Otto</p>
-                <p>Email: @mdo</p>
-                <p>Fecha de nacimiento: 01/01/1995</p>
-                <p>Nombre de usuario: </p>
-                <p>Sexo: Masculino</p>
+                <p>Nombre: {usuarioID.nombre}</p>
+                <p>Apellido: {usuarioID.apellido}</p>
+                <p>Email: {usuarioID.email}</p>
+                <p>Fecha de nacimiento: {usuarioID.fechaNacimiento}</p>
+                <p>Nombre de usuario: {usuarioID.nombreUsuario}</p>
+                <p>Sexo: {usuarioID.sexo}</p>
+                <p>{usuarioID.categoryUser}</p>
               </Form.Label>
             </Form.Group>
           </Form>
@@ -164,9 +135,6 @@ export default function AdminUsuarios() {
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseInfo}>
             Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleCloseInfo}>
-            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>

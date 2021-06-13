@@ -15,6 +15,7 @@ export default function Carrito({ setToken }) {
     getProductos();
   }, []);
 
+  //Condicional para que haya logueo de usuario para acceder al carrito
   if (setToken === "") {
     window.location = "/login";
   }
