@@ -25,10 +25,16 @@ export default function Login({ setUser, setToken }) {
     event.preventDefault();
     try {
       const { data } = await axios.post("/auth/login", input);
+      console.log("handleSubmit ~ data", data);
       localStorage.setItem("token", JSON.stringify(data));
       setToken(data.token);
-      alert("Logueo exitoso 😎 ");
-      history.push("/");
+      alert("Logueo Admin exitoso 😎 ");
+      if (data.categoryUser === "admin") {
+        history.push("/admin");
+      } else {
+        alert("Logueo exitoso 😎 ");
+        history.push("/");
+      }
     } catch (error) {
       console.log(error);
       alert("Datos incorrectos");

@@ -1,7 +1,7 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./components/FontawesomeIcons"
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
 import NavbarR from "./components/NavbarR";
 import About from './components/About';
 import RegisterForm from "./components/RegisterForm"
@@ -26,12 +26,9 @@ const localToken = JSON.parse(localStorage.getItem('token'))?.token || "";
 function App() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localToken);
-  const [usuarioID, setUsuario] = useState([]);
-
 
   useEffect(() => {
     if (token) {
-      console.log("useEffect ~ token", token)
       const request = async () => {
         axios.defaults.headers["x-auth-token"] = token
         const { data } = await axios.get('/auth')
@@ -40,14 +37,6 @@ function App() {
       request();
     }
   }, [token])
-
-  useEffect(() => {
-    const getUserID = async () => {
-      const response = await axios.get("/usuarios");
-      setUsuario(response.data);
-    };
-    getUserID();
-  }, []);
 
   const logOut = () => {
     localStorage.removeItem('token');
@@ -89,18 +78,20 @@ function App() {
         <Route path="/perfil">
           <PerfilUsuario user={user} />
         </Route>
-        <Route path="/admin">
-          <NavbarAdmin />
-          <Route path="/admin/admin-usuarios">
-            <AdminUsuarios usuarioID={usuarioID} user={user} />
+        {user.categoryUser && <Route path="/admin">
+          <Route>
+            <NavbarAdmin />
+            <Route path="/admin/admin-usuarios">
+              <AdminUsuarios />
+            </Route>
+            <Route path="/admin/admin-productos">
+              <AdminProductos />
+            </Route>
+            <Route path="/admin/admin-mensajes">
+              <AdminMensajes />
+            </Route>
           </Route>
-          <Route path="/admin/admin-productos">
-            <AdminProductos />
-          </Route>
-          <Route path="/admin/admin-mensajes">
-            <AdminMensajes />
-          </Route>
-        </Route>
+        </Route>}
       </Switch>
       <Footer />
     </Router>

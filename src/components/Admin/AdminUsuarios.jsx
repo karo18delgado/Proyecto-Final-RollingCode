@@ -3,24 +3,32 @@ import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
 
-export default function AdminUsuarios({ usuarioID }) {
+export default function AdminUsuarios() {
   const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [usuario, setUsuario] = useState(null);
 
   const handleCloseBlock = () => setShowBlock(false);
   const handleShowBlock = () => setShowBlock(true);
   const handleCloseInfo = () => setShowInfo(false);
-  const handleShowInfo = () => setShowInfo(true);
+  const handleShowInfo = async (event) => {
+    const userId = event.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${userId}`);
+    setUsuario(fetchedUsuario.data);
+    setShowInfo(true);
+  };
 
   const [usuarios, setUsuarios] = useState([]);
 
   useEffect(() => {
-    const getUsuarios = async () => {
-      const response = await axios.get("/usuarios");
-      setUsuarios(response.data);
-    };
-    getUsuarios();
-  }, []);
+    if (!usuarios.length) {
+      const getUsuarios = async () => {
+        const response = await axios.get("/usuarios");
+        setUsuarios(response.data);
+      };
+      getUsuarios();
+    }
+  }, [usuarios]);
 
   return (
     <div>
@@ -73,6 +81,7 @@ export default function AdminUsuarios({ usuarioID }) {
                   size="sm"
                   className="btn sm btn-warning mx-1"
                   onClick={handleShowInfo}
+                  value={usuario._id}
                 >
                   Más información
                 </Button>
@@ -120,15 +129,17 @@ export default function AdminUsuarios({ usuarioID }) {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>
-                <p>Nombre: {usuarioID.nombre}</p>
-                <p>Apellido: {usuarioID.apellido}</p>
-                <p>Email: {usuarioID.email}</p>
-                <p>Fecha de nacimiento: {usuarioID.fechaNacimiento}</p>
-                <p>Nombre de usuario: {usuarioID.nombreUsuario}</p>
-                <p>Sexo: {usuarioID.sexo}</p>
-                <p>{usuarioID.categoryUser}</p>
-              </Form.Label>
+              {usuario && (
+                <Form.Label>
+                  <p>Nombre: {usuario.nombre}</p>
+                  <p>Apellido: {usuario.apellido}</p>
+                  <p>Email: {usuario.email}</p>
+                  <p>Fecha de nacimiento: {usuario.fechaNacimiento}</p>
+                  <p>Nombre de usuario: {usuario.nombreUsuario}</p>
+                  <p>Sexo: {usuario.sexo}</p>
+                  <p>{usuario.categoryUser}</p>
+                </Form.Label>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
