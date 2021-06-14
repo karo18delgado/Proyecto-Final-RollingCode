@@ -86,7 +86,6 @@ export default function PerfilUsuario({ user, setToken }) {
                 action
                 onClick={handleShow1}
                 style={{ padding: "20px" }}
-                className="itemsPerfil"
               >
               <strong>Nombre:</strong>
               <spam> {user.nombre}</spam>
@@ -155,6 +154,8 @@ export default function PerfilUsuario({ user, setToken }) {
                       controlId="validationCustom02"
                     >
                       <Form.Control
+                        onChange={handleChange}
+                        name="apellido"
                         required
                         type="text"
                         placeholder="Apellidos"
@@ -165,7 +166,7 @@ export default function PerfilUsuario({ user, setToken }) {
                       <Button variant="secondary" onClick={handleClose2}>
                         Close
                       </Button>
-                      <Button variant="primary" onClick={handleClose2}>
+                      <Button variant="primary" onClick={handleClose2} type="submit">
                         Save Changes
                       </Button>
                     </Modal.Footer>
@@ -197,6 +198,8 @@ export default function PerfilUsuario({ user, setToken }) {
                       controlId="validationCustom04"
                     >
                       <Form.Control
+                        onChange={handleChange}
+                        name="fechaNacimiento"
                         type="date"
                         min="1900-01-01"
                         max="2100-12-31"
@@ -212,7 +215,7 @@ export default function PerfilUsuario({ user, setToken }) {
                       <Button variant="secondary" onClick={handleClose3}>
                         Close
                       </Button>
-                      <Button variant="primary" onClick={handleClose3}>
+                      <Button variant="primary" onClick={handleClose3}  type="submit">
                         Save Changes
                       </Button>
                     </Modal.Footer>
@@ -244,6 +247,8 @@ export default function PerfilUsuario({ user, setToken }) {
                       controlId="validationCustom03"
                     >
                       <Form.Control
+                        onChange={handleChange}
+                        name="nombreUsuario"
                         type="text"
                         placeholder="Nombre de usuario"
                         required
@@ -257,7 +262,7 @@ export default function PerfilUsuario({ user, setToken }) {
                   <Button variant="secondary" onClick={handleClose4}>
                     Close
                   </Button>
-                  <Button variant="primary" onClick={handleClose4}>
+                  <Button variant="primary" onClick={handleClose4}  type="submit" >
                     Save Changes
                   </Button>
                 </Modal.Footer>
