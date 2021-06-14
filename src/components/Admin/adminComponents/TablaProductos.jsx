@@ -1,30 +1,69 @@
-import { Button, Form, Modal, Table } from "react-bootstrap";
+import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 
 import "../admin.css";
 
 export default function TablaProductos() {
+  const [productoEdit, setProductoEdit] = useState([]);
+  console.log("🚀 ~ file: TablaProductos.jsx ~ line 9 ~ TablaProductos ~ productoEdit", productoEdit)
+  const [productoInfo, setProductoInfo] = useState(null);
+  // const [productoDelete, setProductoDelete] = useState(null);
 
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  // const [changeDelete, setChangeDelete] = useState(false);
 
   const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = () => setShowEdit(true);
+  const handleShowEdit = async (event) =>{
+    const productoId = event.target.value;
+    const fetchedProducto = await axios.get(`/productos/${productoId}`);
+    console.log("🚀 ~ file: TablaProductos.jsx ~ line 20 ~ handleShowEdit ~ fetchedProducto", fetchedProducto)
+    setProductoEdit(fetchedProducto.data);
+    setShowEdit(true);
+};
   const handleCloseInfo = () => setShowInfo(false);
-  const handleShowInfo = () => setShowInfo(true);
+  const handleShowInfo = async (event) =>{
+    const productoId = event.target.value;
+    const fetchedProducto = await axios.get(`/productos/${productoId}`);
+    setProductoInfo(fetchedProducto.data);
+    setShowInfo(true);
+};
+
+// const handleChangeDelete = async (event) =>{
+//   const productoId = event.target.value;
+//   const fetchedProducto = await axios.get(`/productos/${productoId}`);
+//   setProductoDelete(fetchedProducto.data);
+//   setChangeDelete(true);
+// };
 
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
+    if (!productos.length) {
       const getProductos = async () => {
           const response = await axios.get(`/productos`);
           setProductos(response.data);
       };
 
       getProductos();
-  }, []);
+    }
+  }, [productos]);
 
+  // EDITAR
+
+  const handleChange = (event) => {
+    const { value, name } = event.target;
+    const newInput = { ...productoEdit, [name]: value };
+    setProductoEdit(newInput);
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const producto = productoEdit;
+    await axios.put("/productos", producto);
+    alert('Producto editado con éxito!😁');
+  };
 
   return (
     <>
@@ -63,6 +102,7 @@ export default function TablaProductos() {
                 size="sm"
                 className="btn sm btn-success mx-1"
                 onClick={handleShowEdit}
+                value={producto._id}
               >
                 Editar
               </Button>
@@ -70,10 +110,11 @@ export default function TablaProductos() {
                 size="sm"
                 className="btn sm btn-warning mx-1"
                 onClick={handleShowInfo}
+                value={producto._id}
               >
                 Más información
               </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1">
+              <Button size="sm" className="btn sm btn-danger mx-1" value={producto._id}>
                 Eliminar
               </Button>
             </td>
@@ -90,26 +131,37 @@ export default function TablaProductos() {
           <Modal.Title>Editar producto</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form>
+          <Form  noValidate
+              onSubmit={handleSubmit}>
             <Form.Group controlId="exampleForm.SelectCustom">
+            <strong>Nombre:</strong>
               <Form.Control
+              name="nombre"
+                onChange={handleChange}
                 type="text"
-                placeholder="iPhone 12 Pro"
+                placeholder={productoEdit.nombre}
               ></Form.Control>
-              {/* <Form.Control type="text">
-                El iPhone en su máxima expresión
-              </Form.Control>
-              <Form.Control type="text">$271000</Form.Control>
-              <Form.Control type="text">6.1" o 6.7"</Form.Control>
-              <Form.Control type="text">Red 5G</Form.Control>
-              <Form.Control type="text">
-                A14 Bionic chip. Fastest chip in a smartphone
-              </Form.Control>
-              <Form.Control type="text">128GB - 256GB - 512gb</Form.Control>
-              <Form.Control type="text">
-                Pro camera system. Ultra Wide, Wide, Telephoto
-              </Form.Control> */}
-              <Form.Control as="select" custom>
+            <strong>Descripcion:</strong>
+              <Form.Control
+              name="descripcion"
+                onChange={handleChange}
+                type="text"
+                placeholder={productoEdit.descripcion}
+              ></Form.Control>            
+              <strong>Precio:</strong>
+              <InputGroup hasValidation className="form-productos-control">
+                <InputGroup.Prepend>
+                  <InputGroup.Text id="inputGroupPrepend">$</InputGroup.Text>
+                </InputGroup.Prepend>
+              <Form.Control
+              name="precio"
+                onChange={handleChange}
+                type="text"
+                placeholder={productoEdit.precio}
+              ></Form.Control>
+                </InputGroup>
+              <strong>Categoria:</strong>
+              <Form.Control name="categoria" as="select" custom onChange={handleChange}>
                 <option>Mac</option>
                 <option>iPad</option>
                 <option>iPhone</option>
@@ -121,7 +173,7 @@ export default function TablaProductos() {
           <Button variant="secondary" onClick={handleCloseEdit}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleCloseEdit}>
+          <Button variant="primary" onClick={handleCloseEdit} type="submit">
             Guardar cambios
           </Button>
         </Modal.Footer>
@@ -136,14 +188,19 @@ export default function TablaProductos() {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>
-                <p>Nombre: Mark</p>
-                <p>Apellido: Otto</p>
-                <p>Email: @mdo</p>
-                <p>Fecha de nacimiento: 01/01/1995</p>
-                <p>Nombre de usuario: </p>
-                <p>Sexo: Masculino</p>
-              </Form.Label>
+            {productoInfo && (
+                <Form.Label>
+                  <p>Nombre: {productoInfo.nombre}</p>
+                  <p>Descripcion: {productoInfo.descripcion}</p>
+                  <p>Precio: {productoInfo.precio}</p>
+                  <p>Pantalla: {productoInfo.pantalla}</p>
+                  <p>Redes: {productoInfo.redes}</p>
+                  <p>Procesador: {productoInfo.procesasdor}</p>
+                  <p>Almacenamiento: {productoInfo.almacenamiento}</p>
+                  <p>Camara: {productoInfo.camara}</p>
+                  <p>Categoria: {productoInfo.categoria}</p>
+                </Form.Label>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
@@ -151,9 +208,7 @@ export default function TablaProductos() {
           <Button variant="secondary" onClick={handleCloseInfo}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleCloseInfo}>
-            Guardar cambios
-          </Button>
+
         </Modal.Footer>
       </Modal>
 
