@@ -33,7 +33,6 @@ function App() {
       const request = async () => {
         axios.defaults.headers["x-auth-token"] = token
         const { data } = await axios.get('/auth')
-        
         setUser(data);
       };
       request();
