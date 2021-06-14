@@ -2,14 +2,22 @@ import { useState } from "react";
 import "../assets/shoppingcart.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function ContadorShop() {
-  const [counter, setCounter] = useState(1);
+export default function ContadorShop({cantidad,id}) {
+  const [counter, setCounter] = useState(cantidad);
   const addCounter = () => {
     setCounter(counter + 1);
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const encontrado = carrito.find(item => item.id===id);
+    encontrado.cantidad = counter +1 ;
+    localStorage.setItem("carrito", JSON.stringify(carrito));
   };
   const extractCounter = () => {
     if (counter > 1) {
       setCounter(counter - 1);
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const encontrado = carrito.find(item => item.id===id);
+      encontrado.cantidad = counter -1 ;
+      localStorage.setItem("carrito", JSON.stringify(carrito));
     }
   };
 
