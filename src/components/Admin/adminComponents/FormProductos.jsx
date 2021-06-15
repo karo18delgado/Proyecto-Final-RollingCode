@@ -60,7 +60,6 @@ const handleChange = (e) => {
               <Form.Control
                 name="estado"
                 onChange={(e) => handleChange(e)}
-                required
                 type="text"
                 className="form-productos-control"
               />
@@ -71,7 +70,6 @@ const handleChange = (e) => {
               <Form.Control
                 name="descripcion"
                 onChange={(e) => handleChange(e)}
-                required
                 type="text"
                 className="form-productos-control"
               />
@@ -104,7 +102,6 @@ const handleChange = (e) => {
                 name="pantalla"
                 onChange={(e) => handleChange(e)}
                 type="text"
-                required
                 className="form-productos-control"
               />
               <Form.Control.Feedback type="invalid">
@@ -116,7 +113,6 @@ const handleChange = (e) => {
               <Form.Control
                 name="pantallaDescripcion"
                 onChange={(e) => handleChange(e)}
-                required
                 type="text"
                 className="form-productos-control"
               />
@@ -154,12 +150,21 @@ const handleChange = (e) => {
                 name="almacenamiento"
                 onChange={(e) => handleChange(e)}
                 type="text"
-                
                 className="form-productos-control"
               />
               <Form.Control.Feedback type="invalid">
                 Ingrese un tamaño de almacenamiento.
               </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="4" controlId="validationCustom02">
+              <Form.Label>Descripción almacenamiento</Form.Label>
+              <Form.Control
+                name="almacenamientoDescripcion"
+                onChange={(e) => handleChange(e)}
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group md="3" controlId="validationCustom05">
               <Form.Label>Cámaras</Form.Label>
@@ -181,12 +186,61 @@ const handleChange = (e) => {
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
+            <Form.Group md="3" controlId="validationCustom04">
+              <Form.Label>Conector</Form.Label>
+              <Form.Control
+                name="conector"
+                onChange={(e) => handleChange(e)}
+                type="text"
+                
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback type="invalid">
+                Ingrese un tipo de conector.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="3" controlId="validationCustom04">
+              <Form.Label>Conector descripcion</Form.Label>
+              <Form.Control
+                name="conectorDescripcion"
+                onChange={(e) => handleChange(e)}
+                type="text"
+                
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback type="invalid">
+                Ingrese un tipo de conector.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="3" controlId="validationCustom04">
+              <Form.Label>Bateria</Form.Label>
+              <Form.Control
+                name="bateria"
+                onChange={(e) => handleChange(e)}
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback type="invalid">
+                Ingrese un tamaño de bateria.
+              </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="4" controlId="validationCustom02">
+              <Form.Label>Descripción bateria</Form.Label>
+              <Form.Control
+                name="bateriaDescripcion"
+                onChange={(e) => handleChange(e)}
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
             <Form.Group
               controlId="exampleForm.SelectCustom"
               className="form-productos-control"
             >
               <Form.Label>Custom select</Form.Label>
               <Form.Control name="categoria" onChange={(e) => handleChange(e)} as="select" custom required>
+                <option>Selecciona una opcion</option>
                 <option>Mac</option>
                 <option>iPad</option>
                 <option>iPhone</option>

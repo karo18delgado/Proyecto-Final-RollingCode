@@ -1,68 +1,79 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import "../assets/cards.css";
-import Mac from "./Mac";
-import { useState } from "react";
+import Ipad from "./Ipad";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-const articulos = [
-  {
-    image:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_pro__erf9x8mw04sy_large.png",
-    titulo: "iPad Pro",
-    estado: "Nuevo",
-    subtitulo: "",
-    precio: "$139.999",
-    pantalla: "12.9 y 11 pulgadas",
-    subpantalla: "Pantalla Liquid Retina XDR",
-    procesador:
-      "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_m1__fz8nzgohw2ai_large_2x.png",
-    subprocesador: "Chip M1 Apple",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
-    subred: "Compatible con 5G",
-    conector:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_usbc_thunderbolt__fuat6j3gyc2u_large_2x.png",
-    subconector: "Conector USB-C compatible con Thunderbolt/USB 4",
-  },
-  {
-    image:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_air__bxjv33pk6nte_large.png",
-    titulo: "iPad Air",
-    estado: "Nuevo",
-    subtitulo: "",
-    precio: "$149.999",
-    pantalla: "10.9 pulgadas",
-    subpantalla: "Pantalla Liquid Retina",
-    procesador:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_a14_chip__eflvurt7ywia_large_2x.png",
-    subprocesador: "Chip A14 Bionic",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
-    subred: "Compatible con 4G",
-    conector:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_usbc__gnv70qm6mcuq_large_2x.png",
-    subconector: "Conector USB-C",
-  },
-  {
-    image:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_10_2__fwgwy7jydtea_large.png",
-    titulo: "iPad",
-    estado: "",
-    subtitulo: "",
-    precio: "$145.000",
-    pantalla: "10.2 pulgadas",
-    subpantalla: "Pantalla Retina",
-    procesador:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_a12_chip__f4cnj28qh5qq_large_2x.png",
-    subprocesador: "Chip A12 Bionic",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
-    subred: "Compatible con 4G",
-    conector:
-      "https://www.apple.com/v/ipad/home/bm/images/overview/compare_lightning__drp7mpo3oyie_large_2x.png",
-    subconector: "Conector Lightning",
-  },
-];
+// const articulos = [
+//   {
+//     image:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_pro__erf9x8mw04sy_large.png",
+//     titulo: "iPad Pro",
+//     estado: "Nuevo",
+//     subtitulo: "",
+//     precio: "$139.999",
+//     pantalla: "12.9 y 11 pulgadas",
+//     subpantalla: "Pantalla Liquid Retina XDR",
+//     procesador:
+//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_m1__fz8nzgohw2ai_large_2x.png",
+//     subprocesador: "Chip M1 Apple",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
+//     subred: "Compatible con 5G",
+//     conector:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_usbc_thunderbolt__fuat6j3gyc2u_large_2x.png",
+//     subconector: "Conector USB-C compatible con Thunderbolt/USB 4",
+//   },
+//   {
+//     image:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_air__bxjv33pk6nte_large.png",
+//     titulo: "iPad Air",
+//     estado: "Nuevo",
+//     subtitulo: "",
+//     precio: "$149.999",
+//     pantalla: "10.9 pulgadas",
+//     subpantalla: "Pantalla Liquid Retina",
+//     procesador:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_a14_chip__eflvurt7ywia_large_2x.png",
+//     subprocesador: "Chip A14 Bionic",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
+//     subred: "Compatible con 4G",
+//     conector:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_usbc__gnv70qm6mcuq_large_2x.png",
+//     subconector: "Conector USB-C",
+//   },
+//   {
+//     image:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_ipad_10_2__fwgwy7jydtea_large.png",
+//     titulo: "iPad",
+//     estado: "",
+//     subtitulo: "",
+//     precio: "$145.000",
+//     pantalla: "10.2 pulgadas",
+//     subpantalla: "Pantalla Retina",
+//     procesador:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_a12_chip__f4cnj28qh5qq_large_2x.png",
+//     subprocesador: "Chip A12 Bionic",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
+//     subred: "Compatible con 4G",
+//     conector:
+//       "https://www.apple.com/v/ipad/home/bm/images/overview/compare_lightning__drp7mpo3oyie_large_2x.png",
+//     subconector: "Conector Lightning",
+//   },
+// ];
 
 export default function CardsIphone() {
-  const [articles, setArticles] = useState(articulos);
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    if (!productos.length) {
+      const getProductos = async () => {
+          const response = await axios.get(`/productos`);
+          setProductos(response.data);
+      };
+
+      getProductos();
+    }
+  }, [productos]);
 
   return (
     <div>
@@ -84,8 +95,8 @@ export default function CardsIphone() {
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">
-        {articles.map((art) => (
-          <Mac art={art} />
+      {productos.map((producto) => producto.categoria ==='iPad' && (
+          <Ipad producto={producto} />
         ))}
       </div>
       <div className="bg-gris">

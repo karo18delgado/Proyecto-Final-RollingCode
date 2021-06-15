@@ -5,7 +5,7 @@ import "../assets/cards.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cards({ art }) {
+export default function Cards({ producto }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -18,14 +18,19 @@ export default function Cards({ art }) {
           className=" m-auto style-card"
           style={{ width: "18rem" }}
         >
-          <Card.Img className=" m-auto" variant="top" src={art.image} />
+          <Card.Img
+            className=" m-auto"
+            variant="top"
+            style={{ width: "150px", height: "210px" }}
+            src={producto.urlImage}
+          />
           <Card.Body className="card-container">
-            <Card.Text className="text-naranja">{art.estado}</Card.Text>
+            <Card.Text className="text-naranja">{producto.estado}</Card.Text>
             <Card.Title className="titulo-card">
-              <h3>{art.titulo}</h3>
+              <h3>{producto.nombre}</h3>
             </Card.Title>
-            <Card.Text className="text-encabezado">{art.subtitulo}</Card.Text>
-            <Card.Text className="text-precio">{art.precio}</Card.Text>
+            <Card.Text className="text-encabezado">{producto.descripcion}</Card.Text>
+            <Card.Text className="text-precio">{producto.precio}</Card.Text>
           </Card.Body>
           <Card.Body>
           <Button
@@ -49,33 +54,34 @@ export default function Cards({ art }) {
           <Collapse in={open}>
             <div id="example-collapse-text">
               <hr class="hr-articulos" />
-              <Card.Body>
+              <Card.Body className="text-center">
                 <Card.Text className="text-encabezado">
-                  {art.pantalla}
+                  {producto.pantalla}
                 </Card.Text>
-                <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
+                <Card.Text className="text-precio">{producto.pantallaDescripcion}</Card.Text>
                 <Card.Img
-                  className="mt-3 m-auto"
+                  className=" mt-3 m-auto"
                   variant="top"
                   style={{ width: "45px", height: "40px" }}
-                  src={art.procesador}
+                  src="https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_m1__fz8nzgohw2ai_large_2x.png"
                 />
                 <Card.Text className="text-precio">
-                  {art.subprocesador}
+                  {producto.procesador}
                 </Card.Text>
                 <Card.Img
                   className="mt-3 m-auto"
                   variant="top"
-                  style={{ width: "50px", height: "40px" }}
-                  src={art.bateria}
-                />{" "}
-                <Card.Text className="text-precio">{art.subbateria}</Card.Text>
-                <Card.Text className="mt-3 text-encabezado">
-                  {art.almacenamiento}
-                </Card.Text>
-                <Card.Text className="text-precio">
-                  {art.subalmacenamiento}
-                </Card.Text>
+                  style={{ width: "40px", height: "36px" }}
+                  src="https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png"
+                />
+                <Card.Text className="text-precio">{producto.redes}</Card.Text>
+                <Card.Img
+                  className="mt-3 m-auto"
+                  variant="top"
+                  style={{ width: "50px", height: "25px" }}
+                  src="https://www.apple.com/v/ipad/home/bm/images/overview/compare_usbc_thunderbolt__fuat6j3gyc2u_large_2x.png"
+                />
+                <Card.Text className="text-precio">{producto.conectorDescripcion}</Card.Text>
               </Card.Body>
             </div>
           </Collapse>

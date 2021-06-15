@@ -190,23 +190,28 @@ export default function TablaProductos() {
             <Form.Group controlId="exampleForm.SelectCustom">
             {productoInfo && (
                 <Form.Label>
-                  <p>Nombre: {productoInfo.nombre}</p>
+                  <p><strong>Nombre:</strong> {productoInfo.nombre}</p>
                   <p><img
                         src={productoInfo.urlImage}
                         alt=""
                         
                     /></p>
-                  <p>Descripcion: {productoInfo.descripcion}</p>
-                  <p>Estado: {productoInfo.estado}</p>
-                  <p>Precio: {productoInfo.precio}</p>
-                  <p>Pantalla: {productoInfo.pantalla}</p>
-                  <p>Pantalla descripcion: {productoInfo.pantallaDescripcion}</p>
-                  <p>Redes: {productoInfo.redes}</p>
-                  <p>Procesador: {productoInfo.procesasdor}</p>
-                  <p>Almacenamiento: {productoInfo.almacenamiento}</p>
-                  <p>Camara: {productoInfo.camara}</p>
-                  <p>Camara descripcion: {productoInfo.camaraDescripcion}</p>
-                  <p>Categoria: {productoInfo.categoria}</p>
+                  <p><strong>Descripcion:</strong> {productoInfo.descripcion}</p>
+                  <p><strong>Estado:</strong> {productoInfo.estado}</p>
+                  <p><strong>Precio:</strong> {productoInfo.precio}</p>
+                  <p><strong>Pantalla:</strong> {productoInfo.pantalla}</p>
+                  <p><strong>Pantalla descripcion:</strong> {productoInfo.pantallaDescripcion}</p>
+                  <p><strong>Redes:</strong> {productoInfo.redes}</p>
+                  <p><strong>Procesador:</strong> {productoInfo.procesasdor}</p>
+                  <p><strong>Almacenamiento:</strong> {productoInfo.almacenamiento}</p>
+                  <p><strong>Almacenamiento descripcion:</strong> {productoInfo.almacenamientoDescripcion}</p>
+                  <p><strong>Camara:</strong> {productoInfo.camara}</p>
+                  <p><strong>Camara descripcion:</strong> {productoInfo.camaraDescripcion}</p>
+                  <p><strong>Bateria:</strong> {productoInfo.bateria}</p>
+                  <p><strong>Bateria descripcion:</strong> {productoInfo.bateriaDescripcion}</p>
+                  <p><strong>Conector:</strong> {productoInfo.conector}</p>
+                  <p><strong>Conector descripcion:</strong> {productoInfo.conectorDescripcion}</p>
+                  <p><strong>Categoria:</strong> {productoInfo.categoria}</p>
                 </Form.Label>
               )}
             </Form.Group>

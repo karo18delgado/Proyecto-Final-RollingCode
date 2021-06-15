@@ -78,7 +78,7 @@ function App() {
         <Route path="/perfil">
           <PerfilUsuario user={user} />
         </Route>
-        {user.categoryUser && <Route path="/admin">
+<Route path="/admin">
           <Route>
             <NavbarAdmin />
             <Route path="/admin/admin-usuarios">
@@ -91,7 +91,7 @@ function App() {
               <AdminMensajes />
             </Route>
           </Route>
-        </Route>}
+        </Route>
       </Switch>
       <Footer />
     </Router>

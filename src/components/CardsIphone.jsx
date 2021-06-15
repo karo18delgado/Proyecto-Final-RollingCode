@@ -88,7 +88,7 @@ export default function CardsIphone() {
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">
-        {productos.map((producto) => (
+        {productos.map((producto) => producto.categoria ==='iPhone' && (
           <Iphone producto={producto} />
         ))}
       </div>
