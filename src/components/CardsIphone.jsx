@@ -1,62 +1,73 @@
-import React from "react";
 import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Iphone from "./Iphone";
-import { useState } from "react";
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
-const articulos = [
-  {
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;.v=1604021663000",
-    titulo: "iPhone 12 Pro",
-    estado: "Nuevo",
-    subtitulo: "El iPhone en su máxima expresión",
-    precio: "$270.999",
-    pantalla: "6.1 o 6.7 pulgadas",
-    subpantalla: "Pantalla Super Retina XDR",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
-    subred: "Compatible con 5G",
-    iconocamara:
-      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_triple_camera__e6vgz42wpwom_large_2x.png",
-    camara: "Sistema de cámaras Pro",
-    subcamara: "(ultra gran angular, gran angular y teleobjetivo)",
-  },
-  {
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;.v=1617135051000",
-    titulo: "iPhone 12",
-    estado: "Nuevo",
-    subtitulo: "Superpoderoso.",
-    precio: "$220.999",
-    pantalla: "5.4 o 6.1 pulgadas",
-    subpantalla: "Pantalla Super Retina XDR",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
-    subred: "Compatible con 5G",
-    iconocamara:
-      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_dual_camera__gdty7h2x33yq_large_2x.png",
-    camara: "Sistema avanzado de dos cámaras",
-    subcamara: "(ultra gran angular y gran angular)",
-  },
-  {
-    image:
-      "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-family-select-2020?wid=441&amp;hei=529&amp;fmt=jpeg&amp;qlt=95&amp;.v=1586794486444",
-    titulo: "iPhone SE",
-    estado: "",
-    subtitulo: "Un iPhone increíble. Por menos.",
-    precio: "$120.999",
-    pantalla: "4.7 pulgadas",
-    subpantalla: "Pantalla Retina HD",
-    red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
-    subred: "Compatible con 4G",
-    iconocamara:
-      "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_single_camera__c8fs0xdplqy6_large_2x.png",
-    camara: "Sistema de cámara única",
-    subcamara: "(gran angular)",
-  },
-];
+// const articulos = [
+//   {
+//     image:
+//       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-pro-family-hero?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;.v=1604021663000",
+//     titulo: "iPhone 12 Pro",
+//     estado: "Nuevo",
+//     subtitulo: "El iPhone en su máxima expresión",
+//     precio: "$270.999",
+//     pantalla: "6.1 o 6.7 pulgadas",
+//     subpantalla: "Pantalla Super Retina XDR",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
+//     subred: "Compatible con 5G",
+//     iconocamara:
+//       "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_triple_camera__e6vgz42wpwom_large_2x.png",
+//     camara: "Sistema de cámaras Pro",
+//     subcamara: "(ultra gran angular, gran angular y teleobjetivo)",
+//   },
+//   {
+//     image:
+//       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-12-family-select-2021?wid=470&amp;hei=556&amp;fmt=jpeg&amp;qlt=95&amp;.v=1617135051000",
+//     titulo: "iPhone 12",
+//     estado: "Nuevo",
+//     subtitulo: "Superpoderoso.",
+//     precio: "$220.999",
+//     pantalla: "5.4 o 6.1 pulgadas",
+//     subpantalla: "Pantalla Super Retina XDR",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png",
+//     subred: "Compatible con 5G",
+//     iconocamara:
+//       "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_dual_camera__gdty7h2x33yq_large_2x.png",
+//     camara: "Sistema avanzado de dos cámaras",
+//     subcamara: "(ultra gran angular y gran angular)",
+//   },
+//   {
+//     image:
+//       "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/iphone-se-family-select-2020?wid=441&amp;hei=529&amp;fmt=jpeg&amp;qlt=95&amp;.v=1586794486444",
+//     titulo: "iPhone SE",
+//     estado: "",
+//     subtitulo: "Un iPhone increíble. Por menos.",
+//     precio: "$120.999",
+//     pantalla: "4.7 pulgadas",
+//     subpantalla: "Pantalla Retina HD",
+//     red: "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_4g__eh3wh0hlt7ue_large_2x.png",
+//     subred: "Compatible con 4G",
+//     iconocamara:
+//       "https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_single_camera__c8fs0xdplqy6_large_2x.png",
+//     camara: "Sistema de cámara única",
+//     subcamara: "(gran angular)",
+//   },
+// ];
 
 export default function CardsIphone() {
-  const [articles, setArticles] = useState(articulos);
+  const [productos, setProductos] = useState([]);
+
+  useEffect(() => {
+    if (!productos.length) {
+      const getProductos = async () => {
+          const response = await axios.get(`/productos`);
+          setProductos(response.data);
+      };
+
+      getProductos();
+    }
+  }, [productos]);
 
   return (
     <div>
@@ -77,8 +88,8 @@ export default function CardsIphone() {
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">
-        {articles.map((art) => (
-          <Iphone art={art} />
+        {productos.map((producto) => (
+          <Iphone producto={producto} />
         ))}
       </div>
       <div className="bg-gris">

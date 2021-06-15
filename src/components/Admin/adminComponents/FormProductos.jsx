@@ -44,6 +44,28 @@ const handleChange = (e) => {
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
+            <Form.Group md="4" controlId="validationCustom01">
+              <Form.Label>Imagen</Form.Label>
+              <Form.Control
+                name="urlImage"
+                onChange={(e) => handleChange(e)}
+                required
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="4" controlId="validationCustom02">
+              <Form.Label>Estado</Form.Label>
+              <Form.Control
+                name="estado"
+                onChange={(e) => handleChange(e)}
+                required
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
+            </Form.Group>
             <Form.Group md="4" controlId="validationCustom02">
               <Form.Label>Descripción breve</Form.Label>
               <Form.Control
@@ -88,6 +110,17 @@ const handleChange = (e) => {
               <Form.Control.Feedback type="invalid">
                 Ingrese un valor de tamaño de pantalla.
               </Form.Control.Feedback>
+            </Form.Group>
+            <Form.Group md="4" controlId="validationCustom02">
+              <Form.Label>Descripción pantalla</Form.Label>
+              <Form.Control
+                name="pantallaDescripcion"
+                onChange={(e) => handleChange(e)}
+                required
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group md="3" controlId="validationCustom04">
               <Form.Label>Redes/Tecnología</Form.Label>
@@ -136,6 +169,17 @@ const handleChange = (e) => {
                 type="text"
                 className="form-productos-control"
               />
+            </Form.Group>
+            <Form.Group md="4" controlId="validationCustom02">
+              <Form.Label>Descripción camara</Form.Label>
+              <Form.Control
+                name="camaraDescripcion"
+                onChange={(e) => handleChange(e)}
+
+                type="text"
+                className="form-productos-control"
+              />
+              <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
             <Form.Group
               controlId="exampleForm.SelectCustom"

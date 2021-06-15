@@ -52,8 +52,8 @@ export default function TablaProductos() {
 
   // EDITAR
 
-  const handleChange = (event) => {
-    const { value, name } = event.target;
+  const handleChange = (e) => {
+    const { value, name } = e.target;
     const newInput = { ...productoEdit, [name]: value };
     setProductoEdit(newInput);
   };
@@ -137,7 +137,7 @@ export default function TablaProductos() {
             <strong>Nombre:</strong>
               <Form.Control
               name="nombre"
-                onChange={handleChange}
+              onChange={(e) => handleChange(e)}
                 type="text"
                 placeholder={productoEdit.nombre}
               ></Form.Control>
@@ -191,13 +191,21 @@ export default function TablaProductos() {
             {productoInfo && (
                 <Form.Label>
                   <p>Nombre: {productoInfo.nombre}</p>
+                  <p><img
+                        src={productoInfo.urlImage}
+                        alt=""
+                        
+                    /></p>
                   <p>Descripcion: {productoInfo.descripcion}</p>
+                  <p>Estado: {productoInfo.estado}</p>
                   <p>Precio: {productoInfo.precio}</p>
                   <p>Pantalla: {productoInfo.pantalla}</p>
+                  <p>Pantalla descripcion: {productoInfo.pantallaDescripcion}</p>
                   <p>Redes: {productoInfo.redes}</p>
                   <p>Procesador: {productoInfo.procesasdor}</p>
                   <p>Almacenamiento: {productoInfo.almacenamiento}</p>
                   <p>Camara: {productoInfo.camara}</p>
+                  <p>Camara descripcion: {productoInfo.camaraDescripcion}</p>
                   <p>Categoria: {productoInfo.categoria}</p>
                 </Form.Label>
               )}

@@ -5,7 +5,7 @@ import "../assets/cards.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cards({ art }) {
+export default function Cards({ producto }) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -21,15 +21,15 @@ export default function Cards({ art }) {
           <Card.Img
             className="card-recorte m-auto"
             variant="top"
-            src={art.image}
+            src={producto.urlImage}
           />
           <Card.Body className="card-container">
-            <Card.Text className="text-naranja">{art.estado}</Card.Text>
+            <Card.Text className="text-naranja">{producto.estado}</Card.Text>
             <Card.Title className="titulo-card">
-              <h3>{art.titulo}</h3>
+              <h3>{producto.nombre}</h3>
             </Card.Title>
-            <Card.Text className="text-encabezado">{art.subtitulo}</Card.Text>
-            <Card.Text className="text-precio">{art.precio}</Card.Text>
+            <Card.Text className="text-encabezado">{producto.descripcion}</Card.Text>
+            <Card.Text className="text-precio">{producto.precio}</Card.Text>
           </Card.Body>
           <Card.Body>
           <Button
@@ -55,24 +55,24 @@ export default function Cards({ art }) {
               <hr className="hr-articulos" />
               <Card.Body>
                 <Card.Text className="text-encabezado">
-                  {art.pantalla}
+                  {producto.pantalla}
                 </Card.Text>
-                <Card.Text className="text-precio">{art.subpantalla}</Card.Text>
+                <Card.Text className="text-precio">{producto.pantallaDescripcion}</Card.Text>
                 <Card.Img
                   className="mt-3 m-auto"
                   variant="top"
                   style={{ width: "40px", height: "36px" }}
-                  src={art.red}
+                  src="https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_5g__ew2qs88wie4i_large_2x.png"
                 />
-                <Card.Text className="text-encabezado">{art.subred}</Card.Text>
+                <Card.Text className="text-encabezado">{producto.redes}</Card.Text>
                 <Card.Img
                   className="mt-3 m-auto"
                   variant="top"
                   style={{ width: "54px", height: "58px" }}
-                  src={art.iconocamara}
+                  src="https://www.apple.com/v/iphone/home/ax/images/overview/compare/icon_triple_camera__e6vgz42wpwom_large_2x.png"
                 />
-                <Card.Text className="text-encabezado">{art.camara}</Card.Text>
-                <Card.Text className="text-precio">{art.subcamara}</Card.Text>
+                <Card.Text className="text-encabezado">{producto.camara}</Card.Text>
+                <Card.Text className="text-precio">{producto.camaraDescripcion}</Card.Text>
               </Card.Body>
             </div>
           </Collapse>
