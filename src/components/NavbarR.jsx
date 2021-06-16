@@ -1,13 +1,12 @@
 import "../assets/font.css";
 import "../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Button, Badge } from "react-bootstrap";
 
 const title = <FontAwesomeIcon icon="user"></FontAwesomeIcon>;
 
-export default function NavbarR({ userName, logOut }) {
+export default function NavbarR({ userName, logOut}) {
   const location = useLocation();
   const { pathname } = location;
   if (pathname.includes("/admin")) return null;
@@ -108,6 +107,11 @@ export default function NavbarR({ userName, logOut }) {
               </NavDropdown.Item>
             </NavDropdown>
           )}
+    <Button to="/carrito"
+        as={NavLink} variant="primary">
+        Carrito <Badge variant="light">0</Badge>
+        <span className="sr-only">unread messages</span>
+      </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
