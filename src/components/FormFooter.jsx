@@ -18,7 +18,9 @@ export default function FormFooter() {
             // Consulta post a /mensaje
             await axios.post('auth/mensaje', input);
             alert('Mensaje enviado con éxito');
+            setValidated(false);  
             form.reset();
+            window.location.href = "/";
         } catch (error) {
             console.log(error);
         }

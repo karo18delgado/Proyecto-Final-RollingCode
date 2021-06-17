@@ -19,19 +19,17 @@ export default function AdminMensajes() {
     setShowInfo(true);
   };
 
-  const handleDelete = async (event) => {
-    const mensajeId = event.target.value;
-    const fetchedMensaje = await axios.delete(`/auth/mensaje/${mensajeId}`);
-    setMensaje(fetchedMensaje.data);
-    /* setShowInfo(true); */
-  };
-
+  
   const [mensajes, setMensajes] = useState([]);
+  
+  const recibirMensajes = async () => {
+    const response = await axios.get("/auth/mensaje");
+    setMensajes(response.data);
+  };
+  
+  
   useEffect(() => {
-      const recibirMensajes = async () => {
-        const response = await axios.get("/auth/mensaje");
-        setMensajes(response.data);
-      };
+    
       recibirMensajes();
   }, []);
   const [input, setInput] = useState({});
@@ -39,6 +37,17 @@ export default function AdminMensajes() {
     const { value, name } = event.target;
     const newInput = { ...input, [name]: value };
     setInput(newInput);
+  };
+  
+  const handleDelete = async (event) => {
+    const mensajeId = event.target.value;
+    const confirma = window.confirm('Desea eliminar?');
+    if (confirma){
+    /* const fetchedMensaje = */ await axios.delete(`/auth/mensaje/${mensajeId}`);
+    /* setMensaje(fetchedMensaje.data); */
+    /* setShowInfo(true); */
+    recibirMensajes();
+  }
   };
 
 
