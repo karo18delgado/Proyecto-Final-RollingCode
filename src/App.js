@@ -26,6 +26,28 @@ const localToken = JSON.parse(localStorage.getItem('token'))?.token || "";
 function App() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localToken);
+  const [productosCarrito, setproductosCarrito] = useState([]);
+
+  useEffect(() => {
+    const getProductos = async () => {
+      let productosCarrito = [];
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      console.log("getProductos ~ carrito", carrito);
+      for (let i = 0; i < carrito.length; i++) {
+        const itemCarrito = carrito[i];
+        const response = await axios.get(
+          `/productos/${itemCarrito.productoId}`
+        );
+        productosCarrito.push({
+          producto: response.data,
+          cantidad: itemCarrito.cantidad,
+        });
+      }
+      setproductosCarrito(productosCarrito);
+    };
+    getProductos();
+  }, []);
+
 
   useEffect(() => {
     if (token) {
@@ -40,8 +62,10 @@ function App() {
 
   const logOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('carrito');
     setUser({});
     setToken('');
+    window.location.href = '/';
   }
 
   return (
@@ -49,7 +73,7 @@ function App() {
       <Route>
         <ScrollToTop></ScrollToTop>
       </Route>
-      <NavbarR userName={user.nombre} logOut={logOut} />
+      <NavbarR userName={user.nombre} logOut={logOut} cantidadCarrito={productosCarrito.length} />
       <Switch>
         <Route path="/about">
           <About />
@@ -58,7 +82,7 @@ function App() {
           <Landing />
         </Route>
         <Route path="/iPhone">
-          <CardsIphone />
+          <CardsIphone setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/Mac">
           <CardsMac />
@@ -67,7 +91,7 @@ function App() {
           <CardsIpad />
         </Route>
         <Route path="/carrito">
-          <ShoppingCart setToken={token} />
+          <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />

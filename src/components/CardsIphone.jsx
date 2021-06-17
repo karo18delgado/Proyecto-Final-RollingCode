@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Iphone from "./Iphone";
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 // const articulos = [
 //   {
@@ -55,14 +55,14 @@ import React, { useEffect, useState } from 'react';
 //   },
 // ];
 
-export default function CardsIphone() {
+export default function CardsIphone({ setproductosCarrito }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     if (!productos.length) {
       const getProductos = async () => {
-          const response = await axios.get(`/productos`);
-          setProductos(response.data);
+        const response = await axios.get(`/productos`);
+        setProductos(response.data);
       };
 
       getProductos();
@@ -80,7 +80,11 @@ export default function CardsIphone() {
           </Button>
         </div>
         <div className="bg-blanco text-center">
-          <img className="img-fluid" src="https://www.apple.com/mx/iphone/home/images/overview/hero/iphone_12__d51ddqcc7oqe_large_2x.jpg" alt="" />
+          <img
+            className="img-fluid"
+            src="https://www.apple.com/mx/iphone/home/images/overview/hero/iphone_12__d51ddqcc7oqe_large_2x.jpg"
+            alt=""
+          />
         </div>
       </div>
       <div className="text-center pt-5">
@@ -88,9 +92,15 @@ export default function CardsIphone() {
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">
-        {productos.map((producto) => producto.categoria ==='iPhone' && (
-          <Iphone producto={producto} />
-        ))}
+        {productos.map(
+          (producto) =>
+            producto.categoria === "iPhone" && (
+              <Iphone
+                producto={producto}
+                setproductosCarrito={setproductosCarrito}
+              />
+            )
+        )}
       </div>
       <div className="bg-gris">
         {/* Tarjeta Banner 1 */}
@@ -108,7 +118,11 @@ export default function CardsIphone() {
               </p>
             </div>
             <div className="bg-blanco">
-               <img className="img-fluid" src="https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg" alt="" />
+              <img
+                className="img-fluid"
+                src="https://stuff.co.za/wp-content/uploads/2021/02/iPhone-12-box-740x439-1.jpg"
+                alt=""
+              />
             </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
@@ -129,7 +143,11 @@ export default function CardsIphone() {
               </p>
             </div>
             <div className="bg-blanco">
-              <img className="img-fluid" src="https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg" alt="" />
+              <img
+                className="img-fluid"
+                src="https://i.blogs.es/0218ce/auriculares-apple/840_560.jpg"
+                alt=""
+              />
             </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
@@ -153,7 +171,11 @@ export default function CardsIphone() {
                 </div>
               </div>
               <div className="mb-3 col-12 col-xl-7 bg-blanco padding">
-                 <img className="img-fluid" src="https://i.blogs.es/852326/bill/450_1000.jpg" alt="" />
+                <img
+                  className="img-fluid"
+                  src="https://i.blogs.es/852326/bill/450_1000.jpg"
+                  alt=""
+                />
               </div>
             </div>
           </div>

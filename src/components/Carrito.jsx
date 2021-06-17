@@ -14,13 +14,13 @@ import ContadorShop from "../pages/ContadorShop";
 import { useState } from "react";
 import CreditsCard from "../pages/CreditsCard";
 
-export default function Carrito({ articles }) {
+export default function Carrito({ articles, eliminarItemCarrito }) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // const { urlImage, nombre, descripcion, precio } = producto; 
-  console.log("Carrito ~ articles", articles)
+  // const { urlImage, nombre, descripcion, precio } = producto;
+  console.log("Carrito ~ articles", articles);
   return (
     <div>
       <Container style={{ padding: "50px" }}>
@@ -35,40 +35,44 @@ export default function Carrito({ articles }) {
                 <thead>
                   <tr>
                     <th>Producto</th>
-                    <th>Descripción</th> 
+                    <th>Descripción</th>
                     <th>Precio</th>
                     <th>Cantidad</th>
-                   
+
                     <th></th>
                   </tr>
                 </thead>
-                <tbody> 
-                 
-               {articles.map(item => (
-              
+                <tbody>
+                  {articles.map((item) => (
                     <tr>
-                    <td>
-                      <img src={item.producto.urlImage} alt="..." />
-                    </td>
-                    <td>
-                      {item.producto.nombre}
-                      {item.producto.descripcion}
-                    </td>
-                    <td>{item.producto.precio}</td>
-                    <td>
-                      <ContadorShop cantidad={item.cantidad} id={item.producto._id}/>
-                    </td>
-                    <td>$</td>
-                    <td>
-                      <button className="botón-shop">
-                        <FontAwesomeIcon
-                          className="trash-alt"
-                          icon={["far", "trash-alt"]}
-                        ></FontAwesomeIcon>
-                      </button>
-                    </td>
-                  </tr>
-               ))}
+                      <td>
+                        <img src={item.producto.urlImage} alt="..." />
+                      </td>
+                      <td>
+                        {item.producto.nombre}
+                        {item.producto.descripcion}
+                      </td>
+                      <td>{item.producto.precio}</td>
+                      <td>
+                        <ContadorShop
+                          cantidad={item.cantidad}
+                          id={item.producto._id}
+                        />
+                      </td>
+                      <td>$</td>
+                      <td>
+                        <button
+                          className="botón-shop"
+                          onClick={() => eliminarItemCarrito(item.producto._id)}
+                        >
+                          <FontAwesomeIcon
+                            className="trash-alt"
+                            icon={["far", "trash-alt"]}
+                          ></FontAwesomeIcon>
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </tbody>
               </Table>
 
