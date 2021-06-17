@@ -38,14 +38,13 @@ export default function TablaProductos() {
 // };
 
   const [productos, setProductos] = useState([]);
-
-  useEffect(() => {
-    if (!productos.length) {
       const getProductos = async () => {
           const response = await axios.get(`/productos`);
           setProductos(response.data);
       };
 
+  useEffect(() => {
+    if (!productos.length) {
       getProductos();
     }
   }, [productos]);
@@ -63,7 +62,20 @@ export default function TablaProductos() {
     const producto = productoEdit;
     await axios.put("/productos", producto);
     alert('Producto editado con éxito!😁');
+    getProductos();
   };
+
+  //ELIMINAR
+  const handleDelete = async (event) => {
+    const productoId = event.target.value;
+    const confirma = window.confirm('Desea eliminar el producto?');
+    if (confirma){
+    await axios.delete(`/productos/${productoId}`);
+    getProductos();
+  }
+  };
+
+
 
   return (
     <>
@@ -114,7 +126,7 @@ export default function TablaProductos() {
               >
                 Más información
               </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1" value={producto._id}>
+              <Button size="sm" className="btn sm btn-danger mx-1" onClick={handleDelete} value={producto._id}>
                 Eliminar
               </Button>
             </td>
@@ -130,9 +142,10 @@ export default function TablaProductos() {
         <Modal.Header closeButton>
           <Modal.Title>Editar producto</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form  noValidate
+        <Form  noValidate
               onSubmit={handleSubmit}>
+          <Modal.Body>
+ 
             <Form.Group controlId="exampleForm.SelectCustom">
             <strong>Nombre:</strong>
               <Form.Control
@@ -167,7 +180,7 @@ export default function TablaProductos() {
                 <option>iPhone</option>
               </Form.Control>
             </Form.Group>
-          </Form>
+         
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseEdit}>
@@ -177,6 +190,7 @@ export default function TablaProductos() {
             Guardar cambios
           </Button>
         </Modal.Footer>
+         </Form>
       </Modal>
 
       {/* Modal más info */}
