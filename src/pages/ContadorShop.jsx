@@ -10,7 +10,6 @@ export default function ContadorShop({ cantidad, id }) {
       setCounter(counter + num);
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       const carritoActualizado = carrito.map((item) => {
-        console.log("carritoActualizado ~ item", item);
         if (item.id === id) return { ...item, cantidad: counter + num };
         else return item;
       });

@@ -56,7 +56,7 @@ export default function Cards({ producto, setproductosCarrito }) {
               className="btnCarrito"
               variant="dark"
               onClick={onClickCart}
-              value={producto._id}
+              // value={producto._id}
               style={{ margin: "8px", borderRadius: "50%" }}
             >
               <FontAwesomeIcon

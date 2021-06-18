@@ -32,7 +32,6 @@ function App() {
     const getProductos = async () => {
       let productosCarrito = [];
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
-      console.log("getProductos ~ carrito", carrito);
       for (let i = 0; i < carrito.length; i++) {
         const itemCarrito = carrito[i];
         const response = await axios.get(
@@ -85,10 +84,10 @@ function App() {
           <CardsIphone setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/Mac">
-          <CardsMac />
+          <CardsMac setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/iPad">
-          <CardsIpad />
+          <CardsIpad setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/carrito">
           <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} />

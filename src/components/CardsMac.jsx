@@ -1,8 +1,8 @@
 import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Mac from "./Mac";
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
 // const articulos = [
 //   {
@@ -61,14 +61,14 @@ import React, { useEffect, useState } from 'react';
 //   },
 // ];
 
-export default function CardsIphone() {
+export default function CardsIphone({ setproductosCarrito }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
     if (!productos.length) {
       const getProductos = async () => {
-          const response = await axios.get(`/productos`);
-          setProductos(response.data);
+        const response = await axios.get(`/productos`);
+        setProductos(response.data);
       };
 
       getProductos();
@@ -95,9 +95,15 @@ export default function CardsIphone() {
       </div>
       {/* Card */}
       <div className="container d-flex flex-wrap">
-        {productos.map((producto) => producto.categoria ==='Mac' && (
-          <Mac producto={producto} />
-        ))}
+        {productos.map(
+          (producto) =>
+            producto.categoria === "Mac" && (
+              <Mac
+                producto={producto}
+                setproductosCarrito={setproductosCarrito}
+              />
+            )
+        )}
       </div>
       <div className="bg-gris">
         {/* Tarjeta Banner 1 */}
@@ -115,7 +121,11 @@ export default function CardsIphone() {
               </p>
             </div>
             <div className="bg-blanco">
-               <img className="img-fluid" src="https://as.com/meristation/imagenes/2020/07/02/betech/1593684423_686673_1593684643_noticia_normal_recorte1.jpg" alt="" />
+              <img
+                className="img-fluid"
+                src="https://as.com/meristation/imagenes/2020/07/02/betech/1593684423_686673_1593684643_noticia_normal_recorte1.jpg"
+                alt=""
+              />
             </div>
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
