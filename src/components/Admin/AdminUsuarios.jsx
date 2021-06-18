@@ -7,8 +7,22 @@ export default function AdminUsuarios() {
   const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [usuario, setUsuario] = useState(null);
-
+  // const [input, setInput] = useState({});
   const handleCloseBlock = () => setShowBlock(false);
+
+  // const handleChange = (e) => {
+  //   const { value, name } = e.target;
+  //   const blockInput = { ...input, [name]: value };
+  //   setInput(blockInput);
+  // };
+
+  // const handleCloseBlock = () => setShowBlock(false);
+  // const handleCloseBlockAdmin = async () => {
+  //   const { data } = await axios.put("/usuarios", input);
+  //   console.log("handleCloseBlockAdmin ~ data", data);
+  //   setShowBlock(false);
+  // };
+
   const handleShowBlock = () => setShowBlock(true);
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
@@ -20,15 +34,26 @@ export default function AdminUsuarios() {
 
   const [usuarios, setUsuarios] = useState([]);
 
+  const getUsuarios = async () => {
+    const response = await axios.get("/usuarios");
+    setUsuarios(response.data);
+  };
+
   useEffect(() => {
     if (!usuarios.length) {
-      const getUsuarios = async () => {
-        const response = await axios.get("/usuarios");
-        setUsuarios(response.data);
-      };
       getUsuarios();
     }
   }, [usuarios]);
+
+  //ELIMINAR
+  const handleDelete = async (event) => {
+    const usuarioID = event.target.value;
+    const confirma = window.confirm("Desea eliminar el usuario?");
+    if (confirma) {
+      await axios.delete(`/usuarios/${usuarioID}`);
+      getUsuarios();
+    }
+  };
 
   return (
     <div>
@@ -85,7 +110,12 @@ export default function AdminUsuarios() {
                 >
                   Más información
                 </Button>
-                <Button size="sm" className="btn sm btn-danger mx-1">
+                <Button
+                  size="sm"
+                  className="btn sm btn-danger mx-1"
+                  onClick={handleDelete}
+                  value={usuario._id}
+                >
                   Eliminar
                 </Button>
               </td>

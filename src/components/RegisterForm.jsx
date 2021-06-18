@@ -201,16 +201,13 @@ export default function RegisterForm({ setToken }) {
               feedback="Debes aceptar los términos y condiciones antes de registrarte."
             />
           </Form.Group>
-          {/* <Form.Group className="container-row">
-            <div className="d-flex justify-content-start w-100 mx-1">
-              <Form.Label>Tipo de cuenta</Form.Label>
-            </div>
+          {/* <Form.Group className="container-row d-none">
             <Form.Control
-              name="categoryUser"
+              name="blockUser"
+              setvalue="Habilitado"
               onChange={(e) => handleChange(e)}
               className="container-row mt-0"
               type="text"
-              required
             />
           </Form.Group> */}
           <Button className="button-class" type="submit">
