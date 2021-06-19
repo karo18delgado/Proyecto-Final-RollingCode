@@ -78,6 +78,7 @@ export default function TablaProductos() {
     const confirma = window.confirm("Desea eliminar el producto?");
     if (confirma) {
       await axios.delete(`/productos/${productoId}`);
+      alert("Producto eliminado con éxito!😁");
       getProductos();
     }
   };
