@@ -1,12 +1,7 @@
 import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
-<<<<<<< HEAD
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-=======
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
->>>>>>> nicodevelop
 
 import "../admin.css";
 
