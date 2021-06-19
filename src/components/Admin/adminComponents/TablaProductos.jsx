@@ -1,6 +1,12 @@
 import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
+<<<<<<< HEAD
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+=======
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+>>>>>>> nicodevelop
 
 import "../admin.css";
 
@@ -117,62 +123,67 @@ export default function TablaProductos() {
           </tr>
         </thead>
         {productos.map((producto) => (
-          <tbody>
-            <tr>
-              <td>{producto.nombre}</td>
-              <td>{producto.descripcion}</td>
-              <td>{producto.precio}</td>
-              <td>{producto.pantalla}</td>
-              <td>{producto.redes}</td>
-              <td>{producto.procesador}</td>
-              <td>{producto.camara}</td>
-              <td>{producto.categoria}</td>
-              <td>{producto.condicion}</td>
-              <td>
-                <Button
-                  size="sm"
-                  className="btn sm btn-success mx-1"
-                  onClick={handleShowEdit}
-                  value={producto._id}
-                >
-                  Editar
-                </Button>
-                <Button
-                  size="sm"
-                  className="btn sm btn-warning mx-1"
-                  onClick={handleShowInfo}
-                  value={producto._id}
-                >
-                  Más información
-                </Button>
-                <Button
-                  size="sm"
-                  className="btn sm btn-danger mx-1"
-                  onClick={handleDelete}
-                  value={producto._id}
-                >
-                  Eliminar
-                </Button>
-                {producto.condicion === "Deshabilitado" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-primary mx-1"
-                    onClick={handleHabilitar}
-                    value={producto._id}
-                  >
-                    Habilitar
-                  </Button>
-                )}
-                {producto.condicion === "Habilitado" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-primary mx-1"
-                    onClick={handleDeshabilitar}
-                    value={producto._id}
-                  >
-                    Deshabilitar
-                  </Button>
-                )}
+        <tbody>
+          <tr>
+            <td>{producto.nombre}</td>
+            <td>{producto.descripcion}</td>
+            <td>{producto.precio}</td>
+            <td>{producto.pantalla}</td>
+            <td>{producto.redes}</td>
+            <td>{producto.procesador}</td>
+            <td>{producto.camara}</td>
+            <td>{producto.categoria}</td>
+            <td>{producto.condicion}</td>
+            <td>
+              {/* Boton Editar */}
+              <Button
+                size="sm"
+                className="btn sm btn-success mx-1"
+                onClick={handleShowEdit}
+                value={producto._id}
+              >
+                <FontAwesomeIcon
+                className="edit"
+                icon={["far", "edit"]}
+                style={{fontSize: "20px", margin: "auto" }}
+              ></FontAwesomeIcon>
+              </Button>
+              {/* Boton Mas Informacion */}
+              <Button
+                size="sm"
+                className="btn sm btn-info mx-1"
+                onClick={handleShowInfo}
+                value={producto._id}
+              >
+                <FontAwesomeIcon
+                className="edit"
+                icon={["fas", "info-circle"]}
+                style={{fontSize: "20px", margin: "auto" }}
+              ></FontAwesomeIcon>
+              </Button>
+              {/* Boton Eliminar */}
+              <Button size="sm" className="btn sm btn-danger mx-1" onClick={handleDelete} value={producto._id}>
+              <FontAwesomeIcon
+                className="edit"
+                icon={["far", "trash-alt"]}
+                style={{fontSize: "20px", margin: "auto" }}
+              ></FontAwesomeIcon>
+              </Button>
+              {/* Boton Ban y Habilitar */}
+              {producto.condicion === "Deshabilitado" && <Button size="sm" className="btn sm btn-primary mx-1" onClick={handleHabilitar} value={producto._id}>
+              <FontAwesomeIcon
+                className="edit"
+                icon={["fas", "check"]}
+                style={{fontSize: "20px", margin: "auto" }}
+              ></FontAwesomeIcon>
+              </Button>}
+              {producto.condicion === "Habilitado" && <Button size="sm" className="btn sm btn-warning mx-1" onClick={handleDeshabilitar} value={producto._id}>
+              <FontAwesomeIcon
+                className="edit"
+                icon={["fas", "ban"]}
+                style={{fontSize: "20px", margin: "auto" }}
+              ></FontAwesomeIcon>
+              </Button>}
               </td>
             </tr>
           </tbody>
