@@ -1,15 +1,59 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
+import axios from "axios";
 
 export default function AdminUsuarios() {
   const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-
+  const [usuario, setUsuario] = useState(null);
+  // const [input, setInput] = useState({});
   const handleCloseBlock = () => setShowBlock(false);
+
+  // const handleChange = (e) => {
+  //   const { value, name } = e.target;
+  //   const blockInput = { ...input, [name]: value };
+  //   setInput(blockInput);
+  // };
+
+  // const handleCloseBlock = () => setShowBlock(false);
+  // const handleCloseBlockAdmin = async () => {
+  //   const { data } = await axios.put("/usuarios", input);
+  //   console.log("handleCloseBlockAdmin ~ data", data);
+  //   setShowBlock(false);
+  // };
+
   const handleShowBlock = () => setShowBlock(true);
   const handleCloseInfo = () => setShowInfo(false);
-  const handleShowInfo = () => setShowInfo(true);
+  const handleShowInfo = async (event) => {
+    const userId = event.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${userId}`);
+    setUsuario(fetchedUsuario.data);
+    setShowInfo(true);
+  };
+
+  const [usuarios, setUsuarios] = useState([]);
+
+  const getUsuarios = async () => {
+    const response = await axios.get("/usuarios");
+    setUsuarios(response.data);
+  };
+
+  useEffect(() => {
+    if (!usuarios.length) {
+      getUsuarios();
+    }
+  }, [usuarios]);
+
+  //ELIMINAR
+  const handleDelete = async (event) => {
+    const usuarioID = event.target.value;
+    const confirma = window.confirm("Desea eliminar el usuario?");
+    if (confirma) {
+      await axios.delete(`/usuarios/${usuarioID}`);
+      getUsuarios();
+    }
+  };
 
   return (
     <div>
@@ -41,38 +85,46 @@ export default function AdminUsuarios() {
             <th>Acciones</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>01/01/1995</td>
-            <td>Masculino</td>
-            <td>Habilitado</td>
-            <td>
-              <Button
-                size="sm"
-                className="btn sm btn-success mx-1"
-                onClick={handleShowBlock}
-              >
-                Bloqueo
-              </Button>
-              <Button
-                size="sm"
-                className="btn sm btn-warning mx-1"
-                onClick={handleShowInfo}
-              >
-                Más información
-              </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1">
-                Eliminar
-              </Button>
-            </td>
-          </tr>
-        </tbody>
+        {usuarios.map((usuario) => (
+          <tbody>
+            <tr>
+              <td>{usuario.nombre}</td>
+              <td>{usuario.apellido}</td>
+              <td>{usuario.email}</td>
+              <td>{usuario.fechaNacimiento}</td>
+              <td>{usuario.sexo}</td>
+              <td>Habilitado</td>
+              <td>
+                <Button
+                  size="sm"
+                  className="btn sm btn-success mx-1"
+                  onClick={handleShowBlock}
+                >
+                  Bloqueo
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn sm btn-warning mx-1"
+                  onClick={handleShowInfo}
+                  value={usuario._id}
+                >
+                  Más información
+                </Button>
+                <Button
+                  size="sm"
+                  className="btn sm btn-danger mx-1"
+                  onClick={handleDelete}
+                  value={usuario._id}
+                >
+                  Eliminar
+                </Button>
+              </td>
+            </tr>
+          </tbody>
+        ))}
       </Table>
 
-      {/* Modal editar */}
+      {/* Modal Bloquear */}
 
       <Modal show={showBlock} onHide={handleCloseBlock}>
         <Modal.Header closeButton>
@@ -107,23 +159,23 @@ export default function AdminUsuarios() {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Label>
-                <p>Nombre: Mark</p>
-                <p>Apellido: Otto</p>
-                <p>Email: @mdo</p>
-                <p>Fecha de nacimiento: 01/01/1995</p>
-                <p>Nombre de usuario: </p>
-                <p>Sexo: Masculino</p>
-              </Form.Label>
+              {usuario && (
+                <Form.Label>
+                  <p>Nombre: {usuario.nombre}</p>
+                  <p>Apellido: {usuario.apellido}</p>
+                  <p>Email: {usuario.email}</p>
+                  <p>Fecha de nacimiento: {usuario.fechaNacimiento}</p>
+                  <p>Nombre de usuario: {usuario.nombreUsuario}</p>
+                  <p>Sexo: {usuario.sexo}</p>
+                  <p>{usuario.categoryUser}</p>
+                </Form.Label>
+              )}
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleCloseInfo}>
             Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleCloseInfo}>
-            Guardar cambios
           </Button>
         </Modal.Footer>
       </Modal>

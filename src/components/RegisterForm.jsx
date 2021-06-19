@@ -23,7 +23,7 @@ export default function RegisterForm({ setToken }) {
         localStorage.setItem("token", JSON.stringify(data));
         setToken(data.token);
         alert("Usuario registrado correctamente 😉.");
-        history.push("/login");
+        history.push("/");
         form.reset();
       } catch (error) {
         console.log(error.response.data);
@@ -169,6 +169,7 @@ export default function RegisterForm({ setToken }) {
                 name="sexo"
                 onChange={(e) => handleChange(e)}
               >
+                <option className="d-none"></option>
                 <option>Femenino</option>
                 <option>Masculino</option>
               </Form.Control>
@@ -200,6 +201,15 @@ export default function RegisterForm({ setToken }) {
               feedback="Debes aceptar los términos y condiciones antes de registrarte."
             />
           </Form.Group>
+          {/* <Form.Group className="container-row d-none">
+            <Form.Control
+              name="blockUser"
+              setvalue="Habilitado"
+              onChange={(e) => handleChange(e)}
+              className="container-row mt-0"
+              type="text"
+            />
+          </Form.Group> */}
           <Button className="button-class" type="submit">
             Registrarse
           </Button>

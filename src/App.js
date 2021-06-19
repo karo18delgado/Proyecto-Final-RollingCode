@@ -26,10 +26,30 @@ const localToken = JSON.parse(localStorage.getItem('token'))?.token || "";
 function App() {
   const [user, setUser] = useState({});
   const [token, setToken] = useState(localToken);
+  const [productosCarrito, setproductosCarrito] = useState([]);
+
+  useEffect(() => {
+    const getProductos = async () => {
+      let productosCarrito = [];
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      for (let i = 0; i < carrito.length; i++) {
+        const itemCarrito = carrito[i];
+        const response = await axios.get(
+          `/productos/${itemCarrito.productoId}`
+        );
+        productosCarrito.push({
+          producto: response.data,
+          cantidad: itemCarrito.cantidad,
+        });
+      }
+      setproductosCarrito(productosCarrito);
+    };
+    getProductos();
+  }, []);
+
 
   useEffect(() => {
     if (token) {
-      console.log("useEffect ~ token", token)
       const request = async () => {
         axios.defaults.headers["x-auth-token"] = token
         const { data } = await axios.get('/auth')
@@ -41,8 +61,10 @@ function App() {
 
   const logOut = () => {
     localStorage.removeItem('token');
+    localStorage.removeItem('carrito');
     setUser({});
     setToken('');
+    window.location.href = '/';
   }
 
   return (
@@ -50,7 +72,7 @@ function App() {
       <Route>
         <ScrollToTop></ScrollToTop>
       </Route>
-      <NavbarR userName={user.nombre} logOut={logOut} />
+      <NavbarR userName={user.nombre} logOut={logOut} cantidadCarrito={productosCarrito.length} />
       <Switch>
         <Route path="/about">
           <About />
@@ -59,16 +81,16 @@ function App() {
           <Landing />
         </Route>
         <Route path="/iPhone">
-          <CardsIphone />
+          <CardsIphone setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/Mac">
-          <CardsMac />
+          <CardsMac setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/iPad">
-          <CardsIpad />
+          <CardsIpad setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/carrito">
-          <ShoppingCart currentUser={user}/>
+          <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
@@ -79,18 +101,20 @@ function App() {
         <Route path="/perfil">
           <PerfilUsuario user={user} />
         </Route>
-        <Route path="/admin">
-          <NavbarAdmin />
-          <Route path="/admin/admin-usuarios">
-            <AdminUsuarios currentUser={user} />
+        {user.categoryUser && <Route path="/admin">
+          <Route>
+            <NavbarAdmin />
+            <Route path="/admin/admin-usuarios">
+              <AdminUsuarios />
+            </Route>
+            <Route path="/admin/admin-productos">
+              <AdminProductos />
+            </Route>
+            <Route path="/admin/admin-mensajes">
+              <AdminMensajes />
+            </Route>
           </Route>
-          <Route path="/admin/admin-productos">
-            <AdminProductos currentUser={user} />
-          </Route>
-          <Route path="/admin/admin-mensajes">
-            <AdminMensajes currentUser={user} />
-          </Route>
-        </Route>
+        </Route>}
       </Switch>
       <Footer />
     </Router>

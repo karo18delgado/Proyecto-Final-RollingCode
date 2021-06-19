@@ -6,7 +6,7 @@ import { Nav, Navbar, NavDropdown, Button, Badge } from "react-bootstrap";
 
 const title = <FontAwesomeIcon icon="user"></FontAwesomeIcon>;
 
-export default function NavbarR({ userName, logOut}) {
+export default function NavbarR({ userName, logOut, cantidadCarrito }) {
   const location = useLocation();
   const { pathname } = location;
   if (pathname.includes("/admin")) return null;
@@ -107,11 +107,10 @@ export default function NavbarR({ userName, logOut}) {
               </NavDropdown.Item>
             </NavDropdown>
           )}
-    <Button to="/carrito"
-        as={NavLink} variant="primary">
-        Carrito <Badge variant="light">0</Badge>
-        <span className="sr-only">unread messages</span>
-      </Button>
+          <Button to="/carrito" as={NavLink} variant="primary">
+            Carrito <Badge variant="light">{cantidadCarrito}</Badge>
+            <span className="sr-only">unread messages</span>
+          </Button>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
