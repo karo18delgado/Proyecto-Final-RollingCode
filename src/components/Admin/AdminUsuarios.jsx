@@ -4,34 +4,9 @@ import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
 
 export default function AdminUsuarios() {
-  const [showBlock, setShowBlock] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
   const [usuario, setUsuario] = useState(null);
-  // const [input, setInput] = useState({});
-  const handleCloseBlock = () => setShowBlock(false);
-
-  // const handleChange = (e) => {
-  //   const { value, name } = e.target;
-  //   const blockInput = { ...input, [name]: value };
-  //   setInput(blockInput);
-  // };
-
-  // const handleCloseBlock = () => setShowBlock(false);
-  // const handleCloseBlockAdmin = async () => {
-  //   const { data } = await axios.put("/usuarios", input);
-  //   console.log("handleCloseBlockAdmin ~ data", data);
-  //   setShowBlock(false);
-  // };
-
-  const handleShowBlock = () => setShowBlock(true);
-  const handleCloseInfo = () => setShowInfo(false);
-  const handleShowInfo = async (event) => {
-    const userId = event.target.value;
-    const fetchedUsuario = await axios.get(`/usuarios/${userId}`);
-    setUsuario(fetchedUsuario.data);
-    setShowInfo(true);
-  };
-
+  const [input, setInput] = useState({});
   const [usuarios, setUsuarios] = useState([]);
 
   const getUsuarios = async () => {
@@ -44,6 +19,36 @@ export default function AdminUsuarios() {
       getUsuarios();
     }
   }, [usuarios]);
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    const blockInput = { ...input, [name]: value, blockUser: "Habilitado" };
+    setInput(blockInput);
+  };
+
+  const handleHabilitar = async (e) => {
+    const usuarioId = e.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+    const blockInput = { ...fetchedUsuario.data, blockUser: "Habilitado" };
+    await axios.put("/auth/usuarios", blockInput);
+    getUsuarios();
+  };
+
+  const handleDeshabilitar = async (e) => {
+    const usuarioId = e.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+    const blockInput = { ...fetchedUsuario.data, blockUser: "Deshabilitado" };
+    await axios.put("/auth/usuarios", blockInput);
+    getUsuarios();
+  };
+
+  const handleCloseInfo = () => setShowInfo(false);
+  const handleShowInfo = async (event) => {
+    const userId = event.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${userId}`);
+    setUsuario(fetchedUsuario.data);
+    setShowInfo(true);
+  };
 
   //ELIMINAR
   const handleDelete = async (event) => {
@@ -93,15 +98,8 @@ export default function AdminUsuarios() {
               <td>{usuario.email}</td>
               <td>{usuario.fechaNacimiento}</td>
               <td>{usuario.sexo}</td>
-              <td>Habilitado</td>
+              <td handleChange={handleChange}>{usuario.blockUser}</td>
               <td>
-                <Button
-                  size="sm"
-                  className="btn sm btn-success mx-1"
-                  onClick={handleShowBlock}
-                >
-                  Bloqueo
-                </Button>
                 <Button
                   size="sm"
                   className="btn sm btn-warning mx-1"
@@ -118,37 +116,31 @@ export default function AdminUsuarios() {
                 >
                   Eliminar
                 </Button>
+                {usuario.blockUser === "Deshabilitado" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-primary mx-1"
+                    onClick={handleHabilitar}
+                    value={usuario._id}
+                  >
+                    Habilitar
+                  </Button>
+                )}
+                {usuario.blockUser === "Habilitado" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-primary mx-1"
+                    onClick={handleDeshabilitar}
+                    value={usuario._id}
+                  >
+                    Deshabilitar
+                  </Button>
+                )}
               </td>
             </tr>
           </tbody>
         ))}
       </Table>
-
-      {/* Modal Bloquear */}
-
-      <Modal show={showBlock} onHide={handleCloseBlock}>
-        <Modal.Header closeButton>
-          <Modal.Title>Habilitar/Deshabilitar</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Control as="select" custom>
-                <option>Habilitado</option>
-                <option>Deshabilitado</option>
-              </Form.Control>
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseBlock}>
-            Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleCloseBlock}>
-            Guardar cambios
-          </Button>
-        </Modal.Footer>
-      </Modal>
 
       {/* Modal más info */}
 

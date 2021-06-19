@@ -25,15 +25,18 @@ export default function Login({ setUser, setToken }) {
     event.preventDefault();
     try {
       const { data } = await axios.post("/auth/login", input);
-      console.log("handleSubmit ~ data", data);
       localStorage.setItem("token", JSON.stringify(data));
-      setToken(data.token);
-      alert("Logueo Admin exitoso 😎 ");
-      if (data.categoryUser === "admin") {
-        history.push("/admin");
+      if (data.blockUser === "Deshabilitado") {
+        alert("Usuario bloqueado");
       } else {
-        alert("Logueo exitoso 😎 ");
-        history.push("/");
+        setToken(data.token);
+        if (data.categoryUser === "admin") {
+          alert("Logueo Admin exitoso 😎 ");
+          history.push("/admin/admin-productos");
+        } else {
+          alert("Logueo exitoso 😎 ");
+          history.push("/");
+        }
       }
     } catch (error) {
       console.log(error);

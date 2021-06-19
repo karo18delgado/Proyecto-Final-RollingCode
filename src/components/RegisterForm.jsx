@@ -32,9 +32,11 @@ export default function RegisterForm({ setToken }) {
     }
   };
 
+  // en changedInput al registrarse el usuario con blockUser se agrega la condicion de siempre iniciar como usuario habilitado.
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    const changedInput = { ...input, [name]: value };
+    const changedInput = { ...input, [name]: value, blockUser: "Habilitado" };
     setInput(changedInput);
   };
 

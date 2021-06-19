@@ -33,10 +33,7 @@ export default function PerfilUsuario({ user, setToken }) {
       alert("Las contraseñas no coinciden");
     } else {
       try {
-        console.log("handleSubmit ~ axios", axios.defaults.headers);
-        const { data } = await axios.put("/usuarios", input);
-
-        console.log("handleSubmit ~ data", data);
+        await axios.put("/usuarios", input);
       } catch (error) {
         console.log(error.response.data);
         alert("Datos Incorrectos!");
@@ -48,18 +45,16 @@ export default function PerfilUsuario({ user, setToken }) {
   const [show2, setShow2] = useState(false);
   const [show3, setShow3] = useState(false);
   const [show4, setShow4] = useState(false);
-  
+
   const handleClose1 = () => setShow(false);
   const handleClose2 = () => setShow2(false);
   const handleClose3 = () => setShow3(false);
   const handleClose4 = () => setShow4(false);
-  
 
   const handleShow1 = () => setShow(true);
   const handleShow2 = () => setShow2(true);
   const handleShow3 = () => setShow3(true);
   const handleShow4 = () => setShow4(true);
-  
 
   return (
     <div>
@@ -87,8 +82,8 @@ export default function PerfilUsuario({ user, setToken }) {
                 onClick={handleShow1}
                 style={{ padding: "20px" }}
               >
-              <strong>Nombre:</strong>
-              <spam> {user.nombre}</spam>
+                <strong>Nombre:</strong>
+                <spam> {user.nombre}</spam>
               </ListGroup.Item>
 
               <Modal show={show1} onHide={handleClose1}>
@@ -136,7 +131,7 @@ export default function PerfilUsuario({ user, setToken }) {
                 style={{ padding: "20px" }}
               >
                 <strong>Apellido:</strong>
-                <spam> {user.apellido}</spam> 
+                <spam> {user.apellido}</spam>
               </ListGroup.Item>
 
               <Modal show={show2} onHide={handleClose2}>
@@ -166,7 +161,11 @@ export default function PerfilUsuario({ user, setToken }) {
                       <Button variant="secondary" onClick={handleClose2}>
                         Close
                       </Button>
-                      <Button variant="primary" onClick={handleClose2} type="submit">
+                      <Button
+                        variant="primary"
+                        onClick={handleClose2}
+                        type="submit"
+                      >
                         Save Changes
                       </Button>
                     </Modal.Footer>
@@ -215,7 +214,11 @@ export default function PerfilUsuario({ user, setToken }) {
                       <Button variant="secondary" onClick={handleClose3}>
                         Close
                       </Button>
-                      <Button variant="primary" onClick={handleClose3}  type="submit">
+                      <Button
+                        variant="primary"
+                        onClick={handleClose3}
+                        type="submit"
+                      >
                         Save Changes
                       </Button>
                     </Modal.Footer>
@@ -259,18 +262,20 @@ export default function PerfilUsuario({ user, setToken }) {
                       </Form.Control.Feedback>
                     </Form.Group>
                     <Modal.Footer>
-                  <Button variant="secondary" onClick={handleClose4}>
-                    Close
-                  </Button>
-                  <Button variant="primary" onClick={handleClose4}  type="submit" >
-                    Save Changes
-                  </Button>
-                </Modal.Footer>
+                      <Button variant="secondary" onClick={handleClose4}>
+                        Close
+                      </Button>
+                      <Button
+                        variant="primary"
+                        onClick={handleClose4}
+                        type="submit"
+                      >
+                        Save Changes
+                      </Button>
+                    </Modal.Footer>
                   </Form>
                 </Modal.Body>
               </Modal>
-
-
             </ListGroup>
           </Col>
         </Row>
