@@ -7,8 +7,8 @@ import axios from "axios";
 export default function AdminMensajes() {
   
   const [mensajeInfo, setMensajeInfo] = useState(null);
-  const [mensajeState, setmensajeState] = useState([]);
-  const [showEdit, setShowEdit] = useState(false);
+ /*  const [mensajeState, setmensajeState] = useState([]); */
+ /*  const [showEdit, setShowEdit] = useState(false); */
   const [showInfo, setShowInfo] = useState(false);
   
   const handleCloseInfo = () => setShowInfo(false);
@@ -19,19 +19,22 @@ export default function AdminMensajes() {
     setShowInfo(true);
   }; 
   
-  const handleCloseEdit = () => setShowEdit(false);
+/*  const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = async (event) => {
     const mensajeId = event.target.value;
     const estado = await axios.get(`/auth/mensaje/${mensajeId}`);
     setmensajeState(estado.data);
     setShowEdit(true);
-  };
+  }; */
 
   const [mensajes, setMensajes] = useState([]);
-  
+  const [mensajesUnread, setMensajesUnread] = useState([]);
+  console.log("AdminMensajes -> mensajesUnread", mensajesUnread)
   const recibirMensajes = async () => {
     const response = await axios.get("/auth/mensaje");
     setMensajes(response.data);
+  /*   const unread = {... response.data, params:{estado: 'No Leído'}); */
+  /*   setMensajesUnread(response.data,{params:{estado: 'No Leído'}}); */
   };
   
   
@@ -41,19 +44,19 @@ export default function AdminMensajes() {
     }
   }, [mensajes]);
 
-  const handleChange = (event) => {
+ /*  const handleChange = (event) => {
     const { value, name } = event.target;
     const newInput = { ...mensajeState, [name]: value };
     setmensajeState(newInput);
-  };
+  }; */
   
-  const handleSubmit = async (event) => {
+/*   const handleSubmit = async (event) => {
     event.preventDefault();
     const mensaje = mensajeState;
     await axios.put("/auth/mensaje", mensaje);
     alert('Cambio de estado exitoso!😁');
     recibirMensajes();
-  };
+  }; */
 
   const handleDelete = async (event) => {
     const mensajeId = event.target.value;
@@ -63,10 +66,28 @@ export default function AdminMensajes() {
     recibirMensajes();
   }
   };
-  
+
+  //LEIDO
+  const handleLeido = async (event) => {
+    const mensajeId = event.target.value;
+    const lecturaMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
+    const newInput = { ...lecturaMensaje.data, estado: "Leído" };
+    await axios.put("/auth/mensaje", newInput);
+    recibirMensajes();
+  };
+
+  //NO LEIDO
+  const handleNoLeido = async (event) => {
+    const mensajeId = event.target.value;
+    const lecturaMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
+    const newInput = { ...lecturaMensaje.data, estado: "No leído" };
+    await axios.put("/auth/mensaje", newInput);
+    recibirMensajes();
+  };
+
   return (
     
-    <div>
+    <>
       
         <Form>
           <Form.Group className="container-search">
@@ -82,7 +103,7 @@ export default function AdminMensajes() {
             </Button>
           </Form.Group>
         </Form>
-
+      <h1>Tiene {mensajesUnread} mensajes sin leer</h1>
       <Table striped bordered hover variant="dark" className="mt-5">
         <thead>
           <tr>
@@ -101,21 +122,33 @@ export default function AdminMensajes() {
             <td>{mensaje.asunto}</td>
             <td>{mensaje.estado}</td>
             <td>
+            {mensaje.estado === "No leído" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-warning mx-1"
+                    onClick={handleLeido}
+                    value={mensaje._id}
+                  >
+                    Leído
+                  </Button>
+                )}
+                {mensaje.estado === "Leído" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-success mx-1"
+                    onClick={handleNoLeido}
+                    value={mensaje._id}
+                  >
+                    No leído
+                  </Button>
+                )}
               <Button
                 size="sm"
-                className="btn sm btn-success mx-1"
-                onClick={handleShowEdit}
-                value={mensaje._id}
-              >
-                Marcar
-              </Button>
-              <Button
-                size="sm"
-                className="btn sm btn-warning mx-1"
+                className="btn sm btn-primary mx-1"
                 onClick={handleShowInfo}
                 value={mensaje._id}
               >
-                Ver
+                Detalle
               </Button>
               <Button size="sm" className="btn sm btn-danger mx-1" onClick={handleDelete} value={mensaje._id}>
                 Eliminar
@@ -126,32 +159,6 @@ export default function AdminMensajes() {
             </tbody>
             ))}
       </Table>
-
-      {/* Modal Leído/No Leído */}
-
-      <Modal show={showEdit} onHide={handleCloseEdit}>
-        <Modal.Header closeButton>
-          <Modal.Title>Leído/No Leído</Modal.Title>
-        </Modal.Header>
-        <Form noValidate onSubmit={handleSubmit}>
-          <Modal.Body>
-            <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Control name="estado" type="text" as="select" custom onChange={handleChange}>
-                <option>No Leído</option> 
-                <option>Leído</option>
-              </Form.Control>
-            </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseEdit}>
-            Cerrar
-          </Button>
-          <Button variant="primary" onClick={handleCloseEdit} type="submit">
-            Guardar cambios
-          </Button>
-        </Modal.Footer>
-        </Form>
-      </Modal>
 
       {/* Modal Leer Mensaje */}
 
@@ -183,7 +190,7 @@ export default function AdminMensajes() {
           </Button> */}
         </Modal.Footer>
       </Modal>
-    </div>
+    </>
   );
 }
 
