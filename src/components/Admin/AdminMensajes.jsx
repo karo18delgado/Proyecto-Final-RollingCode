@@ -5,21 +5,28 @@ import axios from "axios";
 
 
 export default function AdminMensajes() {
-  const [showBlock, setShowBlock] = useState(false);
+  
+  const [mensajeInfo, setMensajeInfo] = useState(null);
+  const [mensajeState, setmensajeState] = useState([]);
+  const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  const [mensaje, setMensaje] = useState(null);
-
-  const handleCloseBlock = () => setShowBlock(false);
-  const handleShowBlock = () => setShowBlock(true);
+  
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
     const mensajeId = event.target.value;
     const fetchedMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
-    setMensaje(fetchedMensaje.data);
+    setMensajeInfo(fetchedMensaje.data);
     setShowInfo(true);
+  }; 
+  
+  const handleCloseEdit = () => setShowEdit(false);
+  const handleShowEdit = async (event) => {
+    const mensajeId = event.target.value;
+    const estado = await axios.get(`/auth/mensaje/${mensajeId}`);
+    setmensajeState(estado.data);
+    setShowEdit(true);
   };
 
-  
   const [mensajes, setMensajes] = useState([]);
   
   const recibirMensajes = async () => {
@@ -29,32 +36,38 @@ export default function AdminMensajes() {
   
   
   useEffect(() => {
-    
+    if (!mensajes.length) {
       recibirMensajes();
-  }, []);
-  const [input, setInput] = useState({});
+    }
+  }, [mensajes]);
+
   const handleChange = (event) => {
     const { value, name } = event.target;
-    const newInput = { ...input, [name]: value };
-    setInput(newInput);
+    const newInput = { ...mensajeState, [name]: value };
+    setmensajeState(newInput);
   };
   
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const mensaje = mensajeState;
+    await axios.put("/auth/mensaje", mensaje);
+    alert('Cambio de estado exitoso!😁');
+    recibirMensajes();
+  };
+
   const handleDelete = async (event) => {
     const mensajeId = event.target.value;
     const confirma = window.confirm('Desea eliminar?');
     if (confirma){
-    /* const fetchedMensaje = */ await axios.delete(`/auth/mensaje/${mensajeId}`);
-    /* setMensaje(fetchedMensaje.data); */
-    /* setShowInfo(true); */
+    await axios.delete(`/auth/mensaje/${mensajeId}`);
     recibirMensajes();
   }
   };
-
-
+  
   return (
     
     <div>
-      <div>
+      
         <Form>
           <Form.Group className="container-search">
             <Form.Label className="search-div">
@@ -69,10 +82,11 @@ export default function AdminMensajes() {
             </Button>
           </Form.Group>
         </Form>
-      </div>
+
       <Table striped bordered hover variant="dark" className="mt-5">
         <thead>
           <tr>
+            <th>Fecha</th>
             <th>Email</th>
             <th>Asunto</th>
             <th>Leído/No Leído</th>
@@ -81,15 +95,17 @@ export default function AdminMensajes() {
         </thead>          
           {mensajes.map((mensaje) => (
           <tbody>
-          <tr>             
+          <tr> 
+            <td>{mensaje.fecha}</td>            
             <td>{mensaje.correo}</td>
             <td>{mensaje.asunto}</td>
-            <td>Leído</td>
+            <td>{mensaje.estado}</td>
             <td>
               <Button
                 size="sm"
                 className="btn sm btn-success mx-1"
-                onClick={handleShowBlock}
+                onClick={handleShowEdit}
+                value={mensaje._id}
               >
                 Marcar
               </Button>
@@ -113,28 +129,28 @@ export default function AdminMensajes() {
 
       {/* Modal Leído/No Leído */}
 
-      <Modal show={showBlock} onHide={handleCloseBlock}>
+      <Modal show={showEdit} onHide={handleCloseEdit}>
         <Modal.Header closeButton>
           <Modal.Title>Leído/No Leído</Modal.Title>
         </Modal.Header>
-        <Modal.Body>
-          <Form>
+        <Form noValidate onSubmit={handleSubmit}>
+          <Modal.Body>
             <Form.Group controlId="exampleForm.SelectCustom">
-              <Form.Control as="select" custom onChange={handleChange}>
+              <Form.Control name="estado" type="text" as="select" custom onChange={handleChange}>
+                <option>No Leído</option> 
                 <option>Leído</option>
-                <option>No Leído</option>
               </Form.Control>
             </Form.Group>
-          </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseBlock}>
+          <Button variant="secondary" onClick={handleCloseEdit}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={handleCloseBlock}>
+          <Button variant="primary" onClick={handleCloseEdit} type="submit">
             Guardar cambios
           </Button>
         </Modal.Footer>
+        </Form>
       </Modal>
 
       {/* Modal Leer Mensaje */}
@@ -146,11 +162,13 @@ export default function AdminMensajes() {
         <Modal.Body>
           <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
-            {mensaje && (
+            {mensajeInfo && (
               <Form.Label>
-                <p>Email: {mensaje.correo}</p>
-                <p>Asunto: {mensaje.asunto}</p>
-                <p>Mensaje: {mensaje.descripcion}</p>
+                <p>Fecha: {mensajeInfo.fecha}</p>
+                <p>Email: {mensajeInfo.correo}</p>
+                <p>Asunto: {mensajeInfo.asunto}</p>
+                <p>Mensaje: {mensajeInfo.descripcion}</p>
+                <p>Estado: {mensajeInfo.estado}</p>
               </Form.Label>
               )}
             </Form.Group>
