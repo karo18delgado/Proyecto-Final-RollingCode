@@ -75,6 +75,25 @@ export default function TablaProductos() {
   }
   };
 
+    //DESHABILITAR
+    const handleDeshabilitar = async (event) => {
+      const productoId = event.target.value;
+      const productoHabilitar = await axios.get(`/productos/${productoId}`);
+      const newInput = { ...productoHabilitar.data, condicion: 'Deshabilitado' };
+      await axios.put("/productos", newInput);
+      console.log("🚀 ~ file: TablaProductos.jsx ~ line 84 ~ handleHabilitar ~ newInput", newInput)
+      getProductos();
+    };
+
+    //HABILITAR
+    const handleHabilitar = async (event) => {
+      const productoId = event.target.value;
+      const productoHabilitar = await axios.get(`/productos/${productoId}`);
+      const newInput = { ...productoHabilitar.data, condicion: 'Habilitado' };
+      await axios.put("/productos", newInput);
+      console.log("🚀 ~ file: TablaProductos.jsx ~ line 84 ~ handleHabilitar ~ newInput", newInput)
+      getProductos();
+    };
 
 
   return (
@@ -91,9 +110,9 @@ export default function TablaProductos() {
             <th>Pantalla</th>
             <th>Redes/Tecnología</th>
             <th>Procesador</th>
-            <th>Almacenamiento</th>
             <th>Cámaras</th>
             <th>Categoría</th>
+            <th>Condicion</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -106,9 +125,9 @@ export default function TablaProductos() {
             <td>{producto.pantalla}</td>
             <td>{producto.redes}</td>
             <td>{producto.procesador}</td>
-            <td>{producto.almacenamiento}</td>
             <td>{producto.camara}</td>
             <td>{producto.categoria}</td>
+            <td>{producto.condicion}</td>
             <td>
               <Button
                 size="sm"
@@ -129,7 +148,13 @@ export default function TablaProductos() {
               <Button size="sm" className="btn sm btn-danger mx-1" onClick={handleDelete} value={producto._id}>
                 Eliminar
               </Button>
-            </td>
+              {producto.condicion === "Deshabilitado" && <Button size="sm" className="btn sm btn-primary mx-1" onClick={handleHabilitar} value={producto._id}>
+                Habilitar
+              </Button>}
+              {producto.condicion === "Habilitado" && <Button size="sm" className="btn sm btn-primary mx-1" onClick={handleDeshabilitar} value={producto._id}>
+                Deshabilitar
+              </Button>}
+              </td>
           </tr>
         </tbody>
            ))}

@@ -25,7 +25,7 @@ export default function FormProductos() {
 
 const handleChange = (e) => {
     const { name, value } = e.target;
-    const changedInput = { ...input, [name]: value };
+    const changedInput = { ...input, [name]: value , condicion: 'Habilitado' };
     setInput(changedInput);
 };
   return (

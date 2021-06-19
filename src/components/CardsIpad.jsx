@@ -101,7 +101,7 @@ export default function CardsIphone({ setproductosCarrito }) {
       <div className="container d-flex flex-wrap">
         {productos.map(
           (producto) =>
-            producto.categoria === "iPad" && (
+            producto.categoria === "iPad" && producto.condicion === "Habilitado" &&  (
               <Ipad
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
