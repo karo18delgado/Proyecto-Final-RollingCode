@@ -34,3 +34,7 @@ body {
   flex-direction: column;
   align-items: flex-end;
 }
+.tamaño-imagen{
+  max-height: 400px;
+  max-width: 300px ;
+}
