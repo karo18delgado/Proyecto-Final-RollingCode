@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import axios from 'axios';
 import "../admin.css";
 
 export default function FormProductos() {
-  const [validated, setValidated] = useState(false);
+const [show, setShow] = useState(false);
+
+const handleClose = () => setShow(false);
+const handleShow = () => setShow(true);
+const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
 
   const handleSubmit = async (event) => {
@@ -18,6 +22,7 @@ export default function FormProductos() {
         // Consulta post a /productos
         await axios.post('/productos', input);
         alert('Producto creado con éxito!😁');
+        setShow(false);
     } catch (error) {
         console.log(error);
     }
@@ -28,9 +33,23 @@ const handleChange = (e) => {
     const changedInput = { ...input, [name]: value , condicion: 'Habilitado' };
     setInput(changedInput);
 };
+
+
+
   return (
     <div>
-      <div className="d-flex justify-content-center mt-5 mb-5">
+      <>
+      <div className="m-auto text-center">
+      <Button style={{fontSize: "30px" }} className="mt-5" variant="primary" onClick={handleShow}>
+        Crear nuevo Producto
+      </Button>
+      </div>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Nuevo Producto</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+        <div className="d-flex justify-content-center mt-5 mb-5">
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Row className="form-productos">
             <Form.Group md="4" controlId="validationCustom01">
@@ -247,11 +266,20 @@ const handleChange = (e) => {
               </Form.Control>
             </Form.Group>
           </Form.Row>
-          <Button type="submit" className="button-form-productos">
+          <Button type="submit" className="button-form-productos ml-4">
             Registrar producto
           </Button>
         </Form>
       </div>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
+      
     </div>
   );
 }
