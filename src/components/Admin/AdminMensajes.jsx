@@ -2,13 +2,12 @@ import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 
 export default function AdminMensajes() {
   
   const [mensajeInfo, setMensajeInfo] = useState(null);
- /*  const [mensajeState, setmensajeState] = useState([]); */
- /*  const [showEdit, setShowEdit] = useState(false); */
   const [showInfo, setShowInfo] = useState(false);
   
   const handleCloseInfo = () => setShowInfo(false);
@@ -18,45 +17,29 @@ export default function AdminMensajes() {
     setMensajeInfo(fetchedMensaje.data);
     setShowInfo(true);
   }; 
-  
-/*  const handleCloseEdit = () => setShowEdit(false);
-  const handleShowEdit = async (event) => {
-    const mensajeId = event.target.value;
-    const estado = await axios.get(`/auth/mensaje/${mensajeId}`);
-    setmensajeState(estado.data);
-    setShowEdit(true);
-  }; */
 
   const [mensajes, setMensajes] = useState([]);
-  const [mensajesUnread, setMensajesUnread] = useState([]);
-  console.log("AdminMensajes -> mensajesUnread", mensajesUnread)
+/*   const [mensajesUnread, setMensajesUnread] = useState([]);
+  console.log("AdminMensajes -> mensajesUnread", mensajesUnread) */
   const recibirMensajes = async () => {
     const response = await axios.get("/auth/mensaje");
     setMensajes(response.data);
-  /*   const unread = {... response.data, params:{estado: 'No Leído'}); */
-  /*   setMensajesUnread(response.data,{params:{estado: 'No Leído'}}); */
   };
-  
+
+/*   const contarMensajes = async () => {
+    const estado = "No leído";
+    const responseUnread = await axios.get(`/auth/mensaje/${estado}`);
+    setMensajesUnread(responseUnread.data);
+  };
+ */
   
   useEffect(() => {
     if (!mensajes.length) {
       recibirMensajes();
+      /* contarMensajes(); */
+
     }
   }, [mensajes]);
-
- /*  const handleChange = (event) => {
-    const { value, name } = event.target;
-    const newInput = { ...mensajeState, [name]: value };
-    setmensajeState(newInput);
-  }; */
-  
-/*   const handleSubmit = async (event) => {
-    event.preventDefault();
-    const mensaje = mensajeState;
-    await axios.put("/auth/mensaje", mensaje);
-    alert('Cambio de estado exitoso!😁');
-    recibirMensajes();
-  }; */
 
   const handleDelete = async (event) => {
     const mensajeId = event.target.value;
@@ -85,11 +68,19 @@ export default function AdminMensajes() {
     recibirMensajes();
   };
 
+  const [input, setInput] = useState()
+
+  const handleChange = (e) => {
+    const { value, name } = e.target;
+    const newInput = { ...input, [name]: value };
+    setInput(newInput);
+  };
+
   return (
     
     <>
       
-        <Form>
+ {/*        <Form>
           <Form.Group className="container-search">
             <Form.Label className="search-div">
               Búsqueda por usuario o asunto
@@ -102,8 +93,19 @@ export default function AdminMensajes() {
               Limpiar
             </Button>
           </Form.Group>
-        </Form>
-      <h1>Tiene {mensajesUnread} mensajes sin leer</h1>
+        </Form> */}
+      <div className="mt-2">
+      <h1>Tiene {mensajes.length} mensajes</h1>
+      </div>
+      <Button size="sm" className="btn btn-primary mx-1">
+              Todos
+            </Button>
+            <Button size="sm" className="btn btn-warning mx-1" onChange={handleChange} value="No leído">
+              Sin leer
+            </Button>
+            <Button size="sm" className="btn btn-success mx-1" onChange={handleChange} value="Leído">
+              Leídos
+            </Button>
       <Table striped bordered hover variant="dark" className="mt-5">
         <thead>
           <tr>
@@ -115,6 +117,7 @@ export default function AdminMensajes() {
           </tr>
         </thead>          
           {mensajes.map((mensaje) => (
+            mensaje.estado &&  (
           <tbody>
           <tr> 
             <td>{mensaje.fecha}</td>            
@@ -122,6 +125,7 @@ export default function AdminMensajes() {
             <td>{mensaje.asunto}</td>
             <td>{mensaje.estado}</td>
             <td>
+              
             {mensaje.estado === "No leído" && (
                   <Button
                     size="sm"
@@ -157,7 +161,7 @@ export default function AdminMensajes() {
             </td>
             </tr>
             </tbody>
-            ))}
+            )))}
       </Table>
 
       {/* Modal Leer Mensaje */}
