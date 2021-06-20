@@ -32,6 +32,14 @@
 .form-productos-control {
   width: 400px;
 }
+.form-productos-control-precio {
+  width: 360px;
+  display: inline-block;
+}
+.form-productos-prepend {
+  width: 40px;
+  display: inline-block;
+}
 
 .button-form-productos {
   margin-left: 6rem;

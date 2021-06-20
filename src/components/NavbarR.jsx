@@ -72,9 +72,9 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
                 title={title}
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item to="carrito" as={NavLink}>
+                {/* <NavDropdown.Item to="carrito" as={NavLink}>
                   Carrito
-                </NavDropdown.Item>
+                </NavDropdown.Item> */}
                 {/* <NavDropdown.Item href="#action/3.2">
                   Favoritos
                 </NavDropdown.Item> */}
@@ -92,7 +92,7 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
             <NavDropdown className="user-button ml-2" title={userName}>
               <NavDropdown.Item
                 to="/perfil"
-                className="drop-profile-button"
+                className="drop-profile-b utton"
                 as={NavLink}
               >
                 Ver perfil
@@ -107,14 +107,18 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
               </NavDropdown.Item>
             </NavDropdown>
           )}
-          <Button to="/carrito" as={NavLink} variant="dark" style={{marginLeft:"20px"}} >
-              <FontAwesomeIcon
-                className="shoppingCart"
-                icon={["fas", "shopping-cart"]}
-              ></FontAwesomeIcon> 
-              <Badge variant="light">{cantidadCarrito}</Badge>
+          <Nav.Link
+            to="/carrito"
+            as={NavLink}
+            className="navstyle-shopcart text-left"
+          >
+            <FontAwesomeIcon
+              className="shoppingCart"
+              icon={["fas", "shopping-cart"]}
+            ></FontAwesomeIcon>
+            <Badge variant="light">{cantidadCarrito}</Badge>
             <span className="sr-only">unread messages</span>
-          </Button>
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

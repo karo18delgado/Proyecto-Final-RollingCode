@@ -15,13 +15,8 @@ import { useState } from "react";
 import CreditsCard from "../pages/CreditsCard";
 import axios from "axios";
 
-
-
-
 export default function Carrito({ articles, eliminarItemCarrito }) {
   const [show, setShow] = useState(false);
-  
-  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -52,13 +47,17 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                   {articles.map((item) => (
                     <tr>
                       <td>
-                        <img className="tamaño-imagen" src={item.producto.urlImage} alt="..." />
+                        <img
+                          className="tamaño-imagen"
+                          src={item.producto.urlImage}
+                          alt="..."
+                        />
                       </td>
                       <td>
                         {item.producto.nombre}
                         {item.producto.descripcion}
                       </td>
-                      <td>{item.producto.precio}</td>
+                      <td>${item.producto.precio}</td>
                       <td>
                         <ContadorShop
                           cantidad={item.cantidad}
@@ -133,7 +132,7 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                     <Modal.Header closeButton>
                       <Modal.Title>Tarjeta de Crédito</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body style={{height:"400px"}}>
+                    <Modal.Body style={{ height: "400px" }}>
                       <CreditsCard />
                     </Modal.Body>
                     <Modal.Footer>
@@ -153,7 +152,6 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                   variant="primary"
                   className="btn botón-Iniciar-compra"
                   type="onclick"
-                  
                 >
                   Iniciar Compra
                 </Button>

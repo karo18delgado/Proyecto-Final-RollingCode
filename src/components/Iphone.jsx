@@ -13,16 +13,21 @@ export default function Cards({ producto, setproductosCarrito }) {
   const onClickCart = async () => {
     let productos = JSON.parse(localStorage.getItem("carrito")) || [];
     const productoId = producto._id;
-    const precioId= producto.precio;
-    const subtotal=producto.precio;
+    const precioId = producto.precio;
+    const subtotal = producto.precio;
     // setProductoCart([productoId]);
-    productos.push({ productoId, cantidad: 1,precioId, subtotal});
+    productos.push({ productoId, cantidad: 1, precioId, subtotal });
     localStorage.setItem("carrito", JSON.stringify(productos));
 
     const response = await axios.get(`/productos/${productoId}`);
     setproductosCarrito((productosCarrito) => [
       ...productosCarrito,
-      { producto: response.data, cantidad: 1, precioId, subtotal: parseInt(precioId)},
+      {
+        producto: response.data,
+        cantidad: 1,
+        precioId,
+        subtotal: parseInt(precioId),
+      },
     ]);
   };
 
@@ -49,7 +54,7 @@ export default function Cards({ producto, setproductosCarrito }) {
             <Card.Text className="text-encabezado">
               {producto.descripcion}
             </Card.Text>
-            <Card.Text className="text-precio">{producto.precio}</Card.Text>
+            <Card.Text className="text-precio">${producto.precio}</Card.Text>
           </Card.Body>
           <Card.Body>
             <Button
