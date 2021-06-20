@@ -107,8 +107,12 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
               </NavDropdown.Item>
             </NavDropdown>
           )}
-          <Button to="/carrito" as={NavLink} variant="primary">
-            Carrito <Badge variant="light">{cantidadCarrito}</Badge>
+          <Button to="/carrito" as={NavLink} variant="dark" style={{marginLeft:"20px"}} >
+              <FontAwesomeIcon
+                className="shoppingCart"
+                icon={["fas", "shopping-cart"]}
+              ></FontAwesomeIcon> 
+              <Badge variant="light">{cantidadCarrito}</Badge>
             <span className="sr-only">unread messages</span>
           </Button>
         </Nav>

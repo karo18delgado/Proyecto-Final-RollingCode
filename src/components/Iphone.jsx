@@ -13,14 +13,16 @@ export default function Cards({ producto, setproductosCarrito }) {
   const onClickCart = async () => {
     let productos = JSON.parse(localStorage.getItem("carrito")) || [];
     const productoId = producto._id;
+    const precioId= producto.precio;
+    const subtotal=producto.precio;
     // setProductoCart([productoId]);
-    productos.push({ productoId, cantidad: 1 });
+    productos.push({ productoId, cantidad: 1,precioId, subtotal});
     localStorage.setItem("carrito", JSON.stringify(productos));
 
     const response = await axios.get(`/productos/${productoId}`);
     setproductosCarrito((productosCarrito) => [
       ...productosCarrito,
-      { producto: response.data, cantidad: 1 },
+      { producto: response.data, cantidad: 1, precioId, subtotal: parseInt(precioId)},
     ]);
   };
 

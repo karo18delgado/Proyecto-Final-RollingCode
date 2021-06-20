@@ -13,9 +13,15 @@ import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
 import { useState } from "react";
 import CreditsCard from "../pages/CreditsCard";
+import axios from "axios";
+
+
+
 
 export default function Carrito({ articles, eliminarItemCarrito }) {
   const [show, setShow] = useState(false);
+  
+  
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -46,7 +52,7 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                   {articles.map((item) => (
                     <tr>
                       <td>
-                        <img src={item.producto.urlImage} alt="..." />
+                        <img className="tamaño-imagen" src={item.producto.urlImage} alt="..." />
                       </td>
                       <td>
                         {item.producto.nombre}
@@ -57,9 +63,10 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                         <ContadorShop
                           cantidad={item.cantidad}
                           id={item.producto._id}
+                          precioId={item.producto.precio}
                         />
                       </td>
-                      <td>$</td>
+                      <td> </td>
                       <td>
                         <button
                           className="botón-shop"
@@ -124,9 +131,9 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                   />
                   <Modal size="lg" show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
-                      <Modal.Title>Modal heading</Modal.Title>
+                      <Modal.Title>Tarjeta de Crédito</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body>
+                    <Modal.Body style={{height:"400px"}}>
                       <CreditsCard />
                     </Modal.Body>
                     <Modal.Footer>
@@ -141,11 +148,12 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                 </Col>
               </Form.Group>
               <div className="column comprar">
-                <h2>Total: $ </h2>
+                <h2>Total: $</h2>
                 <Button
                   variant="primary"
                   className="btn botón-Iniciar-compra"
-                  type="submit"
+                  type="onclick"
+                  
                 >
                   Iniciar Compra
                 </Button>
