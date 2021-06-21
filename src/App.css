@@ -38,16 +38,15 @@ svg:hover {
   border-radius: 20px;
   background-color: #7da7d1;
   font-weight: bold;
-  width: 100px;
+  max-width: 160px;
   text-align: center;
 }
 
 .user-button-admin {
-  border: black 1px solid;
   border-radius: 20px;
   background-color: black;
   font-weight: bold;
-  width: 100px;
+  max-width: 160px;
   text-align: center;
 }
 

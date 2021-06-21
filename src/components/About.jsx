@@ -81,7 +81,7 @@ export default function About() {
                 El planeta no puede esperar. Nosotros tampoco.
               </p>
               <img
-                className="imagen-card col-md-7"
+                className="imagen-card mx-auto col-sm-10 col-md-7"
                 src="https://www.apple.com/v/environment/l/images/overview/plan__ce92yq3xbtg2_large.png"
                 alt=""
               />
@@ -854,76 +854,80 @@ export default function About() {
 
       {/* SECCIÓN DIRECTIVOS */}
       <div className="container">
-        <h2 className="letra-directivos">Directivos de Apple</h2>
+        <h2 className="letra-directivos">Directivos de AppleRollStore</h2>
         <hr />
         <h1 className="letra-seccion-directivos">Perfiles de los directivos</h1>
       </div>
       <Container style={{ paddingBottom: "100px" }}>
-        <Row>
-          <Col xs={12} md={4} style={{ padding: "20px" }}>
-            <Card
-              style={{ height: "450px" }}
-              className="listado-card-directivos"
-            >
+        <Row className="justify-content-center">
+          <Col xs={7} md={4} lg={3} style={{ padding: "20px" }}>
+            <Card className="listado-card-directivos">
               <Card.Img
                 className="img-directivos"
                 variant="top"
                 src={rosendo}
               />
               <Card.Body>
-                <Card.Title>Rosendo Alves </Card.Title>
+                <Card.Title className="pb-4">Rosendo Alves</Card.Title>
                 <Card.Text>Programador FullStack</Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} md={4} style={{ padding: "20px" }}>
-            <Card
-              style={{ height: "450px" }}
-              className="listado-card-directivos"
-            >
+          <Col xs={7} md={4} lg={3} style={{ padding: "20px" }}>
+            <Card className="listado-card-directivos">
               <Card.Img
                 className="img-directivos"
                 variant="top"
                 src={carolina}
               />
               <Card.Body>
-                <Card.Title>Delgado Ana Carolina</Card.Title>
+                <Card.Title>Ana Carolina Delgado </Card.Title>
                 <Card.Text>Programadora FullStack</Card.Text>
               </Card.Body>
             </Card>
           </Col>
-          <Col xs={12} md={4} style={{ padding: "20px" }}>
-            <Card
-              style={{ height: "450px" }}
-              className="listado-card-directivos"
-            >
+          <Col xs={7} md={4} lg={3} style={{ padding: "20px" }}>
+            <Card className="listado-card-directivos">
               <Card.Img
                 className="img-directivos"
                 variant="top"
                 src={agustin}
               />
               <Card.Body>
-                <Card.Title>Urrutia Gómez Agustín</Card.Title>
+                <Card.Title>Agustín Gómez Urrutia</Card.Title>
                 <Card.Text>Programador FullStack</Card.Text>
               </Card.Body>
             </Card>
           </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={4} style={{ padding: "20px" }}>
-            <Card style={{ height: "450px" }} className="listado-card">
+          <Col xs={7} md={4} lg={3} style={{ padding: "20px" }}>
+            <Card className="listado-card-directivos">
               <Card.Img
                 className="img-directivos"
                 variant="top"
                 src={nicolas}
               />
               <Card.Body>
-                <Card.Title>Gómez Nicolas</Card.Title>
+                <Card.Title className="pb-4">Nicolás Gómez</Card.Title>
                 <Card.Text>Programador FullStack</Card.Text>
               </Card.Body>
             </Card>
           </Col>
         </Row>
+        {/* <Row className="justify-justify-content">
+          <Col xs={7} md={4} style={{ padding: "20px" }}>
+            <Card className="listado-card-directivos">
+              <Card.Img
+                className="img-directivos"
+                variant="top"
+                src={nicolas}
+              />
+              <Card.Body>
+                <Card.Title className="pb-4">Nicolás Gómez</Card.Title>
+                <Card.Text>Programador FullStack</Card.Text>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row> */}
       </Container>
     </div>
   );

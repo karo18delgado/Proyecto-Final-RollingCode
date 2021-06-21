@@ -101,7 +101,8 @@ export default function CardsIphone({ setproductosCarrito }) {
       <div className="container d-flex flex-wrap">
         {productos.map(
           (producto) =>
-            producto.categoria === "iPad" && producto.condicion === "Habilitado" &&  (
+            producto.categoria === "iPad" &&
+            producto.condicion === "Habilitado" && (
               <Ipad
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
@@ -172,7 +173,7 @@ export default function CardsIphone({ setproductosCarrito }) {
           <div className="my-3 px-3 col-12 col-md-6 text-center">
             <div className="text-center bg-blanco pt-4 pb-2">
               <p className="titulo-banner px-5">Apple Pencil</p>
-              <p className="subtitulo-banner text-center px-5">
+              <p className="subtitulo-banner text-center px-5 pb-lg-2">
                 Lleva tus ideas de tu cabeza a tu iPad.
               </p>
             </div>
@@ -182,7 +183,7 @@ export default function CardsIphone({ setproductosCarrito }) {
             <div className="bg-banneripad3"></div>
             <div className="text-center bg-blanco pt-4 pb-2 text-sizeipad">
               <p className="titulo-banner px-5">Teclados para el iPad</p>
-              <p className="subtitulo-banner text-center px-5">
+              <p className="subtitulo-banner text-center px-5 pb-md-2 pb-sm-2">
                 Tan versátiles que hasta protegen tu iPad.
               </p>
             </div>
