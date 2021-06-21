@@ -78,7 +78,7 @@ export default function AdminUsuarios() {
           </Form.Group>
         </Form>
       </div>
-      <Table striped bordered hover variant="dark" className="mt-5">
+      <Table striped bordered hover variant="dark" className="mt-5" responsive>
         <thead>
           <tr>
             <th>Nombre</th>
@@ -102,7 +102,7 @@ export default function AdminUsuarios() {
               <td>
                 <Button
                   size="sm"
-                  className="btn sm btn-warning mx-1"
+                  className="btn sm btn-warning mx-1 table-buttons"
                   onClick={handleShowInfo}
                   value={usuario._id}
                 >
@@ -110,7 +110,7 @@ export default function AdminUsuarios() {
                 </Button>
                 <Button
                   size="sm"
-                  className="btn sm btn-danger mx-1"
+                  className="btn sm btn-danger mx-1 table-buttons"
                   onClick={handleDelete}
                   value={usuario._id}
                 >
@@ -119,7 +119,7 @@ export default function AdminUsuarios() {
                 {usuario.blockUser === "Deshabilitado" && (
                   <Button
                     size="sm"
-                    className="btn sm btn-primary mx-1"
+                    className="btn sm btn-primary mx-1 table-buttons"
                     onClick={handleHabilitar}
                     value={usuario._id}
                   >
@@ -129,7 +129,7 @@ export default function AdminUsuarios() {
                 {usuario.blockUser === "Habilitado" && (
                   <Button
                     size="sm"
-                    className="btn sm btn-primary mx-1"
+                    className="btn sm btn-primary mx-1 table-buttons"
                     onClick={handleDeshabilitar}
                     value={usuario._id}
                   >
