@@ -12,6 +12,7 @@ import CardsMac from './components/CardsMac';
 import CardsIpad from './components/CardsIpad';
 import Login from "./pages/Login"
 import NavbarAdmin from './components/Admin/NavbarAdmin';
+import NavbarAdminR from './components/NavbarAdminR';
 import AdminUsuarios from './components/Admin/AdminUsuarios';
 import PerfilUsuario from './pages/PerfilUsuario';
 import AdminProductos from './components/Admin/AdminProductos';
@@ -72,7 +73,8 @@ function App() {
       <Route>
         <ScrollToTop></ScrollToTop>
       </Route>
-      <NavbarR userName={user.nombre} logOut={logOut} cantidadCarrito={productosCarrito.length} />
+      {user.categoryUser !== 'admin' && < NavbarR userName={user.nombre} logOut={logOut} cantidadCarrito={productosCarrito.length} />}
+      {user.categoryUser && <NavbarAdminR userName={user.nombre} logOut={logOut} cantidadCarrito={productosCarrito.length} />}
       <Switch>
         <Route path="/about">
           <About />
@@ -101,7 +103,7 @@ function App() {
         <Route path="/perfil">
           <PerfilUsuario user={user} />
         </Route>
-        {user.categoryUser && <Route path="/admin">
+        {user.categoryUser && <Route path="/">
           <Route>
             <NavbarAdmin />
             <Route path="/admin/admin-usuarios">

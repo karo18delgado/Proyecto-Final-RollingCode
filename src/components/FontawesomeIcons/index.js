@@ -5,4 +5,4 @@ import { faPlus, faVolumeUp, faUser, faMobileAlt, faTabletAlt, faDesktop, faUser
 import { faTrashAlt, faEdit } from "@fortawesome/free-regular-svg-icons";
 
 
-library.add(faApple, faShoppingBag, faUserCog, faPlus, faVolumeUp, faTrashAlt, faMinus, faUser, faMobileAlt, faTabletAlt, faDesktop, faUsers, faShoppingCart, faEdit, faInfoCircle, faCheck, faBan );
+library.add(faApple, faShoppingBag, faUserCog, faPlus, faVolumeUp, faTrashAlt, faMinus, faUser, faMobileAlt, faTabletAlt, faDesktop, faUsers, faShoppingCart, faEdit, faInfoCircle, faCheck, faBan);

@@ -32,7 +32,7 @@ export default function Login({ setUser, setToken }) {
         setToken(data.token);
         if (data.categoryUser === "admin") {
           alert("Logueo Admin exitoso 😎 ");
-          history.push("/admin/admin-productos");
+          history.push("/");
         } else {
           alert("Logueo exitoso 😎 ");
           history.push("/");

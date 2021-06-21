@@ -2,7 +2,7 @@ import "../assets/font.css";
 import "../index.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, useLocation } from "react-router-dom";
-import { Nav, Navbar, NavDropdown, Button, Badge } from "react-bootstrap";
+import { Nav, Navbar, NavDropdown, Badge } from "react-bootstrap";
 
 const title = <FontAwesomeIcon icon="user"></FontAwesomeIcon>;
 
@@ -11,7 +11,7 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
   const { pathname } = location;
   if (pathname.includes("/admin")) return null;
   return (
-    <Navbar className="px-2" bg="dark" variant="dark" expand="lg">
+    <Navbar className="px-2 navbar-admin" variant="dark" expand="lg">
       <Navbar.Brand as={NavLink} to="/">
         <FontAwesomeIcon
           className="apple-icon"
@@ -65,6 +65,17 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
             ></FontAwesomeIcon>
             About Us
           </Nav.Link>
+          <Nav.Link
+            className="mx-3 navstyle navstyle-admin"
+            to="admin/admin-productos"
+            as={NavLink}
+          >
+            <FontAwesomeIcon
+              className="mr-2"
+              icon={["fas", "user"]}
+            ></FontAwesomeIcon>
+            Admin
+          </Nav.Link>
           {!userName && (
             <>
               <NavDropdown
@@ -83,10 +94,10 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
             </>
           )}
           {userName && (
-            <NavDropdown className="user-button ml-2" title={userName}>
+            <NavDropdown className="user-button-admin ml-2" title={userName}>
               <NavDropdown.Item
                 to="/perfil"
-                className="drop-profile-button"
+                className="drop-profile-button-admin"
                 as={NavLink}
               >
                 Ver perfil
@@ -95,6 +106,7 @@ export default function NavbarR({ userName, logOut, cantidadCarrito }) {
                 to="/"
                 as={NavLink}
                 onClick={logOut}
+                className="drop-profile-button-admin"
                 activeClassName="none"
               >
                 Cerrar Sesión
