@@ -35,7 +35,6 @@ export default function Cards({ producto, setproductosCarrito }) {
     <>
       <div className="my-3 col-12 col-lg-4 text-center">
         <Card
-          onClick={() => setOpen(!open)}
           aria-controls="example-collapse-text"
           aria-expanded={open}
           className=" m-auto style-card"
@@ -76,6 +75,7 @@ export default function Cards({ producto, setproductosCarrito }) {
               // target="_blank"
               className="btn boton-comprar mb-auto text-center"
               variant="primary"
+              onClick={() => setOpen(!open)}
             >
               Ver detalle
             </Button>
