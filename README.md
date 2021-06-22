@@ -1,10 +1,22 @@
-# Getting Started with Create React App
+<div align="center">
+  <img alt="react-sketchapp" src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large_2x.png" style="max-height:163px; width:100; height: auto; max-width:100%" />
+</div>
+<div align="center">
+  <strong>App selling Apple products</strong>
+</div>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+
+# Proyecto Final-Rolling Code
+Página de venta de productos específicos.
+El Scope(alcance) del proyecto es la maquetación de páginas en react con bootstrap/React-Bootstrap. 
+Navegación con react-router-dom. División de tareas, planning, daily-meeting y uso de tablero en trello.
+Backend API rest con express. Administrar base de datos mongo con ORM mongoose y servicio atlas cloud.
+
+
+
 
 ### `npm start`
 
