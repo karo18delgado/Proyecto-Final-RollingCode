@@ -35,8 +35,16 @@ export default function FormProductos() {
   };
 
   return (
-    <div>
       <div className="d-flex justify-content-center mt-5 mb-5">
+      <>
+        <div className="m-auto text-center">
+          <Button
+            style={{ fontSize: "30px" }}
+            className="mt-5"
+            variant="primary"
+            onClick={handleShow}
+          >
+            Crear nuevo Producto
         <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Form.Row className="form-productos">
             <Form.Group md="4" controlId="validationCustom01">
@@ -253,10 +261,17 @@ export default function FormProductos() {
               </Form.Control>
             </Form.Group>
           </Form.Row>
-          <Button type="submit" className="button-form-productos">
+          <Button type="submit" className="button-form-productos ml-4">
             Registrar producto
           </Button>
         </Form>
+      </Button>
+        </div>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>Nuevo Producto</Modal.Title>
@@ -497,7 +512,7 @@ export default function FormProductos() {
             </Button>
           </Modal.Footer>
         </Modal>
-      </div>
+      </>
     </div>
   );
 }
