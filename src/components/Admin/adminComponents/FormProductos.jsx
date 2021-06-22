@@ -103,7 +103,7 @@ const handleChange = (e) => {
                 <Form.Control
                   name="precio"
                   onChange={(e) => handleChange(e)}
-                  type="text"
+                  type="number"
                   aria-describedby="inputGroupPrepend"
                   required
                   className="form-productos-control"
