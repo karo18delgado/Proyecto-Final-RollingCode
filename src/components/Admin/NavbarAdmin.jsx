@@ -15,13 +15,15 @@ export default function NavbarAdmin() {
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link to="/admin/admin-usuarios" as={NavLink}>
-            Usuarios
-          </Nav.Link>
           <Nav.Link to="/admin/admin-productos" as={NavLink}>
             Productos
           </Nav.Link>
-          <Nav.Link to="/admin/admin-mensajes" as={NavLink}>Mensajes</Nav.Link>
+          <Nav.Link to="/admin/admin-usuarios" as={NavLink}>
+            Usuarios
+          </Nav.Link>
+          <Nav.Link to="/admin/admin-mensajes" as={NavLink}>
+            Mensajes
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>

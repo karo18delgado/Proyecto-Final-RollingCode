@@ -38,8 +38,21 @@ svg:hover {
   border-radius: 20px;
   background-color: #7da7d1;
   font-weight: bold;
-  width: 100px;
+  max-width: 160px;
   text-align: center;
+}
+
+.user-button-admin {
+  border-radius: 20px;
+  background-color: black;
+  font-weight: bold;
+  max-width: 160px;
+  text-align: center;
+}
+
+.drop-profile-button-admin.active,
+.drop-profile-button-admin:active {
+  background-color: red !important;
 }
 
 @media only screen and (max-width: 990px) {
@@ -148,7 +161,6 @@ svg:hover {
 }
 
 .button-class {
-  margin-right: auto;
   margin-left: 4rem;
   margin-top: 1rem;
   margin-bottom: 2rem;

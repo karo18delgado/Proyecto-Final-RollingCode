@@ -5,12 +5,6 @@ import React, { useState } from "react";
 import { Button, Form, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
 
-// const admin = {
-//   email: "admin@apple.com",
-//   name: "Administrador",
-//   password: "admin@123",
-// };
-
 export default function Login({ setUser, setToken }) {
   const [input, setInput] = useState({});
   const history = useHistory();
@@ -32,7 +26,7 @@ export default function Login({ setUser, setToken }) {
         setToken(data.token);
         if (data.categoryUser === "admin") {
           alert("Logueo Admin exitoso 😎 ");
-          history.push("/admin/admin-productos");
+          history.push("/");
         } else {
           alert("Logueo exitoso 😎 ");
           history.push("/");
@@ -48,13 +42,13 @@ export default function Login({ setUser, setToken }) {
     <div className="login-container">
       <div className="login-title">
         <h3>
-          <b>Por favor, registrese. </b>
+          <b>Ingrese sus datos para iniciar sesión</b>
         </h3>
       </div>
 
-      <div className="login-form">
+      <div className="login-row-form">
         <Form className="login-row-form" noValidate onSubmit={handleSubmit}>
-          <Form.Row className="login-row">
+          <Form.Row className="mt-3">
             <Form.Group className="login-row" controlId="validationCustom03">
               <Form.Control
                 name="email"
@@ -77,7 +71,7 @@ export default function Login({ setUser, setToken }) {
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
               required
             />
-            <Form.Text className="text-muted">
+            <Form.Text className="text-muted ml-1">
               <small>
                 Su ID de Apple es la direccion de correo electronico que usa
                 para iniciar sesion en iTunes, App Store e iCloud.
@@ -92,11 +86,11 @@ export default function Login({ setUser, setToken }) {
             Iniciar sesion
           </Button>
           <Form.Text>
-            <Nav.Link className="link-row">
+            {/* <Nav.Link className="link-row">
               <p>
                 <small>Olvidaste tu contraseña?</small>
               </p>
-            </Nav.Link>
+            </Nav.Link> */}
             <Nav.Link to="register" as={NavLink} className="link-row">
               <p>
                 <small>No tienes una Apple ID? Registrate.</small>

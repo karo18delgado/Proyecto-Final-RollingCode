@@ -1,6 +1,7 @@
 import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../admin.css";
 
@@ -77,6 +78,7 @@ export default function TablaProductos() {
     const confirma = window.confirm("Desea eliminar el producto?");
     if (confirma) {
       await axios.delete(`/productos/${productoId}`);
+      alert("Producto eliminado con éxito!😁");
       getProductos();
     }
   };
@@ -101,7 +103,14 @@ export default function TablaProductos() {
 
   return (
     <>
-      <Table striped bordered hover variant="dark" className="mt-5 mb-5">
+      <Table
+        striped
+        bordered
+        hover
+        variant="dark"
+        className="mt-5 mb-5"
+        responsive
+      >
         <thead>
           <tr>
             <th>Producto</th>
@@ -129,48 +138,72 @@ export default function TablaProductos() {
               <td>{producto.categoria}</td>
               <td>{producto.condicion}</td>
               <td>
+                {/* Boton Editar */}
                 <Button
                   size="sm"
-                  className="btn sm btn-success mx-1"
+                  className="btn sm btn-success mx-1 table-buttons"
                   onClick={handleShowEdit}
                   value={producto._id}
                 >
-                  Editar
+                  <FontAwesomeIcon
+                    className="edit"
+                    icon={["far", "edit"]}
+                    style={{ fontSize: "20px", margin: "auto" }}
+                  ></FontAwesomeIcon>
                 </Button>
+                {/* Boton Mas Informacion */}
                 <Button
                   size="sm"
-                  className="btn sm btn-warning mx-1"
+                  className="btn sm btn-info mx-1 table-buttons"
                   onClick={handleShowInfo}
                   value={producto._id}
                 >
-                  Más información
+                  <FontAwesomeIcon
+                    className="edit"
+                    icon={["fas", "info-circle"]}
+                    style={{ fontSize: "20px", margin: "auto" }}
+                  ></FontAwesomeIcon>
                 </Button>
+                {/* Boton Eliminar */}
                 <Button
                   size="sm"
-                  className="btn sm btn-danger mx-1"
+                  className="btn sm btn-danger mx-1 table-buttons"
                   onClick={handleDelete}
                   value={producto._id}
                 >
-                  Eliminar
+                  <FontAwesomeIcon
+                    className="edit table-buttons"
+                    icon={["far", "trash-alt"]}
+                    style={{ fontSize: "20px", margin: "auto" }}
+                  ></FontAwesomeIcon>
                 </Button>
+                {/* Boton Ban y Habilitar */}
                 {producto.condicion === "Deshabilitado" && (
                   <Button
                     size="sm"
-                    className="btn sm btn-primary mx-1"
+                    className="btn sm btn-primary mx-1 table-buttons"
                     onClick={handleHabilitar}
                     value={producto._id}
                   >
-                    Habilitar
+                    <FontAwesomeIcon
+                      className="edit"
+                      icon={["fas", "check"]}
+                      style={{ fontSize: "20px", margin: "auto" }}
+                    ></FontAwesomeIcon>
                   </Button>
                 )}
                 {producto.condicion === "Habilitado" && (
                   <Button
                     size="sm"
-                    className="btn sm btn-primary mx-1"
+                    className="btn sm btn-warning mx-1 table-buttons"
                     onClick={handleDeshabilitar}
                     value={producto._id}
                   >
-                    Deshabilitar
+                    <FontAwesomeIcon
+                      className="edit"
+                      icon={["fas", "ban"]}
+                      style={{ fontSize: "20px", margin: "auto" }}
+                    ></FontAwesomeIcon>
                   </Button>
                 )}
               </td>

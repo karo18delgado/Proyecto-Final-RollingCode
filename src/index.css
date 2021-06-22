@@ -12,6 +12,12 @@ code {
     monospace;
 }
 
+/* NAVBAR ADMIN STYLE */
+
+.navbar-admin {
+  background-color: rgb(201, 25, 25);
+}
+
 /* NAVBAR STYLE SUBRAYADO */
 
 .navstyle {
@@ -55,6 +61,14 @@ code {
   .navstyle-about {
     width: 110px !important;
   }
+  .navstyle-admin {
+    width: 90px !important;
+  }
+  .navstyle-shopcart {
+    width: 70px !important;
+    margin-top: 10px !important;
+    margin-left: 15px !important;
+  }
 }
 
 @media only screen and (min-width: 990px) {
@@ -67,4 +81,11 @@ code {
   .navstyle-about {
     width: 110px !important;
   }
-}
+  .navstyle-admin {
+    width: 90px !important;
+  }
+  .navstyle-shopcart {
+    width: 70px !important;
+    margin-left: 15px !important;
+  }
+} ;

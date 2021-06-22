@@ -97,7 +97,8 @@ export default function CardsIphone({ setproductosCarrito }) {
       <div className="container d-flex flex-wrap">
         {productos.map(
           (producto) =>
-            producto.categoria === "Mac" && producto.condicion === "Habilitado" &&  (
+            producto.categoria === "Mac" &&
+            producto.condicion === "Habilitado" && (
               <Mac
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
@@ -161,7 +162,7 @@ export default function CardsIphone({ setproductosCarrito }) {
           </div>
         </div>
         {/* Tarjeta Banner 2 */}
-        <h1 className="text-center my-5 mx-auto">
+        <h1 className="text-center my-5 mx-auto p-1">
           <strong>¿Qué hace que la Mac sea única?</strong>
         </h1>
         <div className="container d-flex flex-wrap px-5 pb-5">
@@ -177,7 +178,7 @@ export default function CardsIphone({ setproductosCarrito }) {
           <div className="my-3 px-3 col-12 col-md-6 text-center ">
             <div className="text-center bg-blanco pt-4 pb-2">
               <p className="subtitulo-banner text-center px-5">iCloud</p>
-              <p className="titulo-banner px-5">
+              <p className="titulo-banner px-5 pb-sm-4 pb-lg-5 pb-lg-5">
                 Almacenamiento disponible donde quieras.
               </p>
             </div>

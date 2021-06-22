@@ -1,83 +1,79 @@
 .login-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 1rem;
-   
-  }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
 .login-title {
-    display: flex;
-    justify-content: start;
-    width: 100%;
-    margin-top: 1rem;
-    margin-bottom: 0rem;
-    margin-left: 6.5rem;
-    font-size: 1.5rem;
-  }
+  text-align: center;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 0rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
 
-  .login-form {
-    width: 800px;
-    display: flex;
-    justify-content: start;
-  }
+.login-form {
+  width: 800px;
+  display: flex;
+  justify-content: start;
+}
 
+.login-row {
+  margin-top: 1rem;
+  width: 800px;
+}
+.login-row-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+.button-class {
+  margin-left: 0rem;
+  width: 800px;
+}
+
+.link-row {
+  margin-top: 0rem !important;
+  margin-bottom: 2rem !important;
+  padding: 0rem !important;
+  width: 100%;
+}
+
+@media only screen and (max-width: 990px) {
   .login-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    margin-top: 1rem;
-    width:800px;
+    width: 400px;
+  }
+  .link-row {
+    width: 400px;
+    padding: 0rem !important;
+    margin-left: 1rem;
   }
   .login-row-form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-   
-    width: 100%;
+    width: 410px;
   }
+  .name-div {
+    width: 400px;
+  }
+  .lastname-div {
+    width: 400px;
+    margin-top: 20px;
+    margin-left: 0px;
+  }
+  .group-div {
+    margin-left: 0.5rem;
+  }
+
   .button-class {
-    margin-left: 0rem;
-    width:900px;
+    margin-left: 0.5rem;
+    margin-bottom: 1rem;
   }
+}
 
-  .link-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    width:900px;
-    margin-top: 0rem !important;
-    margin-left: 6rem;
-    padding: 0rem !important;
+@media only screen and (min-width: 990px) {
+  .login-row-form {
+    width: 800px;
   }
-
-  @media only screen and (max-width: 750px) {
-  
-    .login-row {
-      width: 400px;
-    }
-    .link-row {
-      width: 400px;
-      padding: 0rem !important;
-      margin-left: 0rem;
-    }
-    .login-row-form {
-      width: 410px;
-    }
-    .name-div {
-      width: 400px;
-    }
-    .lastname-div {
-      width: 400px;
-      margin-top: 20px;
-      margin-left: 0px;
-    }
-    .group-div {
-      margin-left: 0.5rem;
-    }
-  
-    .button-class {
-      margin-left: 0.5rem;
-      margin-bottom: 1rem;
-    }
-  }
-  
+}

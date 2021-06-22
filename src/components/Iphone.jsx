@@ -49,7 +49,7 @@ export default function Cards({ producto, setproductosCarrito }) {
             <Card.Text className="text-encabezado">
               {producto.descripcion}
             </Card.Text>
-            <Card.Text className="text-precio">{producto.precio}</Card.Text>
+            <Card.Text className="text-precio">${producto.precio}</Card.Text>
           </Card.Body>
           <Card.Body>
             <Button
