@@ -8,7 +8,7 @@ export default function ContadorShop({ cantidad, id, subtotal }) {
   const [precioSubtotal, setPrecioSubtotal] = useState(subtotal);
 
   const updateCounter = (num) => {
-    if (counter + num > 0) {
+    if (counter + num > 0 ) {
       setCounter(counter + num);
       setPrecioSubtotal(precioSubtotal * num);
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
@@ -24,6 +24,7 @@ export default function ContadorShop({ cantidad, id, subtotal }) {
       localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
     }
   };
+  
 
   return (
     <div className="row">
@@ -42,7 +43,7 @@ export default function ContadorShop({ cantidad, id, subtotal }) {
       </button>
       <h4 style={{ paddingLeft: "10px" }}>
         {" "}
-        Total $ {counter * precioSubtotal}{" "}
+        Total $ {precioSubtotal < 0 ? counter*precioSubtotal*(-1) : counter*precioSubtotal}
       </h4>
     </div>
   );
