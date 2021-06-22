@@ -16,7 +16,7 @@ export default function FormFooter() {
         }
         try {
             // Consulta post a /mensaje
-            await axios.post('auth/mensaje', input);
+            await axios.post('/mensaje', input);
             alert('Mensaje enviado con éxito');
             setValidated(false);  
             form.reset();
