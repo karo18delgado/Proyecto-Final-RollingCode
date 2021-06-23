@@ -49,20 +49,20 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                 <tbody>
                   {articles.map((item) => (
                     <tr>
-                      <td style={{width:"40px"}}>
+                      <td style={{ width: "40px" }}>
                         <img
                           className="tamaño-imagen"
                           src={item.producto.urlImage}
                           alt="..."
                         />
                       </td>
-                      <td style={{width:"30px", paddingRight:"40px"}}>
+                      <td style={{ width: "30px", paddingRight: "40px" }}>
                         {item.producto.nombre}
                         <p></p>
                         {item.producto.descripcion}
                       </td>
                       <td>{item.producto.precio}</td>
-                      <td >
+                      <td>
                         <ContadorShop
                           cantidad={item.cantidad}
                           id={item.producto._id}
@@ -133,7 +133,7 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                     <Modal.Header closeButton>
                       <Modal.Title>Tarjeta de Crédito</Modal.Title>
                     </Modal.Header>
-                    <Modal.Body style={{ height: "400px" }}>
+                    <Modal.Body style={{ maxHeight: "700px" }}>
                       <CreditsCard />
                     </Modal.Body>
                     <Modal.Footer>
@@ -161,8 +161,12 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
                   <Modal.Header closeButton>
                     <Modal.Title>
                       <h2 className="letra-ventas">
-                        <img className="logo-ventas" src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large.png" alt="" />
-                      <span>Equipo de Ventas</span> 
+                        <img
+                          className="logo-ventas"
+                          src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large.png"
+                          alt=""
+                        />
+                        <span>Equipo de Ventas</span>
                       </h2>
                     </Modal.Title>
                   </Modal.Header>
