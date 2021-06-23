@@ -62,7 +62,7 @@ export default function AdminUsuarios() {
 
   return (
     <div>
-      <div>
+      {/* <div>
         <Form>
           <Form.Group className="container-search">
             <Form.Label className="search-div">
@@ -77,8 +77,8 @@ export default function AdminUsuarios() {
             </Button>
           </Form.Group>
         </Form>
-      </div>
-      <Table striped bordered hover variant="dark" className="mt-5" responsive>
+      </div> */}
+      <Table striped bordered hover variant="dark" className="mt-2" responsive>
         <thead>
           <tr>
             <th>Nombre</th>
