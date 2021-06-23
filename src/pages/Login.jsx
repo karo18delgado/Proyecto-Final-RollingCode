@@ -86,11 +86,6 @@ export default function Login({ setUser, setToken }) {
             Iniciar sesion
           </Button>
           <Form.Text>
-            {/* <Nav.Link className="link-row">
-              <p>
-                <small>Olvidaste tu contraseña?</small>
-              </p>
-            </Nav.Link> */}
             <Nav.Link to="register" as={NavLink} className="link-row">
               <p>
                 <small>No tienes una Apple ID? Registrate.</small>

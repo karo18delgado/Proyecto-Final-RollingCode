@@ -24,9 +24,9 @@ export default function CardsIphone({ setproductosCarrito }) {
         <div className="text-center pt-3">
           <p className="titulo-secundario">iPhone12 y iPhone 12 mini</p>
           <p className="titulo-principal">SUPER MEGA RAPIDO</p>
-          <Button variant="primary" className="btn boton-comprar" type="submit">
+          {/* <Button variant="primary" className="btn boton-comprar" type="submit">
             Comprar
-          </Button>
+          </Button> */}
         </div>
         <div className="bg-blanco text-center">
           <img
@@ -131,7 +131,6 @@ export default function CardsIphone({ setproductosCarrito }) {
           </div>
           <div className="my-3 col-12 col-md-1 text-center"></div>
         </div>
-
         {/* Envios y pagos */}
         {/* <div className="container d-flex flex-wrap px-5 mt-5">
           <div className="my-3 px-3 col-12 col-md-4 text-center">

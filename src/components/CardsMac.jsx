@@ -4,63 +4,6 @@ import Mac from "./Mac";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-// const articulos = [
-//   {
-//     image:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_mba__gdncw5gbxoq6_medium_2x.png",
-//     titulo: "MacBook Air",
-//     estado: "",
-//     subtitulo: "",
-//     precio: "$199.999",
-//     pantalla: "13.3 pulgadas",
-//     subpantalla: "Pantalla Retina",
-//     procesador:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_m1__fz8nzgohw2ai_large_2x.png",
-//     subprocesador: "Chip M1 Apple",
-//     bateria:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_battery__gbh9jzw6c7u6_large_2x.png",
-//     subbateria: "Hasta 18 horas",
-//     almacenamiento: "2 TB",
-//     subalmacenamiento: "Almacenamiento maximo configurable",
-//   },
-//   {
-//     image:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_mbp13__geounnnz6oa6_medium_2x.png",
-//     titulo: "MacBook Pro",
-//     estado: "Nuevo",
-//     subtitulo: "",
-//     precio: "$249.999",
-//     pantalla: "13.3 pulgadas",
-//     subpantalla: "Pantalla Retina",
-//     procesador:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_m1__fz8nzgohw2ai_large_2x.png",
-//     subprocesador: "Chip M1 Apple",
-//     bateria:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_battery__gbh9jzw6c7u6_large_2x.png",
-//     subbateria: "Hasta 20 horas",
-//     almacenamiento: "2 TB",
-//     subalmacenamiento: "Almacenamiento maximo configurable",
-//   },
-//   {
-//     image:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_mbp16__fykfvftfaeuu_medium_2x.png",
-//     titulo: "MacBook Pro 16",
-//     estado: "",
-//     subtitulo: "",
-//     precio: "$289.999",
-//     pantalla: "16 pulgadas",
-//     subpantalla: "Pantalla Retina",
-//     procesador:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_intel__etladu21xu6a_large_2x.png",
-//     subprocesador: "Procesador Intel Core i9",
-//     bateria:
-//       "https://www.apple.com/v/mac/home/be/images/overview/compare/compare_icon_battery__gbh9jzw6c7u6_large_2x.png",
-//     subbateria: "Hasta 11 horas",
-//     almacenamiento: "8 TB",
-//     subalmacenamiento: "Almacenamiento maximo configurable",
-//   },
-// ];
-
 export default function CardsIphone({ setproductosCarrito }) {
   const [productos, setProductos] = useState([]);
 
@@ -84,9 +27,9 @@ export default function CardsIphone({ setproductosCarrito }) {
           <p className="subtitulo-banner text-center">
             Consulta la disponibilidad.
           </p>
-          <Button variant="primary" className="btn boton-comprar" type="submit">
+          {/* <Button variant="primary" className="btn boton-comprar" type="submit">
             Comprar
-          </Button>
+          </Button> */}
           <div className="cards-bgmac mt-5"></div>
         </div>
       </div>
