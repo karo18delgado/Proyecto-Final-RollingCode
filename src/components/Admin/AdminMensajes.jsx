@@ -11,7 +11,7 @@ export default function AdminMensajes() {
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
     const mensajeId = event.target.value;
-    const fetchedMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
+    const fetchedMensaje = await axios.get(`/mensaje/${mensajeId}`);
     setMensajeInfo(fetchedMensaje.data);
     setShowInfo(true);
   };
@@ -20,7 +20,7 @@ export default function AdminMensajes() {
   /*   const [mensajesUnread, setMensajesUnread] = useState([]);
   console.log("AdminMensajes -> mensajesUnread", mensajesUnread) */
   const recibirMensajes = async () => {
-    const response = await axios.get("/auth/mensaje");
+    const response = await axios.get("/mensaje");
     setMensajes(response.data);
   };
 
@@ -42,7 +42,7 @@ export default function AdminMensajes() {
     const mensajeId = event.target.value;
     const confirma = window.confirm("Desea eliminar?");
     if (confirma) {
-      await axios.delete(`/auth/mensaje/${mensajeId}`);
+      await axios.delete(`/mensaje/${mensajeId}`);
       recibirMensajes();
     }
   };
@@ -50,18 +50,18 @@ export default function AdminMensajes() {
   //LEIDO
   const handleLeido = async (event) => {
     const mensajeId = event.target.value;
-    const lecturaMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
+    const lecturaMensaje = await axios.get(`/mensaje/${mensajeId}`);
     const newInput = { ...lecturaMensaje.data, estado: "Leído" };
-    await axios.put("/auth/mensaje", newInput);
+    await axios.put("/mensaje", newInput);
     recibirMensajes();
   };
 
   //NO LEIDO
   const handleNoLeido = async (event) => {
     const mensajeId = event.target.value;
-    const lecturaMensaje = await axios.get(`/auth/mensaje/${mensajeId}`);
+    const lecturaMensaje = await axios.get(`/mensaje/${mensajeId}`);
     const newInput = { ...lecturaMensaje.data, estado: "No leído" };
-    await axios.put("/auth/mensaje", newInput);
+    await axios.put("/mensaje", newInput);
     recibirMensajes();
   };
 

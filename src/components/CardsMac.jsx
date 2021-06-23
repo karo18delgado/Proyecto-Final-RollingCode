@@ -30,14 +30,20 @@ export default function CardsIphone({ setproductosCarrito }) {
           {/* <Button variant="primary" className="btn boton-comprar" type="submit">
             Comprar
           </Button> */}
-          <div className="cards-bgmac mt-5"></div>
+          <div className="bg-blanco text-center">
+          <img
+            className="img-fluid"
+            src="https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg"
+            alt=""
+          />
+        </div>
         </div>
       </div>
       <div className="text-center pt-5">
         <h2>Encuentra la Mac perfecta para ti.</h2>
       </div>
       {/* Card */}
-      <div className="container d-flex flex-wrap">
+      <div className="container d-flex flex-wrap justify-content-center">
         {productos.map(
           (producto) =>
             producto.categoria === "Mac" &&

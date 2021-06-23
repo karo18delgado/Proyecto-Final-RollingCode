@@ -1,6 +1,5 @@
 .cards-bg {
   background-image: url(https://i.blogs.es/b777cd/ssss/1024_2000.jpg);
-
   margin: 0px;
   width: 100%;
   margin-top: 0rem;
@@ -11,25 +10,14 @@
 }
 .cards-bgmac {
   background-image: url(https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg);
-
-  margin: 0px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
   width: 100%;
   margin-top: 0rem;
   margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
-  background-position: center;
-  height: 616px;
-}
-.cards-bgmac {
-  background-image: url(https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg);
-
-  margin: 0px;
-  width: 100%;
-  margin-top: 0rem;
-  margin-bottom: 1rem;
-  font-family: "Montserrat", sans-serif;
-  background-position: center;
-  height: 616px;
+  height: 681px;
 }
 .cards-bgipad {
   background-image: url(https://www.apple.com/v/ipad/home/bm/images/overview/hero/ipad_pro_hero__bh3eq6sqfjw2_medium_2x.jpg);
@@ -40,7 +28,7 @@
   margin-bottom: 1rem;
   font-family: "Montserrat", sans-serif;
   background-position: center;
-  height: 430px;
+  height: 681px;
 }
 
 .card-container {

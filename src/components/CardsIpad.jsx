@@ -41,7 +41,7 @@ export default function CardsIphone({ setproductosCarrito }) {
         <h2>Encuentra el iPad perfecto para ti.</h2>
       </div>
       {/* Card */}
-      <div className="container d-flex flex-wrap">
+      <div className="container d-flex flex-wrap justify-content-center">
         {productos.map(
           (producto) =>
             producto.categoria === "iPad" &&
