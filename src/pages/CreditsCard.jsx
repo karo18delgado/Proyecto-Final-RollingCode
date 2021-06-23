@@ -2,7 +2,7 @@ import React from "react";
 import Cards from "react-credit-cards";
 import "../assets/shoppingcart.css";
 import "react-credit-cards/es/styles-compiled.css";
-import { Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 export default class PaymentForm extends React.Component {
   state = {
     cvc: "",
