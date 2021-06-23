@@ -121,6 +121,7 @@ export default function RegisterForm({ setToken }) {
                 name="password"
                 onChange={(e) => handleChange(e)}
                 type="password"
+                minLength={6}
                 placeholder="Contraseña"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 required
@@ -134,6 +135,7 @@ export default function RegisterForm({ setToken }) {
                 onChange={(e) => handleChange(e)}
                 className="container-row"
                 type="password"
+                minLength={6}
                 placeholder="Confirmar contraseña"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 required
