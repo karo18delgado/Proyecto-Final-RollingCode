@@ -1,7 +1,7 @@
 import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
 
 import "../admin.css";
 
@@ -145,11 +145,7 @@ export default function TablaProductos() {
                   onClick={handleShowEdit}
                   value={producto._id}
                 >
-                  <FontAwesomeIcon
-                    className="edit"
-                    icon={["far", "edit"]}
-                    style={{ fontSize: "20px", margin: "auto" }}
-                  ></FontAwesomeIcon>
+                  Editar
                 </Button>
                 {/* Boton Mas Informacion */}
                 <Button
@@ -158,11 +154,7 @@ export default function TablaProductos() {
                   onClick={handleShowInfo}
                   value={producto._id}
                 >
-                  <FontAwesomeIcon
-                    className="edit"
-                    icon={["fas", "info-circle"]}
-                    style={{ fontSize: "20px", margin: "auto" }}
-                  ></FontAwesomeIcon>
+                  Info
                 </Button>
                 {/* Boton Eliminar */}
                 <Button
@@ -171,11 +163,7 @@ export default function TablaProductos() {
                   onClick={handleDelete}
                   value={producto._id}
                 >
-                  <FontAwesomeIcon
-                    className="edit table-buttons"
-                    icon={["far", "trash-alt"]}
-                    style={{ fontSize: "20px", margin: "auto" }}
-                  ></FontAwesomeIcon>
+                  Eliminar
                 </Button>
                 {/* Boton Ban y Habilitar */}
                 {producto.condicion === "Deshabilitado" && (
@@ -185,11 +173,7 @@ export default function TablaProductos() {
                     onClick={handleHabilitar}
                     value={producto._id}
                   >
-                    <FontAwesomeIcon
-                      className="edit"
-                      icon={["fas", "check"]}
-                      style={{ fontSize: "20px", margin: "auto" }}
-                    ></FontAwesomeIcon>
+                    Habilitar
                   </Button>
                 )}
                 {producto.condicion === "Habilitado" && (
@@ -199,11 +183,7 @@ export default function TablaProductos() {
                     onClick={handleDeshabilitar}
                     value={producto._id}
                   >
-                    <FontAwesomeIcon
-                      className="edit"
-                      icon={["fas", "ban"]}
-                      style={{ fontSize: "20px", margin: "auto" }}
-                    ></FontAwesomeIcon>
+                    Deshabilitar
                   </Button>
                 )}
               </td>
