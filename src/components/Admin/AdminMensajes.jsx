@@ -11,11 +11,7 @@ export default function AdminMensajes() {
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
     const mensajeId = event.target.value;
-<<<<<<< HEAD
-    const fetchedMensaje = await axios.get(`/mensaje/${mensajeId}`);
-=======
     const fetchedMensaje = await axios.get(`mensaje/${mensajeId}`);
->>>>>>> main
     setMensajeInfo(fetchedMensaje.data);
     setShowInfo(true);
   };
@@ -38,19 +34,11 @@ export default function AdminMensajes() {
   //ELIMINAR
   const handleDelete = async (event) => {
     const mensajeId = event.target.value;
-<<<<<<< HEAD
-    const confirma = window.confirm("Desea eliminar?");
-    if (confirma) {
-      await axios.delete(`/mensaje/${mensajeId}`);
-      recibirMensajes();
-    }
-=======
     const confirma = window.confirm('Desea eliminar?');
     if (confirma){
     await axios.delete(`/mensaje/${mensajeId}`);
     recibirMensajes();
   }
->>>>>>> main
   };
 
   //LEIDO
