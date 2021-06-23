@@ -35,7 +35,7 @@ export default function FormProductos() {
   };
 
   return (
-    <div>
+      <div className="d-flex justify-content-center mt-5 mb-5">
       <>
         <div className="m-auto text-center">
           <Button
@@ -45,7 +45,7 @@ export default function FormProductos() {
             onClick={handleShow}
           >
             Crear nuevo Producto
-          </Button>
+      </Button>
         </div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>
@@ -112,7 +112,7 @@ export default function FormProductos() {
                     <Form.Control
                       name="precio"
                       onChange={(e) => handleChange(e)}
-                      type="text"
+                      type="Number"
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
