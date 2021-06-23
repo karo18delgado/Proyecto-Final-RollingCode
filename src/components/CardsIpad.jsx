@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Ipad from "./Ipad";
 import axios from "axios";
@@ -25,9 +24,6 @@ export default function CardsIphone({ setproductosCarrito }) {
           <p className="titulo-principal">iPad Pro</p>
           <p className="titulo-secundario">El iPad en su máxima expresión.</p>
           <p className="subtitulo-banner text-center">Desde $210.000</p>
-          {/* <Button variant="primary" className="btn boton-comprar" type="submit">
-            Comprar
-          </Button> */}
           <div className="bg-blanco mt-5">
             <img
               className="img-fluid"
