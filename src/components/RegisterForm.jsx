@@ -205,15 +205,6 @@ export default function RegisterForm({ setToken }) {
               feedback="Debes aceptar los términos y condiciones antes de registrarte."
             />
           </Form.Group>
-          {/* <Form.Group className="container-row d-none">
-            <Form.Control
-              name="blockUser"
-              setvalue="Habilitado"
-              onChange={(e) => handleChange(e)}
-              className="container-row mt-0"
-              type="text"
-            />
-          </Form.Group> */}
           <Button className="button-class" type="submit">
             Registrarse
           </Button>
