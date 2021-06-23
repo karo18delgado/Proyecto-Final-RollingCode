@@ -1,34 +1,23 @@
 import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-
-
 import "../admin.css";
 
 export default function TablaProductos() {
   const [productoEdit, setProductoEdit] = useState([]);
-  console.log(
-    "🚀 ~ file: TablaProductos.jsx ~ line 9 ~ TablaProductos ~ productoEdit",
-    productoEdit
-  );
   const [productoInfo, setProductoInfo] = useState(null);
-  // const [productoDelete, setProductoDelete] = useState(null);
 
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
-  // const [changeDelete, setChangeDelete] = useState(false);
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = async (event) => {
     const productoId = event.target.value;
     const fetchedProducto = await axios.get(`/productos/${productoId}`);
-    console.log(
-      "🚀 ~ file: TablaProductos.jsx ~ line 20 ~ handleShowEdit ~ fetchedProducto",
-      fetchedProducto
-    );
     setProductoEdit(fetchedProducto.data);
     setShowEdit(true);
   };
+
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
     const productoId = event.target.value;
@@ -37,13 +26,7 @@ export default function TablaProductos() {
     setShowInfo(true);
   };
 
-  // const handleChangeDelete = async (event) =>{
-  //   const productoId = event.target.value;
-  //   const fetchedProducto = await axios.get(`/productos/${productoId}`);
-  //   setProductoDelete(fetchedProducto.data);
-  //   setChangeDelete(true);
-  // };
-
+  // Traer productos
   const [productos, setProductos] = useState([]);
   const getProductos = async () => {
     const response = await axios.get(`/productos`);

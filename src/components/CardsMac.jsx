@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Mac from "./Mac";
 import axios from "axios";
@@ -27,9 +26,6 @@ export default function CardsIphone({ setproductosCarrito }) {
           <p className="subtitulo-banner text-center">
             Consulta la disponibilidad.
           </p>
-          {/* <Button variant="primary" className="btn boton-comprar" type="submit">
-            Comprar
-          </Button> */}
           <div className="bg-blanco text-center">
           <img
             className="img-fluid"

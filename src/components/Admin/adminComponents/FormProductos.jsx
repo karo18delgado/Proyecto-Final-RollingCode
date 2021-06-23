@@ -5,9 +5,9 @@ import "../admin.css";
 
 export default function FormProductos() {
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
   const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
 
@@ -35,7 +35,7 @@ export default function FormProductos() {
   };
 
   return (
-      <div className="d-flex justify-content-center mt-5 mb-5">
+    <div className="d-flex justify-content-center mt-5 mb-5">
       <>
         <div className="m-auto text-center">
           <Button
@@ -45,7 +45,7 @@ export default function FormProductos() {
             onClick={handleShow}
           >
             Crear nuevo Producto
-      </Button>
+          </Button>
         </div>
         <Modal show={show} onHide={handleClose}>
           <Modal.Header closeButton>

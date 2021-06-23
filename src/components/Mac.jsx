@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { Button, Card, Collapse } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
 import "../assets/cards.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";

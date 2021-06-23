@@ -66,6 +66,7 @@ export default function Login({ setUser, setToken }) {
             <Form.Control
               name="password"
               type="password"
+              minLength={6}
               onChange={handleChange}
               placeholder="Contraseña"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"

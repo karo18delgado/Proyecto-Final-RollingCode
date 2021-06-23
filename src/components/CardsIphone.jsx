@@ -1,4 +1,3 @@
-import { Button } from "react-bootstrap";
 import "../assets/cards.css";
 import Iphone from "./Iphone";
 import axios from "axios";
@@ -24,9 +23,6 @@ export default function CardsIphone({ setproductosCarrito }) {
         <div className="text-center pt-3">
           <p className="titulo-secundario">iPhone12 y iPhone 12 mini</p>
           <p className="titulo-principal">SUPER MEGA RAPIDO</p>
-          {/* <Button variant="primary" className="btn boton-comprar" type="submit">
-            Comprar
-          </Button> */}
         </div>
         <div className="bg-blanco text-center">
           <img
