@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useHistory } from "react-router";
+import swal from "@sweetalert/with-react";
 
 export default function RegisterForm({ setToken }) {
   const [validated, setValidated] = useState(false);
@@ -16,18 +17,28 @@ export default function RegisterForm({ setToken }) {
       return event.stopPropagation();
     }
     if (input.password !== input.confPassword) {
-      alert("Las contraseñas no coinciden");
+      swal({
+        title: "Las contraseñas no coinciden!",
+        icon: "error",
+      });
     } else {
       try {
         const { data } = await axios.post("/auth/register", input);
         localStorage.setItem("token", JSON.stringify(data));
         setToken(data.token);
-        alert("Usuario registrado correctamente 😉.");
-        history.push("/");
-        form.reset();
+        swal({
+          title: "Usuario registrado correctamente!",
+          icon: "success",
+        }).then(() => {
+          history.push("/");
+          form.reset();
+        });
       } catch (error) {
         console.log(error.response.data);
-        alert("Datos mal cargados");
+        swal({
+          title: "Email o usuario ya se encuentra en uso",
+          icon: "error",
+        });
       }
     }
   };
@@ -60,6 +71,8 @@ export default function RegisterForm({ setToken }) {
             <Form.Group className="name-div" controlId="validationCustom01">
               <Form.Control
                 name="nombre"
+                minLength={6}
+                maxLength={25}
                 onChange={(e) => handleChange(e)}
                 required
                 type="text"
@@ -70,6 +83,8 @@ export default function RegisterForm({ setToken }) {
             <Form.Group className="lastname-div" controlId="validationCustom02">
               <Form.Control
                 required
+                minLength={2}
+                maxLength={30}
                 type="text"
                 placeholder="Apellidos"
                 name="apellido"
@@ -85,6 +100,8 @@ export default function RegisterForm({ setToken }) {
             <InputGroup hasValidation>
               <Form.Control
                 name="email"
+                minLength={6}
+                maxLength={35}
                 onChange={(e) => handleChange(e)}
                 type="email"
                 placeholder="Email"
@@ -106,6 +123,8 @@ export default function RegisterForm({ setToken }) {
                 name="nombreUsuario"
                 onChange={(e) => handleChange(e)}
                 type="text"
+                minLength={6}
+                maxLength={35}
                 placeholder="Nombre de usuario"
                 required
               />
@@ -122,6 +141,7 @@ export default function RegisterForm({ setToken }) {
                 onChange={(e) => handleChange(e)}
                 type="password"
                 minLength={6}
+                maxLength={35}
                 placeholder="Contraseña"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 required
@@ -136,6 +156,7 @@ export default function RegisterForm({ setToken }) {
                 className="container-row"
                 type="password"
                 minLength={6}
+                maxLength={35}
                 placeholder="Confirmar contraseña"
                 pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
                 required
@@ -177,24 +198,6 @@ export default function RegisterForm({ setToken }) {
                 <option>Femenino</option>
                 <option>Masculino</option>
               </Form.Control>
-            </Form.Group>
-            <Form.Group className="container-row">
-              <div className="d-flex justify-content-start w-100 mx-1">
-                <Form.Label>Clave para recupero de datos</Form.Label>
-              </div>
-              <Form.Control
-                name="secretWord"
-                onChange={(e) => handleChange(e)}
-                className="container-row mt-0"
-                type="password"
-                placeholder="Ingrese una palabra clave"
-                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
-                required
-              />
-              <Form.Control.Feedback type="invalid">
-                Debe contener 6 o más dígitos, una mayúscula, una minúscula y un
-                n°.
-              </Form.Control.Feedback>
             </Form.Group>
           </Form.Row>
           <hr className="divider-border-1"></hr>

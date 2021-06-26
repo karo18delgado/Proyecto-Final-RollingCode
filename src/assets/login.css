@@ -72,6 +72,17 @@
   }
 }
 
+.swal-overlay {
+  margin-top: -300px;
+}
+
+.swal-footer {
+  background-color: rgb(245, 248, 250);
+  margin-top: 32px;
+  border-top: 1px solid #e9eef1;
+  overflow: hidden;
+}
+
 @media only screen and (min-width: 990px) {
   .login-row-form {
     width: 800px;

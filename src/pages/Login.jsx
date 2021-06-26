@@ -4,6 +4,7 @@ import "../assets/login.css";
 import React, { useState } from "react";
 import { Button, Form, Nav } from "react-bootstrap";
 import { NavLink, useHistory } from "react-router-dom";
+import swal from "@sweetalert/with-react";
 
 export default function Login({ setUser, setToken }) {
   const [input, setInput] = useState({});
@@ -21,20 +22,34 @@ export default function Login({ setUser, setToken }) {
       const { data } = await axios.post("/auth/login", input);
       localStorage.setItem("token", JSON.stringify(data));
       if (data.blockUser === "Deshabilitado") {
-        alert("Usuario bloqueado");
+        swal({
+          title: "Usuario bloqueado!",
+          icon: "warning",
+        });
       } else {
         setToken(data.token);
         if (data.categoryUser === "admin") {
-          alert("Logueo Admin exitoso 😎 ");
-          history.push("/");
+          swal({
+            title: "Usuario admin logueado correctamente!",
+            icon: "info",
+          }).then(() => {
+            history.push("/");
+          });
         } else {
-          alert("Logueo exitoso 😎 ");
-          history.push("/");
+          swal({
+            title: "Usuario logueado correctamente!",
+            icon: "success",
+          }).then(() => {
+            history.push("/");
+          });
         }
       }
     } catch (error) {
       console.log(error);
-      alert("Datos incorrectos");
+      swal({
+        title: "Datos mal cargados!",
+        icon: "error",
+      });
     }
   };
 
@@ -53,6 +68,8 @@ export default function Login({ setUser, setToken }) {
               <Form.Control
                 name="email"
                 type="email"
+                minLength={6}
+                maxLength={30}
                 onChange={handleChange}
                 placeholder="Apple ID"
                 required
@@ -67,6 +84,7 @@ export default function Login({ setUser, setToken }) {
               name="password"
               type="password"
               minLength={6}
+              maxLength={30}
               onChange={handleChange}
               placeholder="Contraseña"
               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
