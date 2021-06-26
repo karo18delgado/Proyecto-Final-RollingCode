@@ -6,21 +6,23 @@ import axios from "axios";
 
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cards({ producto, setproductosCarrito }) {
+export default function Cards({ producto, setproductosCarrito, token }) {
   const [open, setOpen] = useState(false);
 
   const onClickCart = async () => {
-    let productos = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productoId = producto._id;
-    // setProductoCart([productoId]);
-    productos.push({ productoId, cantidad: 1 });
-    localStorage.setItem("carrito", JSON.stringify(productos));
+    if (token !== "") {
+      let productos = JSON.parse(localStorage.getItem("carrito")) || [];
+      const productoId = producto._id;
+      // setProductoCart([productoId]);
+      productos.push({ productoId, cantidad: 1 });
+      localStorage.setItem("carrito", JSON.stringify(productos));
 
-    const response = await axios.get(`/productos/${productoId}`);
-    setproductosCarrito((productosCarrito) => [
-      ...productosCarrito,
-      { producto: response.data, cantidad: 1 },
-    ]);
+      const response = await axios.get(`/productos/${productoId}`);
+      setproductosCarrito((productosCarrito) => [
+        ...productosCarrito,
+        { producto: response.data, cantidad: 1 },
+      ]);
+    }
   };
 
   return (

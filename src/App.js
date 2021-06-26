@@ -83,13 +83,13 @@ function App() {
           <Landing />
         </Route>
         <Route path="/iPhone">
-          <CardsIphone setproductosCarrito={setproductosCarrito} />
+          <CardsIphone token={token} setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/Mac">
-          <CardsMac setproductosCarrito={setproductosCarrito} />
+          <CardsMac token={token} setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/iPad">
-          <CardsIpad setproductosCarrito={setproductosCarrito} />
+          <CardsIpad token={token} setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/carrito">
           <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} />

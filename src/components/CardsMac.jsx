@@ -3,7 +3,7 @@ import Mac from "./Mac";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function CardsIphone({ setproductosCarrito }) {
+export default function CardsIphone({ setproductosCarrito, token }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -27,12 +27,12 @@ export default function CardsIphone({ setproductosCarrito }) {
             Consulta la disponibilidad.
           </p>
           <div className="bg-blanco text-center">
-          <img
-            className="img-fluid"
-            src="https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg"
-            alt=""
-          />
-        </div>
+            <img
+              className="img-fluid"
+              src="https://www.apple.com/v/mac/home/be/images/overview/hero_imac_24__eq5phrdpwjyq_medium_2x.jpg"
+              alt=""
+            />
+          </div>
         </div>
       </div>
       <div className="text-center pt-5">
@@ -47,6 +47,7 @@ export default function CardsIphone({ setproductosCarrito }) {
               <Mac
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
+                token={token}
               />
             )
         )}

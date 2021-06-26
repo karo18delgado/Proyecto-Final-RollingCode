@@ -5,24 +5,26 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 // import { faVolumeUp } from "@fortawesome/free-solid-svg-icons";
 
-export default function Cards({ producto, setproductosCarrito }) {
+export default function Cards({ producto, setproductosCarrito, token }) {
   const [open, setOpen] = useState(false);
   // const [productoCart, setProductoCart] = useState([productos]);
 
   const onClickCart = async () => {
-    let productos = JSON.parse(localStorage.getItem("carrito")) || [];
-    const productoId = producto._id;
-    const precioId= producto.precio;
-    
-    // setProductoCart([productoId]);
-    productos.push({ productoId, cantidad: 1,precioId});
-    localStorage.setItem("carrito", JSON.stringify(productos));
+    if (token !== "") {
+      let productos = JSON.parse(localStorage.getItem("carrito")) || [];
+      const productoId = producto._id;
+      const precioId = producto.precio;
 
-    const response = await axios.get(`/productos/${productoId}`);
-    setproductosCarrito((productosCarrito) => [
-      ...productosCarrito,
-      { producto: response.data, cantidad: 1, precioId},
-    ]);
+      // setProductoCart([productoId]);
+      productos.push({ productoId, cantidad: 1, precioId });
+      localStorage.setItem("carrito", JSON.stringify(productos));
+
+      const response = await axios.get(`/productos/${productoId}`);
+      setproductosCarrito((productosCarrito) => [
+        ...productosCarrito,
+        { producto: response.data, cantidad: 1, precioId },
+      ]);
+    }
   };
 
   return (

@@ -3,7 +3,7 @@ import Ipad from "./Ipad";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 
-export default function CardsIphone({ setproductosCarrito }) {
+export default function CardsIphone({ setproductosCarrito, token }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -45,6 +45,7 @@ export default function CardsIphone({ setproductosCarrito }) {
               <Ipad
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
+                token={token}
               />
             )
         )}
