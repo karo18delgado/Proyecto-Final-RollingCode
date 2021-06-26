@@ -44,6 +44,8 @@ export default function FormFooter() {
           required
           type="email"
           placeholder="nombre@correo.com"
+          minLength={4}
+          maxLength={30}
         />
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlInput1" className="">
@@ -54,6 +56,8 @@ export default function FormFooter() {
           required
           type="text"
           placeholder="Ej: Consultas Generales"
+          minLength={4}
+          maxLength={30}
         />
       </Form.Group>
       <Form.Group controlId="exampleForm.ControlTextarea1" className="">
@@ -65,8 +69,8 @@ export default function FormFooter() {
           as="textarea"
           placeholder="Ingresa tu consulta"
           rows={3}
-          maxLength={120}
           minLength={4}
+          maxLength={120}
         />
       </Form.Group>
       <Button variant="primary" className="btn btn-light" type="submit">
