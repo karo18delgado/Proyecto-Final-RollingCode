@@ -41,7 +41,7 @@ export default function FormFooter() {
         <Form.Control
           name="correo"
           onChange={(e) => handleChange(e)}
-          require
+          required
           type="email"
           placeholder="nombre@correo.com"
         />
@@ -51,7 +51,7 @@ export default function FormFooter() {
         <Form.Control
           name="asunto"
           onChange={(e) => handleChange(e)}
-          require
+          required
           type="text"
           placeholder="Ej: Consultas Generales"
         />
@@ -61,7 +61,7 @@ export default function FormFooter() {
         <Form.Control
           name="descripcion"
           onChange={(e) => handleChange(e)}
-          require
+          required
           as="textarea"
           placeholder="Ingresa tu consulta"
           rows={3}
