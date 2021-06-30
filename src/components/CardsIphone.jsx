@@ -45,6 +45,7 @@ export default function CardsIphone({ setproductosCarrito, token }) {
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
                 token={token}
+                key={producto._id}
               />
             )
         )}
@@ -132,3 +133,4 @@ export default function CardsIphone({ setproductosCarrito, token }) {
     </div>
   );
 }
+

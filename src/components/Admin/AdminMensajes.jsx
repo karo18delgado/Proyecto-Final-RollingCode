@@ -22,7 +22,7 @@ export default function AdminMensajes() {
   const recibirMensajes = async () => {
     const response = await axios.get("/mensaje");
     setMensajes(response.data);
-    setMensajesUnread(response.data.filter(noLeidos => noLeidos.estado == "No leído"));
+    setMensajesUnread(response.data.filter(noLeidos => noLeidos.estado === "No leído"));
   };
 
   useEffect(() => {
