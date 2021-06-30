@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import axios from "axios";
 
-export default function PerfilUsuario({ user, setToken }) {
+export default function PerfilUsuario({ user }) {
   const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
 
@@ -29,15 +29,11 @@ export default function PerfilUsuario({ user, setToken }) {
     if (form.checkValidity() === false) {
       return event.stopPropagation();
     }
-    if (input.password !== input.confPassword) {
-      alert("Las contraseñas no coinciden");
-    } else {
-      try {
-        await axios.put("/usuarios", input);
-      } catch (error) {
-        console.log(error.response.data);
-        alert("Datos Incorrectos!");
-      }
+    try {
+      await axios.put("/usuarios", input);
+    } catch (error) {
+      console.log(error.response.data);
+      alert("Datos Incorrectos!");
     }
   };
 
@@ -111,14 +107,14 @@ export default function PerfilUsuario({ user, setToken }) {
                     </Form.Group>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose1}>
-                        Close
+                        Cerrar
                       </Button>
                       <Button
                         variant="primary"
                         onClick={handleClose1}
                         type="submit"
                       >
-                        Save Changes
+                        Guardar cambios
                       </Button>
                     </Modal.Footer>
                   </Form>
@@ -159,14 +155,14 @@ export default function PerfilUsuario({ user, setToken }) {
                     </Form.Group>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose2}>
-                        Close
+                        Cerrar
                       </Button>
                       <Button
                         variant="primary"
                         onClick={handleClose2}
                         type="submit"
                       >
-                        Save Changes
+                        Guardar cambios
                       </Button>
                     </Modal.Footer>
                   </Form>
@@ -212,14 +208,14 @@ export default function PerfilUsuario({ user, setToken }) {
                     </Form.Group>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose3}>
-                        Close
+                        Cerrar
                       </Button>
                       <Button
                         variant="primary"
                         onClick={handleClose3}
                         type="submit"
                       >
-                        Save Changes
+                        Guardar cambios
                       </Button>
                     </Modal.Footer>
                   </Form>
@@ -263,14 +259,14 @@ export default function PerfilUsuario({ user, setToken }) {
                     </Form.Group>
                     <Modal.Footer>
                       <Button variant="secondary" onClick={handleClose4}>
-                        Close
+                        Cerrar
                       </Button>
                       <Button
                         variant="primary"
                         onClick={handleClose4}
                         type="submit"
                       >
-                        Save Changes
+                        Guardar cambios
                       </Button>
                     </Modal.Footer>
                   </Form>
