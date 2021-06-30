@@ -24,6 +24,9 @@ export default function NavbarAdmin() {
           <Nav.Link to="/admin/admin-mensajes" as={NavLink}>
             Mensajes
           </Nav.Link>
+          <Nav.Link to="/admin/admin-ventas" as={NavLink}>
+            Ventas
+          </Nav.Link>
         </Nav>
       </Navbar.Collapse>
     </Navbar>
