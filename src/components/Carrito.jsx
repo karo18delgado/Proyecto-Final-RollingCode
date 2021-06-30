@@ -4,27 +4,162 @@ import {
   Col,
   Container,
   Row,
-  Table,
   Form,
   Modal,
 } from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CreditsCard from "../pages/CreditsCard";
+import axios from "axios";
+import swal from "@sweetalert/with-react";
 
-export default function Carrito({ articles, eliminarItemCarrito }) {
+export default function Carrito({
+  articles,
+  eliminarItemCarrito,
+  user,
+}) {
+  const [validated, setValidated] = useState(false);
+  const [input, setInput] = useState({});
+  const [total, setTotal] = useState(0);
+  const [crear, setCrear] = useState(false);
+  const handleCrear = () => setCrear(true);
+
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const [show1, setShow1] = useState(false);
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
+  
 
-  // const { urlImage, nombre, descripcion, precio } = producto;
-  console.log("Carrito ~ articles", articles);
+  const [counter, setCounter] = useState([]);
+  const [precioSubtotal, setPrecioSubtotal] = useState(0);
+
+  let subtotal = [];
+  const cantidad = 0;
+
+  useEffect(() => {
+    articles.forEach((element, index) => {
+      console.log("articles.map ~ index", index);
+      console.log("element.cantidad", element.cantidad);
+      setCounter((counter) => [...counter, element.cantidad]);
+      subtotal.push(parseInt(element.cantidad));
+    });
+
+    console.log("articles.forEach ~ subtotal", subtotal);
+  }, []);
+
+  const updateCounter = (num, id, i) => {
+    console.log("updateCounter", counter);
+    console.log("updateCounter ~ id", id);
+    console.log("updateCounter ~ index", i);
+    if (num === 1) {
+      console.log("entre al if");
+      console.log("subtotal.forEach ~ subtotal", subtotal);
+      subtotal.forEach((element, index) => {
+        console.log("subtotal.forEach ~ index", index);
+
+        if (index === i) {
+          console.log("entre al if del index");
+          console.log("subtotal.forEach ~ element", element);
+          return (element = element + 1);
+        }
+      });
+      subtotal[0] = subtotal[0] + 1;
+      console.log("updateCounter ~ subtotal", subtotal);
+    }
+    if (counter + num > 0) {
+      setCounter(counter + num);
+      setPrecioSubtotal(precioSubtotal * num);
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const carritoActualizado = carrito.map((item) => {
+        if (item.id === id)
+          return {
+            ...item,
+            cantidad: counter + num,
+            subtotal: precioSubtotal * num,
+          };
+        else return item;
+      });
+      localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
+    }
+  };
+
+  let totalInicial = 0;
+
+  for (let i = 0; i < articles.length; i++) {
+    const element = articles[i];
+    totalInicial = totalInicial + element.cantidad * element.producto.precio;
+  }
+
+  console.log("Carrito ~ totalInicial", totalInicial);
+  useEffect(() => {
+    setTotal(totalInicial);
+  }, [setTotal, totalInicial]);
+
+  const modificarTotal = async (nuevoTotal, id) => {
+    const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
+    console.log("modificarTotal ~ carrito2", carrito2);
+    let totalFinal = 0;
+    carrito2.map((item) => {
+      console.log("carrito2.map ~ item", item);
+      totalFinal = totalFinal + item.cantidad * item.precioId;
+    });
+    console.log("carrito2.map ~ totalFinal", totalFinal);
+    setTotal(totalFinal);
+  };
+
+  const handleSubmit = async (event) => {
+    const form = event.currentTarget;
+    event.preventDefault();
+    setValidated(true);
+    if (form.checkValidity() === false) {
+      return event.stopPropagation();
+    }
+    try {
+      const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
+      console.log("Carrito ~ articles", carrito2);
+      let carritoEnvio = [];
+      carrito2.map((item) => {
+        const obj = { producto: item.productoId, cantidad: item.cantidad };
+
+        console.log("articles.map ~ obj", obj);
+        carritoEnvio.push(obj);
+        console.log("articles.map ~ carritoEnvio", carritoEnvio);
+      });
+      const datosDeVenta = {
+        usuario: user._id,
+        carrito: carritoEnvio,
+        total: total,
+        dirección: input.dirección,
+        provincia: input.provincia,
+        códigoPostal: input.códigoPostal,
+        localidad: input.localidad,
+        email: input.email,
+        celularContacto: input.celularContacto,
+        nombre: input.nombre,
+        apellido: input.apellido,
+        dni: input.dni,
+        celular: input.celular,
+        modalidadDePago: input.modalidadDePago,
+      };
+      await axios.post("/ventas", datosDeVenta);
+      handleCrear();
+      swal({
+        title: "Muchas gracias por su compra!",
+        icon: "success",
+      });
+      // alert("Muchas gracias por su compra!😁");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    const changedInput = { ...input, [name]: value };
+    setInput(changedInput);
+  };
+
   return (
     <div>
       <Container style={{ padding: "50px" }}>
@@ -34,157 +169,255 @@ export default function Carrito({ articles, eliminarItemCarrito }) {
             style={{ backgroundColor: "#fff", borderRadius: "20px" }}
           >
             <div>
-              <h3 className="mt-3">Carrito de compras</h3>
-              <Table responsive="md" className="tabla-shop">
-                <thead>
-                  <tr>
-                    <th>Producto</th>
-                    <th>Descripción</th>
-                    <th>Precio</th>
-                    <th>Cantidad</th>
+              <h3 className="m-5"><strong> <u>Carrito de compras</u> </strong> </h3>
 
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {articles.map((item) => (
-                    <tr>
-                      <td style={{ width: "40px" }}>
-                        <img
-                          className="tamaño-imagen"
-                          src={item.producto.urlImage}
-                          alt="..."
-                        />
-                      </td>
-                      <td style={{ width: "30px", paddingRight: "40px" }}>
-                        {item.producto.nombre}
-                        <p></p>
-                        {item.producto.descripcion}
-                      </td>
-                      <td>{item.producto.precio}</td>
-                      <td>
-                        <ContadorShop
-                          cantidad={item.cantidad}
-                          id={item.producto._id}
-                          subtotal={item.cantidad * item.producto.precio}
-                        />
-                      </td>
+              {articles.map((item) => (
+                <ContadorShop
+                  key={item._id}
+                  cantidad={item.cantidad}
+                  id={item.producto._id}
+                  precio={item.producto.precio}
+                  item={item}
+                  eliminarItemCarrito={eliminarItemCarrito}
+                  modificarTotal={modificarTotal}
+                  crear={crear}
+                />
+              ))}
 
-                      <td>
-                        <button
-                          className="botón-shop"
-                          onClick={() => eliminarItemCarrito(item.producto._id)}
-                        >
-                          <FontAwesomeIcon
-                            className="trash-alt"
-                            icon={["far", "trash-alt"]}
-                          ></FontAwesomeIcon>
-                        </button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </Table>
+              <h4 style={{ textAlign: "end", paddingRight: "20px" }}>
+                Total = $ {total}
+              </h4>
 
               <hr />
-              <h5>Dirección de Envío</h5>
-              <Form>
+              <h5 style={{ paddingTop: "10px", paddingBottom: "20px" }}>
+                {" "}
+                <strong>Datos de Envío</strong>{" "}
+              </h5>
+              <Form noValidate validated={validated} onSubmit={handleSubmit}>
                 <Form.Group controlId="formGridAddress1">
                   <Form.Label>Dirección</Form.Label>
-                  <Form.Control placeholder="domicilio" />
+                  <Form.Control
+                    name="dirección"
+                    onChange={(e) => handleChange(e)}
+                    placeholder="domicilio"
+                    maxLength="40"
+                    type="text"
+                    required
+                  />
+                  <Form.Control.Feedback type="invalid">
+                    Ingrese una dirección válida.
+                  </Form.Control.Feedback>
                 </Form.Group>
                 <Form.Row>
                   <Form.Group as={Col} controlId="formGridCity">
                     <Form.Label>Provincia</Form.Label>
-                    <Form.Control />
+                    <Form.Control
+                      name="provincia"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      type="text"
+                      placeholder="Provincia"
+                      maxLength="30"
+                      pattern="[a-z,A-Z]{6,25}"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una Provincia.
+                    </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridState">
                     <Form.Label>Localidad</Form.Label>
-                    <Form.Control as="select" defaultValue="Choose...">
-                      <option>San Miguel de Tucumán</option>
-                      <option>Yerba Buena</option>
-                      <option>Concepción</option>
-                    </Form.Control>
+                    <Form.Control
+                      name="localidad"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      type="text"
+                      placeholder="Localidad"
+                      maxLength="35"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una Provincia.
+                    </Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group as={Col} controlId="formGridZip">
                     <Form.Label>Código postal</Form.Label>
-                    <Form.Control />
+                    <Form.Control
+                      name="códigoPostal"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      maxLength="6"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un código postal.
+                    </Form.Control.Feedback>
                   </Form.Group>
                 </Form.Row>
-              </Form>
-              <hr />
-              <h5>Formas de pago</h5>
-              <Form.Group as={Row}>
-                <Col sm={10}>
-                  <Form.Check
-                    type="radio"
-                    label="Efectivo"
-                    name="formHorizontalRadios"
-                    id="formHorizontalRadios1"
-                  />
-                  <Form.Check
-                    type="radio"
-                    label="Tarjeta de Crédito"
-                    name="formHorizontalRadios"
-                    id="formHorizontalRadios2"
-                    onClick={handleShow}
-                  />
-                  <Modal size="lg" show={show} onHide={handleClose}>
-                    <Modal.Header closeButton>
-                      <Modal.Title>Tarjeta de Crédito</Modal.Title>
-                    </Modal.Header>
-                    <Modal.Body style={{ maxHeight: "700px" }}>
-                      <CreditsCard />
-                    </Modal.Body>
-                    <Modal.Footer>
-                      <Button variant="secondary" onClick={handleClose}>
-                        Close
-                      </Button>
-                      <Button variant="primary" onClick={handleClose}>
-                        Save Changes
-                      </Button>
-                    </Modal.Footer>
-                  </Modal>
-                </Col>
-              </Form.Group>
-              <div className="column comprar">
-                <Button
-                  variant="primary"
-                  className="btn botón-Iniciar-compra"
-                  type="onclick"
-                  style={{ margin: "30px" }}
-                  onClick={handleShow1}
-                >
-                  Iniciar Compra
-                </Button>
-                <Modal show={show1} onHide={handleClose1} animation={false}>
-                  <Modal.Header closeButton>
-                    <Modal.Title>
-                      <h2 className="letra-ventas">
-                        <img
-                          className="logo-ventas"
-                          src="https://www.apple.com/v/accessibility/p/images/overview/hero_logo__bchmmzjnvys2_large.png"
-                          alt=""
-                        />
-                        <span>Equipo de Ventas</span>
-                      </h2>
-                    </Modal.Title>
-                  </Modal.Header>
-                  <Modal.Body>
-                    <h4>Muchas gracias por su compra!</h4>
-                  </Modal.Body>
-                  <Modal.Footer>
-                    <Button variant="secondary" onClick={handleClose1}>
-                      Close
-                    </Button>
-                  </Modal.Footer>
-                </Modal>
-                <div>
-                  <NavLink style={{ margin: "30px" }} to="/" as={NavLink}>
-                    ver más productos
-                  </NavLink>
+
+                <Form.Row>
+                  <Form.Group as={Col} controlId="formGridCity">
+                    <Form.Label>Email</Form.Label>
+                    <Form.Control
+                      name="email"
+                      onChange={(e) => handleChange(e)}
+                      type="email"
+                      placeholder="Email"
+                      aria-describedby="inputGroupPrepend"
+                      required
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      nombre@example.com
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Control
+                      name="celularContacto"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      placeholder="(Código de área) Número"
+                      maxLength="11"
+                      minLength="10"
+                      type="tel"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un número de celular correcto
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Form.Row>
+
+                <hr />
+                <h5 style={{ paddingTop: "10px", paddingBottom: "20px" }}>
+                  {" "}
+                  <strong>Datos de Facturación</strong>{" "}
+                </h5>
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>Nombre</Form.Label>
+                    <Form.Control
+                      name="nombre"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      type="text"
+                      placeholder="Nombre"
+                      maxLength="25"
+                      minLength="10"
+                      pattern="[a-z,A-Z]{6,25}"
+                    />
+
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un nombre válido
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                  <Form.Group as={Col}>
+                    <Form.Label>Apellido</Form.Label>
+                    <Form.Control
+                      required
+                      type="text"
+                      placeholder="Apellidos"
+                      name="apellido"
+                      onChange={(e) => handleChange(e)}
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un apellido válido
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Form.Row>
+
+                <Form.Row>
+                  <Form.Group as={Col}>
+                    <Form.Label>DNI</Form.Label>
+                    <Form.Control
+                      name="dni"
+                      onChange={(e) => handleChange(e)}
+                      type="number"
+                      placeholder="Número de documento"
+                      required
+                      maxLength="8"
+                      pattern="^[0-9]+"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un número de DNI válido
+                    </Form.Control.Feedback>
+                  </Form.Group>
+
+                  <Form.Group as={Col} controlId="formGridZip">
+                    <Form.Label>Teléfono</Form.Label>
+                    <Form.Control
+                      name="celular"
+                      onChange={(e) => handleChange(e)}
+                      required
+                      placeholder="(Código de área) Número"
+                      maxLength="11"
+                      minLength="10"
+                      type="tel"
+                      pattern="^[0-9]+"
+                    />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un número de celular válido
+                    </Form.Control.Feedback>
+                  </Form.Group>
+                </Form.Row>
+
+                <hr />
+                <h5 style={{ paddingTop: "10px", paddingBottom: "20px" }}>
+                  {" "}
+                  <strong>Medios de Pago</strong>{" "}
+                </h5>
+
+                <fieldset>
+                  <Form.Group as={Row} onChange={(e) => handleChange(e)}>
+                    <Col sm={10}>
+                      <Form.Check
+                        type="radio"
+                        label="Efectivo"
+                        name="modalidadDePago"
+                        id="formHorizontalRadios1"
+                        value="efectivo"
+                      />
+                      <Form.Check
+                        type="radio"
+                        label="Tarjeta de crédito"
+                        name="modalidadDePago"
+                        id="formHorizontalRadios2"
+                        value="tarjeta"
+                        onClick={handleShow}
+                      />
+                       <Modal size="lg" show={show} onHide={handleClose}>
+                      <Modal.Header closeButton>
+                        <Modal.Title>Tarjeta de Crédito</Modal.Title>
+                      </Modal.Header>
+                      <Modal.Body style={{ height: "400px" }}>
+                        <CreditsCard />
+                      </Modal.Body>
+                      <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                          Cerrar
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                          Continuar
+                        </Button>
+                      </Modal.Footer>
+                    </Modal>
+                    </Col>
+                  </Form.Group>
+                </fieldset>
+
+                <div className="column comprar">
+                  <Button
+                    variant="primary"
+                    className="btn botón-Iniciar-compra"
+                    style={{ margin: "30px" }}
+                    type="submit"
+                  >
+                    Comprar
+                  </Button>
+                  <div>
+                    <NavLink style={{ margin: "30px" }} to="/" as={NavLink}>
+                      ver más productos
+                    </NavLink>
+                  </div>
                 </div>
-              </div>
+              </Form>
             </div>
           </Col>
         </Row>
