@@ -12,6 +12,7 @@ import ContadorShop from "../pages/ContadorShop";
 import { useEffect, useState } from "react";
 import CreditsCard from "../pages/CreditsCard";
 import axios from "axios";
+import swal from "@sweetalert/with-react";
 
 export default function Carrito({
   articles,
@@ -143,7 +144,11 @@ export default function Carrito({
       };
       await axios.post("/ventas", datosDeVenta);
       handleCrear();
-      alert("Muchas gracias por su compra!😁");
+      swal({
+        title: "Muchas gracias por su compra!",
+        icon: "success",
+      });
+      // alert("Muchas gracias por su compra!😁");
     } catch (error) {
       console.log(error);
     }
