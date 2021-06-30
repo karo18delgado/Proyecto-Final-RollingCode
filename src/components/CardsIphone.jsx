@@ -48,6 +48,7 @@ export default function CardsIphone({ setproductosCarrito }) {
               <Iphone
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
+                key={producto._id}
               />
             )
         )}
@@ -169,3 +170,4 @@ export default function CardsIphone({ setproductosCarrito }) {
     </div>
   );
 }
+

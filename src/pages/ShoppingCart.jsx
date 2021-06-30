@@ -1,6 +1,4 @@
 import "../assets/shoppingcart.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import Carrito from "../components/Carrito";
 import { useHistory } from "react-router";
 
@@ -8,6 +6,7 @@ export default function ShoppingCart({
   setToken,
   productosCarrito,
   setproductosCarrito,
+  user,
 }) {
   const history = useHistory();
 
@@ -23,11 +22,6 @@ export default function ShoppingCart({
     setproductosCarrito(productosCarritoActualizado);
   };
 
-  //     setArticles(response.data);
-  //   };
-  //   getProductos();
-  // }, []);
-
   if (!setToken) {
     history.push("/login");
   }
@@ -35,6 +29,7 @@ export default function ShoppingCart({
   return (
     <div>
       <Carrito
+        user={user}
         articles={productosCarrito}
         eliminarItemCarrito={eliminarItemCarrito}
       />
