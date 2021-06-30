@@ -198,7 +198,6 @@ export default function Carrito({
                     maxLength="40"
                     type="text"
                     required
-                    pattern="[a-z,A-Z]{6,25}"
                   />
                   <Form.Control.Feedback type="invalid">
                     Ingrese una dirección válida.
@@ -228,8 +227,7 @@ export default function Carrito({
                       required
                       type="text"
                       placeholder="Localidad"
-                      maxLength="30"
-                      pattern="[a-z,A-Z]{6,25}"
+                      maxLength="35"
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese una Provincia.
