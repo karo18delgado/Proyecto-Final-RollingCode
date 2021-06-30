@@ -23,9 +23,6 @@ export default function Footer() {
               <li>
                 <a href="carrito">Carrito</a>
               </li>
-              <li>
-                <a href="fav">Favoritos</a>
-              </li>
             </ul>
           </div>
           <div className="col-xs-12 col-sm-4 col-md-4">
