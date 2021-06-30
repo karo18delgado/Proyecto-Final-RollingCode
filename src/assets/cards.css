@@ -237,3 +237,13 @@
   width: 60%;
   margin: auto;
 }
+.texto-carrousel{
+  color:black;
+  font-size: 30px;
+}
+.foto-carrousel{
+  min-height: 200px;
+  max-height: 450px ;
+  min-width: 400px;
+  margin: auto;
+}
