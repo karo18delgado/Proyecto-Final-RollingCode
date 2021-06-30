@@ -17,6 +17,7 @@ import AdminUsuarios from './components/Admin/AdminUsuarios';
 import PerfilUsuario from './pages/PerfilUsuario';
 import AdminProductos from './components/Admin/AdminProductos';
 import AdminMensajes from './components/Admin/AdminMensajes';
+import AdminVentas from './components/Admin/AdminVentas';
 import ShoppingCart from './pages/ShoppingCart';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
@@ -32,6 +33,7 @@ function App() {
   useEffect(() => {
     const getProductos = async () => {
       let productosCarrito = [];
+      console.log("getProductos ~ productosCarrito", productosCarrito)
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       for (let i = 0; i < carrito.length; i++) {
         const itemCarrito = carrito[i];
@@ -92,7 +94,7 @@ function App() {
           <CardsIpad setproductosCarrito={setproductosCarrito} />
         </Route>
         <Route path="/carrito">
-          <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} />
+          <ShoppingCart productosCarrito={productosCarrito} setproductosCarrito={setproductosCarrito} setToken={token} user={user} />
         </Route>
         <Route path="/register">
           <RegisterForm setToken={setToken} />
@@ -114,6 +116,9 @@ function App() {
             </Route>
             <Route path="/admin/admin-mensajes">
               <AdminMensajes />
+            </Route>
+            <Route path="/admin/admin-ventas">
+              <AdminVentas />
             </Route>
           </Route>
         </Route>}
