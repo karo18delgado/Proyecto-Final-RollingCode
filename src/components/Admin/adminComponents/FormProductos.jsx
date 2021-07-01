@@ -112,10 +112,11 @@ export default function FormProductos() {
                     <Form.Control
                       name="precio"
                       onChange={(e) => handleChange(e)}
-                      type="Number"
+                      type="tel"  
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
+                      pattern="[0-9]{1,10}"
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un precio.
