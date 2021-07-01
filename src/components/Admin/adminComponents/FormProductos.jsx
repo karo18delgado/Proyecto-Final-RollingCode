@@ -17,7 +17,10 @@ export default function FormProductos() {
     event.preventDefault();
     const inputprecio = +input.precio;
     if (inputprecio < 0) {
-      alert('el precio tiene que ser mayor a 0!')
+      swal({
+        title: "El precio tiene qu ser mayor a 0!",
+        icon: "error",
+      });
       return event.stopPropagation();
     }
     setValidated(true);
