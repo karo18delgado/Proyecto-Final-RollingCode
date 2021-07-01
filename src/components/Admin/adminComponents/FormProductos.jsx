@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Button, Form, InputGroup, Modal } from "react-bootstrap";
 import axios from "axios";
 import "../admin.css";
+import swal from "@sweetalert/with-react";
 
 export default function FormProductos() {
   const [show, setShow] = useState(false);
@@ -21,7 +22,10 @@ export default function FormProductos() {
     try {
       // Consulta post a /productos
       await axios.post("/productos", input);
-      alert("Producto creado con éxito!😁");
+      swal({
+        title: "Producto creado correctamente!",
+        icon: "success",
+      });
       setShow(false);
     } catch (error) {
       console.log(error);
@@ -62,8 +66,13 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       required
                       type="text"
+                      minLength={6}
+                      maxLength={30}
                       className="form-productos-control"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese un nombre de producto.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="4" controlId="validationCustom01">
@@ -72,9 +81,14 @@ export default function FormProductos() {
                       name="urlImage"
                       onChange={(e) => handleChange(e)}
                       required
+                      minLength={6}
+                      maxLength={60}
                       type="text"
                       className="form-productos-control"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una url.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="4" controlId="validationCustom02">
@@ -83,8 +97,14 @@ export default function FormProductos() {
                       name="estado"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={3}
+                      maxLength={25}
                       className="form-productos-control"
+                      required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese estado.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="4" controlId="validationCustom02">
@@ -93,8 +113,14 @@ export default function FormProductos() {
                       name="descripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={6}
+                      maxLength={40}
                       className="form-productos-control"
+                      required
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una descripción.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="4" controlId="validationCustomUsername">
@@ -113,6 +139,8 @@ export default function FormProductos() {
                       name="precio"
                       onChange={(e) => handleChange(e)}
                       type="Number"
+                      minLength={6}
+                      maxLength={15}
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
@@ -127,8 +155,11 @@ export default function FormProductos() {
                     <Form.Label>Tamaño de pantalla</Form.Label>
                     <Form.Control
                       name="pantalla"
+                      minLength={3}
+                      maxLength={20}
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -141,16 +172,25 @@ export default function FormProductos() {
                       name="pantallaDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={6}
+                      maxLength={40}
+                      required
                       className="form-productos-control"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una descripción de pantalla.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="3" controlId="validationCustom04">
                     <Form.Label>Redes/Tecnología</Form.Label>
                     <Form.Control
                       name="redes"
+                      minLength={2}
+                      maxLength={20}
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -161,8 +201,11 @@ export default function FormProductos() {
                     <Form.Label>Procesador</Form.Label>
                     <Form.Control
                       name="procesador"
+                      minLength={6}
+                      maxLength={30}
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -173,8 +216,11 @@ export default function FormProductos() {
                     <Form.Label>Almacenamiento</Form.Label>
                     <Form.Control
                       name="almacenamiento"
+                      minLength={2}
+                      maxLength={20}
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -186,15 +232,23 @@ export default function FormProductos() {
                     <Form.Control
                       name="almacenamientoDescripcion"
                       onChange={(e) => handleChange(e)}
+                      minLength={2}
+                      maxLength={40}
                       type="text"
+                      required
                       className="form-productos-control"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una descripción de almacenamiento.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="3" controlId="validationCustom05">
                     <Form.Label>Cámaras</Form.Label>
                     <Form.Control
                       name="camara"
+                      minLength={3}
+                      maxLength={20}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
@@ -204,11 +258,12 @@ export default function FormProductos() {
                     <Form.Label>Descripción camara</Form.Label>
                     <Form.Control
                       name="camaraDescripcion"
+                      minLength={6}
+                      maxLength={40}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
                     />
-                    <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group md="3" controlId="validationCustom04">
                     <Form.Label>Conector</Form.Label>
@@ -216,6 +271,9 @@ export default function FormProductos() {
                       name="conector"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={3}
+                      maxLength={20}
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -228,6 +286,9 @@ export default function FormProductos() {
                       name="conectorDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={6}
+                      maxLength={40}
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -240,6 +301,9 @@ export default function FormProductos() {
                       name="bateria"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={6}
+                      maxLength={20}
+                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -252,8 +316,14 @@ export default function FormProductos() {
                       name="bateriaDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
+                      minLength={6}
+                      maxLength={40}
+                      required
                       className="form-productos-control"
                     />
+                    <Form.Control.Feedback type="invalid">
+                      Ingrese una descripción de bateria.
+                    </Form.Control.Feedback>
                     <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
                   </Form.Group>
                   <Form.Group
@@ -268,7 +338,7 @@ export default function FormProductos() {
                       custom
                       required
                     >
-                      <option>Selecciona una opcion</option>
+                      <option className="d-none"></option>
                       <option>Mac</option>
                       <option>iPad</option>
                       <option>iPhone</option>
