@@ -26,7 +26,7 @@ export default function Landing() {
           style={{ backgroundColor: "rgb(255,255,255)" }}
           className="d-flex flex-column justify-content-center"
         >
-          <div>
+          <div className="mb-2">
             <h1 className="d-flex flex-row justify-content-center mt-4">
               IPhone
             </h1>
@@ -43,7 +43,7 @@ export default function Landing() {
               </Link>
             </Button>
           </div>
-          <Carousel fade>
+          <Carousel className="mt-3 mb-3" fade>
             {productos.map(
               (producto) =>
                 producto.categoria === "iPhone" &&
@@ -70,7 +70,7 @@ export default function Landing() {
           style={{ backgroundColor: "rgb(0,0,0)" }}
           className="d-flex flex-column justify-content-center"
         >
-          <div style={{ marginBottom: "20px" }}>
+          <div style={{ marginBottom: "30px" }}>
             <h1 className="d-flex flex-row justify-content-center text-white mt-4">
               IPad
             </h1>
@@ -87,7 +87,7 @@ export default function Landing() {
               </Link>
             </Button>
           </div>
-          <Carousel fade>
+          <Carousel className="mt-3 mb-3" fade>
             {productos.map(
               (producto) =>
                 producto.categoria === "iPad" &&
@@ -114,7 +114,7 @@ export default function Landing() {
           style={{ backgroundColor: "rgb(255,255,255)" }}
           className="d-flex flex-column justify-content-center"
         >
-          <div>
+          <div style={{ marginBottom: "30px" }}>
             <h1 className="d-flex flex-row justify-content-center text-black mt-4">
               IMac
             </h1>
@@ -131,7 +131,7 @@ export default function Landing() {
               </Link>
             </Button>
           </div>
-          <Carousel fade>
+          <Carousel className="mt-3 mb-3" fade>
             {productos.map(
               (producto) =>
                 producto.categoria === "Mac" &&

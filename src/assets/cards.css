@@ -221,17 +221,40 @@
   min-height: 193px;
 }
 
+/* CSS Carrousel */
+
 .card-landing-img {
   width: 60%;
   margin: auto;
 }
-.texto-carrousel{
-  color:black;
+
+.texto-carrousel {
+  color: black;
   font-size: 30px;
 }
-.foto-carrousel{
+.foto-carrousel {
   min-height: 200px;
-  max-height: 450px ;
+  max-height: 450px;
   min-width: 400px;
   margin: auto;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after {
+  content: ">";
+  font-size: 35px;
+  color: red;
+}
+
+.carousel-control-prev-icon:after {
+  content: "<";
+  font-size: 35px;
+  color: red;
 }

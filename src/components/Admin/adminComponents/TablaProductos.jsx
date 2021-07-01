@@ -2,6 +2,7 @@ import { Button, Form, Modal, Table, InputGroup } from "react-bootstrap";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import "../admin.css";
+import swal from "@sweetalert/with-react";
 
 export default function TablaProductos() {
   const [productoEdit, setProductoEdit] = useState([]);
@@ -9,6 +10,19 @@ export default function TablaProductos() {
 
   const [showEdit, setShowEdit] = useState(false);
   const [showInfo, setShowInfo] = useState(false);
+  const [productos, setProductos] = useState([]);
+
+  // Traer productos
+  const getProductos = async () => {
+    const response = await axios.get("/productos");
+    setProductos(response.data);
+  };
+
+  useEffect(() => {
+    if (!productos.length) {
+      getProductos();
+    }
+  }, [productos]);
 
   const handleCloseEdit = () => setShowEdit(false);
   const handleShowEdit = async (event) => {
@@ -26,19 +40,6 @@ export default function TablaProductos() {
     setShowInfo(true);
   };
 
-  // Traer productos
-  const [productos, setProductos] = useState([]);
-  const getProductos = async () => {
-    const response = await axios.get(`/productos`);
-    setProductos(response.data);
-  };
-
-  useEffect(() => {
-    if (!productos.length) {
-      getProductos();
-    }
-  }, [productos]);
-
   // EDITAR
 
   const handleChange = (e) => {
@@ -51,19 +52,33 @@ export default function TablaProductos() {
     event.preventDefault();
     const producto = productoEdit;
     await axios.put("/productos", producto);
-    alert("Producto editado con éxito!😁");
+    swal({
+      title: "Producto editado correctamente!",
+      icon: "info",
+    });
     getProductos();
   };
 
   //ELIMINAR
-  const handleDelete = async (event) => {
+  const handleDelete = (event) => {
     const productoId = event.target.value;
-    const confirma = window.confirm("Desea eliminar el producto?");
-    if (confirma) {
-      await axios.delete(`/productos/${productoId}`);
-      alert("Producto eliminado con éxito!😁");
-      getProductos();
-    }
+    swal({
+      title: "Está seguro que quiere eliminar este producto?",
+      text: "Una vez eliminado, no podrá recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        swal("Tu producto fue eliminado!", {
+          icon: "success",
+        });
+        await axios.delete(`/productos/${productoId}`);
+        getProductos();
+      } else {
+        swal("El producto no fue eliminado!");
+      }
+    });
   };
 
   //DESHABILITAR

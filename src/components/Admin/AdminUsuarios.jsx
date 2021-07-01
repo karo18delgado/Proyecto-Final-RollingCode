@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
+import swal from "@sweetalert/with-react";
 
 export default function AdminUsuarios() {
   const [showInfo, setShowInfo] = useState(false);
@@ -51,33 +52,29 @@ export default function AdminUsuarios() {
   };
 
   //ELIMINAR
-  const handleDelete = async (event) => {
+  const handleDelete = (event) => {
     const usuarioID = event.target.value;
-    const confirma = window.confirm("Desea eliminar el usuario?");
-    if (confirma) {
-      await axios.delete(`/usuarios/${usuarioID}`);
-      getUsuarios();
-    }
+    swal({
+      title: "Está seguro que quiere eliminar al usuario?",
+      text: "Una vez eliminado, no podrá recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        swal("El usuario fue eliminado!", {
+          icon: "success",
+        });
+        await axios.delete(`/usuarios/${usuarioID}`);
+        getUsuarios();
+      } else {
+        swal("El usuario no fue eliminado!");
+      }
+    });
   };
 
   return (
     <div>
-      {/* <div>
-        <Form>
-          <Form.Group className="container-search">
-            <Form.Label className="search-div">
-              Búsquedo por nombre o correo
-            </Form.Label>
-            <Form.Control type="text" className="mx-sm-3 search-form" />
-            <Button size="sm" className="btn mx-1">
-              Buscar
-            </Button>
-            <Button size="sm" className="btn btn-success mx-1">
-              Limpiar
-            </Button>
-          </Form.Group>
-        </Form>
-      </div> */}
       <Table striped bordered hover variant="dark" className="mt-2" responsive>
         <thead>
           <tr>

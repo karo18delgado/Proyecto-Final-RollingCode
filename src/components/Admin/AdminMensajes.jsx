@@ -2,12 +2,12 @@ import { useEffect, useState } from "react";
 import "../Admin/admin.css";
 import { Button, Form, Modal, Table } from "react-bootstrap";
 import axios from "axios";
+import swal from "@sweetalert/with-react";
 
 export default function AdminMensajes() {
-  
   //DETALLE
   const [mensajeInfo, setMensajeInfo] = useState(null);
-  const [showInfo, setShowInfo] = useState(false);  
+  const [showInfo, setShowInfo] = useState(false);
   const handleCloseInfo = () => setShowInfo(false);
   const handleShowInfo = async (event) => {
     const mensajeId = event.target.value;
@@ -18,11 +18,13 @@ export default function AdminMensajes() {
 
   //RECIBIR MENSAJES
   const [mensajes, setMensajes] = useState([]);
-  const [mensajesUnread, setMensajesUnread] = useState([]);  
+  const [mensajesUnread, setMensajesUnread] = useState([]);
   const recibirMensajes = async () => {
     const response = await axios.get("/mensaje");
     setMensajes(response.data);
-    setMensajesUnread(response.data.filter(noLeidos => noLeidos.estado === "No leído"));
+    setMensajesUnread(
+      response.data.filter((noLeidos) => noLeidos.estado === "No leído")
+    );
   };
 
   useEffect(() => {
@@ -32,13 +34,25 @@ export default function AdminMensajes() {
   }, [mensajes]);
 
   //ELIMINAR
-  const handleDelete = async (event) => {
+  const handleDelete = (event) => {
     const mensajeId = event.target.value;
-    const confirma = window.confirm('Desea eliminar?');
-    if (confirma){
-    await axios.delete(`/mensaje/${mensajeId}`);
-    recibirMensajes();
-  }
+    swal({
+      title: "Está seguro que quiere eliminar este mensaje?",
+      text: "Una vez eliminado, no podrá recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        swal("Tu mensaje fue eliminado!", {
+          icon: "success",
+        });
+        await axios.delete(`/mensaje/${mensajeId}`);
+        recibirMensajes();
+      } else {
+        swal("El producto no fue eliminado!");
+      }
+    });
   };
 
   //LEIDO
@@ -59,8 +73,7 @@ export default function AdminMensajes() {
     recibirMensajes();
   };
 
-  const [input, setInput] = useState('No leído')
-  console.log("AdminMensajes -> input", input)
+  const [input, setInput] = useState("No leído");
 
   //FILTRO
   const handleChange = (e) => {
@@ -68,84 +81,98 @@ export default function AdminMensajes() {
     setInput(value);
   };
 
-  return ( 
+  return (
     <>
       <div className="mt-3 ml-2 mb-3 mr-2">
-      <h1>Tiene {mensajesUnread.length} mensajes no leídos</h1>
-            <Button size="sm" className="btn btn-warning mx-1" onClick={handleChange} value="No leído">
-              Sin leer
-            </Button>
-            <Button size="sm" className="btn btn-success mx-1" onClick={handleChange} value="Leído">
-              Leídos
-            </Button>
-      <Table striped bordered hover variant="dark" className="mt-5">
-        <thead>
-          <tr>
-            <th>Fecha</th>
-            <th>Email</th>
-            <th>Asunto</th>
-            <th>Leído/No Leído</th>
-            <th>Acciones</th>
-          </tr>
-        </thead>         
-          {mensajes.map((mensaje) => (
-            mensaje.estado === input &&  (
-          <tbody>
-          <tr> 
-            <td>{mensaje.fecha}</td>            
-            <td>{mensaje.correo}</td>
-            <td>{mensaje.asunto}</td>
-            <td>{mensaje.estado}</td>
-            <td>
-              
-            {mensaje.estado === "No leído" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-warning mx-1"
-                    onClick={handleLeido}
-                    value={mensaje._id}
-                  >
-                    Leído
-                  </Button>
-                )}
-                {mensaje.estado === "Leído" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-success mx-1"
-                    onClick={handleNoLeido}
-                    value={mensaje._id}
-                  >
-                    No leído
-                  </Button>
-                )}
-              <Button
-                size="sm"
-                className="btn sm btn-primary mx-1"
-                onClick={handleShowInfo}
-                value={mensaje._id}
-              >
-                Detalle
-              </Button>
-              <Button size="sm" className="btn sm btn-danger mx-1" onClick={handleDelete} value={mensaje._id}>
-                Eliminar
-                
-              </Button>
-            </td>
+        <h1>Tiene {mensajesUnread.length} mensajes no leídos</h1>
+        <Button
+          size="sm"
+          className="btn btn-warning mx-1"
+          onClick={handleChange}
+          value="No leído"
+        >
+          Sin leer
+        </Button>
+        <Button
+          size="sm"
+          className="btn btn-success mx-1"
+          onClick={handleChange}
+          value="Leído"
+        >
+          Leídos
+        </Button>
+        <Table striped bordered hover variant="dark" className="mt-5">
+          <thead>
+            <tr>
+              <th>Fecha</th>
+              <th>Email</th>
+              <th>Asunto</th>
+              <th>Leído/No Leído</th>
+              <th>Acciones</th>
             </tr>
-            </tbody>
-            )))}
-      </Table>
+          </thead>
+          {mensajes.map(
+            (mensaje) =>
+              mensaje.estado === input && (
+                <tbody>
+                  <tr>
+                    <td>{mensaje.fecha}</td>
+                    <td>{mensaje.correo}</td>
+                    <td>{mensaje.asunto}</td>
+                    <td>{mensaje.estado}</td>
+                    <td>
+                      {mensaje.estado === "No leído" && (
+                        <Button
+                          size="sm"
+                          className="btn sm btn-warning mx-1"
+                          onClick={handleLeido}
+                          value={mensaje._id}
+                        >
+                          Leído
+                        </Button>
+                      )}
+                      {mensaje.estado === "Leído" && (
+                        <Button
+                          size="sm"
+                          className="btn sm btn-success mx-1"
+                          onClick={handleNoLeido}
+                          value={mensaje._id}
+                        >
+                          No leído
+                        </Button>
+                      )}
+                      <Button
+                        size="sm"
+                        className="btn sm btn-primary mx-1"
+                        onClick={handleShowInfo}
+                        value={mensaje._id}
+                      >
+                        Detalle
+                      </Button>
+                      <Button
+                        size="sm"
+                        className="btn sm btn-danger mx-1"
+                        onClick={handleDelete}
+                        value={mensaje._id}
+                      >
+                        Eliminar
+                      </Button>
+                    </td>
+                  </tr>
+                </tbody>
+              )
+          )}
+        </Table>
       </div>
-      
+
       {/* Modal Leer Mensaje */}
 
       <Modal show={showInfo} onHide={handleCloseInfo}>
-      <Form>
-        <Modal.Header closeButton>
-          <Modal.Title>Más información</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          
+        <Form>
+          <Modal.Header closeButton>
+            <Modal.Title>Más información</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
             <Form.Group controlId="exampleForm.SelectCustom">
               {mensajeInfo && (
                 <Form.Label>
@@ -157,12 +184,12 @@ export default function AdminMensajes() {
                 </Form.Label>
               )}
             </Form.Group>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleCloseInfo}>
-            Cerrar
-          </Button> 
-        </Modal.Footer>
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseInfo}>
+              Cerrar
+            </Button>
+          </Modal.Footer>
         </Form>
       </Modal>
     </>

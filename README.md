@@ -81,6 +81,9 @@ The frontend has a **section for administrators** and a **section for users**, w
 - router.delete('/:productoId', productoController.deleteProducto);
 - router.put('/', productoController.updateProducto);
 
+'/api/ventas', ventasRoutes:
+- router.post('/', ventaController.ventaProducto);
+- router.get('/', ventaController.getVentas);
 ```
 ## Authors :black_nib:
 * **Agustín Gómez Urrutia**  - [agustingu20](https://github.com/agustingu20)
@@ -93,6 +96,8 @@ The frontend has a **section for administrators** and a **section for users**, w
 - Bootstrap
 - React-bootstrap
 - React-router-dom
+- SweetAlert
+- React-Credits-cards
 ## Frameworks :toolbox:
 - Express
 
