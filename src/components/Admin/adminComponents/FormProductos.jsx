@@ -36,8 +36,12 @@ export default function FormProductos() {
       });
       setShow(false);
     } catch (error) {
-      console.log(error);
-    }
+      console.log(error.response.data);
+      swal({
+        title: (error.response.data.msg),
+        icon: "error",
+      });
+  }
   };
 
   const handleChange = (e) => {
@@ -74,7 +78,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       required
                       type="text"
-                      minLength={6}
+                      minLength={2}
                       maxLength={30}
                       className="form-productos-control"
                     />
@@ -89,7 +93,7 @@ export default function FormProductos() {
                       name="urlImage"
                       onChange={(e) => handleChange(e)}
                       required
-                      minLength={6}
+                      minLength={2}
                       maxLength={60}
                       type="text"
                       className="form-productos-control"
@@ -146,12 +150,13 @@ export default function FormProductos() {
                     <Form.Control
                       name="precio"
                       onChange={(e) => handleChange(e)}
-                      type="tel"  
+                      type="number"  
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
                       maxLength={15}
-                      minLength={6}
+                      minLength={2}
+                      pattern="[0-9]+([0-9]+)?"
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un precio.
@@ -180,7 +185,7 @@ export default function FormProductos() {
                       name="pantallaDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
-                      minLength={6}
+                      minLength={2}
                       maxLength={40}
                       required
                       className="form-productos-control"
@@ -209,7 +214,7 @@ export default function FormProductos() {
                     <Form.Label>Procesador</Form.Label>
                     <Form.Control
                       name="procesador"
-                      minLength={6}
+                      minLength={2}
                       maxLength={30}
                       onChange={(e) => handleChange(e)}
                       type="text"
@@ -266,7 +271,7 @@ export default function FormProductos() {
                     <Form.Label>Descripción camara</Form.Label>
                     <Form.Control
                       name="camaraDescripcion"
-                      minLength={6}
+                      minLength={2}
                       maxLength={40}
                       onChange={(e) => handleChange(e)}
                       type="text"
@@ -294,7 +299,7 @@ export default function FormProductos() {
                       name="conectorDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
-                      minLength={6}
+                      minLength={2}
                       maxLength={40}
                       required
                       className="form-productos-control"
@@ -309,7 +314,7 @@ export default function FormProductos() {
                       name="bateria"
                       onChange={(e) => handleChange(e)}
                       type="text"
-                      minLength={6}
+                      minLength={2}
                       maxLength={20}
                       required
                       className="form-productos-control"
@@ -324,7 +329,7 @@ export default function FormProductos() {
                       name="bateriaDescripcion"
                       onChange={(e) => handleChange(e)}
                       type="text"
-                      minLength={6}
+                      minLength={2}
                       maxLength={40}
                       required
                       className="form-productos-control"
