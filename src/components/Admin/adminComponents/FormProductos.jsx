@@ -15,6 +15,11 @@ export default function FormProductos() {
   const handleSubmit = async (event) => {
     const form = event.currentTarget;
     event.preventDefault();
+    const inputprecio = +input.precio;
+    if (inputprecio < 0) {
+      alert('el precio tiene que ser mayor a 0!')
+      return event.stopPropagation();
+    }
     setValidated(true);
     if (form.checkValidity() === false) {
       return event.stopPropagation();
@@ -142,7 +147,8 @@ export default function FormProductos() {
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
-                      pattern="[0-9]{1,10}"
+                      maxLength={15}
+                      minLength={6}
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un precio.
