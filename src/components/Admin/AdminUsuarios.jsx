@@ -51,27 +51,56 @@ export default function AdminUsuarios() {
     setShowInfo(true);
   };
 
-  //ELIMINAR
-  const handleDelete = (event) => {
-    const usuarioID = event.target.value;
-    swal({
-      title: "Está seguro que quiere eliminar al usuario?",
-      text: "Una vez eliminado, no podrá recuperarlo!",
-      icon: "warning",
-      buttons: true,
-      dangerMode: true,
-    }).then(async (willDelete) => {
-      if (willDelete) {
-        swal("El usuario fue eliminado!", {
-          icon: "success",
+ //ELIMINAR
+ const handleDelete = (event) => {
+  const usuarioID = event.target.value;
+  
+  swal({
+    title: "Está seguro que quiere eliminar al usuario?",
+    text: "Una vez eliminado, no podrá recuperarlo!",
+    icon: "warning",
+    buttons: true,
+    dangerMode: true,
+  }).then(async (willDelete) => {
+    if (willDelete) {
+      try{
+      swal("El usuario fue eliminado!", {
+        icon: "success",
+      });
+      await axios.delete(`/usuarios/${usuarioID}`);
+      getUsuarios();
+    }
+      catch (error) {
+        console.log(error.response.data);
+        swal({
+          title: (error.response.data.msg),
+          icon: "error",
         });
-        await axios.delete(`/usuarios/${usuarioID}`);
-        getUsuarios();
-      } else {
-        swal("El usuario no fue eliminado!");
-      }
-    });
-  };
+    }
+    } else {
+      swal("El usuario no fue eliminado!");
+    }
+  });
+};
+
+//Habilitar Administrador 
+const handleHabilitarAdmin = async (e) => {
+  const usuarioId = e.target.value;
+  const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+  const newInput = { ...fetchedUsuario.data, categoryUser: "admin" };
+  await axios.put("/auth/usuarios", newInput);
+  getUsuarios();
+};
+
+// Deshabilitar Administrador
+const handleDeshabilitarAdmin = async (e) => {
+  const usuarioId = e.target.value;
+  const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+  const newInput = { ...fetchedUsuario.data, categoryUser: "" };
+  await axios.put("/auth/usuarios", newInput);
+  getUsuarios();
+};
+
 
   return (
     <div>
@@ -84,6 +113,7 @@ export default function AdminUsuarios() {
             <th>Fecha de nacimiento</th>
             <th>Sexo</th>
             <th>Habilitado/Deshabilitado</th>
+            <th>Categoria</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -96,6 +126,13 @@ export default function AdminUsuarios() {
               <td>{usuario.fechaNacimiento}</td>
               <td>{usuario.sexo}</td>
               <td handleChange={handleChange}>{usuario.blockUser}</td>
+              <td>{!usuario.categoryUser && (
+                "Usuario"
+              )}
+              {usuario.categoryUser === "admin" &&(
+                "Administrador"
+              )}
+              </td>
               <td>
                 <Button
                   size="sm"
@@ -131,6 +168,26 @@ export default function AdminUsuarios() {
                     value={usuario._id}
                   >
                     Deshabilitar
+                  </Button>
+                )}
+               {!usuario.categoryUser && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-success mx-1 table-buttons"
+                    onClick={handleHabilitarAdmin}
+                    value={usuario._id}
+                  >
+                    Administrador
+                  </Button>
+                )}
+                {usuario.categoryUser === "admin" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-secondary mx-1 table-buttons"
+                    onClick={handleDeshabilitarAdmin}
+                    value={usuario._id}
+                  >
+                    Usuario
                   </Button>
                 )}
               </td>

@@ -159,7 +159,7 @@ export default function FormProductos() {
                       pattern="[0-9]+([0-9]+)?"
                     />
                     <Form.Control.Feedback type="invalid">
-                      Ingrese un precio.
+                      Ingrese un precio solo con numeros sin signos!
                     </Form.Control.Feedback>
                   </Form.Group>
                 </Form.Row>
@@ -286,7 +286,6 @@ export default function FormProductos() {
                       type="text"
                       minLength={3}
                       maxLength={20}
-                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -301,7 +300,6 @@ export default function FormProductos() {
                       type="text"
                       minLength={2}
                       maxLength={40}
-                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -316,7 +314,6 @@ export default function FormProductos() {
                       type="text"
                       minLength={2}
                       maxLength={20}
-                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -331,7 +328,6 @@ export default function FormProductos() {
                       type="text"
                       minLength={2}
                       maxLength={40}
-                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
