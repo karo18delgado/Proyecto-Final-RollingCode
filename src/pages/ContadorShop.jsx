@@ -27,7 +27,6 @@ export default function ContadorShop({
           return item;
         }
       });
-      console.log("updateCounter ~ carritoActualizado", carritoActualizado);
       localStorage.setItem("carrito", JSON.stringify(carritoActualizado));
     }
 

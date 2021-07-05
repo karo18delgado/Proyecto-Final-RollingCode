@@ -1,12 +1,5 @@
 import "../assets/shoppingcart.css";
-import {
-  Button,
-  Col,
-  Container,
-  Row,
-  Form,
-  Modal,
-} from "react-bootstrap";
+import { Button, Col, Container, Row, Form, Modal } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import ContadorShop from "../pages/ContadorShop";
 import { useEffect, useState } from "react";
@@ -14,11 +7,7 @@ import CreditsCard from "../pages/CreditsCard";
 import axios from "axios";
 import swal from "@sweetalert/with-react";
 
-export default function Carrito({
-  articles,
-  eliminarItemCarrito,
-  user,
-}) {
+export default function Carrito({ articles, eliminarItemCarrito, user }) {
   const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
   const [total, setTotal] = useState(0);
@@ -29,43 +18,26 @@ export default function Carrito({
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  
-
   const [counter, setCounter] = useState([]);
   const [precioSubtotal, setPrecioSubtotal] = useState(0);
 
   let subtotal = [];
-  const cantidad = 0;
 
   useEffect(() => {
     articles.forEach((element, index) => {
-      console.log("articles.map ~ index", index);
-      console.log("element.cantidad", element.cantidad);
       setCounter((counter) => [...counter, element.cantidad]);
       subtotal.push(parseInt(element.cantidad));
     });
-
-    console.log("articles.forEach ~ subtotal", subtotal);
   }, []);
 
   const updateCounter = (num, id, i) => {
-    console.log("updateCounter", counter);
-    console.log("updateCounter ~ id", id);
-    console.log("updateCounter ~ index", i);
     if (num === 1) {
-      console.log("entre al if");
-      console.log("subtotal.forEach ~ subtotal", subtotal);
       subtotal.forEach((element, index) => {
-        console.log("subtotal.forEach ~ index", index);
-
         if (index === i) {
-          console.log("entre al if del index");
-          console.log("subtotal.forEach ~ element", element);
           return (element = element + 1);
         }
       });
       subtotal[0] = subtotal[0] + 1;
-      console.log("updateCounter ~ subtotal", subtotal);
     }
     if (counter + num > 0) {
       setCounter(counter + num);
@@ -91,20 +63,16 @@ export default function Carrito({
     totalInicial = totalInicial + element.cantidad * element.producto.precio;
   }
 
-  console.log("Carrito ~ totalInicial", totalInicial);
   useEffect(() => {
     setTotal(totalInicial);
   }, [setTotal, totalInicial]);
 
   const modificarTotal = async (nuevoTotal, id) => {
     const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
-    console.log("modificarTotal ~ carrito2", carrito2);
     let totalFinal = 0;
     carrito2.map((item) => {
-      console.log("carrito2.map ~ item", item);
-      totalFinal = totalFinal + item.cantidad * item.precioId;
+      return (totalFinal = totalFinal + item.cantidad * item.precioId);
     });
-    console.log("carrito2.map ~ totalFinal", totalFinal);
     setTotal(totalFinal);
   };
 
@@ -117,14 +85,10 @@ export default function Carrito({
     }
     try {
       const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
-      console.log("Carrito ~ articles", carrito2);
       let carritoEnvio = [];
       carrito2.map((item) => {
         const obj = { producto: item.productoId, cantidad: item.cantidad };
-
-        console.log("articles.map ~ obj", obj);
-        carritoEnvio.push(obj);
-        console.log("articles.map ~ carritoEnvio", carritoEnvio);
+        return carritoEnvio.push(obj);
       });
       const datosDeVenta = {
         usuario: user._id,
@@ -148,7 +112,6 @@ export default function Carrito({
         title: "Muchas gracias por su compra!",
         icon: "success",
       });
-      // alert("Muchas gracias por su compra!😁");
     } catch (error) {
       console.log(error);
     }
@@ -169,7 +132,12 @@ export default function Carrito({
             style={{ backgroundColor: "#fff", borderRadius: "20px" }}
           >
             <div>
-              <h3 className="m-5"><strong> <u>Carrito de compras</u> </strong> </h3>
+              <h3 className="m-5">
+                <strong>
+                  {" "}
+                  <u>Carrito de compras</u>{" "}
+                </strong>{" "}
+              </h3>
 
               {articles.map((item) => (
                 <ContadorShop
@@ -382,22 +350,22 @@ export default function Carrito({
                         value="tarjeta"
                         onClick={handleShow}
                       />
-                       <Modal size="lg" show={show} onHide={handleClose}>
-                      <Modal.Header closeButton>
-                        <Modal.Title>Tarjeta de Crédito</Modal.Title>
-                      </Modal.Header>
-                      <Modal.Body style={{ height: "400px" }}>
-                        <CreditsCard />
-                      </Modal.Body>
-                      <Modal.Footer>
-                        <Button variant="secondary" onClick={handleClose}>
-                          Cerrar
-                        </Button>
-                        <Button variant="primary" onClick={handleClose}>
-                          Continuar
-                        </Button>
-                      </Modal.Footer>
-                    </Modal>
+                      <Modal size="lg" show={show} onHide={handleClose}>
+                        <Modal.Header closeButton>
+                          <Modal.Title>Tarjeta de Crédito</Modal.Title>
+                        </Modal.Header>
+                        <Modal.Body style={{ height: "400px" }}>
+                          <CreditsCard />
+                        </Modal.Body>
+                        <Modal.Footer>
+                          <Button variant="secondary" onClick={handleClose}>
+                            Cerrar
+                          </Button>
+                          <Button variant="primary" onClick={handleClose}>
+                            Continuar
+                          </Button>
+                        </Modal.Footer>
+                      </Modal>
                     </Col>
                   </Form.Group>
                 </fieldset>

@@ -33,7 +33,6 @@ function App() {
   useEffect(() => {
     const getProductos = async () => {
       let productosCarrito = [];
-      console.log("getProductos ~ productosCarrito", productosCarrito)
       const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
       for (let i = 0; i < carrito.length; i++) {
         const itemCarrito = carrito[i];

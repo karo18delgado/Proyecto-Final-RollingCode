@@ -238,23 +238,3 @@
   min-width: 400px;
   margin: auto;
 }
-
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  height: 50px;
-  width: 50px;
-  border-radius: 50%;
-  background-image: none;
-}
-
-.carousel-control-next-icon:after {
-  content: ">";
-  font-size: 35px;
-  color: red;
-}
-
-.carousel-control-prev-icon:after {
-  content: "<";
-  font-size: 35px;
-  color: red;
-}
