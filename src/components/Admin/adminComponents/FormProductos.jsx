@@ -18,7 +18,7 @@ export default function FormProductos() {
     const inputprecio = +input.precio;
     if (inputprecio < 0) {
       swal({
-        title: "El precio tiene qu ser mayor a 0!",
+        title: "El precio tiene que ser mayor a 0!",
         icon: "error",
       });
       return event.stopPropagation();
@@ -38,10 +38,10 @@ export default function FormProductos() {
     } catch (error) {
       console.log(error.response.data);
       swal({
-        title: (error.response.data.msg),
+        title: error.response.data.msg,
         icon: "error",
       });
-  }
+    }
   };
 
   const handleChange = (e) => {
@@ -150,7 +150,7 @@ export default function FormProductos() {
                     <Form.Control
                       name="precio"
                       onChange={(e) => handleChange(e)}
-                      type="number"  
+                      type="number"
                       aria-describedby="inputGroupPrepend"
                       required
                       className="form-productos-control-precio"
@@ -260,11 +260,12 @@ export default function FormProductos() {
                     <Form.Label>Cámaras</Form.Label>
                     <Form.Control
                       name="camara"
-                      minLength={3}
+                      minLength={2}
                       maxLength={20}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
+                      required
                     />
                   </Form.Group>
                   <Form.Group md="4" controlId="validationCustom02">
@@ -276,6 +277,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
+                      required
                     />
                   </Form.Group>
                   <Form.Group md="3" controlId="validationCustom04">
@@ -287,6 +289,7 @@ export default function FormProductos() {
                       minLength={3}
                       maxLength={20}
                       className="form-productos-control"
+                      required
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un tipo de conector.
@@ -301,6 +304,7 @@ export default function FormProductos() {
                       minLength={2}
                       maxLength={40}
                       className="form-productos-control"
+                      required
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un tipo de conector.
@@ -315,6 +319,7 @@ export default function FormProductos() {
                       minLength={2}
                       maxLength={20}
                       className="form-productos-control"
+                      required
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese un tamaño de bateria.
@@ -329,6 +334,7 @@ export default function FormProductos() {
                       minLength={2}
                       maxLength={40}
                       className="form-productos-control"
+                      required
                     />
                     <Form.Control.Feedback type="invalid">
                       Ingrese una descripción de bateria.
@@ -339,7 +345,7 @@ export default function FormProductos() {
                     controlId="exampleForm.SelectCustom"
                     className="form-productos-control"
                   >
-                    <Form.Label>Custom select</Form.Label>
+                    <Form.Label>Categoría</Form.Label>
                     <Form.Control
                       name="categoria"
                       onChange={(e) => handleChange(e)}
@@ -351,6 +357,23 @@ export default function FormProductos() {
                       <option>Mac</option>
                       <option>iPad</option>
                       <option>iPhone</option>
+                    </Form.Control>
+                  </Form.Group>
+                  <Form.Group
+                    controlId="exampleForm.SelectCustom"
+                    className="form-productos-control"
+                  >
+                    <Form.Label>Destacar</Form.Label>
+                    <Form.Control
+                      name="destaque"
+                      onChange={(e) => handleChange(e)}
+                      as="select"
+                      custom
+                      required
+                    >
+                      <option className="d-none"></option>
+                      <option>Si</option>
+                      <option>No</option>
                     </Form.Control>
                   </Form.Group>
                 </Form.Row>

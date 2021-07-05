@@ -99,6 +99,24 @@ export default function TablaProductos() {
     getProductos();
   };
 
+  //REPLEGAR
+  const handleReplegar = async (event) => {
+    const productoId = event.target.value;
+    const productoDestaque = await axios.get(`/productos/${productoId}`);
+    const newInput = { ...productoDestaque.data, destaque: "No" };
+    await axios.put("/productos", newInput);
+    getProductos();
+  };
+
+  //DESTACAR
+  const handleDestacar = async (event) => {
+    const productoId = event.target.value;
+    const productoDestaque = await axios.get(`/productos/${productoId}`);
+    const newInput = { ...productoDestaque.data, destaque: "Si" };
+    await axios.put("/productos", newInput);
+    getProductos();
+  };
+
   return (
     <>
       <Table
@@ -120,6 +138,7 @@ export default function TablaProductos() {
             <th>Cámaras</th>
             <th>Categoría</th>
             <th>Condicion</th>
+            <th>Destacado</th>
             <th>Acciones</th>
           </tr>
         </thead>
@@ -135,6 +154,7 @@ export default function TablaProductos() {
               <td>{producto.camara}</td>
               <td>{producto.categoria}</td>
               <td>{producto.condicion}</td>
+              <td>{producto.destaque}</td>
               <td>
                 {/* Boton Editar */}
                 <Button
@@ -182,6 +202,27 @@ export default function TablaProductos() {
                     value={producto._id}
                   >
                     Deshabilitar
+                  </Button>
+                )}
+                {/* Boton Destacar y Replegar */}
+                {producto.destaque === "No" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-primary mx-1 table-buttons"
+                    onClick={handleDestacar}
+                    value={producto._id}
+                  >
+                    Destacar
+                  </Button>
+                )}
+                {producto.destaque === "Si" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-warning mx-1 table-buttons"
+                    onClick={handleReplegar}
+                    value={producto._id}
+                  >
+                    Replegar
                   </Button>
                 )}
               </td>
