@@ -51,56 +51,53 @@ export default function AdminUsuarios() {
     setShowInfo(true);
   };
 
- //ELIMINAR
- const handleDelete = (event) => {
-  const usuarioID = event.target.value;
-  
-  swal({
-    title: "Está seguro que quiere eliminar al usuario?",
-    text: "Una vez eliminado, no podrá recuperarlo!",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then(async (willDelete) => {
-    if (willDelete) {
-      try{
-      swal("El usuario fue eliminado!", {
-        icon: "success",
-      });
-      await axios.delete(`/usuarios/${usuarioID}`);
-      getUsuarios();
-    }
-      catch (error) {
-        console.log(error.response.data);
-        swal({
-          title: (error.response.data.msg),
-          icon: "error",
-        });
-    }
-    } else {
-      swal("El usuario no fue eliminado!");
-    }
-  });
-};
+  //ELIMINAR
+  const handleDelete = (event) => {
+    const usuarioID = event.target.value;
+    swal({
+      title: "Está seguro que quiere eliminar al usuario?",
+      text: "Una vez eliminado, no podrá recuperarlo!",
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    }).then(async (willDelete) => {
+      if (willDelete) {
+        try {
+          swal("El usuario fue eliminado!", {
+            icon: "success",
+          });
+          await axios.delete(`/usuarios/${usuarioID}`);
+          getUsuarios();
+        } catch (error) {
+          console.log(error.response.data);
+          swal({
+            title: error.response.data.msg,
+            icon: "error",
+          });
+        }
+      } else {
+        swal("El usuario no fue eliminado!");
+      }
+    });
+  };
 
-//Habilitar Administrador 
-const handleHabilitarAdmin = async (e) => {
-  const usuarioId = e.target.value;
-  const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
-  const newInput = { ...fetchedUsuario.data, categoryUser: "admin" };
-  await axios.put("/auth/usuarios", newInput);
-  getUsuarios();
-};
+  //Habilitar Administrador
+  const handleHabilitarAdmin = async (e) => {
+    const usuarioId = e.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+    const newInput = { ...fetchedUsuario.data, categoryUser: "admin" };
+    await axios.put("/auth/usuarios", newInput);
+    getUsuarios();
+  };
 
-// Deshabilitar Administrador
-const handleDeshabilitarAdmin = async (e) => {
-  const usuarioId = e.target.value;
-  const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
-  const newInput = { ...fetchedUsuario.data, categoryUser: "" };
-  await axios.put("/auth/usuarios", newInput);
-  getUsuarios();
-};
-
+  // Deshabilitar Administrador
+  const handleDeshabilitarAdmin = async (e) => {
+    const usuarioId = e.target.value;
+    const fetchedUsuario = await axios.get(`/usuarios/${usuarioId}`);
+    const newInput = { ...fetchedUsuario.data, categoryUser: "" };
+    await axios.put("/auth/usuarios", newInput);
+    getUsuarios();
+  };
 
   return (
     <div>
@@ -126,12 +123,9 @@ const handleDeshabilitarAdmin = async (e) => {
               <td>{usuario.fechaNacimiento}</td>
               <td>{usuario.sexo}</td>
               <td handleChange={handleChange}>{usuario.blockUser}</td>
-              <td>{!usuario.categoryUser && (
-                "Usuario"
-              )}
-              {usuario.categoryUser === "admin" &&(
-                "Administrador"
-              )}
+              <td>
+                {!usuario.categoryUser && "Usuario"}
+                {usuario.categoryUser === "admin" && "Administrador"}
               </td>
               <td>
                 <Button
@@ -170,7 +164,7 @@ const handleDeshabilitarAdmin = async (e) => {
                     Deshabilitar
                   </Button>
                 )}
-               {!usuario.categoryUser && (
+                {!usuario.categoryUser && (
                   <Button
                     size="sm"
                     className="btn sm btn-success mx-1 table-buttons"

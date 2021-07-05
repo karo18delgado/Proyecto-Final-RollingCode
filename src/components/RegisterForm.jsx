@@ -26,11 +26,11 @@ export default function RegisterForm({ setToken }) {
     var hoy = new Date();
     var cumpleanos = new Date(input.fechaNacimiento);
     var edad = hoy.getFullYear() - cumpleanos.getFullYear();
-    if(edad <= 18){
-        swal({
-            title: "Debes ser mayor de edad",
-            icon: "error",
-        });
+    if (edad <= 18) {
+      swal({
+        title: "Debes ser mayor de edad",
+        icon: "error",
+      });
     } else {
       try {
         const { data } = await axios.post("/auth/register", input);
@@ -87,7 +87,7 @@ export default function RegisterForm({ setToken }) {
                 required
                 type="text"
                 placeholder="Nombre"
-                pattern="[a-z,A-Z]{2,25}"
+                pattern="[a-z,A-Z, ]{2,25}"
               />
               <Form.Control.Feedback>Looks good!</Form.Control.Feedback>
             </Form.Group>
@@ -98,7 +98,7 @@ export default function RegisterForm({ setToken }) {
                 maxLength={30}
                 type="text"
                 placeholder="Apellidos"
-                pattern="[a-z,A-Z]{2,25}"
+                pattern="[a-z,A-Z, ]{2,25}"
                 name="apellido"
                 onChange={(e) => handleChange(e)}
               />

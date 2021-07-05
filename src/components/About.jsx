@@ -913,21 +913,6 @@ export default function About() {
             </Card>
           </Col>
         </Row>
-        {/* <Row className="justify-justify-content">
-          <Col xs={7} md={4} style={{ padding: "20px" }}>
-            <Card className="listado-card-directivos">
-              <Card.Img
-                className="img-directivos"
-                variant="top"
-                src={nicolas}
-              />
-              <Card.Body>
-                <Card.Title className="pb-4">Nicolás Gómez</Card.Title>
-                <Card.Text>Programador FullStack</Card.Text>
-              </Card.Body>
-            </Card>
-          </Col>
-        </Row> */}
       </Container>
     </div>
   );

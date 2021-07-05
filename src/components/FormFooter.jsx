@@ -2,8 +2,11 @@ import axios from "axios";
 import React from "react";
 import { useState } from "react";
 import { Button, Form } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
+import swal from "@sweetalert/with-react";
 
 export default function FormFooter() {
+  const history = useHistory();
   const [validated, setValidated] = useState(false);
   const [input, setInput] = useState({});
   const handleSubmit = async (event) => {
@@ -16,10 +19,13 @@ export default function FormFooter() {
     try {
       // Consulta post a /mensaje
       await axios.post("/mensaje", input);
-      alert("Mensaje enviado con éxito");
+      swal({
+        title: "Producto creado correctamente!",
+        icon: "success",
+      });
       setValidated(false);
       form.reset();
-      window.location.href = "/";
+      history.push("/");
     } catch (error) {
       console.log(error);
     }
