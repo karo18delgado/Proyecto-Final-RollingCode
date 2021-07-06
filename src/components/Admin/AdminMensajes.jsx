@@ -116,7 +116,7 @@ export default function AdminMensajes() {
               mensaje.estado === input && (
                 <tbody>
                   <tr>
-                    <td>{mensaje.fecha}</td>
+                    <td>{mensaje.fecha.slice(0, 10)}</td>
                     <td>{mensaje.correo}</td>
                     <td>{mensaje.asunto}</td>
                     <td>{mensaje.estado}</td>

@@ -67,7 +67,7 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
     setTotal(totalInicial);
   }, [setTotal, totalInicial]);
 
-  const modificarTotal = async (nuevoTotal, id) => {
+  const modificarTotal = async () => {
     const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
     let totalFinal = 0;
     carrito2.map((item) => {
@@ -141,7 +141,7 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
 
               {articles.map((item) => (
                 <ContadorShop
-                  key={item._id}
+                  key={`carrito-${item.producto._id}`}
                   cantidad={item.cantidad}
                   id={item.producto._id}
                   precio={item.producto.precio}
@@ -155,7 +155,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
               <h4 style={{ textAlign: "end", paddingRight: "20px" }}>
                 Total = $ {total}
               </h4>
-
               <hr />
               <h5 style={{ paddingTop: "10px", paddingBottom: "20px" }}>
                 {" "}

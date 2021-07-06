@@ -43,6 +43,7 @@ export default function CardsIphone({ setproductosCarrito, token }) {
             producto.categoria === "iPad" &&
             producto.condicion === "Habilitado" && (
               <Ipad
+                key={`ipad-${producto._id}`}
                 producto={producto}
                 setproductosCarrito={setproductosCarrito}
                 token={token}
