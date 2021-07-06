@@ -7,12 +7,16 @@ import axios from "axios";
 
 export default function Landing() {
   const [productos, setProductos] = useState([]);
+  const [destacados, setDestacados] = useState("No");
 
   useEffect(() => {
     if (!productos.length) {
       const getProductos = async () => {
         const response = await axios.get(`/productos`);
         setProductos(response.data);
+        setDestacados(
+          response.data.find((producto) => producto.destaque === "Si")
+        );
       };
 
       getProductos();
@@ -23,35 +27,40 @@ export default function Landing() {
     <div className="bg-dark d-flex flex-column justify-content-center">
       {/* Carrousel con productos destacados */}
       <div className="d-flex flex-column justify-content-center">
-        <Card
-          style={{ backgroundColor: "rgb(0,0,0)" }}
-          className="d-flex flex-column justify-content-center"
-        >
-          <div style={{ marginBottom: "30px" }}>
-            <h1 className="d-flex flex-row justify-content-center text-white mt-4">
-              Productos destacados
-            </h1>
-          </div>
-          <Carousel className="mt-3 mb-3" fade>
-            {productos.map(
-              (producto) =>
-                producto.destaque === "Si" &&
-                producto.condicion === "Habilitado" && (
-                  <Carousel.Item style={{ marginBottom: "35px" }}>
-                    <img
-                      className="d-flex foto-carrousel"
-                      src={producto.urlImage}
-                      alt="First slide"
-                    />
-                    <Carousel.Caption style={{ fontSize: "30px" }}>
-                      <h3>{producto.nombre}</h3>
-                      <p>$ {producto.precio}</p>
-                    </Carousel.Caption>
-                  </Carousel.Item>
-                )
-            )}
-          </Carousel>
-        </Card>
+        {destacados && (
+          <Card
+            style={{ backgroundColor: "rgb(0,0,0)" }}
+            className="d-flex flex-column justify-content-center"
+          >
+            <div style={{ marginBottom: "30px" }}>
+              <h1 className="d-flex flex-row justify-content-center text-white mt-4">
+                Productos destacados
+              </h1>
+            </div>
+            <Carousel className="mt-3 mb-3" fade>
+              {productos.map(
+                (producto) =>
+                  producto.destaque === "Si" &&
+                  producto.condicion === "Habilitado" && (
+                    <Carousel.Item
+                      key={`carrousel-${producto._id}`}
+                      style={{ marginBottom: "35px" }}
+                    >
+                      <img
+                        className="d-flex foto-carrousel"
+                        src={producto.urlImage}
+                        alt="First slide"
+                      />
+                      <Carousel.Caption style={{ fontSize: "30px" }}>
+                        <h3>{producto.nombre}</h3>
+                        <p>$ {producto.precio}</p>
+                      </Carousel.Caption>
+                    </Carousel.Item>
+                  )
+              )}
+            </Carousel>
+          </Card>
+        )}
       </div>
       {/* Card con sección Iphone */}
       <div className="d-flex flex-column justify-content-center card-landing">

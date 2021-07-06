@@ -13,14 +13,16 @@ export default function Cards({ producto, setproductosCarrito, token }) {
     if (token !== "") {
       let productos = JSON.parse(localStorage.getItem("carrito")) || [];
       const productoId = producto._id;
+      const precioId = producto.precio;
+
       // setProductoCart([productoId]);
-      productos.push({ productoId, cantidad: 1 });
+      productos.push({ productoId, cantidad: 1, precioId });
       localStorage.setItem("carrito", JSON.stringify(productos));
 
       const response = await axios.get(`/productos/${productoId}`);
       setproductosCarrito((productosCarrito) => [
         ...productosCarrito,
-        { producto: response.data, cantidad: 1 },
+        { producto: response.data, cantidad: 1, precioId },
       ]);
     }
   };
@@ -74,7 +76,7 @@ export default function Cards({ producto, setproductosCarrito, token }) {
           </Card.Body>
           <Collapse in={open}>
             <div id="example-collapse-text">
-              <hr class="hr-articulos" />
+              <hr className="hr-articulos" />
               <Card.Body className="text-center">
                 <Card.Text className="text-encabezado">
                   {producto.pantalla}

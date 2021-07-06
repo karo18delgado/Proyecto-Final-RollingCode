@@ -26,9 +26,6 @@ export default function Cards({ producto, setproductosCarrito, token }) {
       ]);
     }
   };
-  
- 
- 
 
   return (
     <>
