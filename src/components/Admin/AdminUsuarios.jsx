@@ -115,14 +115,14 @@ export default function AdminUsuarios() {
           </tr>
         </thead>
         {usuarios.map((usuario) => (
-          <tbody>
+          <tbody key={`usuario-${usuario._id}`}>
             <tr>
               <td>{usuario.nombre}</td>
               <td>{usuario.apellido}</td>
               <td>{usuario.email}</td>
               <td>{usuario.fechaNacimiento}</td>
               <td>{usuario.sexo}</td>
-              <td handleChange={handleChange}>{usuario.blockUser}</td>
+              <td onChange={handleChange}>{usuario.blockUser}</td>
               <td>
                 {!usuario.categoryUser && "Usuario"}
                 {usuario.categoryUser === "admin" && "Administrador"}

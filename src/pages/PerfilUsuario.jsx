@@ -79,7 +79,7 @@ export default function PerfilUsuario({ user }) {
                 style={{ padding: "20px" }}
               >
                 <strong>Nombre:</strong>
-                <spam> {user.nombre}</spam>
+                <span> {user.nombre}</span>
               </ListGroup.Item>
 
               <Modal show={show1} onHide={handleClose1}>
@@ -127,7 +127,7 @@ export default function PerfilUsuario({ user }) {
                 style={{ padding: "20px" }}
               >
                 <strong>Apellido:</strong>
-                <spam> {user.apellido}</spam>
+                <span> {user.apellido}</span>
               </ListGroup.Item>
 
               <Modal show={show2} onHide={handleClose2}>
@@ -175,7 +175,7 @@ export default function PerfilUsuario({ user }) {
                 style={{ padding: "20px" }}
               >
                 <strong>Fecha de Nacimiento:</strong>
-                <spam> {user.fechaNacimiento}</spam>
+                <span> {user.fechaNacimiento}</span>
               </ListGroup.Item>
 
               <Modal show={show3} onHide={handleClose3}>
@@ -228,7 +228,7 @@ export default function PerfilUsuario({ user }) {
                 style={{ padding: "20px" }}
               >
                 <strong> Usuario: </strong>
-                <spam>{user.nombreUsuario}</spam>
+                <span>{user.nombreUsuario}</span>
               </ListGroup.Item>
 
               <Modal show={show4} onHide={handleClose4}>

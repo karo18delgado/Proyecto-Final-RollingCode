@@ -143,7 +143,7 @@ export default function TablaProductos() {
           </tr>
         </thead>
         {productos.map((producto) => (
-          <tbody>
+          <tbody key={`producto-${producto._id}`}>
             <tr>
               <td>{producto.nombre}</td>
               <td>{producto.descripcion}</td>

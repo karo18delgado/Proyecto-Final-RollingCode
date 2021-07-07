@@ -114,7 +114,7 @@ export default function AdminMensajes() {
           {mensajes.map(
             (mensaje) =>
               mensaje.estado === input && (
-                <tbody>
+                <tbody key={`mensaje-${mensaje._id}`}>
                   <tr>
                     <td>{mensaje.fecha.slice(0, 10)}</td>
                     <td>{mensaje.correo}</td>

@@ -31,7 +31,7 @@ export default function AdminVentas({ user }) {
           </tr>
         </thead>
         {ventas.map((venta) => (
-          <tbody>
+          <tbody key={`venta-${venta._id}`}>
             <tr>
               <td>Usuario: {venta.usuario}</td>
               <td>
@@ -55,7 +55,7 @@ export default function AdminVentas({ user }) {
               <td>Pago: {venta.modalidadDePago}</td>
               <td>Total: $ {venta.total}</td>
               {venta.carrito.map((carrito) => (
-                <td>
+                <td key={`carrito-${carrito._id}`}>
                   <ul>
                     <li>Código Producto: {carrito.producto}</li>
                     <li>Cantidad: {carrito.cantidad}</li>
