@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:4000/api'
-// axios.defaults.baseURL = 'https://git.heroku.com/proyecto-final-rolling-grupo3.git'
+// axios.defaults.baseURL = 'http://localhost:4000/api'
+axios.defaults.baseURL = 'https://git.heroku.com/proyecto-final-rolling-grupo3.git'
 
 ReactDOM.render(
   <React.StrictMode>
