@@ -101,7 +101,14 @@ export default function AdminMensajes() {
         >
           Leídos
         </Button>
-        <Table striped bordered hover variant="dark" className="mt-5">
+        <Table
+          responsive
+          striped
+          bordered
+          hover
+          variant="dark"
+          className="mt-5"
+        >
           <thead>
             <tr>
               <th>Fecha</th>
@@ -143,7 +150,7 @@ export default function AdminMensajes() {
                       )}
                       <Button
                         size="sm"
-                        className="btn sm btn-primary mx-1"
+                        className="btn sm btn-primary mx-1 table-buttons"
                         onClick={handleShowInfo}
                         value={mensaje._id}
                       >
@@ -151,7 +158,7 @@ export default function AdminMensajes() {
                       </Button>
                       <Button
                         size="sm"
-                        className="btn sm btn-danger mx-1"
+                        className="btn sm btn-danger mx-1 table-buttons"
                         onClick={handleDelete}
                         value={mensaje._id}
                       >

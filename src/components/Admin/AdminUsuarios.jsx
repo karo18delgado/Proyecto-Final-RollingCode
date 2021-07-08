@@ -136,14 +136,16 @@ export default function AdminUsuarios() {
                 >
                   Más información
                 </Button>
-                <Button
-                  size="sm"
-                  className="btn sm btn-danger mx-1 table-buttons"
-                  onClick={handleDelete}
-                  value={usuario._id}
-                >
-                  Eliminar
-                </Button>
+                {usuario._id !== "60e65f4bc91bce0015a66b52" && (
+                  <Button
+                    size="sm"
+                    className="btn sm btn-danger mx-1 table-buttons"
+                    onClick={handleDelete}
+                    value={usuario._id}
+                  >
+                    Eliminar
+                  </Button>
+                )}
                 {usuario.blockUser === "Deshabilitado" && (
                   <Button
                     size="sm"
@@ -154,16 +156,17 @@ export default function AdminUsuarios() {
                     Habilitar
                   </Button>
                 )}
-                {usuario.blockUser === "Habilitado" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-primary mx-1 table-buttons"
-                    onClick={handleDeshabilitar}
-                    value={usuario._id}
-                  >
-                    Deshabilitar
-                  </Button>
-                )}
+                {usuario._id !== "60e65f4bc91bce0015a66b52" &&
+                  usuario.blockUser === "Habilitado" && (
+                    <Button
+                      size="sm"
+                      className="btn sm btn-primary mx-1 table-buttons"
+                      onClick={handleDeshabilitar}
+                      value={usuario._id}
+                    >
+                      Deshabilitar
+                    </Button>
+                  )}
                 {!usuario.categoryUser && (
                   <Button
                     size="sm"
@@ -174,16 +177,17 @@ export default function AdminUsuarios() {
                     Administrador
                   </Button>
                 )}
-                {usuario.categoryUser === "admin" && (
-                  <Button
-                    size="sm"
-                    className="btn sm btn-secondary mx-1 table-buttons"
-                    onClick={handleDeshabilitarAdmin}
-                    value={usuario._id}
-                  >
-                    Usuario
-                  </Button>
-                )}
+                {usuario._id !== "60e65f4bc91bce0015a66b52" &&
+                  usuario.categoryUser === "admin" && (
+                    <Button
+                      size="sm"
+                      className="btn sm btn-secondary mx-1 table-buttons"
+                      onClick={handleDeshabilitarAdmin}
+                      value={usuario._id}
+                    >
+                      Usuario
+                    </Button>
+                  )}
               </td>
             </tr>
           </tbody>

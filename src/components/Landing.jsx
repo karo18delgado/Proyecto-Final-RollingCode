@@ -108,8 +108,8 @@ export default function Landing() {
             <h1 className="d-flex flex-row justify-content-center text-white mt-4">
               iPad Pro{" "}
             </h1>
-            <h3 className="d-flex flex-row justify-content-center text-white">
-              Con los superpoderes del chip M1 de Apple{" "}
+            <h3 className="d-flex flex-row justify-content-center text-center text-white">
+              Con los superpoderes del chip M1 de Apple
             </h3>
             <h4 className="d-flex flex-row justify-content-center text-secondary">
               Consulta por preventa

@@ -11,7 +11,7 @@ body {
   opacity: 0.88;
 }
 .letra-seccion-medioAmbiente {
-  font-size: 96px;
+  font-size: 5rem;
   text-align: center;
   padding-top: 50px;
 }
@@ -23,7 +23,7 @@ body {
   vertical-align: initial;
 }
 .letra-titulo {
-  font-size: 80px;
+  font-size: 4rem;
   text-align: center;
   padding-top: 30px;
 }
@@ -46,7 +46,7 @@ body {
   margin-bottom: 30px;
 }
 .letra-card-grande {
-  font-size: 3.5rem;
+  font-size: 3rem;
   color: #fff;
   text-align: center;
   padding-top: 45px;
@@ -67,7 +67,7 @@ body {
   text-align: center;
 }
 .letra2 {
-  font-size: 50px;
+  font-size: 3rem;
   color: #1d1d1f;
   text-align: center;
   padding-top: 20px;
@@ -135,7 +135,7 @@ body {
   }
 }
 .letra-seccion-accesibilidad {
-  font-size: 4rem;
+  font-size: 3.5rem;
   text-align: center;
   padding-top: 60px;
 }
