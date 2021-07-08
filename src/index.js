@@ -5,8 +5,8 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
 
-axios.defaults.baseURL = 'http://localhost:4000/api'
-// axios.defaults.baseURL = 'https://proyectorolling-back-grupo3.herokuapp.com/api'
+// axios.defaults.baseURL = 'http://localhost:4000/api'
+axios.defaults.baseURL = 'https://proyectorolling-back-grupo3.herokuapp.com/api'
 
 ReactDOM.render(
   <React.StrictMode>

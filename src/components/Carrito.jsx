@@ -68,9 +68,9 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
   }, [setTotal, totalInicial]);
 
   const modificarTotal = async () => {
-    const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
+    const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
     let totalFinal = 0;
-    carrito2.map((item) => {
+    carrito.map((item) => {
       return (totalFinal = totalFinal + item.cantidad * item.precioId);
     });
     setTotal(totalFinal);
@@ -84,14 +84,15 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
       return event.stopPropagation();
     }
     try {
-      const carrito2 = JSON.parse(localStorage.getItem("carrito")) || [];
-      let carritoEnvio = [];
-      carrito2.map((item) => {
-        const obj = { producto: item.productoId, cantidad: item.cantidad };
-        return carritoEnvio.push(obj);
+      const carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+      const carritoEnvio = articles.map((item, index) => {
+        return {
+          producto: item.producto.nombre,
+          cantidad: carrito[index].cantidad,
+        };
       });
       const datosDeVenta = {
-        usuario: user._id,
+        usuario: user.nombreUsuario,
         carrito: carritoEnvio,
         total: total,
         dirección: input.dirección,
@@ -166,7 +167,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                   <Form.Control
                     name="dirección"
                     onChange={(e) => handleChange(e)}
-                    placeholder="domicilio"
                     maxLength="40"
                     type="text"
                     required
@@ -183,7 +183,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                       onChange={(e) => handleChange(e)}
                       required
                       type="text"
-                      placeholder="Provincia"
                       maxLength="30"
                       pattern="[a-z,A-Z]{6,25}"
                     />
@@ -198,7 +197,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                       onChange={(e) => handleChange(e)}
                       required
                       type="text"
-                      placeholder="Localidad"
                       maxLength="35"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -226,7 +224,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                       name="email"
                       onChange={(e) => handleChange(e)}
                       type="email"
-                      placeholder="Email"
                       aria-describedby="inputGroupPrepend"
                       required
                     />
@@ -265,10 +262,9 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                       onChange={(e) => handleChange(e)}
                       required
                       type="text"
-                      placeholder="Nombre"
                       maxLength="25"
-                      minLength="10"
-                      pattern="[a-z,A-Z]{6,25}"
+                      minLength="2"
+                      pattern="[a-z,A-Z]{2,25}"
                     />
 
                     <Form.Control.Feedback type="invalid">
@@ -280,7 +276,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                     <Form.Control
                       required
                       type="text"
-                      placeholder="Apellidos"
                       name="apellido"
                       onChange={(e) => handleChange(e)}
                     />
@@ -297,7 +292,6 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                       name="dni"
                       onChange={(e) => handleChange(e)}
                       type="number"
-                      placeholder="Número de documento"
                       required
                       maxLength="8"
                       pattern="^[0-9]+"
@@ -380,7 +374,7 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                   </Button>
                   <div>
                     <NavLink style={{ margin: "30px" }} to="/" as={NavLink}>
-                      ver más productos
+                      Ver más productos
                     </NavLink>
                   </div>
                 </div>

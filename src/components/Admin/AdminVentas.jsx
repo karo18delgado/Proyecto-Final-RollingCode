@@ -54,14 +54,14 @@ export default function AdminVentas({ user }) {
               </td>
               <td>Pago: {venta.modalidadDePago}</td>
               <td>Total: $ {venta.total}</td>
-              {venta.carrito.map((carrito) => (
-                <td key={`carrito-${carrito._id}`}>
-                  <ul>
-                    <li>Código Producto: {carrito.producto}</li>
+              <td>
+                {venta.carrito.map((carrito) => (
+                  <ul key={`carrito-${carrito._id}`}>
+                    <li>Nombre Producto: {carrito.producto}</li>
                     <li>Cantidad: {carrito.cantidad}</li>
                   </ul>
-                </td>
-              ))}
+                ))}
+              </td>
             </tr>
           </tbody>
         ))}
