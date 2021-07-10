@@ -37,9 +37,9 @@ export default function Cards({ producto, setproductosCarrito, token }) {
           style={{ width: "18rem" }}
         >
           <Card.Img
-            className=" m-auto"
+            className="m-auto p-2"
             variant="top"
-            style={{ width: "150px", height: "210px" }}
+            style={{ width: "280px", height: "300px" }}
             src={producto.urlImage}
           />
           <Card.Body className="card-container">

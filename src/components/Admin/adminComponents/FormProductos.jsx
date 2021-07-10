@@ -94,7 +94,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       required
                       minLength={2}
-                      maxLength={60}
+                      maxLength={200}
                       type="text"
                       className="form-productos-control"
                     />
@@ -126,7 +126,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={6}
-                      maxLength={40}
+                      maxLength={100}
                       className="form-productos-control"
                       required
                     />
@@ -186,7 +186,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={2}
-                      maxLength={40}
+                      maxLength={120}
                       required
                       className="form-productos-control"
                     />
@@ -200,10 +200,9 @@ export default function FormProductos() {
                     <Form.Control
                       name="redes"
                       minLength={2}
-                      maxLength={20}
+                      maxLength={40}
                       onChange={(e) => handleChange(e)}
                       type="text"
-                      required
                       className="form-productos-control"
                     />
                     <Form.Control.Feedback type="invalid">
@@ -215,7 +214,7 @@ export default function FormProductos() {
                     <Form.Control
                       name="procesador"
                       minLength={2}
-                      maxLength={30}
+                      maxLength={40}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       required
@@ -246,7 +245,7 @@ export default function FormProductos() {
                       name="almacenamientoDescripcion"
                       onChange={(e) => handleChange(e)}
                       minLength={2}
-                      maxLength={40}
+                      maxLength={120}
                       type="text"
                       required
                       className="form-productos-control"
@@ -261,7 +260,7 @@ export default function FormProductos() {
                     <Form.Control
                       name="camara"
                       minLength={2}
-                      maxLength={20}
+                      maxLength={30}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
@@ -273,7 +272,7 @@ export default function FormProductos() {
                     <Form.Control
                       name="camaraDescripcion"
                       minLength={2}
-                      maxLength={40}
+                      maxLength={120}
                       onChange={(e) => handleChange(e)}
                       type="text"
                       className="form-productos-control"
@@ -287,7 +286,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={3}
-                      maxLength={20}
+                      maxLength={60}
                       className="form-productos-control"
                       required
                     />
@@ -302,7 +301,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={2}
-                      maxLength={40}
+                      maxLength={120}
                       className="form-productos-control"
                       required
                     />
@@ -317,7 +316,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={2}
-                      maxLength={20}
+                      maxLength={40}
                       className="form-productos-control"
                       required
                     />
@@ -332,7 +331,7 @@ export default function FormProductos() {
                       onChange={(e) => handleChange(e)}
                       type="text"
                       minLength={2}
-                      maxLength={40}
+                      maxLength={120}
                       className="form-productos-control"
                       required
                     />

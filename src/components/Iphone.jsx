@@ -53,12 +53,9 @@ export default function Cards({ producto, setproductosCarrito, token }) {
           </Card.Body>
           <Card.Body>
             <Button
-              // to="carrito"
-              // as={NavLink}
               className="btnCarrito"
               variant="dark"
               onClick={onClickCart}
-              // value={producto._id}
               style={{ margin: "8px", borderRadius: "50%" }}
             >
               <FontAwesomeIcon
@@ -67,8 +64,6 @@ export default function Cards({ producto, setproductosCarrito, token }) {
               ></FontAwesomeIcon>
             </Button>
             <Button
-              // href=
-              // target="_blank"
               className="btn boton-comprar mb-auto text-center"
               variant="primary"
               onClick={() => setOpen(!open)}

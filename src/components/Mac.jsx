@@ -36,7 +36,11 @@ export default function Cards({ producto, setproductosCarrito, token }) {
           className=" m-auto style-card"
           style={{ width: "18rem" }}
         >
-          <Card.Img className=" m-auto" variant="top" src={producto.urlImage} />
+          <Card.Img
+            className="m-auto p-2"
+            variant="top"
+            src={producto.urlImage}
+          />
           <Card.Body className="card-container">
             <Card.Text className="text-naranja">{producto.estado}</Card.Text>
             <Card.Title className="titulo-card">
@@ -47,7 +51,7 @@ export default function Cards({ producto, setproductosCarrito, token }) {
             </Card.Text>
             <Card.Text className="text-precio">${producto.precio}</Card.Text>
           </Card.Body>
-          <Card.Body>
+          <Card.Body className="mt-3">
             <Button
               className="btnCarrito"
               variant="dark"
