@@ -233,8 +233,8 @@
   font-size: 30px;
 }
 .foto-carrousel {
-  min-height: 200px;
-  max-height: 450px;
-  min-width: 400px;
+  max-height: 600px;
+  max-width: 450px;
+  width: 100%;
   margin: auto;
 }

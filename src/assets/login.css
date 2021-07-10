@@ -44,21 +44,21 @@
 
 @media only screen and (max-width: 990px) {
   .login-row {
-    width: 400px;
+    width: 340px;
   }
   .link-row {
-    width: 400px;
+    width: 340px;
     padding: 0rem !important;
     margin-left: 1rem;
   }
   .login-row-form {
-    width: 410px;
+    width: 340px;
   }
   .name-div {
-    width: 400px;
+    width: 340px;
   }
   .lastname-div {
-    width: 400px;
+    width: 340px;
     margin-top: 20px;
     margin-left: 0px;
   }

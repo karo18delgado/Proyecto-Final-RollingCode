@@ -1,4 +1,5 @@
 import axios from "axios";
+import "../assets/register.css";
 import { useState } from "react";
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useHistory } from "react-router";

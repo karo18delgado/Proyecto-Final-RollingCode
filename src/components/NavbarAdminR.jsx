@@ -1,5 +1,5 @@
 import "../assets/font.css";
-import "../index.css";
+import "../assets/navbar.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { NavLink, useLocation } from "react-router-dom";
 import { Nav, Navbar, NavDropdown, Badge } from "react-bootstrap";

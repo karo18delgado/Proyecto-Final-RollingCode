@@ -33,7 +33,7 @@ export default function Landing() {
             className="d-flex flex-column justify-content-center"
           >
             <div style={{ marginBottom: "30px" }}>
-              <h1 className="d-flex flex-row justify-content-center text-white mt-4">
+              <h1 className="d-flex justify-content-center text-center text-white mt-4">
                 Productos destacados
               </h1>
             </div>
@@ -45,6 +45,7 @@ export default function Landing() {
                     <Carousel.Item
                       key={`carrousel-${producto._id}`}
                       style={{ marginBottom: "35px" }}
+                      className="producto-destacado"
                     >
                       <img
                         className="d-flex foto-carrousel"
