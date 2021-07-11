@@ -347,7 +347,7 @@ export default function Carrito({ articles, eliminarItemCarrito, user }) {
                         <Modal.Header closeButton>
                           <Modal.Title>Tarjeta de Crédito</Modal.Title>
                         </Modal.Header>
-                        <Modal.Body style={{ height: "400px" }}>
+                        <Modal.Body style={{ maxHeight: "800px" }}>
                           <CreditsCard />
                         </Modal.Body>
                         <Modal.Footer>
