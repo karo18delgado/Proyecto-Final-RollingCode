@@ -20,7 +20,7 @@ export default function FormFooter() {
       // Consulta post a /mensaje
       await axios.post("/mensaje", input);
       swal({
-        title: "Producto creado correctamente!",
+        title: "Tu consulta fue enviada correctamente!",
         icon: "success",
       });
       setValidated(false);

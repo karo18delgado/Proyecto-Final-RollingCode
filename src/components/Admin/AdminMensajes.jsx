@@ -50,7 +50,7 @@ export default function AdminMensajes() {
         await axios.delete(`/mensaje/${mensajeId}`);
         recibirMensajes();
       } else {
-        swal("El producto no fue eliminado!");
+        swal("El mensaje no fue eliminado!");
       }
     });
   };
@@ -175,29 +175,44 @@ export default function AdminMensajes() {
       {/* Modal Leer Mensaje */}
 
       <Modal show={showInfo} onHide={handleCloseInfo}>
-        <Form>
-          <Modal.Header closeButton>
-            <Modal.Title>Más información</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
+        <Modal.Header closeButton>
+          <Modal.Title>Más información</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Form>
             <Form.Group controlId="exampleForm.SelectCustom">
               {mensajeInfo && (
                 <Form.Label>
-                  <p>Fecha: {mensajeInfo.fecha}</p>
-                  <p>Email: {mensajeInfo.correo}</p>
-                  <p>Asunto: {mensajeInfo.asunto}</p>
-                  <p>Mensaje: {mensajeInfo.descripcion}</p>
-                  <p>Estado: {mensajeInfo.estado}</p>
+                  <p>
+                    {" "}
+                    <strong>Fecha:</strong> {mensajeInfo.fecha.slice(0, 10)}
+                  </p>
+                  <p>
+                    {" "}
+                    <strong>Email:</strong> {mensajeInfo.correo}
+                  </p>
+                  <p>
+                    {" "}
+                    <strong>Asunto:</strong> {mensajeInfo.asunto}
+                  </p>
+                  <p style={{ wordBreak: "break-all" }}>
+                    {" "}
+                    <strong>Mensaje:</strong> {mensajeInfo.descripcion}
+                  </p>
+                  <p>
+                    {" "}
+                    <strong>Estado:</strong> {mensajeInfo.estado}
+                  </p>
                 </Form.Label>
               )}
             </Form.Group>
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseInfo}>
-              Cerrar
-            </Button>
-          </Modal.Footer>
-        </Form>
+          </Form>
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleCloseInfo}>
+            Cerrar
+          </Button>
+        </Modal.Footer>
       </Modal>
     </>
   );
