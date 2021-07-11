@@ -304,8 +304,12 @@ export default function TablaProductos() {
                   <p>
                     <strong>Nombre:</strong> {productoInfo.nombre}
                   </p>
-                  <p>
-                    <img src={productoInfo.urlImage} alt="" />
+                  <p className="d-flex justify-content-center">
+                    <img
+                      className="masinfo-modal-img"
+                      src={productoInfo.urlImage}
+                      alt=""
+                    />
                   </p>
                   <p>
                     <strong>Descripcion:</strong> {productoInfo.descripcion}
