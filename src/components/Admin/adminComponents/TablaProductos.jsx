@@ -12,6 +12,8 @@ export default function TablaProductos() {
   const [showInfo, setShowInfo] = useState(false);
   const [productos, setProductos] = useState([]);
 
+  const [validated, setValidated] = useState(false);
+
   // Traer productos
   const getProductos = async () => {
     const response = await axios.get("/productos");
@@ -24,7 +26,10 @@ export default function TablaProductos() {
     }
   }, [productos]);
 
-  const handleCloseEdit = () => setShowEdit(false);
+  const handleCloseEdit = () => {
+    setShowEdit(false);
+  };
+
   const handleShowEdit = async (event) => {
     const productoId = event.target.value;
     const fetchedProducto = await axios.get(`/productos/${productoId}`);
@@ -49,14 +54,37 @@ export default function TablaProductos() {
   };
 
   const handleSubmit = async (event) => {
+    const form = event.currentTarget;
     event.preventDefault();
     const producto = productoEdit;
-    await axios.put("/productos", producto);
-    swal({
-      title: "Producto editado correctamente!",
-      icon: "info",
-    });
-    getProductos();
+    const inputprecio = +productoEdit.precio;
+    if (inputprecio < 0) {
+      swal({
+        title: "El precio tiene que ser mayor a 0!",
+        icon: "error",
+      });
+      return event.stopPropagation();
+    }
+    setValidated(true);
+    if (form.checkValidity() === false) {
+      return event.stopPropagation();
+    }
+    try {
+      await axios.put("/productos", producto);
+      swal({
+        title: "Producto editado correctamente!",
+        icon: "info",
+      });
+      setValidated(false);
+      setShowEdit(false);
+      getProductos();
+    } catch (error) {
+      console.log(error.response.data);
+      swal({
+        title: error.response.data.msg,
+        icon: "error",
+      });
+    }
   };
 
   //ELIMINAR
@@ -237,7 +265,7 @@ export default function TablaProductos() {
         <Modal.Header closeButton>
           <Modal.Title>Editar producto</Modal.Title>
         </Modal.Header>
-        <Form noValidate onSubmit={handleSubmit}>
+        <Form noValidate validated={validated} onSubmit={handleSubmit}>
           <Modal.Body>
             <Form.Group controlId="exampleForm.SelectCustom">
               <strong>Nombre:</strong>
@@ -246,6 +274,8 @@ export default function TablaProductos() {
                 onChange={(e) => handleChange(e)}
                 type="text"
                 placeholder={productoEdit.nombre}
+                minLength={2}
+                maxLength={30}
               ></Form.Control>
               <strong>Descripcion:</strong>
               <Form.Control
@@ -253,6 +283,8 @@ export default function TablaProductos() {
                 onChange={handleChange}
                 type="text"
                 placeholder={productoEdit.descripcion}
+                minLength={2}
+                maxLength={100}
               ></Form.Control>
               <strong>Precio:</strong>
               <InputGroup hasValidation className="form-productos-control">
@@ -261,10 +293,18 @@ export default function TablaProductos() {
                 </InputGroup.Prepend>
                 <Form.Control
                   name="precio"
-                  onChange={handleChange}
-                  type="text"
+                  onChange={(e) => handleChange(e)}
+                  type="number"
+                  aria-describedby="inputGroupPrepend"
                   placeholder={productoEdit.precio}
-                ></Form.Control>
+                  className="form-productos-control-precio"
+                  minLength={2}
+                  maxLength={15}
+                  pattern="[0-9]+([0-9]+)?"
+                />
+                <Form.Control.Feedback type="invalid">
+                  Ingrese un precio solo con numeros sin signos!
+                </Form.Control.Feedback>
               </InputGroup>
               <strong>Categoria:</strong>
               <Form.Control
@@ -283,7 +323,7 @@ export default function TablaProductos() {
             <Button variant="secondary" onClick={handleCloseEdit}>
               Cerrar
             </Button>
-            <Button variant="primary" onClick={handleCloseEdit} type="submit">
+            <Button variant="primary" type="submit">
               Guardar cambios
             </Button>
           </Modal.Footer>

@@ -64,8 +64,6 @@ export default function Cards({ producto, setproductosCarrito, token }) {
               ></FontAwesomeIcon>
             </Button>
             <Button
-              // href=
-              // target="_blank"
               className="btn boton-comprar mb-auto text-center"
               variant="primary"
               onClick={() => setOpen(!open)}
