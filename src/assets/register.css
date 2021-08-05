@@ -103,18 +103,18 @@
   margin-bottom: 2rem;
 }
 
-@media only screen and (max-width: 645px) {
+@media only screen and (max-width: 990px) {
   .container-row {
-    width: 400px;
+    width: 340px;
   }
   .container-row-form {
-    width: 410px;
+    width: 350px;
   }
   .name-div {
-    width: 400px;
+    width: 340px;
   }
   .lastname-div {
-    width: 400px;
+    width: 340px;
     margin-top: 20px;
     margin-left: 0px;
   }
